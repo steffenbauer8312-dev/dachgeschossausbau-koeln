@@ -285,17 +285,83 @@ const schema = {
   <Header />
 
   <main>
-    <!-- Hero -->
+    <!-- Hero mit Inline-Formular -->
     <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
       <div class="container mx-auto px-4">
-        <h1 class="text-3xl md:text-4xl font-bold mb-4">
-          Dachgeschossausbau – jeder Kölner Stadtteil anders
-        </h1>
-        <p class="text-xl text-slate-300 max-w-2xl">
-          Ehrenfeld, Nippes, Porz, Chorweiler – jedes Veedel hat seine Eigenheiten. Wir kennen sie alle.
-        </p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachgeschossausbau – jeder Kölner Stadtteil anders
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Ehrenfeld, Nippes, Porz, Chorweiler – jedes Veedel hat seine Eigenheiten. Wir kennen sie alle.
+            </p>
+          </div>
+          <!-- Kompaktes Leadformular -->
+          <div class="bg-white rounded-xl shadow-2xl p-5">
+            <h2 class="text-lg font-bold text-slate-800 mb-1">
+              Kostenlose Beratung
+            </h2>
+            <p class="text-slate-600 text-xs mb-4">
+              Für Ihren Stadtteil in Köln.
+            </p>
+            <form class="space-y-3" id="hero-form">
+              <input
+                type="text"
+                name="name"
+                required
+                placeholder="Name *"
+                class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm text-slate-800 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+              />
+              <div class="grid grid-cols-2 gap-3">
+                <input
+                  type="tel"
+                  name="phone"
+                  required
+                  placeholder="Telefon *"
+                  class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm text-slate-800 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                />
+                <input
+                  type="text"
+                  name="plz"
+                  placeholder="Ihre PLZ"
+                  class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm text-slate-800 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                />
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition-all duration-200"
+              >
+                Beratung anfragen
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
+
+    <script>
+      const form = document.getElementById('hero-form') as HTMLFormElement;
+      if (form) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const btn = form.querySelector('button') as HTMLButtonElement;
+          btn.disabled = true;
+          btn.textContent = 'Wird gesendet...';
+          await new Promise(r => setTimeout(r, 1500));
+          btn.textContent = 'Gesendet!';
+          btn.classList.remove('bg-teal-500', 'hover:bg-teal-600');
+          btn.classList.add('bg-green-500');
+          setTimeout(() => {
+            form.reset();
+            btn.disabled = false;
+            btn.textContent = 'Beratung anfragen';
+            btn.classList.remove('bg-green-500');
+            btn.classList.add('bg-teal-500', 'hover:bg-teal-600');
+          }, 3000);
+        });
+      }
+    </script>
 
     <!-- Einleitung -->
     <section class="py-12 bg-white border-b border-slate-100">
