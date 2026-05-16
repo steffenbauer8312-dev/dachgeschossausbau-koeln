@@ -8,27 +8,27 @@ import ContactForm from '../../components/ContactForm.astro';
 const faqs = [
   {
     question: 'Was schreibt das GEG für den Dachgeschossausbau in Köln vor?',
-    answer: 'Das Gebäudeenergiegesetz (GEG) fordert für ausgebauten Dachboden einen U-Wert von maximal 0,14 W/(m²K). Das ist der Wärmedurchgangskoeffizient – je niedriger, desto besser die Dämmung. Diesen Wert erreichen wir mit einer Kombination aus Zwischensparren- und Untersparren-Dämmung.'
+    answer: 'Das Gebäudeenergiegesetz (GEG) schreibt bei einer Sanierung von mehr als 10 % der Dachfläche einen U-Wert von maximal 0,24 W/(m²·K) vor (§ 48 GEG). Das ist die gesetzliche Mindestanforderung. Die BAFA-Förderung verlangt allerdings einen besseren Wert: ≤ 0,14 W/(m²·K). Diesen Standard empfehlen wir, weil er sich mit Förderung rechnet und langfristig mehr Heizkosten spart.'
   },
   {
-    question: 'Kann ich beim Dachgeschossausbau in Köln KfW-Förderung bekommen?',
-    answer: 'Ja, über die KfW sind verschiedene Förderprogramme möglich, unter anderem für die Dachdämmung. Die Anforderungen sind allerdings höher als beim reinen GEG-Standard. Wir beraten Sie gerne zu den Möglichkeiten und übernehmen die Beantragung.'
+    question: 'Gibt es eine Nachrüstpflicht für Dachdämmung?',
+    answer: 'Ja, nach § 47 GEG müssen Eigentümer die oberste Geschossdecke oder das Dach auf einen U-Wert von max. 0,24 W/(m²·K) bringen – falls keine ausreichende Dämmung vorhanden ist. Für selbstgenutzte Ein- und Zweifamilienhäuser gilt: Wenn Sie vor dem 1. Februar 2002 eingezogen sind, greift die Pflicht nicht. Nach einem Eigentümerwechsel haben Sie 2 Jahre Zeit.'
+  },
+  {
+    question: 'Kann ich beim Dachgeschossausbau in Köln Förderung bekommen?',
+    answer: 'Ja! BAFA BEG EM fördert die Dachdämmung mit 15 % Zuschuss (20 % mit individuellem Sanierungsfahrplan). Voraussetzung: U-Wert ≤ 0,14 W/(m²·K), Energieeffizienz-Experte und Antrag VOR Beginn. Der Steuerbonus (§ 35c EStG) ist eine Alternative – 20 % der Handwerkerkosten, max. 1.200 € pro Jahr. Achtung: BAFA und Steuerbonus schließen sich für dieselbe Maßnahme aus!'
   },
   {
     question: 'Welches Dämmmaterial ist das beste für Köln?',
-    answer: 'Für den Dachgeschossausbau in Köln setzen wir meist auf Mineralwolle oder Hanf. Beide sind diffusionsoffen, was Feuchtigkeitsprobleme vermeidet. In manchen Fällen – besonders bei Altbauten – empfehlen wir auch Perlite oder Zellulose.'
+    answer: 'Für den Dachgeschossausbau in Köln setzen wir meist auf Mineralwolle oder Hanf. Beide sind diffusionsoffen und vermeiden Feuchtigkeitsprobleme. Bei Altbauten mit begrenztem Sparrenzwischenraum empfehlen wir Einblasdämmung (Zellulose oder Mineralwolle) – sie füllt alle Hohlräume aus.'
   },
   {
-    question: 'Wie funktioniert die Dampfsperre richtig?',
-    answer: 'Die Dampfsperre ist eine Ebene aus Kunststoff oder Aluminium, die auf der warmen Seite der Dämmung angebracht wird. Sie verhindert, dass Raumfeuchtigkeit in die Dämmung eindringt und dort Schimmel verursacht. Bei uns wird die Dampfsperre immer fachgerecht mit speziellen Klebebändern und Anschlussmanschetten verarbeitet.'
+    question: 'Was ist der Unterschied zwischen Dampfsperre und Luftdichtung?',
+    answer: 'Die Dampfsperre (auf der warmen Seite der Dämmung) stoppt Feuchtigkeit aus der Raumluft. Die Luftdichtungsebene schützt vor Luftundichtigkeiten, die zu Wärmeverlusten und Bauschäden führen. Beide zusammen sorgen für ein dauerhaft trockenes Dach – wir installieren sie immer als System mit speziellen Klebebändern und Anschlussmanschetten.'
   },
   {
-    question: 'Was passiert ohne fachgerechte Dämmung?',
-    answer: 'Ohne Dämmung wird es im Sommer unerträglich heiß und im Winter bitterkalt. Die Heizkosten steigen, und die Bausubstanz leidet. Feuchtigkeit kann durch Kondensation in die Konstruktion eindringen und Schimmel verursachen. Eine fachgerechte Dämmung schützt vor all dem – und spart langfristig Geld.'
-  },
-  {
-    question: 'Wie lange hält eine Dachdämmung?',
-    answer: 'Eine fachgerecht eingebaute Dämmung hält mehrere Jahrzehnte. Mineralwolle und Hanf verlieren über die Zeit kaum an Dämmwirkung. Wichtig ist nur, dass die Dampfsperre und die Anschlüsse dicht bleiben. Bei Wartungen prüfen wir das gerne mit.'
+    question: 'Wann lohnt sich eine Aufsparrendämmung?',
+    answer: 'Eine Aufsparrendämmung ist ideal, wenn Sie das Dach ohnehin neu eindecken oder wenn die Sparren nicht tief genug für eine ausreichende Zwischensparren-Dämmung sind. Sie erreicht die besten Dämmwerte (U-Wert bis 0,08 W/(m²·K)) und ermöglicht eine durchgehende Dämmebene ohne Kältebrücken. Die Kosten sind höher, aber die Förderfähigkeit und die langfristige Energieeinsparung machen sie attraktiv.'
   }
 ];
 
@@ -178,33 +178,45 @@ const schema = {
           <div class="flex flex-col lg:flex-row gap-8 items-start">
             <div class="flex-1">
               <h2 class="text-2xl font-bold text-slate-800 mb-6">
-                GEG-konforme Dämmung: mehr als nur Vorschrift
+                GEG-Vorschriften: Was schreibt das Gesetz vor?
               </h2>
               <div class="space-y-4 text-slate-600 leading-relaxed">
                 <p>
-                  Die Dachdämmung ist beim Dachgeschossausbau in Köln mehr als nur eine gesetzliche Pflicht. Eine gute Dämmung spart Heizkosten, sorgt für ein angenehmes Raumklima und macht das Dachgeschoss im Sommer wie im Winter nutzbar.
+                  Das Gebäudeenergiegesetz (GEG) regelt die energetischen Anforderungen an Gebäude. Für den Dachgeschossausbau in Köln sind zwei Vorschriften relevant:
                 </p>
                 <p>
-                  Das GEG schreibt einen U-Wert von maximal 0,14 W/(m²K) vor. Das klingt technisch, bedeutet aber: Ihr Dach muss gut isoliert sein. Mit einer Kombination aus Zwischensparren- und Untersparren-Dämmung erreichen wir diesen Wert problemlos – und können ihn bei Bedarf sogar unterbieten.
+                  <strong>§ 48 GEG – Bedingte Anforderungen:</strong> Wenn Sie mehr als 10 % Ihrer Dachfläche sanieren (z.B. Neueindeckung, Gaubeneinbau), muss die gedämmte Fläche einen U-Wert von max. 0,24 W/(m²·K) erreichen. Das ist der gesetzliche Mindeststandard.
                 </p>
                 <p>
-                  Gerade in den oft jahrzehntealten Altbauten Kölns ist die Dämmung häufig mangelhaft oder gar nicht vorhanden. Viele unserer Kunden sind überrascht, wie warm ihr Dachgeschoss nach dem fachgerechten Ausbau wird – im Winter ohne hohe Heizkosten, im Sommer ohne Überhitzung.
+                  <strong>§ 47 GEG – Nachrüstpflicht:</strong> Wenn Ihre oberste Geschossdecke oder Ihr Dach ungedämmt ist, besteht eine Nachrüstpflicht. Der geforderte U-Wert beträgt ebenfalls 0,24 W/(m²·K). Ausnahme: Wenn Sie Ihr selbstgenutztes EFH/ZFH bereits vor dem 1. Februar 2002 bewohnt haben.
+                </p>
+                <p>
+                  <strong>BAFA-Standard = Förderstandard:</strong> Die Bundesförderung für effiziente Gebäude (BAFA) verlangt einen strengeren U-Wert von ≤ 0,14 W/(m²·K). Das bedeutet mehr Dämmstärke – aber auch mehr Förderung und langfristig niedrigere Heizkosten.
                 </p>
               </div>
             </div>
             <div class="lg:w-80 bg-teal-50 rounded-2xl p-6">
-              <h3 class="text-lg font-bold text-slate-800 mb-4">Was bedeutet U-Wert?</h3>
-              <p class="text-slate-600 text-sm mb-4">
-                Der U-Wert gibt an, wie viel Wärme durch ein Bauteil verloren geht. Je kleiner der Wert, desto besser die Dämmung.
-              </p>
-              <div class="bg-white rounded-lg p-4 text-center">
-                <p class="text-sm text-slate-500 mb-1">GEG-Anforderung</p>
-                <p class="text-3xl font-bold text-teal-600">≤ 0,14</p>
-                <p class="text-xs text-slate-500">W/(m²K)</p>
+              <h3 class="text-lg font-bold text-slate-800 mb-4">U-Werte im Vergleich</h3>
+              <div class="space-y-4">
+                <div class="bg-white rounded-lg p-4">
+                  <p class="text-sm text-slate-500 mb-1">GEG-Mindestanforderung</p>
+                  <p class="text-3xl font-bold text-slate-600">≤ 0,24</p>
+                  <p class="text-xs text-slate-500">W/(m²·K)</p>
+                </div>
+                <div class="bg-teal-100 rounded-lg p-4">
+                  <p class="text-sm text-teal-600 mb-1">BAFA-Förderstandard</p>
+                  <p class="text-3xl font-bold text-teal-600">≤ 0,14</p>
+                  <p class="text-xs text-teal-600">W/(m²·K)</p>
+                </div>
               </div>
               <p class="text-xs text-slate-500 mt-4">
-                Zum Vergleich: Ein ungedämmtes Satteldach hat einen U-Wert von etwa 2,0 – also 14-mal schlechter.
+                Zum Vergleich: Ein ungedämmtes Satteldach hat ca. 2,0 W/(m²·K) – also 14× schlechter als die Förderanforderung.
               </p>
+              <div class="mt-4 pt-4 border-t border-teal-200">
+                <a href="https://www.bbsr-geg.bund.de/GEGPortal/DE/GEGRegelungen/Gebaeudebestand/BedAnforderungen/EnergAnfDach/EnergAnf_Dach_node.html" target="_blank" rel="noopener" class="text-sm text-teal-600 hover:text-teal-700 hover:underline block">
+                  → GEG-Infoportal des BBSR
+                </a>
+              </div>
             </div>
           </div>
         </div>

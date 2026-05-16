@@ -6,76 +6,109 @@ import ContactForm from '../components/ContactForm.astro';
 
 const foerderungen = [
   {
-    title: 'KfW-Förderkredit 261/262',
+    title: 'KfW 261 – Wohngebäude Kredit (Effizienzhaus)',
     category: 'Bundesförderung',
     icon: 'building',
-    description: 'Zinsgünstige Kredite mit Tilgungszuschüssen – die bekannteste Förderung für energetische Sanierungen.',
+    description: 'Zinsgünstiger Kredit mit Tilgungszuschuss für die Komplettsanierung zum Effizienzhaus. Für den DG-Ausbau besonders interessant: Erweiterung von Nichtwohnfläche in Wohnfläche wird gefördert.',
     details: [
-      { label: 'Förderhöhe', value: 'Bis zu 150.000 € pro Wohneinheit' },
-      { label: 'Zinssatz', value: 'Ab 2,29 % effektiver Jahreszins (Stand Mai 2026)' },
-      { label: 'Tilgungszuschuss', value: '5-45 % der förderfähigen Kosten' },
-      { label: 'Voraussetzung', value: 'KfW-Effizienzhaus-Standard oder Einzelmaßnahmen' },
+      { label: 'Kreditbetrag', value: 'Bis zu 120.000 € pro Wohneinheit (bis 150.000 € mit EE-Klasse)' },
+      { label: 'Tilgungszuschuss', value: '5-20 % je nach Effizienzhaus-Standard' },
+      { label: 'Zinssatz', value: 'Ab ca. 2,23 % effektiver Jahreszins' },
+      { label: 'Voraussetzung', value: 'Mindestens EH 85, Energieeffizienz-Experte erforderlich' },
     ],
     highlights: [
-      'Kombinierbar mit anderen Fördermitteln',
+      'DG-Ausbau als Erweiterung förderfähig (Sanierung)',
       'Tilgungszuschuss muss nicht zurückgezahlt werden',
-      'Auch für selbstgenutzte und vermietete Objekte',
+      'Kombinierbar mit BAFA- und NRW.BANK-Förderung',
     ],
-    note: 'Für den Dachgeschossausbau kommen besonders die Einzelmaßnahmen (KfW 262) in Frage – wenn keine komplette Sanierung zum Effizienzhaus angestrebt wird.'
+    links: [
+      { text: 'KfW 261: kfw.de/261', url: 'https://www.kfw.de/inlandsfoerderung/Privatpersonen/Bestehende-Immobilie/F%C3%B6rderprodukte/Bundesf%C3%B6rderung-f%C3%BCr-effiziente-Geb%C3%A4ude-Wohngeb%C3%A4ude-Kredit-(261-262)/' },
+    ],
+    note: 'KfW 262 (Einzelmaßnahmen-Kredit) ist aktuell EINGESTELLT und kann nicht mehr beantragt werden. Für Einzelmaßnahmen nutzen Sie BAFA BEG EM (Zuschuss).'
   },
   {
-    title: 'BAFA BEG EM Zuschuss',
+    title: 'BAFA BEG EM – Einzelmaßnahmen Zuschuss',
     category: 'Bundesförderung',
     icon: 'percent',
-    description: 'Direkte Zuschüsse für einzelne energetische Maßnahmen – kein Kredit, einfach Geld vom Staat.',
+    description: 'Direkter Zuschuss für energetische Einzelmaßnahmen – kein Kredit, bares Geld vom Staat.',
     details: [
-      { label: 'Förderhöhe', value: '15-20 % der förderfähigen Investitionskosten' },
-      { label: 'Maximalbetrag', value: '30.000 € pro Wohneinheit' },
-      { label: 'Förderfähige Kosten', value: 'Max. 60.000 € pro Wohneinheit' },
-      { label: 'Antragstellung', value: 'Vor Maßnahmenbeginn über BAFA-Portal' },
+      { label: 'Förderhöhe', value: '15 % der förderfähigen Kosten' },
+      { label: 'Mit iSFP-Bonus', value: '20 % (individueller Sanierungsfahrplan)' },
+      { label: 'Förderfähige Kosten', value: 'Max. 30.000 € pro Wohneinheit (60.000 € mit iSFP)' },
+      { label: 'Antragstellung', value: 'Vor Maßnahmenbeginn über BAFA-Portal (energie-effizienz-experten.de)' },
     ],
     highlights: [
       'Dachdämmung mit U-Wert ≤ 0,14 W/(m²·K)',
-      'Erneuerung von Fenstern und Außentüren',
-      'Einbau digitaler Systeme zur Verbrauchsoptimierung',
+      'Fenster und Außentüren',
+      'Luftdichtheits- und Dampfsperrsysteme',
     ],
-    note: 'Wärmedämmung im Dachgeschoss wird mit 15 % gefördert. Mit Heizungsoptimierung (hydraulischer Abgleich) sind es 20 %.'
+    links: [
+      { text: 'BAFA Gebäudehülle: bafa.de/GEG-Gebäudehülle', url: 'https://www.bafa.de/DE/Energie/Effiziente_Gebaeude/Sanierung_Wohngebaeude/Gebaeudehuelle/gebaeudehuelle_node.html' },
+    ],
+    note: 'Antrag MUSS vor Beginn der Maßnahme gestellt werden. Energieeffizienz-Experte ist Pflicht.'
   },
   {
-    title: 'NRW.BANK Modernisierungskredit',
-    category: 'Landesförderung',
+    title: 'NRW.BANK – Wohnraumförderung Modernisierung',
+    category: 'Landesförderung NRW',
     icon: 'map',
-    description: 'Günstige Kredite vom Land NRW mit Tilgungsnachlass – extra Geld, das nicht zurück muss.',
+    description: 'Günstige Darlehen vom Land Nordrhein-Westfalen mit Tilgungsnachlass – ein Teil des Geldes muss nicht zurückgezahlt werden.',
     details: [
-      { label: 'Förderhöhe', value: 'Bis zu 200.000 € pro Wohneinheit' },
-      { label: 'Tilgungsnachlass', value: '25 % der Darlehenssumme (bis zu 50.000 €)' },
-      { label: 'Zinssatz', value: 'Deutlich unter Marktniveau, staffelt nach Einkommen' },
-      { label: 'Voraussetzung', value: 'Modernisierung des selbstgenutzten Wohneigentums' },
+      { label: 'Darlehenshöhe', value: 'Bis zu 220.000 € pro Wohneinheit' },
+      { label: 'Tilgungsnachlass', value: '25 % (EKG A) oder 15 % (EKG B) nach Einkommen' },
+      { label: 'Bis zu', value: '50 % Tilgungsnachlass mit EKG A + Effizienzhaus-Standard' },
+      { label: 'Laufzeit', value: 'Bis zu 35 Jahre, feste Zinsen' },
     ],
     highlights: [
+      'Einkommensabhängige Förderung (Einkommensgrenzen prüfen)',
       'Auch für Kölner Altbauten geeignet',
-      'Kombinierbar mit KfW-Programmen',
-      'Einkommensabhängige Staffelung',
+      'Kombinierbar mit KfW-Programmen und BAFA',
     ],
-    note: 'Der NRW.BANK-Kredit kann parallel zu KfW und BAFA eingesetzt werden. In Köln bietet die NRW.BANK auch Beratungstermine vor Ort an.'
+    links: [
+      { text: 'NRW.BANK: nrwbank.de/wohneigentum', url: 'https://www.nrwbank.de/de/privatpersonen/wohneigentum/' },
+    ],
+    note: 'Antrag über die Bewilligungsbehörde (Stadt Köln: Amt für Wohnungswesen). Einkommensgrenzen gelten.'
   },
   {
-    title: 'Stadt Köln: Amt für Wohnungswesen',
+    title: 'Steuerbonus für Handwerkerleistungen (§ 35c EStG)',
+    category: 'Steuerliche Förderung',
+    icon: 'percent',
+    description: '20 % der Handwerkerkosten direkt von der Steuerschuld abziehen – ohne Förderprogramm.',
+    details: [
+      { label: 'Steuerbonus', value: '20 % der Arbeitskosten' },
+      { label: 'Maximalbetrag', value: '1.200 € pro Jahr (bei 6.000 € Arbeitskosten)' },
+      { label: 'Gültig', value: 'Für energetische Maßnahmen an selbstgenutztem Wohneigentum' },
+      { label: 'Voraussetzung', value: 'Rechnung mit ausgewiesenen Arbeitskosten, Überweisung' },
+    ],
+    highlights: [
+      'Alternative zur BAFA-Förderung (nicht kombinierbar!)',
+      'Antrag im Rahmen der Einkommensteuererklärung',
+      'Für alle Handwerkerleistungen rund um den DG-Ausbau',
+    ],
+    links: [
+      { text: '§ 35c EStG: gesetze-im-internet.de/estg/__35c.html', url: 'https://www.gesetze-im-internet.de/estg/__35c.html' },
+    ],
+    note: 'WICHTIG: Der Steuerbonus kann NICHT mit BAFA- oder KfW-Förderung für dieselbe Maßnahme kombiniert werden. Entweder-oder!'
+  },
+  {
+    title: 'Amt für Wohnungswesen Köln – Kommunale Förderung',
     category: 'Kommunale Förderung',
     icon: 'city',
-    description: 'Kölner Eigenheimförderung – Zuschüsse und günstige Darlehen direkt aus Köln.',
+    description: 'Beratung zu Kölner Eigenheimförderung und Wohnraumförderung des Landes NRW.',
     details: [
-      { label: 'Förderhöhe', value: 'Nach Programmjahr und Verfügbarkeit variabel' },
-      { label: 'Zuständigkeit', value: 'Amt für Wohnungswesen, Gottfried-Hagen-Str. 46-48' },
+      { label: 'Adresse', value: 'Gottfried-Hagen-Str. 46-48, 51105 Köln' },
       { label: 'Telefon', value: '0221 / 221-34641' },
-      { label: 'Schwerpunkt', value: 'Sozialer Wohnungsbau, Familienförderung' },
+      { label: 'Schwerpunkt', value: 'Wohnraumförderung, Familienförderung, Barrierefreiheit' },
+      { label: 'Beratung', value: 'Kostenlose Vor-Ort-Beratung möglich' },
     ],
     highlights: [
-      'Beratung zu Kölner Eigenheimförderung',
-      'Fördertopf für bezahlbaren Wohnraum',
-      'Familienzuschüsse bei Erstbezug',
+      'Prüfung der NRW-Landesförderung (Einkommensgrenzen)',
+      'Fördermittel für bezahlbaren Wohnraum',
+      'Beratung zu weiteren kommunalen Programmen',
     ],
-    note: 'Die Kölner Fördermittel sind begrenzt und werden nach Antragseingang vergeben. Eine frühzeitige Beratung ist empfehlenswert.'
+    links: [
+      { text: 'Stadt Köln: stadt-koeln.de/wohnen', url: 'https://www.stadt-koeln.de/leben-in-koeln/wohnen/' },
+    ],
+    note: 'Die NRW-Landesförderung hat Einkommensgrenzen. Lassen Sie sich beraten, ob Sie infrage kommen.'
   },
 ];
 
@@ -90,23 +123,27 @@ const kostenbeispiele = [
 const faqs = [
   {
     question: 'Kann ich mehrere Förderprogramme gleichzeitig nutzen?',
-    answer: 'Ja, KfW, BAFA und NRW.BANK lassen sich grundsätzlich kombinieren. Auch kommunale Fördermittel können hinzukommen. Wichtig: Der BAFA-Zuschuss muss vor Beginn der Maßnahme beantragt werden. Bei der KfW und NRW.BANK muss der Kreditantrag vor Baubeginn gestellt werden.'
+    answer: 'Grundsätzlich ja – aber nicht für dieselbe Maßnahme. KfW und BAFA schließen sich für die gleiche Maßnahme gegenseitig aus. Sie können aber BAFA für Einzelmaßnahmen (z.B. Dachdämmung) nutzen und KfW 261 für eine Komplettsanierung. Der NRW.BANK-Kredit lässt sich mit beiden kombinieren. Der Steuerbonus (§ 35c EStG) ist alternativ zum BAFA-Zuschuss, nicht zusätzlich. Lassen Sie sich beraten, welche Kombination für Sie optimal ist.'
   },
   {
     question: 'Muss ich den Dachgeschossausbau komplett energetisch sanieren, um Förderung zu bekommen?',
-    answer: 'Nein, einzelne Maßnahmen werden ebenfalls gefördert. Über KfW 262 und BAFA BEG EM können Sie einzelne Gewerke wie Dachdämmung, Fenstertausch oder Gaubeneinbau fördern lassen, ohne das gesamte Gebäude auf einen Effizienzhausstandard zu bringen.'
+    answer: 'Nein! Einzelmaßnahmen werden ebenfalls gefördert. Über BAFA BEG EM können Sie einzelne Gewerke wie Dachdämmung, Fenstertausch oder die Dampfsperre fördern lassen – ohne das gesamte Gebäude auf Effizienzhaus-Standard zu bringen. Voraussetzung ist ein U-Wert von ≤ 0,14 W/(m²·K) und ein Energieeffizienz-Experte.'
   },
   {
-    question: 'Wie hoch ist der Steuerbonus für Handwerkerleistungen 2026?',
-    answer: 'Arbeitskosten für Handwerkerleistungen im Haushalt können mit 20 % direkt von der Steuerschuld abgezogen werden. Der Höchstbetrag liegt bei 1.200 € pro Jahr. Voraussetzung: Der Handwerker muss im Auftrag des Eigentümers tätig sein, eine Rechnung mit ausgewiesener Arbeitszeit vorliegen und die Zahlung muss über das Konto laufen.'
+    question: 'Ich kann mich nicht zwischen BAFA und Steuerbonus entscheiden – was ist besser?',
+    answer: 'Das hängt von Ihrer Steuerlast ab. Der Steuerbonus bringt Ihnen 20 % von max. 6.000 € = 1.200 € pro Jahr. BAFA gibt 15 % von max. 30.000 € = 4.500 € Zuschuss (einmalig). Bei hohen Handwerkerkosten ist BAFA meist besser, weil der Zuschuss nicht von Ihrer Steuerlast abhängt – Sie bekommen das Geld aufs Konto, unabhängig von Ihrem Einkommen.'
   },
   {
-    question: 'Gibt es Förderung für den Dachgeschossausbau ohne energetische Komponente?',
-    answer: 'Reine Wohnraumerweiterungen ohne energetische Sanierung werden nicht durch KfW oder BAFA gefördert. Allerdings bieten manche Kommunen Programme zur Wohnraumerweiterung an. In Köln lohnt sich eine Anfrage beim Amt für Wohnungswesen. Der NRW.BANK-Kredit kann auch für nicht-energetische Modernisierungen genutzt werden.'
+    question: 'Gibt es Förderung für den reinen Wohnraumausbau ohne energetische Komponente?',
+    answer: 'Reine Wohnraumerweiterungen ohne energetische Sanierung werden nicht durch KfW oder BAFA gefördert. Allerdings: Wenn Sie im Rahmen des DG-Ausbaus auch dämmen (was das GEG ohnehin fordert), wird die energetische Komponente förderfähig. Die NRW.BANK-Landesförderung kann auch für nicht-energetische Modernisierungen genutzt werden (Einkommensgrenzen prüfen!).'
   },
   {
-    question: 'Ich bin Vermieter – gibt es Förderung für den Dachgeschossausbau?',
-    answer: 'Ja, Vermieter können KfW-Kredite und BAFA-Zuschüsse für energetische Maßnahmen nutzen. Der NRW.BANK-Kredit richtet sich primär an Selbstnutzer, kann aber in Einzelfällen auch für Mietobjekte beantragt werden. Bei Vermietung muss die Förderung nicht zurückgezahlt werden, der Vermieter profitiert aber nicht vom Steuerbonus.'
+    question: 'Ich bin Vermieter – kann ich Förderung für den Dachgeschossausbau nutzen?',
+    answer: 'Ja! Vermieter können BAFA-Zuschüsse und KfW-Kredite für energetische Maßnahmen nutzen. Der NRW.BANK-Kredit richtet sich allerdings primär an Selbstnutzer. Wichtig: Der Steuerbonus (§ 35c EStG) gilt nur für selbstgenutztes Wohneigentum, nicht für Vermietung. Bei Mietobjekten gelten die üblichen Abschreibungsmöglichkeiten.'
+  },
+  {
+    question: 'Was passiert, wenn ich die Förderung nicht rechtzeitig beantrage?',
+    answer: 'BAFA und KfW sind Zuschuss- bzw. Kreditprogramme, die vor Maßnahmenbeginn beantragt werden müssen. Wenn Sie bereits mit den Arbeiten begonnen haben, ist ein nachträglicher Antrag in der Regel NICHT mehr möglich. Planen Sie daher frühzeitig: Erst Beratung und Angebot, dann Förderantrag, dann Auftrag. Bei der NRW.BANK kann in Ausnahmefällen ein vorzeitiger Beginn genehmigt werden – fragen Sie nach.'
   },
 ];
 
@@ -309,10 +346,20 @@ const schema = {
                   </ul>
                 </div>
                 {programm.note && (
-                  <div class="mt-4 p-4 bg-blue-50 rounded-lg">
-                    <p class="text-sm text-blue-800">
-                      <strong>Beachte:</strong> {programm.note}
+                  <div class="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
+                    <p class="text-sm text-amber-800">
+                      <strong>Wichtig:</strong> {programm.note}
                     </p>
+                  </div>
+                )}
+                {programm.links && programm.links.length > 0 && (
+                  <div class="mt-4 pt-4 border-t border-slate-100">
+                    <p class="text-sm text-slate-500 mb-2">Offizielle Quellen:</p>
+                    {programm.links.map(link => (
+                      <a href={link.url} target="_blank" rel="noopener noreferrer" class="block text-sm text-teal-600 hover:text-teal-700 hover:underline">
+                        → {link.text}
+                      </a>
+                    ))}
                   </div>
                 )}
               </div>
