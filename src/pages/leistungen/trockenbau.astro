@@ -1,0 +1,259 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const faqs = [
+  {
+    question: 'Was ist Trockenbau und warum ist er gut fürs Dachgeschoss?',
+    answer: 'Trockenbau bezeichnet den Ausbau mit Gipskartonplatten und Metallprofilen – ohne nasse Putzarbeiten. Das hat beim Dachgeschossausbau viele Vorteile: Es geht schnell, ist sauber und bietet trotzdem gute Qualität. Die Hohlräume eignen sich perfekt für zusätzliche Dämmung und Leitungen.'
+  },
+  {
+    question: 'Welche Vorteile hat Trockenbau beim Dachgeschossausbau in Köln?',
+    answer: 'Trockenbau ist schnell, sauber und flexibel. Wir können direkt in den Dachschrägen arbeiten, ohne dass Mörtel oder Putz trocknen muss. Das spart Zeit und Schmutz. Außerdem lassen sich nachträgliche Änderungen leicht umsetzen – anders als bei gemauerten Wänden.'
+  },
+  {
+    question: 'Ist der Schallschutz beim Trockenbau ausreichend?',
+    answer: 'Ja, mit den richtigen Materialien erreichen wir beim Trockenbau hervorragenden Schallschutz. Wir setzen spezielle Schallschutzplatten und Mineralwolle ein. So wird Ihr Dachgeschoss in Köln nicht zum Schallverstärker – die Geräusche von oben bleiben oben.'
+  },
+  {
+    question: 'Kann ich mein Dachgeschoss auch beiputzen?',
+    answer: 'Auf Wunsch können wir auch klassischen Putz auftragen. Das ist jedoch aufwendiger und dauert länger. Bei den meisten Dachgeschossausbauten in Köln empfehlen wir Trockenbau, weil die Ergebnisse genauso gut aussehen – nur schneller und günstiger.'
+  },
+  {
+    question: 'Welche Kosten entstehen beim Trockenbau?',
+    answer: 'Die Kosten für Trockenbau liegen je nach Ausführung zwischen 48 und 78 Euro pro Quadratmeter. Entschlossene Wände, abgehängte Decken und Schallschutz erhöhen den Preis. Wir erstellen Ihnen ein detailliertes Angebot nach der Besichtigung.'
+  },
+  {
+    question: 'Kann ich beim Trockenbau auch Leitungen verstecken?',
+    answer: 'Ja, ein großer Vorteil des Trockenbaus ist, dass Elektroleitungen, Rohre und Lüftungskanäle in den Hohlräumen verlegt werden können. So entstehen saubere Oberflächen ohne sichtbare Installationen.'
+  }
+];
+
+const anwendungen = [
+  {
+    title: 'Dachschrägen-Verkleidung',
+    beschreibung: 'Die schrägen Wände werden mit maßgefertigten Gipskartonplatten verkleidet. Optional mit integrierter Dämmung für optimalen Wärmeschutz.',
+    vorteile: ['Glatte Oberflächen', 'Optional mit Dämmung', 'Schnelle Montage'],
+    kosten: '48-78 €/m²'
+  },
+  {
+    title: 'Trennwände',
+    beschreibung: 'Neue Räume entstehen durch leichte Trennwände aus Metallprofilen und Gipskarton. Flexibel positionierbar, bei Bedarf versetzbar.',
+    vorteile: ['Raumteilung ohne Statikprobleme', 'Mit Schalldämmung', 'Kabelkanäle integrierbar'],
+    kosten: '60-90 €/m²'
+  },
+  {
+    title: 'Abgehängte Decken',
+    beschreibung: 'Höhenunterschiede werden ausgeglichen, Leitungen verschwinden, moderne Beleuchtung wird möglich. Besonders bei Gauben ideal.',
+    vorteile: ['Verdeckt Leitungen', 'Ermöglicht Einbauleuchten', 'Gleichmäßige Raumhöhe'],
+    kosten: '55-85 €/m²'
+  },
+  {
+    title: 'Vorsatzschalen',
+    beschreibung: 'Vor der bestehenden Wand wird eine neue Ebene geschaffen – mit Dämmung, Schallschutz oder einfach für glatte Oberflächen.',
+    vorteile: ['Zusätzliche Dämmung', 'Verbesserter Schallschutz', 'Kaschiert Unregelmäßigkeiten'],
+    kosten: '70-110 €/m²'
+  }
+];
+
+const schema = {
+  "@type": "Service",
+  "serviceType": "Trockenbau",
+  "provider": {
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Dachgeschossausbau Köln"
+  }
+};
+---
+
+<BaseLayout
+  title="Trockenbau | Dachgeschossausbau Köln"
+  description="Trockenbau für Ihr Dachgeschoss in Köln: Schnell, sauber und flexibel. Wir schaffen mit Gipskartonplatten die perfekte Basis für Ihren neuen Wohnraum."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <nav class="text-sm text-slate-300 mb-4">
+          <a href="/">Startseite</a> / <a href="/leistungen">Leistungen</a> / <span class="text-white">Trockenbau</span>
+        </nav>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">
+          Trockenbau für den Dachgeschossausbau in Köln
+        </h1>
+        <p class="text-xl text-slate-300 max-w-2xl">
+          Schnell, sauber, flexibel: Der Trockenbau ist die ideale Lösung für den Ausbau unter dem Dach. Wir schaffen die perfekte Basis für Ihr neues Zuhause.
+        </p>
+      </div>
+    </section>
+
+    <!-- Vorteile -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+            Warum Trockenbau ideal fürs Dachgeschoss ist
+          </h2>
+          <p class="text-slate-600 max-w-2xl mx-auto">
+            Der Trockenbau hat gegenüber dem Mauerwerk entscheidende Vorteile – besonders unter einem schrägen Dach.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+          {[
+            { icon: '⚡', title: 'Schnell', desc: 'Keine Trocknungszeiten wie bei Putz oder Estrich. Montage und Weiterarbeit am selben Tag möglich.' },
+            { icon: '🧹', title: 'Sauber', desc: 'Kein Mörtel, kein Staub in der Wohnung. Ideal wenn Sie während der Bauarbeiten im Haus bleiben.' },
+            { icon: '📐', title: 'Flexibel', desc: 'Unregelmäßigkeiten im Altbau werden ausgeglichen, Leitungen können versteckt werden.' },
+            { icon: '💰', title: 'Günstig', desc: 'Trockenbau ist deutlich kostengünstiger als Mauerwerk – bei gleichem Ergebnis.' }
+          ].map(vorteil => (
+            <div class="text-center">
+              <div class="text-4xl mb-4">{vorteil.icon}</div>
+              <h3 class="text-lg font-bold text-slate-800 mb-2">{vorteil.title}</h3>
+              <p class="text-slate-600 text-sm">{vorteil.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Anwendungen -->
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+            Was wir beim Trockenbau machen
+          </h2>
+          <p class="text-slate-600 max-w-2xl mx-auto">
+            Vier Standardanwendungen – und viele individuelle Lösungen.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {anwendungen.map(anwendung => (
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-slate-800 mb-2">{anwendung.title}</h3>
+                <p class="text-slate-600 text-sm mb-4 leading-relaxed">{anwendung.beschreibung}</p>
+                <ul class="space-y-2 mb-4">
+                  {anwendung.vorteile.map(v => (
+                    <li class="flex items-center gap-2 text-slate-700 text-sm">
+                      <svg class="w-4 h-4 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      {v}
+                    </li>
+                  ))}
+                </ul>
+                <div class="bg-teal-50 rounded-lg p-3 text-center">
+                  <p class="text-teal-600 text-xs">Kosten ab</p>
+                  <p class="font-bold text-teal-700">{anwendung.kosten}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Materialien -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-8 text-center">
+            Qualität, die hält: Unsere Materialien
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <div class="bg-slate-50 rounded-xl p-6">
+                <h3 class="text-lg font-bold text-slate-800 mb-3">Gipskartonplatten</h3>
+                <p class="text-slate-600 text-sm mb-4">
+                  Wir verwenden ausschließlich hochwertige Gipskartonplatten für den Einsatzbereich:
+                </p>
+                <ul class="space-y-2 text-sm text-slate-700">
+                  <li>• Standardplatten für normale Räume</li>
+                  <li>• Feuchtraumplatten für Bad und Küche</li>
+                  <li>• Brandschutzplatten für erhöhte Sicherheit</li>
+                  <li>• Schallschutzplatten für ruhige Zimmer</li>
+                </ul>
+              </div>
+              <div class="bg-slate-50 rounded-xl p-6">
+                <h3 class="text-lg font-bold text-slate-800 mb-3">Metallprofile</h3>
+                <p class="text-slate-600 text-sm">
+                  Die Unterkonstruktion aus verzinkten Metallprofilen ist dauerhaft rostfrei und bietet optimale Stabilität. Die Profile werden exakt an die Dachgeometrie angepasst.
+                </p>
+              </div>
+            </div>
+            <div class="space-y-6">
+              <div class="bg-slate-50 rounded-xl p-6">
+                <h3 class="text-lg font-bold text-slate-800 mb-3">Schallschutz</h3>
+                <p class="text-slate-600 text-sm mb-4">
+                  In vielen Kölner Altbauten ist der Schallschutz eine Herausforderung. Wir verbessern ihn durch:
+                </p>
+                <ul class="space-y-2 text-sm text-slate-700">
+                  <li>• Schallschutzplatten (höheres Gewicht)</li>
+                  <li>• Mineralwolle in den Hohlräumen</li>
+                  <li>• Federleisten zur Entkopplung</li>
+                  <li>• Doppelbeplankung bei Bedarf</li>
+                </ul>
+              </div>
+              <div class="bg-slate-50 rounded-xl p-6">
+                <h3 class="text-lg font-bold text-slate-800 mb-3">Oberflächen</h3>
+                <p class="text-slate-600 text-sm">
+                  Nach der Montage verspachteln wir alle Stöße und Schraubenköpfe. Das Ergebnis ist eine glatte, streichfertige Oberfläche, bereit für Tapete oder Farbe.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kölner Besonderheiten -->
+    <section class="py-16 md:py-24 bg-slate-800 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold mb-6 text-center">
+            Trockenbau in Kölner Altbauten
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-4 text-slate-300">
+              <p>
+                Die Gründerzeitbauten in Veedeln wie Ehrenfeld oder Nippes haben oft unregelmäßige Mauerwerksstrukturen. Der Trockenbau gleicht das aus, ohne teure Ausgleichsarbeiten.
+              </p>
+              <p>
+                Auch bei denkmalgeschützten Fassaden ist Trockenbau ideal: Die Innenwände können verkleidet werden, ohne die historische Außenhaut zu verändern.
+              </p>
+            </div>
+            <div class="space-y-4 text-slate-300">
+              <p>
+                Die schrägen Dachflächen stellen besondere Anforderungen an die Maße. Wir vermessen jedes Dach individuell und schneiden die Platten millimetergenau – für perfekte Passform.
+              </p>
+              <p>
+                In den Neubausiedlungen wie Chorweiler sind die Grundrisse oft standardisierter. Hier können wir besonders effizient arbeiten und Kosten sparen.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zum Trockenbau
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <ContactForm showPLZ={true} />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

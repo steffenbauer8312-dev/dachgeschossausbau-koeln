@@ -1,0 +1,448 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const foerderungen = [
+  {
+    title: 'KfW-Förderkredit 261/262',
+    category: 'Bundesförderung',
+    icon: 'building',
+    description: 'Zinsgünstige Kredite mit Tilgungszuschüssen – die bekannteste Förderung für energetische Sanierungen.',
+    details: [
+      { label: 'Förderhöhe', value: 'Bis zu 150.000 € pro Wohneinheit' },
+      { label: 'Zinssatz', value: 'Ab 2,29 % effektiver Jahreszins (Stand Mai 2026)' },
+      { label: 'Tilgungszuschuss', value: '5-45 % der förderfähigen Kosten' },
+      { label: 'Voraussetzung', value: 'KfW-Effizienzhaus-Standard oder Einzelmaßnahmen' },
+    ],
+    highlights: [
+      'Kombinierbar mit anderen Fördermitteln',
+      'Tilgungszuschuss muss nicht zurückgezahlt werden',
+      'Auch für selbstgenutzte und vermietete Objekte',
+    ],
+    note: 'Für den Dachgeschossausbau kommen besonders die Einzelmaßnahmen (KfW 262) in Frage – wenn keine komplette Sanierung zum Effizienzhaus angestrebt wird.'
+  },
+  {
+    title: 'BAFA BEG EM Zuschuss',
+    category: 'Bundesförderung',
+    icon: 'percent',
+    description: 'Direkte Zuschüsse für einzelne energetische Maßnahmen – kein Kredit, einfach Geld vom Staat.',
+    details: [
+      { label: 'Förderhöhe', value: '15-20 % der förderfähigen Investitionskosten' },
+      { label: 'Maximalbetrag', value: '30.000 € pro Wohneinheit' },
+      { label: 'Förderfähige Kosten', value: 'Max. 60.000 € pro Wohneinheit' },
+      { label: 'Antragstellung', value: 'Vor Maßnahmenbeginn über BAFA-Portal' },
+    ],
+    highlights: [
+      'Dachdämmung mit U-Wert ≤ 0,14 W/(m²·K)',
+      'Erneuerung von Fenstern und Außentüren',
+      'Einbau digitaler Systeme zur Verbrauchsoptimierung',
+    ],
+    note: 'Wärmedämmung im Dachgeschoss wird mit 15 % gefördert. Mit Heizungsoptimierung (hydraulischer Abgleich) sind es 20 %.'
+  },
+  {
+    title: 'NRW.BANK Modernisierungskredit',
+    category: 'Landesförderung',
+    icon: 'map',
+    description: 'Günstige Kredite vom Land NRW mit Tilgungsnachlass – extra Geld, das nicht zurück muss.',
+    details: [
+      { label: 'Förderhöhe', value: 'Bis zu 200.000 € pro Wohneinheit' },
+      { label: 'Tilgungsnachlass', value: '25 % der Darlehenssumme (bis zu 50.000 €)' },
+      { label: 'Zinssatz', value: 'Deutlich unter Marktniveau, staffelt nach Einkommen' },
+      { label: 'Voraussetzung', value: 'Modernisierung des selbstgenutzten Wohneigentums' },
+    ],
+    highlights: [
+      'Auch für Kölner Altbauten geeignet',
+      'Kombinierbar mit KfW-Programmen',
+      'Einkommensabhängige Staffelung',
+    ],
+    note: 'Der NRW.BANK-Kredit kann parallel zu KfW und BAFA eingesetzt werden. In Köln bietet die NRW.BANK auch Beratungstermine vor Ort an.'
+  },
+  {
+    title: 'Stadt Köln: Amt für Wohnungswesen',
+    category: 'Kommunale Förderung',
+    icon: 'city',
+    description: 'Kölner Eigenheimförderung – Zuschüsse und günstige Darlehen direkt aus Köln.',
+    details: [
+      { label: 'Förderhöhe', value: 'Nach Programmjahr und Verfügbarkeit variabel' },
+      { label: 'Zuständigkeit', value: 'Amt für Wohnungswesen, Gottfried-Hagen-Str. 46-48' },
+      { label: 'Telefon', value: '0221 / 221-34641' },
+      { label: 'Schwerpunkt', value: 'Sozialer Wohnungsbau, Familienförderung' },
+    ],
+    highlights: [
+      'Beratung zu Kölner Eigenheimförderung',
+      'Fördertopf für bezahlbaren Wohnraum',
+      'Familienzuschüsse bei Erstbezug',
+    ],
+    note: 'Die Kölner Fördermittel sind begrenzt und werden nach Antragseingang vergeben. Eine frühzeitige Beratung ist empfehlenswert.'
+  },
+];
+
+const kostenbeispiele = [
+  { massnahme: 'Dachdämmung (150 m²)', kosten: '18.000 - 27.000 €', foerderung: '2.700 - 5.400 €' },
+  { massnahme: 'Gaubeneinbau (1 Stück)', kosten: '12.000 - 25.000 €', foerderung: '1.800 - 5.000 €' },
+  { massnahme: 'Fenstererneuerung (8 Stück)', kosten: '8.000 - 16.000 €', foerderung: '1.200 - 3.200 €' },
+  { massnahme: 'Heizungsoptimierung', kosten: '2.000 - 5.000 €', foerderung: '400 - 1.000 €' },
+  { massnahme: 'Kompletter DG-Ausbau', kosten: '80.000 - 150.000 €', foerderung: '12.000 - 30.000 €' },
+];
+
+const faqs = [
+  {
+    question: 'Kann ich mehrere Förderprogramme gleichzeitig nutzen?',
+    answer: 'Ja, KfW, BAFA und NRW.BANK lassen sich grundsätzlich kombinieren. Auch kommunale Fördermittel können hinzukommen. Wichtig: Der BAFA-Zuschuss muss vor Beginn der Maßnahme beantragt werden. Bei der KfW und NRW.BANK muss der Kreditantrag vor Baubeginn gestellt werden.'
+  },
+  {
+    question: 'Muss ich den Dachgeschossausbau komplett energetisch sanieren, um Förderung zu bekommen?',
+    answer: 'Nein, einzelne Maßnahmen werden ebenfalls gefördert. Über KfW 262 und BAFA BEG EM können Sie einzelne Gewerke wie Dachdämmung, Fenstertausch oder Gaubeneinbau fördern lassen, ohne das gesamte Gebäude auf einen Effizienzhausstandard zu bringen.'
+  },
+  {
+    question: 'Wie hoch ist der Steuerbonus für Handwerkerleistungen 2026?',
+    answer: 'Arbeitskosten für Handwerkerleistungen im Haushalt können mit 20 % direkt von der Steuerschuld abgezogen werden. Der Höchstbetrag liegt bei 1.200 € pro Jahr. Voraussetzung: Der Handwerker muss im Auftrag des Eigentümers tätig sein, eine Rechnung mit ausgewiesener Arbeitszeit vorliegen und die Zahlung muss über das Konto laufen.'
+  },
+  {
+    question: 'Gibt es Förderung für den Dachgeschossausbau ohne energetische Komponente?',
+    answer: 'Reine Wohnraumerweiterungen ohne energetische Sanierung werden nicht durch KfW oder BAFA gefördert. Allerdings bieten manche Kommunen Programme zur Wohnraumerweiterung an. In Köln lohnt sich eine Anfrage beim Amt für Wohnungswesen. Der NRW.BANK-Kredit kann auch für nicht-energetische Modernisierungen genutzt werden.'
+  },
+  {
+    question: 'Ich bin Vermieter – gibt es Förderung für den Dachgeschossausbau?',
+    answer: 'Ja, Vermieter können KfW-Kredite und BAFA-Zuschüsse für energetische Maßnahmen nutzen. Der NRW.BANK-Kredit richtet sich primär an Selbstnutzer, kann aber in Einzelfällen auch für Mietobjekte beantragt werden. Bei Vermietung muss die Förderung nicht zurückgezahlt werden, der Vermieter profitiert aber nicht vom Steuerbonus.'
+  },
+];
+
+const schema = {
+  "@type": "FAQPage",
+  "mainEntity": kostenbeispiele.map(item => ({
+    "@type": "Question",
+    "name": `Welche Förderung erhalte ich für ${item.massnahme}?`,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": `Für ${item.massnahme} mit Kosten von ${item.kosten} können Förderungen von ${item.foerderung} beantragt werden. Die genaue Förderhöhe hängt von den gewählten Programmen und dem individuellen Antragszeitpunkt ab.`
+    }
+  })).concat(faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  })))
+};
+---
+
+<BaseLayout
+  title="Förderungen für Dachgeschossausbau in Köln | KfW, BAFA, NRW.BANK"
+  description="Fördermittel für Ihren Dachgeschossausbau in Köln: KfW 261/262, BAFA BEG EM, NRW.BANK. Wir beraten Sie zu allen Förderprogrammen und helfen bei der Antragstellung."
+>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-teal-700 to-teal-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <nav class="text-sm text-teal-200 mb-4">
+          <a href="/">Startseite</a> / <span class="text-white">Förderungen</span>
+        </nav>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">
+          Förderungen für den Dachgeschossausbau in Köln
+        </h1>
+        <p class="text-xl text-teal-100 max-w-2xl">
+          Staatliche Zuschüsse und zinsgünstige Kredite machen den DG-Ausbau deutlich günstiger. Hier finden Sie, was für Sie infrage kommt.
+        </p>
+      </div>
+    </section>
+
+    <!-- Kostenübersicht -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Förderung nach Maßnahme – so viel ist drin
+          </h2>
+          <div class="bg-slate-50 rounded-2xl overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead>
+                  <tr class="bg-slate-100">
+                    <th class="text-left px-6 py-4 font-semibold text-slate-800">Maßnahme</th>
+                    <th class="text-right px-6 py-4 font-semibold text-slate-800">Kosten (ca.)</th>
+                    <th class="text-right px-6 py-4 font-semibold text-teal-600">Förderung (ca.)</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  {kostenbeispiele.map(item => (
+                    <tr class="hover:bg-white transition-colors">
+                      <td class="px-6 py-4 text-slate-700">{item.massnahme}</td>
+                      <td class="px-6 py-4 text-slate-600 text-right">{item.kosten}</td>
+                      <td class="px-6 py-4 text-teal-600 font-semibold text-right">{item.foerderung}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div class="px-6 py-4 bg-amber-50 border-t border-amber-100">
+              <p class="text-sm text-amber-800">
+                <strong>Hinweis:</strong> Die angegebenen Förderungen sind Richtwerte und hängen von der aktuellen Förderperiode, dem Antragszeitpunkt und der individuellen Situation ab. Verbindliche Werte erhalten Sie nach einer Beratung.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Förderprogramme -->
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Förderprogramme – kurz erklärt
+          </h2>
+        <div class="space-y-8 max-w-5xl mx-auto">
+          {foerderungen.map(programm => (
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+              <div class="p-6 md:p-8">
+                <div class="flex flex-wrap items-start gap-4 mb-4">
+                  <span class="inline-flex items-center gap-2 px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm font-medium">
+                    {programm.category}
+                  </span>
+                  <h3 class="text-xl md:text-2xl font-bold text-slate-800 flex-1">
+                    {programm.title}
+                  </h3>
+                </div>
+                <p class="text-slate-600 mb-6 leading-relaxed">
+                  {programm.description}
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  {programm.details.map(detail => (
+                    <div class="flex flex-col">
+                      <span class="text-sm text-slate-500 mb-1">{detail.label}</span>
+                      <span class="text-slate-800 font-medium">{detail.value}</span>
+                    </div>
+                  ))}
+                </div>
+                <div class="bg-slate-50 rounded-xl p-4">
+                  <h4 class="font-semibold text-slate-800 mb-2">Das spricht dafür:</h4>
+                  <ul class="space-y-1">
+                    {programm.highlights.map(highlight => (
+                      <li class="flex items-start gap-2 text-slate-600 text-sm">
+                        <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {programm.note && (
+                  <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                    <p class="text-sm text-blue-800">
+                      <strong>Beachte:</strong> {programm.note}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Steuerbonus -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <span class="inline-flex items-center gap-2 px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-4">
+                Steuerbonus
+              </span>
+              <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+                20 % Steuerbonus für Handwerkerleistungen
+              </h2>
+              <p class="text-slate-600 mb-6 leading-relaxed">
+                Neben den direkten Zuschüssen und zinsgünstigen Krediten gibt es einen weiteren finanziellen Vorteil: den Steuerbonus für Handwerkerleistungen. Dieser wird direkt von der Steuerschuld abgezogen – nicht von der Steuerlast.
+              </p>
+              <div class="bg-slate-50 rounded-xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-slate-600">Maximaler Steuerbonus pro Jahr</span>
+                  <span class="text-2xl font-bold text-teal-600">1.200 €</span>
+                </div>
+                <p class="text-sm text-slate-500">
+                  20 % der Arbeitskosten, maximal 6.000 € pro Jahr
+                </p>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-slate-800 to-slate-900 text-white rounded-2xl p-8">
+              <h3 class="text-lg font-bold mb-4">Voraussetzungen für den Steuerbonus</h3>
+              <ul class="space-y-3">
+                {[
+                  'Handwerker muss im Auftrag des Eigentümers arbeiten',
+                  'Rechnung muss gesondert ausgewiesene Arbeitskosten enthalten',
+                  'Zahlung muss unbar (Überweisung) erfolgen',
+                  'Eigenleistungen zählen nicht',
+                  'Antragstellung im Rahmen der Einkommensteuererklärung',
+                ].map(item => (
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-teal-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    <span class="text-slate-200 text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kombinierbarkeit -->
+    <section class="py-16 md:py-24 bg-teal-700 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">
+            Förderungen kombinieren – so maximieren Sie Ihren Vorteil
+          </h2>
+          <p class="text-xl text-teal-100 mb-12 max-w-2xl mx-auto">
+            Die gute Nachricht: Sie müssen sich nicht zwischen den Programmen entscheiden. KfW, BAFA und NRW.BANK lassen sich clever kombinieren.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            <div class="bg-teal-800 rounded-xl p-6">
+              <div class="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold mb-2">BAFA + KfW</h3>
+              <p class="text-teal-200 text-sm">
+                BAFA-Zuschuss für Einzelmaßnahmen und KfW-Kredit mit Tilgungszuschuss für dieselben oder weitere Maßnahmen.
+              </p>
+            </div>
+            <div class="bg-teal-800 rounded-xl p-6">
+              <div class="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold mb-2">NRW.BANK + KfW</h3>
+              <p class="text-teal-200 text-sm">
+                Zwei Kredite parallel für eine höhere Gesamtfinanzierung. NRW.BANK mit 25 % Tilgungsnachlass.
+              </p>
+            </div>
+            <div class="bg-teal-800 rounded-xl p-6">
+              <div class="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold mb-2">Alle + Steuerbonus</h3>
+              <p class="text-teal-200 text-sm">
+                Zusätzlich 20 % der Handwerkerkosten von der Steuerschuld absetzen. Bis zu 1.200 € pro Jahr.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Häufige Fragen zu Förderungen
+          </h2>
+          <div class="space-y-4">
+            {faqs.map((faq, index) => (
+              <div class="faq-item bg-white rounded-lg shadow-sm border border-slate-100 overflow-hidden">
+                <button
+                  class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors duration-200"
+                  aria-expanded="false"
+                  aria-controls={`faq-answer-${index}`}
+                >
+                  <span class="font-semibold text-slate-800">{faq.question}</span>
+                  <svg class="faq-icon w-5 h-5 text-teal-500 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div
+                  id={`faq-answer-${index}`}
+                  class="faq-answer hidden px-6 pb-4 text-slate-600 leading-relaxed"
+                >
+                  {faq.answer}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beratungs-Hinweis -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-2xl p-8 md:p-12 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">
+              Individuelle Förderberatung in Köln
+            </h2>
+            <p class="text-xl text-teal-100 mb-8 max-w-2xl mx-auto">
+              Jedes Projekt ist anders – und damit auch die optimale Förderstrategie. Wir beraten Sie unverbindlich zu den passenden Programmen.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/kontakt" class="inline-flex items-center justify-center gap-2 bg-white text-teal-600 font-semibold px-6 py-3 rounded-lg hover:bg-teal-50 transition-colors duration-200">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Beratung anfragen
+              </a>
+              <a href="tel:+4915216117439" class="inline-flex items-center justify-center gap-2 bg-teal-700 text-white font-semibold px-6 py-3 rounded-lg hover:bg-teal-800 transition-colors duration-200">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                +49 1521 6117439
+              </a>
+            </div>
+          </div>
+          <div class="mt-8 text-center">
+            <p class="text-sm text-slate-500">
+              Amt für Wohnungswesen Köln: Gottfried-Hagen-Str. 46-48, 0221 / 221-34641
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ContactForm showPLZ={true} />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const button = trigger as HTMLButtonElement;
+      const answer = button.nextElementSibling as HTMLElement;
+      const icon = button.querySelector('.faq-icon') as HTMLElement;
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+      // Close all other FAQs
+      document.querySelectorAll('.faq-trigger').forEach(other => {
+        if (other !== button) {
+          other.setAttribute('aria-expanded', 'false');
+          const otherAnswer = other.nextElementSibling as HTMLElement;
+          const otherIcon = other.querySelector('.faq-icon') as HTMLElement;
+          if (otherAnswer) otherAnswer.classList.add('hidden');
+          if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+        }
+      });
+
+      // Toggle current FAQ
+      button.setAttribute('aria-expanded', (!isExpanded).toString());
+      answer?.classList.toggle('hidden');
+      icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+    });
+  });
+</script>

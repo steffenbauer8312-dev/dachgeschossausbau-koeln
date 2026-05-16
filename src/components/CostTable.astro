@@ -1,0 +1,41 @@
+---
+interface CostItem {
+  measure: string;
+  unit: string;
+  from: string;
+  to: string;
+}
+
+interface Props {
+  items: CostItem[];
+  title?: string;
+}
+
+const { items, title = "Richtwerte für den Dachgeschossausbau in Köln" } = Astro.props;
+---
+
+<div class="overflow-x-auto">
+  <table class="w-full border-collapse bg-white rounded-xl shadow-md overflow-hidden">
+    <thead>
+      <tr class="bg-slate-800 text-white">
+        <th class="px-4 py-3 text-left font-semibold text-sm">Maßnahme</th>
+        <th class="px-4 py-3 text-center font-semibold text-sm">Einheit</th>
+        <th class="px-4 py-3 text-right font-semibold text-sm">von</th>
+        <th class="px-4 py-3 text-right font-semibold text-sm">bis</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-slate-100">
+      {items.map((item, index) => (
+        <tr class={index % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+          <td class="px-4 py-3 text-slate-700 font-medium">{item.measure}</td>
+          <td class="px-4 py-3 text-center text-slate-500 text-sm">{item.unit}</td>
+          <td class="px-4 py-3 text-right text-slate-700">{item.from}</td>
+          <td class="px-4 py-3 text-right text-slate-700">{item.to}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  <p class="text-sm text-slate-500 mt-4 text-center">
+    * Alle Preise sind Richtwerte und können je nach individueller Situation abweichen. Wir erstellen Ihnen gerne ein unverbindliches Festpreis-Angebot.
+  </p>
+</div>

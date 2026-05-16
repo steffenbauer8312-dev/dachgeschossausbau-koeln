@@ -1,0 +1,253 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const faqs = [
+  {
+    question: 'Wann ist eine statische Prüfung für den Dachgeschossausbau in Köln nötig?',
+    answer: 'Eine statische Prüfung ist immer dann erforderlich, wenn Sie das Dachgeschoss in Köln zu Wohnzwecken ausbauen möchten. Das gilt besonders bei Altbauten vor 1945, bei denen die ursprüngliche Dachkonstruktion nicht für Wohnlasten ausgelegt wurde.'
+  },
+  {
+    question: 'Was kostet eine statische Berechnung für den Dachgeschossausbau?',
+    answer: 'Die Kosten für eine statische Berechnung liegen je nach Umfang zwischen 800 und 2.500 Euro. Dies ist jedoch immer Teil eines Gesamtkonzepts – bei Beauftragung des kompletten Dachgeschossausbaus in Köln berechnen wir die Statik oft nicht separat.'
+  },
+  {
+    question: 'Ich habe ein denkmalgeschütztes Haus in Köln – geht ein Dachgeschossausbau?',
+    answer: 'Ja, auch bei denkmalgeschützten Gebäuden ist ein Dachgeschossausbau möglich. Allerdings ist die Zustimmung des Amts für Denkmalschutz erforderlich. Wir haben Erfahrung mit den Auflagen und kennen die Besonderheiten in Veedeln wie der Altstadt oder dem Belgischen Viertel.'
+  },
+  {
+    question: 'Wie hoch darf der Kniestock für den Dachausbau in Köln sein?',
+    answer: 'Für einen funktionalen Dachgeschossausbau empfehlen wir einen Kniestock von mindestens 1,20 Metern. Bei geringerer Höhe schaffen Dachgauben Abhilfe. Die genaue Mindesthöhe hängt von der Dachneigung und den örtlichen Vorschriften ab.'
+  },
+  {
+    question: 'Welche Kölner Veedel haben besonders anspruchsvolle Bausubstanz?',
+    answer: 'Die anspruchsvollste Bausubstanz finden wir in der Kölner Innenstadt (Fachwerkhäuser, denkmalgeschützte Altbauten), in Teilen von Ehrenfeld (Krümelkoppelfassaden) und in Lindenthal (historische Villen). Hier ist besondere Vorsicht und Erfahrung gefragt.'
+  },
+  {
+    question: 'Kann ich eine Gaube einbauen, wenn die Statik Probleme macht?',
+    answer: 'Ja, in vielen Fällen kann eine Gaube die Statik sogar verbessern, weil sie als Aussteifungselement fungiert. Allerdings muss jede Gaube statisch berechnet werden. Wir prüfen, ob eine Gaube möglich ist und planen sie so, dass sie die Lasten optimal aufnimmt.'
+  }
+];
+
+const prufpunkte = [
+  {
+    title: 'Sparren & Pfetten',
+    description: 'Die Hauptträger des Dachstuhls werden auf Querschnitt, Zustand und Tragfähigkeit geprüft. Bei maroden Sparren planen wir Verstärkungen oder Austausch ein.',
+    icon: '📐'
+  },
+  {
+    title: 'Holzverbindungen',
+    description: 'Verbindungen wie Nagelung, Dübel oder Zapfen werden auf Festigkeit und eventuelle Schädlingsbefall untersucht. Bei Bedarf setzen wir moderne Verstärkungstechnik ein.',
+    icon: '🔗'
+  },
+  {
+    title: 'Mauerwerksanschlüsse',
+    description: 'Die Anbindung des Dachstuhls an die Außenwände ist kritisch. Wir prüfen, ob die Auflager die Lasten sicher in die Wände ableiten.',
+    icon: '🏠'
+  },
+  {
+    title: 'Aussteifung',
+    description: 'Der gesamte Dachstuhl muss horizontal und vertikal ausgesteift sein. Fehlende Verbände werden ergänzt, um die Stabilität zu gewährleisten.',
+    icon: '⚡'
+  },
+  {
+    title: 'Zusatzlasten',
+    description: 'Die Dämmung, der Innenausbau und die Nutzlast (Möbel, Personen) erhöhen die Belastung. Wir berechnen, ob die bestehende Konstruktion das trägt.',
+    icon: '📊'
+  }
+];
+
+const schema = {
+  "@type": "Service",
+  "serviceType": "Statik & Bestandsaufnahme",
+  "provider": {
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Dachgeschossausbau Köln"
+  }
+};
+---
+
+<BaseLayout
+  title="Statik & Bestandsaufnahme | Dachgeschossausbau Köln"
+  description="Statische Prüfung und Bestandsaufnahme für Ihren Dachgeschossausbau in Köln. Wir prüfen die Tragfähigkeit und klären alle Auflagen."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <nav class="text-sm text-slate-300 mb-4">
+          <a href="/">Startseite</a> / <a href="/leistungen">Leistungen</a> / <span class="text-white">Statik</span>
+        </nav>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">
+          Statik & Bestandsaufnahme für den Dachgeschossausbau in Köln
+        </h1>
+        <p class="text-xl text-slate-300 max-w-2xl">
+          Bevor der erste Sparren angerührt wird, prüfen wir die Bausubstanz. So vermeiden wir Überraschungen und stellen sicher, dass Ihr Dachgeschossausbau in Köln auf solidem Fundament steht.
+        </p>
+      </div>
+    </section>
+
+    <!-- Warum Statik wichtig ist -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">
+              Warum Statik beim Dachgeschossausbau so wichtig ist
+            </h2>
+            <div class="space-y-4 text-slate-600 leading-relaxed">
+              <p>
+                Viele Altbauten in Köln wurden vor Jahrzehnten gebaut, ohne dass an einen späteren Ausbau des Dachgeschosses gedacht war. Die ursprünglichen Dachstühle waren nur für die Last von Dachziegeln und Schnee ausgelegt – nicht für Wohndecken, Möbel und Bewohner.
+              </p>
+              <p>
+                Unsere Statiker prüfen vor jedem Dachgeschossausbau in Köln die Tragfähigkeit der bestehenden Konstruktion. Dabei schauen wir uns die Sparren, Pfetten, Verbände und Anschlüsse genau an. Falls Verstärkungen nötig sind, planen wir diese von Anfang an mit ein.
+              </p>
+              <p>
+                Besonders in den Kölner Altbauvierteln wie Ehrenfeld, Nippes oder der Innenstadt stehen viele Häuser unter Denkmalschutz oder haben historische Bausubstanz. Hier ist Fingerspitzengefühl gefragt – und genau das ist unsere Stärke.
+              </p>
+              <p>
+                Bei der Bestandsaufnahme erstellen wir ein detailliertes Protokoll: Welche Sparren sind wie dimensioniert, wo sitzt die Last, wo zeigen sich Risse oder Verfärbungen? Mit diesen Daten können wir eine fundierte Entscheidung treffen – und Ihnen ein sicheres Angebot erstellen.
+              </p>
+            </div>
+          </div>
+          <div class="bg-slate-100 rounded-2xl p-8">
+            <h3 class="text-xl font-bold text-slate-800 mb-4">Das prüfen wir:</h3>
+            <ul class="space-y-3">
+              {[
+                'Querschnitte der Sparren und Pfetten',
+                'Zustand der Holzverbindungen',
+                'Mauerwerksanschlüsse',
+                'Aussteifung des Dachstuhls',
+                'Zusatzlasten aus Dämmung und Ausbau'
+              ].map(item => (
+                <li class="flex items-start gap-3 text-slate-700">
+                  <svg class="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prüfpunkte im Detail -->
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+            Was bei der Statik geprüft wird
+          </h2>
+          <p class="text-slate-600 max-w-2xl mx-auto">
+            Unsere Prüfung umfasst fünf Kernbereiche. So stellen wir sicher, dass Ihr Dachgeschossausbau in Köln auf sicherem Grund steht.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {prufpunkte.map(punkt => (
+            <div class="bg-white rounded-xl p-6 shadow-md">
+              <div class="text-3xl mb-4">{punkt.icon}</div>
+              <h3 class="text-lg font-bold text-slate-800 mb-2">{punkt.title}</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">{punkt.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Kölner Bausubstanz -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">
+            Kölner Bausubstanz: Was wir vorfinden
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-4 text-slate-600 leading-relaxed">
+              <p>
+                Die Gründerzeitbauten in Veedeln wie Ehrenfeld, Nippes oder Lindenthal stammen aus der Zeit zwischen 1870 und 1918. Sie haben typischerweise Kniestöcke von 80-120 cm und Satteldächer mit 45-55 Grad Neigung. Die Sparren sind oft aus altem Fichten- oder Eichenholz, teilweise über 100 Jahre alt.
+              </p>
+              <p>
+                Diese Dächer wurden nicht für eine Nutzung ausgelegt. Die Querschnitte der Sparren orientieren sich an der Schneelast, nicht an Wohnlasten. Bei der Statik prüfen wir daher, ob die vorhandenen Sparren ausreichen oder ob Verstärkungen nötig sind.
+              </p>
+            </div>
+            <div class="space-y-4 text-slate-600 leading-relaxed">
+              <p>
+                Die Nachkriegsbauten aus den 1950er bis 1970er Jahren haben häufig flachere Dächer und geringere Kniestöcke. Hier sind Gauben oft die einzige Möglichkeit, nutzbaren Raum zu schaffen. Die Betondecken sind in der Regel tragfähig, aber die Gaubenanschlüsse erfordern besondere Sorgfalt.
+              </p>
+              <p>
+                In Chorweiler und den Neubausiedlungen am Stadtrand finden wir oft vorgefertigte Dachstühle aus den 60er/70er Jahren. Diese sind technisch in Ordnung, aber die Dämmung entspricht oft nicht mehr dem GEG-Standard. Hier lohnt sich ein vollständiger Ausbau mit neuer Dämmung.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prozess -->
+    <section class="py-16 md:py-24 bg-slate-800 text-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">
+          So läuft die statische Prüfung ab
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          {[
+            { step: 1, title: 'Ortsbesichtigung', desc: 'Wir kommen vorbei und begutachten den Dachstuhl. Alle relevanten Maße werden aufgenommen.' },
+            { step: 2, title: 'Analyse', desc: 'Unsere Statiker berechnen die Tragfähigkeit und vergleichen mit den Anforderungen.' },
+            { step: 3, title: 'Konzept', desc: 'Falls Verstärkungen nötig sind, erstellen wir ein Konzept mit Kostenplan.' },
+            { step: 4, title: 'Dokumentation', desc: 'Die Statik wird für die Baugenehmigung dokumentiert und beim Amt eingereicht.' }
+          ].map(item => (
+            <div class="text-center">
+              <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">{item.step}</div>
+              <h3 class="text-lg font-bold mb-2">{item.title}</h3>
+              <p class="text-slate-300 text-sm">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-8 text-center">
+            Häufige Fragen zur Statik
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <!-- Förderungshinweis -->
+    <section class="py-12 bg-teal-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6">
+          <div class="flex-1">
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Förderung für Statik & Bestandsaufnahme</h3>
+            <p class="text-slate-600 text-sm">
+              Die statische Prüfung und Sanierung kann über KfW- und BAFA-Programme gefördert werden. Wir beraten Sie zu den Möglichkeiten.
+            </p>
+          </div>
+          <a href="/foerderungen" class="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200">
+            Förderungen prüfen
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <ContactForm showPLZ={true} />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

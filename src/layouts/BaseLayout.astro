@@ -1,0 +1,72 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonicalURL?: string;
+  ogImage?: string;
+}
+
+const { title, description, canonicalURL = Astro.url.href, ogImage = '/og-image.jpg' } = Astro.props;
+
+const localBusinessSchema = {
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Dachgeschossausbau Köln",
+  "image": "https://www.dachgeschossausbaukoeln.de/logo.png",
+  "telephone": "+4915216117439",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Hauptstr. 134",
+    "addressLocality": "Köln",
+    "postalCode": "51143",
+    "addressCountry": "DE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 50.9333,
+    "longitude": 7.0333
+  },
+  "areaServed": "Köln",
+  "priceRange": "€€"
+};
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="de_DE" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+    <title>{title}</title>
+
+    <!-- Schema.org LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  </head>
+  <body class="bg-slate-50 text-slate-800">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const services = [
+  {
+    title: 'Bestandsaufnahme & Statik',
+    slug: 'statik',
+    description: 'Bevor wir mit dem Ausbau beginnen, prüfen wir die Bausubstanz. Unsere Statiker berechnen, ob das Dach die Last trägt.',
+    details: [
+      'Tragfähigkeitsberechnung der Dachkonstruktion',
+      'Prüfung der Anschlüsse und Verbände',
+      'Gutachten für die Baugenehmigung',
+      'Koordination mit dem Amt für Denkmalschutz'
+    ]
+  },
+  {
+    title: 'Dachgauben',
+    slug: 'gauben',
+    description: 'Gauben schaffen Stehhöhe und Licht. Wir planen und bauen Gauben, die zu Ihrem Haus passen.',
+    details: [
+      'Trapezgauben, Sattelgauben, Rundgauben',
+      'Planung und Genehmigungsantrag',
+      'Konstruktion nach Kölner Bebauungsplan',
+      'Komplette Dämmung und Abdichtung'
+    ]
+  },
+  {
+    title: 'Dachdämmung nach GEG',
+    slug: 'daemmung',
+    description: 'Das GEG schreibt Dämmwerte vor. Wir sorgen dafür, dass Ihr Dach alle Anforderungen erfüllt.',
+    details: [
+      'Zwischensparren-Dämmung',
+      'Untersparren-Dämmung mit Dampfsperre',
+      'U-Wert-Berechnung nach GEG',
+      'KfW-konforme Ausführung'
+    ]
+  },
+  {
+    title: 'Trockenbau',
+    slug: 'trockenbau',
+    description: 'Gipskartonplatten, Zwischenwände, Abhangdecken – wir schaffen die Struktur für Ihren neuen Wohnraum.',
+    details: [
+      'Wandsysteme für Dachschrägen',
+      'Abgehängte Decken',
+      'Brandschutzlösungen',
+      'Schallschutz'
+    ]
+  },
+  {
+    title: 'Bad & Sanitär',
+    slug: 'bad',
+    description: 'Oft braucht das Dachgeschoss ein eigenes Bad. Wir kümmern uns um die komplette Sanitärinstallation.',
+    details: [
+      'Abwasseranschlüsse',
+      'Trinkwasserleitungen',
+      'WC und Dusche',
+      'Heizungsanschluss'
+    ]
+  }
+];
+
+const serviceSchema = {
+  "@type": "Service",
+  "serviceType": "Dachgeschossausbau Köln",
+  "provider": {
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Dachgeschossausbau Köln"
+  },
+  "areaServed": "Köln"
+};
+---
+
+<BaseLayout
+  title="Leistungen Dachgeschossausbau Köln | Alle Gewerke aus einer Hand"
+  description="Wir bieten alle Leistungen rund um den Dachgeschossausbau in Köln: Statik, Gauben, Dämmung, Trockenbau, Elektro und Sanitär. Alles aus einer Hand."
+>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">
+          Leistungen beim Dachgeschossausbau in Köln
+        </h1>
+        <p class="text-xl text-slate-300 max-w-2xl">
+          Von der Bestandsaufnahme bis zur Übergabe: Wir machen alles. Ein Ansprechpartner, ein Team, ein Preis.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="space-y-12">
+          {services.map((service, index) => (
+            <div class={`bg-white rounded-xl shadow-md overflow-hidden ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+              <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class={`p-8 ${index % 2 === 1 ? 'md:order-2' : ''}`}>
+                  <h2 class="text-2xl font-bold text-slate-800 mb-4">
+                    {service.title}
+                  </h2>
+                  <p class="text-slate-600 mb-6 leading-relaxed">
+                    {service.description}
+                  </p>
+                  <ul class="space-y-2">
+                    {service.details.map(detail => (
+                      <li class="flex items-start gap-2 text-slate-700">
+                        <svg class="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                  <div class="mt-6">
+                    <a href={`/leistungen/${service.slug}`} class="inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 transition-colors duration-200">
+                      Mehr erfahren
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+                <div class="bg-slate-100 flex items-center justify-center p-12">
+                  <div class="w-32 h-32 bg-teal-100 rounded-full flex items-center justify-center">
+                    <svg class="w-16 h-16 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+          Sie haben Fragen zu unseren Leistungen?
+        </h2>
+        <p class="text-slate-600 max-w-2xl mx-auto mb-8">
+          Wir beraten Sie gerne unverbindlich zu Ihrem Projekt in Köln. Kontaktieren Sie uns!
+        </p>
+        <a href="/kontakt" class="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200">
+          Kontakt aufnehmen
+        </a>
+      </div>
+    </section>
+
+    <ContactForm showPLZ={true} />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />

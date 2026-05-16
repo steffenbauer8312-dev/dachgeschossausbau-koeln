@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const costItems = [
+  { category: 'Rückbau', items: [
+    { measure: 'Rückbau bestehender Verkleidungen', unit: 'm²', from: '30 €', to: '65 €' },
+    { measure: 'Entsorgung alter Materialien', unit: 'pauschal', from: '500 €', to: '2.000 €' },
+  ]},
+  { category: 'Dämmung', items: [
+    { measure: 'Dämmung Zwischensparren', unit: 'm²', from: '60 €', to: '100 €' },
+    { measure: 'Dampfsperre / Luftdichtung', unit: 'm²', from: '18 €', to: '28 €' },
+    { measure: 'Untersparren-Dämmung', unit: 'm²', from: '45 €', to: '75 €' },
+  ]},
+  { category: 'Trockenbau', items: [
+    { measure: 'Trockenbau Dachschrägen', unit: 'm²', from: '48 €', to: '78 €' },
+    { measure: 'Trockenbau Zwischenwände', unit: 'm²', from: '55 €', to: '85 €' },
+    { measure: 'Abhangdecke', unit: 'm²', from: '40 €', to: '65 €' },
+  ]},
+  { category: 'Boden', items: [
+    { measure: 'Bodenaufbau (Dämmung + Estrich)', unit: 'm²', from: '70 €', to: '135 €' },
+    { measure: 'Bodenbelag (Laminat)', unit: 'm²', from: '35 €', to: '80 €' },
+    { measure: 'Bodenbelag (Fliesen)', unit: 'm²', from: '55 €', to: '120 €' },
+  ]},
+  { category: 'Elektro', items: [
+    { measure: 'Elektroinstallation komplett', unit: 'm²', from: '80 €', to: '145 €' },
+    { measure: 'Schalter und Steckdosen', unit: 'Stück', from: '25 €', to: '45 €' },
+  ]},
+  { category: 'Heizung', items: [
+    { measure: 'Heizungsanschluss', unit: 'pauschal', from: '2.000 €', to: '5.000 €' },
+    { measure: 'Heizkörper / Fußbodenheizung', unit: 'ab', from: '1.500 €', to: '4.500 €' },
+  ]},
+  { category: 'Maler', items: [
+    { measure: 'Malerarbeiten', unit: 'm²', from: '14 €', to: '24 €' },
+    { measure: 'Tapezieren', unit: 'm²', from: '8 €', to: '18 €' },
+  ]},
+];
+
+const schema = {
+  "@type": "WebPage",
+  "about": {
+    "@type": "Service",
+    "serviceType": "Dachgeschossausbau Köln",
+    "description": "Kostenübersicht für Dachgeschossausbau in Köln"
+  }
+};
+---
+
+<BaseLayout
+  title="Kosten Dachgeschossausbau Köln | Faire Preise, Festpreis-Angebote"
+  description="Die Kosten für Ihren Dachgeschossausbau in Köln: Übersichtliche Richtwerte für alle Gewerke. Von der Dämmung bis zum schlüsselfertigen Ausbau."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">
+          Kosten für den Dachgeschossausbau in Köln
+        </h1>
+        <p class="text-xl text-slate-300 max-w-2xl">
+          Klare Preise, keine versteckten Kosten. Hier finden Sie Richtwerte für alle Arbeiten – und erfahren, wie wir ein Festpreis-Angebot für Sie erstellen.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+              Was kostet ein Dachgeschossausbau in Köln?
+            </h2>
+            <p class="text-slate-600 max-w-2xl mx-auto">
+              Die Kosten hängen ab von: Größe der Fläche, Zustand des Daches, Ausstattung. Unsere Richtwerte: 1.200 bis 2.500 Euro pro Quadratmeter.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden mb-12">
+            <div class="overflow-x-auto">
+              <table class="w-full border-collapse">
+                <thead>
+                  <tr class="bg-slate-800 text-white">
+                    <th class="px-6 py-3 text-left font-semibold text-sm">Maßnahme</th>
+                    <th class="px-6 py-3 text-center font-semibold text-sm">Einheit</th>
+                    <th class="px-6 py-3 text-right font-semibold text-sm">von</th>
+                    <th class="px-6 py-3 text-right font-semibold text-sm">bis</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  {costItems.map(cat => (
+                    <>
+                      <tr class="bg-teal-50">
+                        <td colspan="4" class="px-6 py-2 font-bold text-teal-800">{cat.category}</td>
+                      </tr>
+                      {cat.items.map((item, idx) => (
+                        <tr class={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+                          <td class="px-6 py-3 text-slate-700">{item.measure}</td>
+                          <td class="px-6 py-3 text-center text-slate-500 text-sm">{item.unit}</td>
+                          <td class="px-6 py-3 text-right text-slate-700">{item.from}</td>
+                          <td class="px-6 py-3 text-right text-slate-700">{item.to}</td>
+                        </tr>
+                      ))}
+                    </>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="bg-teal-50 rounded-xl p-8 text-center">
+            <h3 class="text-xl font-bold text-slate-800 mb-2">So kommen wir zum Angebot</h3>
+            <p class="text-slate-600 mb-4">
+              Sie rufen an oder schreiben uns. Wir kommen vorbei, schauen uns das Dach an. Dann erhalten Sie ein Festpreis-Angebot.
+            </p>
+            <a href="/kontakt" class="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200">
+              Kostenlose Beratung anfragen
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            So entsteht Ihr Festpreis-Angebot
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+              <div class="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-xl font-bold text-teal-600">1</span>
+              </div>
+              <h3 class="font-bold text-slate-800 mb-2">Vor-Ort-Beratung</h3>
+              <p class="text-slate-600 text-sm">Wir schauen uns das Dach an und besprechen Ihre Wünsche. Vor Ort, unverbindlich, kostenlos.</p>
+            </div>
+            <div class="text-center">
+              <div class="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-xl font-bold text-teal-600">2</span>
+              </div>
+              <h3 class="font-bold text-slate-800 mb-2">Detaillierte Kalkulation</h3>
+              <p class="text-slate-600 text-sm">Auf Basis unserer Begehung erstellen wir eine genaue Kostenaufstellung ohne versteckte Posten.</p>
+            </div>
+            <div class="text-center">
+              <div class="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-xl font-bold text-teal-600">3</span>
+              </div>
+              <h3 class="font-bold text-slate-800 mb-2">Festpreis-Garantie</h3>
+              <p class="text-slate-600 text-sm">Sie erhalten einen garantierten Festpreis. Was wir anbieten, bezahlen Sie – nicht mehr.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ContactForm showPLZ={true} />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

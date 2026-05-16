@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const schema = {
+  "@type": "ContactPage",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+4915216117439",
+    "contactType": "customer service",
+    "availableLanguage": "German"
+  }
+};
+---
+
+<BaseLayout
+  title="Kontakt | Dachgeschossausbau Köln"
+  description="Kontaktieren Sie uns für Ihre kostenlose Beratung zum Dachgeschossausbau in Köln. Wir freuen uns auf Ihre Anfrage."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">
+          Kontakt – Sprechen Sie uns an
+        </h1>
+        <p class="text-xl text-slate-300 max-w-2xl">
+          Wir freuen uns auf Ihre Anfrage. Ob telefonisch, per E-Mail oder über das Formular – wir melden uns innerhalb von 24 Stunden bei Ihnen.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">
+              So erreichen Sie uns
+            </h2>
+
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 mb-1">Adresse</h3>
+                  <p class="text-slate-600">
+                    Dachgeschossausbau Köln<br />
+                    Hauptstr. 134<br />
+                    51143 Köln
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 mb-1">Telefon</h3>
+                  <a href="tel:+4915216117439" class="text-teal-600 hover:text-teal-700 font-medium">
+                    +49 152 16117439
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 mb-1">E-Mail</h3>
+                  <a href="mailto:info@dachgeschossausbaukoeln.de" class="text-teal-600 hover:text-teal-700 font-medium">
+                    info@dachgeschossausbaukoeln.de
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 mb-1">Öffnungszeiten</h3>
+                  <p class="text-slate-600">
+                    Mo – Fr: 8:00 – 18:00 Uhr<br />
+                    Sa: nach Vereinbarung
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="bg-white rounded-xl shadow-md p-8">
+              <h2 class="text-xl font-bold text-slate-800 mb-4">Ihr Weg zu uns</h2>
+              <p class="text-slate-600 mb-4">
+                Unser Büro befindet sich in Köln-Porz, direkt an der Hauptstraße. Mit der KVB erreichen Sie uns gut: Die Linien 7 und 17 halten in der Nähe.
+              </p>
+              <p class="text-slate-600 mb-6">
+                Parkplätze sind ausreichend vorhanden. Wenn Sie uns besuchen möchten, rufen Sie kurz an – dann können wir uns Zeit für Sie nehmen.
+              </p>
+              <a
+                href="https://maps.google.com/?q=Hauptstr.+134,+51143+Köln"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 transition-colors duration-200"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Auf Google Maps anzeigen
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ContactForm showPLZ={true} />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pages = [
+  { url: 'https://www.dachgeschossausbaukoeln.de/', changefreq: 'weekly', priority: '1.0' },
+  { url: 'https://www.dachgeschossausbaukoeln.de/leistungen', changefreq: 'weekly', priority: '0.9' },
+  { url: 'https://www.dachgeschossausbaukoeln.de/leistungen/statik', changefreq: 'monthly', priority: '0.8' },
+  { url: 'https://www.dachgeschossausbaukoeln.de/leistungen/gauben', changefreq: 'monthly', priority: '0.8' },
+  { url: 'https://www.dachgeschossausbaukoeln.de/leistungen/daemmung', changefreq: 'monthly', priority: '0.8' },
+  { url: 'https://www.dachgeschossausbaukoeln.de/leistungen/trockenbau', changefreq: 'monthly', priority: '0.8' },
+  { url: 'https://www.dachgeschossausbaukoeln.de/leistungen/bad', changefreq: 'monthly', priority: '0.8' },
+  { url: 'https://www.dachgeschossausbaukoeln.de/kosten', changefreq: 'monthly', priority: '0.9' },
+  { url: 'https://www.dachgeschossausbaukoeln.de/stadtteile', changefreq: 'monthly', priority: '0.8' },
+  { url: 'https://www.dachgeschossausbaukoeln.de/ueber-uns', changefreq: 'monthly', priority: '0.7' },
+  { url: 'https://www.dachgeschossausbaukoeln.de/kontakt', changefreq: 'monthly', priority: '0.9' },
+];
+
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${pages.map(page => `  <url>
+    <loc>${page.url}</loc>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`).join('\n')}
+</urlset>`;
+---
+
+<BaseLayout
+  title="Sitemap | Dachgeschossausbau Köln"
+  description="Sitemap der Website Dachgeschossausbau Köln"
+>
+  <Header />
+  <main class="py-16 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold text-slate-800 mb-8">Sitemap</h1>
+      <ul class="space-y-2">
+        {pages.map(page => (
+          <li>
+            <a href={page.url.replace('https://www.dachgeschossausbaukoeln.de', '')} class="text-teal-600 hover:text-teal-700">
+              {page.url}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const faqs = [
+  {
+    question: 'Brauche ich für eine Gaube in Köln eine Genehmigung?',
+    answer: 'Ja. Für Gauben brauchen Sie in Köln eine Baugenehmigung. Zuständig ist das Bauaufsichtsamt. Wir kümmern uns um den Antrag – Sie müssen nur unterzeichnen.'
+  },
+  {
+    question: 'Welche Gaubenart passt zu meinem Haus?',
+    answer: 'Kommt auf die Dachneigung an, auf die gewünschte Raumhöhe, auf den Baustil und das Budget. Trapezgauben sind das, was wir am häufigsten bauen. Sattelgauben sehen traditioneller aus. Rundgauben sind seltener und auffälliger. Wir finden die richtige Lösung für Ihr Haus.'
+  },
+  {
+    question: 'Wie viel Licht bringt eine Gaube?',
+    answer: 'Deutlich mehr als ein Dachfenster. Je nach Größe und Position kommt bis zu dreimal so viel Tageslicht rein wie durch ein herkömmliches Fenster.'
+  },
+  {
+    question: 'Verändert eine Gaube die Optik meines Hauses?',
+    answer: 'Ja, natürlich. Die Dachansicht verändert sich. In Köln kommt es darauf an, was im Veedel üblich ist. In Gegenden mit einheitlicher Dachlandschaft sind nur bestimmte Gaubenformen erlaubt. Wir kennen die Regeln und beraten Sie dazu.'
+  }
+];
+
+const schema = {
+  "@type": "Service",
+  "serviceType": "Dachgauben",
+  "provider": {
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Dachgeschossausbau Köln"
+  }
+};
+---
+
+<BaseLayout
+  title="Dachgauben | Dachgeschossausbau Köln"
+  description="Dachgauben für Ihr Haus in Köln: Trapezgauben, Sattelgauben, Rundgauben. Wir planen, genehmigen und bauen Gauben aus einer Hand."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <nav class="text-sm text-slate-300 mb-4">
+          <a href="/">Startseite</a> / <a href="/leistungen">Leistungen</a> / <span class="text-white">Dachgauben</span>
+        </nav>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">
+          Dachgauben für den Dachgeschossausbau in Köln
+        </h1>
+        <p class="text-xl text-slate-300 max-w-2xl">
+          Gauben schaffen Licht und Raum – und verleihen Ihrem Haus einen ganz eigenen Charakter. Wir planen und bauen Gauben, die zu Ihrem Haus passen.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">
+              Mehr als ein Loch im Dach
+            </h2>
+            <div class="space-y-4 text-slate-600 leading-relaxed">
+              <p>
+                Eine Gaube ist ein architektonisches Element, das Ihrem Haus Charakter verleiht. Ob klassische Trapezgaube in einem Altbau in Ehrenfeld oder moderne Flachdachgaube in Marienburg – wir finden für jede Situation die passende Lösung.
+              </p>
+              <p>
+                Viele Dächer in Köln haben genug Kniestock, aber die Schrägen schneiden den nutzbaren Raum zu stark ein. Eine Gaube schafft vertikale Wände und damit Stehhöhe. Ohne Gaube wäre das Dachgeschoss nur eine breite, niedrige Kammer.
+              </p>
+              <p>
+                Wir bauen Gauben bei Sanierungen und bei Neubauten. Von der kleinen Schleppgaube für ein Kinderzimmer bis zur großen Trapezgaube, die ein ganzes Geschoss ersetzt.
+              </p>
+            </div>
+          </div>
+          <div class="space-y-6">
+            <div class="bg-slate-100 rounded-xl p-6">
+              <h3 class="text-lg font-bold text-slate-800 mb-3">Trapezgaube</h3>
+              <p class="text-slate-600 text-sm">Die Gaube, die wir in Köln am meisten bauen. Passt zu Altbauten in Nippes oder Lindenthal. Gutes Licht, fügt sich in die Dachlandschaft ein.</p>
+            </div>
+            <div class="bg-slate-100 rounded-xl p-6">
+              <h3 class="text-lg font-bold text-slate-800 mb-3">Sattelgaube</h3>
+              <p class="text-slate-600 text-sm">Sieht traditioneller aus. Geeignet für denkmalgeschützte Häuser und Fachwerkbauten. Beimischt dem Originalbau seinen Charakter.</p>
+            </div>
+            <div class="bg-slate-100 rounded-xl p-6">
+              <h3 class="text-lg font-bold text-slate-800 mb-3">Rundgaube</h3>
+              <p class="text-slate-600 text-sm">Selten, aber auffällig. Kommt eher bei gehobenen Objekten vor. Wenn das Haus besonders rausstechen soll.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zu Dachgauben
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <ContactForm showPLZ={true} />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

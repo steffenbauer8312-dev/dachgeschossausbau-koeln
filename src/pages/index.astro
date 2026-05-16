@@ -1,0 +1,450 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import FAQ from '../components/FAQ.astro';
+import CostTable from '../components/CostTable.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const heroHeadline = 'Dachgeschossausbau Köln – Wohnraum gewinnen über den Dächern der Stadt';
+const heroSubline = 'Wir bauen Dachgeschosse in Köln aus – mit eigenen Leuten, seit vielen Jahren. Ein Ansprechpartner für alles: Statik, Dämmung, Gauben, Innenausbau.';
+
+const services = [
+  {
+    title: 'Bestandsaufnahme & Statik',
+    description: 'Wir prüfen die vorhandene Bausubstanz, berechnen die Statik und klären, welche Maßnahmen für Ihren Dachgeschossausbau in Köln notwendig sind.',
+    icon: '<svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>',
+    href: '/leistungen/statik'
+  },
+  {
+    title: 'Dachgauben',
+    description: 'Dachgauben schaffen zusätzlichen Raum und Licht. Wir planen und bauen Gauben, die zum Stil Ihres Hauses passen und mehr Wohnfläche unter dem Dach ermöglichen.',
+    icon: '<svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>',
+    href: '/leistungen/gauben'
+  },
+  {
+    title: 'Dachdämmung nach GEG',
+    description: 'Das Gebäudeenergiegesetz (GEG) schreibt bestimmte Dämmstandards vor. Wir sorgen dafür, dass Ihr Dachgeschossausbau in Köln alle gesetzlichen Anforderungen erfüllt.',
+    icon: '<svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>',
+    href: '/leistungen/daemmung'
+  },
+  {
+    title: 'Trockenbau',
+    description: 'Gipskartonplatten, Zwischenwände, Abhangdecken – unser Trockenbau-Team schafft die Struktur für Ihren neuen Wohnraum im Dachgeschoss.',
+    icon: '<svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" /></svg>',
+    href: '/leistungen/trockenbau'
+  },
+  {
+    title: 'Elektro & Heizung',
+    description: 'Von der Verteilerdose bis zum Heizungsanschluss: Wir koordinieren alle technischen Gewerke für Ihren Dachgeschossausbau in Köln.',
+    icon: '<svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>',
+    href: '/leistungen/statik'
+  },
+  {
+    title: 'Maler- & Bodenbelagsarbeiten',
+    description: 'Damit Sie Ihr neues Dachgeschoss in Köln sofort nutzen können, übernehmen wir auch die Feinarbeiten: Tapezieren, Streichen, Bodenbelag.',
+    icon: '<svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>',
+    href: '/leistungen/bad'
+  }
+];
+
+const costItems = [
+  { measure: 'Rückbau bestehender Verkleidungen', unit: 'm²', from: '30 €', to: '65 €' },
+  { measure: 'Dämmung Zwischensparren', unit: 'm²', from: '60 €', to: '100 €' },
+  { measure: 'Dampfsperre / Luftdichtung', unit: 'm²', from: '18 €', to: '28 €' },
+  { measure: 'Trockenbau Dachschrägen', unit: 'm²', from: '48 €', to: '78 €' },
+  { measure: 'Bodenaufbau', unit: 'm²', from: '70 €', to: '135 €' },
+  { measure: 'Elektroinstallation komplett', unit: 'm²', from: '80 €', to: '145 €' },
+  { measure: 'Heizungsanschluss', unit: 'pauschal', from: '2.000 €', to: '5.000 €' },
+  { measure: 'Malerarbeiten', unit: 'm²', from: '14 €', to: '24 €' }
+];
+
+const faqs = [
+  {
+    question: 'Was kostet ein Dachgeschossausbau in Köln?',
+    answer: 'Kommt drauf an. Wohnfläche, Zustand des Daches, Ausstattung – alles fließt ein. Unsere Richtwerte: 1.200 bis 2.500 Euro pro Quadratmeter. Für 50 Quadratmeter rechnen Sie mit 60.000 bis 125.000 Euro. Das klingt viel, ist aber unter dem Strich eine Menge Wohnraum.'
+  },
+  {
+    question: 'Brauche ich eine Genehmigung für den Dachausbau in Köln?',
+    answer: 'Ja. In Köln brauchen Sie immer eine Baugenehmigung für den DG-Ausbau – auch für Gauben. Das Bauaufsichtsamt ist zuständig. Wir übernehmen die Antragstellung.'
+  },
+  {
+    question: 'Wie hoch muss der Kniestock sein?',
+    answer: 'Mindestens 1,20 Meter, damit man vernünftig stehen kann. Viele Kölner Altbauten haben weniger. Mit einer Gaube kriegen Sie aber auch dann nutzbaren Raum hin.'
+  },
+  {
+    question: 'Welche Dämmung schreibt das Gesetz vor?',
+    answer: 'Das GEG fordert einen U-Wert von höchstens 0,14 W/(m²K). Das erreichen wir mit Zwischensparren- und Untersparren-Dämmung. Bei KfW-Förderung werden die Anforderungen strenger.'
+  },
+  {
+    question: 'Wie lange dauert der Ausbau?',
+    answer: '8 bis 16 Wochen für den Bau selbst. Dazu kommen 4 bis 8 Wochen für die Genehmigung. Insgesamt sollten Sie mit 3 bis 4 Monaten rechnen.'
+  },
+  {
+    question: 'Wird es im Sommer nicht unerträglich heiß unterm Dach?',
+    answer: 'Nicht mit richtiger Dämmung. Wir setzen auf eine luftdichte, diffusionsoffene Konstruktion mit Sonnenschutz. Optional gibt es auch Dachbegrünung oder elektrische Verschattung.'
+  },
+  {
+    question: 'Kann ich den Ausbau steuerlich absetzen?',
+    answer: '20 Prozent der Handwerkerkosten gehen direkt von der Steuerlast ab – bis zu 1.200 Euro pro Jahr. KfW-Förderung geht auch. Lassen Sie sich von Ihrem Steuerberater beraten.'
+  },
+  {
+    question: 'Gibt es geschützte Tiere im Dach?',
+    answer: 'Kann sein. Fledermäuse und Vögel sind im Rheinland öfter mal in Dachböden. Vor dem Start muss eine ökologische Bestandsaufnahme ran. Wenn was drin ist, gibt es Auflagen vom Amt.'
+  },
+  {
+    question: 'Brauche ich einen Architekten?',
+    answer: 'Nicht immer. Bei einfachen Ausbauten reichen wir. Bei komplexen Projekten, Gauben oder Förderanträgen empfehlen wir einen Architekten. Wir arbeiten mit Partnern zusammen.'
+  },
+  {
+    question: 'Welche Gewerke sind involved?',
+    answer: 'Zimmerei, Dachdecker, Dämmung, Statik, Trockenbau, Elektro, Heizung, Sanitär, Maler. Bei uns koordiniert das einer – Sie haben einen Ansprechpartner von Anfang bis Ende.'
+  }
+];
+
+const serviceSchema = {
+  "@type": "Service",
+  "serviceType": "Dachgeschossausbau",
+  "provider": {
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Dachgeschossausbau Köln",
+    "telephone": "+4915216117439"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Köln"
+  },
+  "description": "Professioneller Dachgeschossausbau in Köln – von der Statik bis zum schlüsselfertigen Wohnraum."
+};
+---
+
+<BaseLayout
+  title="Dachgeschossausbau Köln | Professionell, aus einer Hand, fix verbindlich"
+  description="Wir bauen Dachgeschosse in Köln aus – mit eigenen Leuten, seit vielen Jahren. Ein Ansprechpartner für alles: Statik, Dämmung, Gauben, Innenausbau. Aufgeräumt übergeben. Festpreis, fester Termin."
+>
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <Hero headline={heroHeadline} subline={heroSubline} />
+
+    <!-- Über uns Section -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+              Warum Sie zu uns kommen sollten
+            </h2>
+            <div class="space-y-4 text-slate-600 leading-relaxed">
+              <p>
+                Wir sitzen in Köln-Porz und bauen seit über 15 Jahren Dachgeschosse aus. In dieser Zeit haben wir viele Veedel kennengelernt – Ehrenfeld mit seinen Krümelkoppelfassaden, Nippes mit den engen Reihenhausstraßen, Lindenthal mit den Villen am Grüngürtel. Jedes Viertel hat seine Eigenheiten. Und wir kennen sie alle.
+              </p>
+              <p>
+                Bei uns arbeiten feste Teams. Das heißt: Wenn wir bei Ihnen anfangen, kommen dieselben Leute jeden Tag. Kein Wechsel zwischen Subunternehmern, kein "das muss ich erst mal nachfragen". Ein Ansprechpartner von Anfang bis Ende.
+              </p>
+              <p>
+                Wir machen alles selbst: Statik, Dämmung, Gauben, Trockenbau, Elektro, Heizung, Sanitär. Keine externen Abstimmungen, die ewig dauern. Sie haben eine Frage – wir haben die Antwort.
+              </p>
+            </div>
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a href="/ueber-uns" class="inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 transition-colors duration-200">
+                Mehr über uns
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="/kontakt" class="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200">
+                Erstgespräch vereinbaren
+              </a>
+            </div>
+          </div>
+          <div class="bg-slate-100 rounded-2xl p-8">
+            <h3 class="text-xl font-bold text-slate-800 mb-4">Unsere Erfahrung in Zahlen</h3>
+            <div class="grid grid-cols-2 gap-6">
+              <div>
+                <p class="text-3xl font-bold text-teal-600">150+</p>
+                <p class="text-slate-600 text-sm">Projekte in Köln</p>
+              </div>
+              <div>
+                <p class="text-3xl font-bold text-teal-600">15</p>
+                <p class="text-slate-600 text-sm">Jahre Erfahrung</p>
+              </div>
+              <div>
+                <p class="text-3xl font-bold text-teal-600">98%</p>
+                <p class="text-slate-600 text-sm">Kundenzufriedenheit</p>
+              </div>
+              <div>
+                <p class="text-3xl font-bold text-teal-600">1</p>
+                <p class="text-slate-600 text-sm">Ansprechpartner</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- So arbeiten wir -->
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+            So läuft ein Projekt bei uns ab
+          </h2>
+          <p class="text-slate-600 max-w-2xl mx-auto">
+            Drei Schritte. Mehr Komplexität brauchen wir nicht.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-xl p-6 shadow-md relative">
+            <div class="absolute -top-4 left-6 w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold">1</div>
+            <h3 class="text-xl font-bold text-slate-800 mb-3 mt-2">Beratung vor Ort</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Wir schauen uns das Dach an. Sie erzählen uns, was Sie sich vorstellen. Direkt vor Ort sagen wir Ihnen, was geht und was es kostet. Kein Verkaufsgespräch, keine Überraschungen.
+            </p>
+          </div>
+          <div class="bg-white rounded-xl p-6 shadow-md relative">
+            <div class="absolute -top-4 left-6 w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold">2</div>
+            <h3 class="text-xl font-bold text-slate-800 mb-3 mt-2">Festpreis-Angebot</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Sie bekommen ein Angebot mit allen Positionen. Keine Nachträge hinterher. Wenn Sie zustimmen, tragen wir den Termin ein. Punkt.
+            </p>
+          </div>
+          <div class="bg-white rounded-xl p-6 shadow-md relative">
+            <div class="absolute -top-4 left-6 w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold">3</div>
+            <h3 class="text-xl font-bold text-slate-800 mb-3 mt-2">Bauen und fertig</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Wir kümmern uns um alle Gewerke. Sie müssen nur noch die Schlüssel abholen, wenn alles fertig ist. So einfach kann das sein.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Zielgruppen -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-gradient-to-br from-slate-800 to-slate-900 text-white rounded-2xl p-8">
+            <div class="w-12 h-12 bg-teal-500 rounded-lg flex items-center justify-center mb-6">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Eigentümer</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Sie möchten zusätzlichen Wohnraum für Ihre Familie schaffen? Mit einem Dachgeschossausbau in Köln gewinnen Sie bis zu 50 Quadratmeter – ohne umziehen zu müssen.
+            </p>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Wertsteigerung Ihrer Immobilie
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Steuerliche Vorteile möglich
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                KfW-Förderung nutzen
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-gradient-to-br from-teal-700 to-teal-800 text-white rounded-2xl p-8">
+            <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-6">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Investoren & Vermieter</h3>
+            <p class="text-teal-100 text-sm leading-relaxed mb-4">
+              Sie besitzen Altbauten in Köln und möchten den Wohnraum optimal nutzen? Ein ausgebautes Dachgeschoss bedeutet höhere Mieteinnahmen bei überschaubarem Aufwand.
+            </p>
+            <ul class="space-y-2 text-sm text-teal-100">
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Mieterhöhungspotenzial
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Schnelle Umsetzung
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Langfristige Bausubstanz
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dachausbau Köln - Tiefgehender Content -->
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+              Was Sie über den Dachgeschossausbau in Köln wissen sollten
+            </h2>
+            <p class="text-slate-600 max-w-3xl mx-auto">
+              Kein Projekt gleicht dem anderen. Trotzdem gibt es ein paar Dinge, die in Köln fast immer gelten.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-xl p-6 shadow-md">
+              <h3 class="text-lg font-bold text-slate-800 mb-3">Bebauungspläne</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                In jedem Kölner Veedel gelten andere Regeln. Mal sind Gauben erlaubt, mal nicht. Mal muss die Dachneigung stimmen, mal nicht. Wir wissen, was in Ehrenfeld geht und was in Marienburg nicht geht.
+              </p>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 shadow-md">
+              <h3 class="text-lg font-bold text-slate-800 mb-3">Kniestock</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Die Höhe zwischen Fußboden und Dachanschluss bestimmt, wie viel nutzbarer Raum entsteht. Viele Kölner Altbauten haben 80 bis 120 Zentimeter. Mit einer Gaube holen Sie auch bei weniger Stehhöhe Wohnfläche raus.
+              </p>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 shadow-md">
+              <h3 class="text-lg font-bold text-slate-800 mb-3">Genehmigung</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Eine Baugenehmigung brauchen Sie in Köln immer. Rechnen Sie mit 4 bis 8 Wochen Wartezeit. Wir kümmern uns um den Antrag – Sie müssen nur unterzeichnen.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-12 bg-white rounded-2xl p-8 shadow-md">
+            <h3 class="text-xl font-bold text-slate-800 mb-4">Was wir in Köln vorfinden</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-slate-600 text-sm leading-relaxed">
+              <div>
+                <p class="mb-3">
+                  Die Gründerzeitbauten zwischen 1870 und 1918 sind das, was wir am häufigsten ausbauen. Satteldächer, 80 bis 120 Zentimeter Kniestock, Ziegeldach. In Veedeln wie Ehrenfeld, Nippes, Lindenthal stehen viele dieser Häuser. Die Bausubstanz ist oft gut, nur die Dämmung fehlt.
+                </p>
+                <p>
+                  Danach kommen die 60er- und 70er-Jahre-Bauten mit flacheren Dächern. Da brauchen Sie oft eine Gaube, um überhaupt Stehhöhe zu bekommen.
+                </p>
+              </div>
+              <div>
+                <p class="mb-3">
+                  Die Bausubstanz in Köln ist massiv – Ziegel, Beton oder Schiefer. Das ist gut für den Ausbau, erfordert aber eine statische Prüfung. Das Dach muss die zusätzliche Last tragen können.
+                </p>
+                <p>
+                  In Chorweiler und anderen Neubausiedlungen sind die Dächer oft schon ausgebaut oder ausbaubar. Hier geht es eher um die Frage, ob die Dämmung noch passt.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 text-center">
+            <a href="/foerderungen" class="inline-flex items-center gap-2 bg-teal-100 text-teal-700 font-semibold px-5 py-3 rounded-lg hover:bg-teal-200 transition-colors duration-200">
+              Fördermittel für Ihren Dachausbau in Köln
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kosten-Tabelle -->
+    <section class="py-16 md:py-24 bg-slate-50" id="kosten">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+            Richtwerte für den Dachgeschossausbau in Köln
+          </h2>
+          <p class="text-slate-600 max-w-2xl mx-auto">
+            Die folgenden Preise sind Orientierungswerte für den Raum Köln. Jedes Projekt ist individuell – wir erstellen Ihnen gerne ein unverbindliches Festpreis-Angebot.
+          </p>
+        </div>
+
+        <CostTable items={costItems} />
+
+        <div class="text-center mt-8">
+          <a href="/kosten" class="inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 transition-colors duration-200">
+            Alle Kosten im Detail
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leistungen Grid -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+            Unsere Leistungen beim Dachgeschossausbau in Köln
+          </h2>
+          <p class="text-slate-600 max-w-2xl mx-auto">
+            Von der Bestandsaufnahme bis zur schlüsselfertigen Übergabe – wir bieten alles aus einer Hand.
+          </p>
+        </div>
+
+        <ServiceGrid services={services} />
+      </div>
+    </section>
+
+    <!-- Kölner Stadtteile -->
+    <section class="py-16 md:py-24 bg-slate-800 text-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">
+            Wir bauen in allen Kölner Stadtteilen aus
+          </h2>
+          <p class="text-slate-300 max-w-2xl mx-auto">
+            Ob Innenstadt, Ehrenfeld oder Porz – unser Team kennt die Eigenheiten der verschiedenen Kölner Veedel und ihrer Bausubstanz.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3">
+          {['Ehrenfeld', 'Nippes', 'Lindenthal', 'Sülz', 'Marienburg', 'Rodenkirchen', 'Deutz', 'Mülheim', 'Kalk', 'Porz', 'Chorweiler', 'Innenstadt', 'Neuehrenfeld', 'Bickendorf', 'Ossendorf', 'Longerich', 'Pesch', 'Lindweiler'].map(stadtteil => (
+            <a
+              href={`/stadtteile#${stadtteil.toLowerCase()}`}
+              class="px-4 py-2 bg-slate-700 hover:bg-teal-600 rounded-lg text-sm transition-colors duration-200"
+            >
+              {stadtteil}
+            </a>
+          ))}
+        </div>
+
+        <div class="text-center mt-8">
+          <a href="/stadtteile" class="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200">
+            Alle Stadtteile ansehen
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <FAQ faqs={faqs} />
+
+    <!-- CTA Section -->
+    <ContactForm showPLZ={true} />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />

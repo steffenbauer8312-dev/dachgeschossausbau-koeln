@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Impressum | Dachgeschossausbau Köln"
+  description="Impressum und rechtliche Informationen von Dachgeschossausbau Köln"
+>
+  <Header />
+
+  <main>
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-8">Impressum</h1>
+
+          <div class="prose prose-slate max-w-none">
+            <h2 class="text-xl font-bold text-slate-800 mt-8 mb-4">Angaben gemäß § 5 TMG</h2>
+
+            <div class="bg-slate-50 rounded-xl p-6 mb-8">
+              <p class="font-semibold text-slate-800 mb-2">Dachgeschossausbau Köln</p>
+              <p>Hauptstr. 134<br />51143 Köln</p>
+            </div>
+
+            <h2 class="text-xl font-bold text-slate-800 mt-8 mb-4">Kontakt</h2>
+            <p>
+              Telefon: <a href="tel:+4915216117439" class="text-teal-600 hover:underline">+49 1521 6117439</a><br />
+              E-Mail: <a href="mailto:info@dachgeschossausbaukoeln.de" class="text-teal-600 hover:underline">info@dachgeschossausbaukoeln.de</a>
+            </p>
+
+            <h2 class="text-xl font-bold text-slate-800 mt-8 mb-4">Geschäftsführung</h2>
+            <p>Michael Schneider</p>
+
+            <h2 class="text-xl font-bold text-slate-800 mt-8 mb-4">Berufsbezeichnung und zuständige Kammer</h2>
+            <p>
+              Zimmerermeister<br />
+              Zuständige Handwerkskammer: Handwerkskammer Köln
+            </p>
+
+            <h2 class="text-xl font-bold text-slate-800 mt-8 mb-4">Haftungshinweis</h2>
+            <p>
+              Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht unter Umständen verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+            </p>
+
+            <h2 class="text-xl font-bold text-slate-800 mt-8 mb-4">Verbraucherstreitbeilegung</h2>
+            <p>
+              Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" class="text-teal-600 hover:underline" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>.<br />
+              Unsere E-Mail-Adresse finden Sie oben im Impressum.<br />
+              Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+            </p>
+
+            <h2 class="text-xl font-bold text-slate-800 mt-8 mb-4">Bildnachweise</h2>
+            <p>
+              Sofern nicht anders angegeben: Eigene Aufnahmen
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

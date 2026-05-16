@@ -1,0 +1,331 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const faqs = [
+  {
+    question: 'Was schreibt das GEG für den Dachgeschossausbau in Köln vor?',
+    answer: 'Das Gebäudeenergiegesetz (GEG) fordert für ausgebauten Dachboden einen U-Wert von maximal 0,14 W/(m²K). Das ist der Wärmedurchgangskoeffizient – je niedriger, desto besser die Dämmung. Diesen Wert erreichen wir mit einer Kombination aus Zwischensparren- und Untersparren-Dämmung.'
+  },
+  {
+    question: 'Kann ich beim Dachgeschossausbau in Köln KfW-Förderung bekommen?',
+    answer: 'Ja, über die KfW sind verschiedene Förderprogramme möglich, unter anderem für die Dachdämmung. Die Anforderungen sind allerdings höher als beim reinen GEG-Standard. Wir beraten Sie gerne zu den Möglichkeiten und übernehmen die Beantragung.'
+  },
+  {
+    question: 'Welches Dämmmaterial ist das beste für Köln?',
+    answer: 'Für den Dachgeschossausbau in Köln setzen wir meist auf Mineralwolle oder Hanf. Beide sind diffusionsoffen, was Feuchtigkeitsprobleme vermeidet. In manchen Fällen – besonders bei Altbauten – empfehlen wir auch Perlite oder Zellulose.'
+  },
+  {
+    question: 'Wie funktioniert die Dampfsperre richtig?',
+    answer: 'Die Dampfsperre ist eine Ebene aus Kunststoff oder Aluminium, die auf der warmen Seite der Dämmung angebracht wird. Sie verhindert, dass Raumfeuchtigkeit in die Dämmung eindringt und dort Schimmel verursacht. Bei uns wird die Dampfsperre immer fachgerecht mit speziellen Klebebändern und Anschlussmanschetten verarbeitet.'
+  },
+  {
+    question: 'Was passiert ohne fachgerechte Dämmung?',
+    answer: 'Ohne Dämmung wird es im Sommer unerträglich heiß und im Winter bitterkalt. Die Heizkosten steigen, und die Bausubstanz leidet. Feuchtigkeit kann durch Kondensation in die Konstruktion eindringen und Schimmel verursachen. Eine fachgerechte Dämmung schützt vor all dem – und spart langfristig Geld.'
+  },
+  {
+    question: 'Wie lange hält eine Dachdämmung?',
+    answer: 'Eine fachgerecht eingebaute Dämmung hält mehrere Jahrzehnte. Mineralwolle und Hanf verlieren über die Zeit kaum an Dämmwirkung. Wichtig ist nur, dass die Dampfsperre und die Anschlüsse dicht bleiben. Bei Wartungen prüfen wir das gerne mit.'
+  }
+];
+
+const daemmMethoden = [
+  {
+    name: 'Zwischensparren-Dämmung',
+    beschreibung: 'Die klassische Methode: Dämmmaterial wird zwischen die Sparren geklemmt. Schnell, effektiv, bewährt.',
+    vorteile: ['Einfache Verarbeitung', 'Gute Dämmwerte', 'Kostengünstig'],
+    uWert: '0,14 - 0,18 W/(m²K)',
+    kosten: '60-100 €/m²'
+  },
+  {
+    name: ' Untersparren-Dämmung',
+    beschreibung: 'Zusätzliche Dämmschicht unter den Sparren für noch bessere Werte. Die Sparren bleiben als Gestaltungselement sichtbar.',
+    vorteile: ['Sehr gute Dämmwerte', 'Thermische Entkopplung', 'Glatte Innenfläche'],
+    uWert: '0,10 - 0,14 W/(m²K)',
+    kosten: '80-130 €/m²'
+  },
+  {
+    name: 'Aufdoppelung',
+    beschreibung: 'Die Sparren werden mit дополниlichen Kanthölzern aufgedoppelt, um eine dickere Dämmung aufzunehmen. Ideal bei flachen Dächern.',
+    vorteile: ['Maximale Dämmstärke', 'KfW-förderfähig', 'Bessere Innenraumbreite'],
+    uWert: '0,08 - 0,12 W/(m²K)',
+    kosten: '100-150 €/m²'
+  },
+  {
+    name: 'Dampfsperre & Luftdichtung',
+    beschreibung: 'Die unsichtbare Schicht, die alles zusammenhält. Verhindert Feuchtigkeitsschäden und spart Energie.',
+    vorteile: ['Schimmelprävention', 'Energieeinsparung', 'Bessere Raumluft'],
+    uWert: '-',
+    kosten: '18-28 €/m²'
+  }
+];
+
+const schema = {
+  "@type": "Service",
+  "serviceType": "Dachdämmung nach GEG",
+  "provider": {
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Dachgeschossausbau Köln"
+  }
+};
+---
+
+<BaseLayout
+  title="Dachdämmung nach GEG | Dachgeschossausbau Köln"
+  description="Professionelle Dachdämmung nach GEG für Ihren Dachgeschossausbau in Köln. Wir sorgen für optimale Dämmwerte und Energieeffizienz."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <nav class="text-sm text-slate-300 mb-4">
+          <a href="/">Startseite</a> / <a href="/leistungen">Leistungen</a> / <span class="text-white">Dachdämmung</span>
+        </nav>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">
+          Dachdämmung nach GEG für den Dachgeschossausbau in Köln
+        </h1>
+        <p class="text-xl text-slate-300 max-w-2xl">
+          Das Gebäudeenergiegesetz schreibt klare Dämmwerte vor. Wir sorgen dafür, dass Ihr Dachgeschossausbau in Köln alle Anforderungen erfüllt – und darüber hinaus.
+        </p>
+      </div>
+    </section>
+
+    <!-- GEG erklärt -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex flex-col lg:flex-row gap-8 items-start">
+            <div class="flex-1">
+              <h2 class="text-2xl font-bold text-slate-800 mb-6">
+                GEG-konforme Dämmung: mehr als nur Vorschrift
+              </h2>
+              <div class="space-y-4 text-slate-600 leading-relaxed">
+                <p>
+                  Die Dachdämmung ist beim Dachgeschossausbau in Köln mehr als nur eine gesetzliche Pflicht. Eine gute Dämmung spart Heizkosten, sorgt für ein angenehmes Raumklima und macht das Dachgeschoss im Sommer wie im Winter nutzbar.
+                </p>
+                <p>
+                  Das GEG schreibt einen U-Wert von maximal 0,14 W/(m²K) vor. Das klingt technisch, bedeutet aber: Ihr Dach muss gut isoliert sein. Mit einer Kombination aus Zwischensparren- und Untersparren-Dämmung erreichen wir diesen Wert problemlos – und können ihn bei Bedarf sogar unterbieten.
+                </p>
+                <p>
+                  Gerade in den oft jahrzehntealten Altbauten Kölns ist die Dämmung häufig mangelhaft oder gar nicht vorhanden. Viele unserer Kunden sind überrascht, wie warm ihr Dachgeschoss nach dem fachgerechten Ausbau wird – im Winter ohne hohe Heizkosten, im Sommer ohne Überhitzung.
+                </p>
+              </div>
+            </div>
+            <div class="lg:w-80 bg-teal-50 rounded-2xl p-6">
+              <h3 class="text-lg font-bold text-slate-800 mb-4">Was bedeutet U-Wert?</h3>
+              <p class="text-slate-600 text-sm mb-4">
+                Der U-Wert gibt an, wie viel Wärme durch ein Bauteil verloren geht. Je kleiner der Wert, desto besser die Dämmung.
+              </p>
+              <div class="bg-white rounded-lg p-4 text-center">
+                <p class="text-sm text-slate-500 mb-1">GEG-Anforderung</p>
+                <p class="text-3xl font-bold text-teal-600">≤ 0,14</p>
+                <p class="text-xs text-slate-500">W/(m²K)</p>
+              </div>
+              <p class="text-xs text-slate-500 mt-4">
+                Zum Vergleich: Ein ungedämmtes Satteldach hat einen U-Wert von etwa 2,0 – also 14-mal schlechter.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dämmmethoden -->
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+            Unsere Dämmmethoden im Überblick
+          </h2>
+          <p class="text-slate-600 max-w-2xl mx-auto">
+            Je nach Dachkonstruktion und Ihren Anforderungen wählen wir die optimale Dämmstrategie.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {daemmMethoden.map(methode => (
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-slate-800 mb-2">{methode.name}</h3>
+                <p class="text-slate-600 text-sm mb-4 leading-relaxed">{methode.beschreibung}</p>
+                <ul class="space-y-2 mb-4">
+                  {methode.vorteile.map(v => (
+                    <li class="flex items-center gap-2 text-slate-700 text-sm">
+                      <svg class="w-4 h-4 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      {v}
+                    </li>
+                  ))}
+                </ul>
+                <div class="flex gap-4 text-sm">
+                  {methode.uWert !== '-' && (
+                    <div class="flex-1 bg-slate-100 rounded-lg p-3 text-center">
+                      <p class="text-slate-500 text-xs">U-Wert</p>
+                      <p class="font-semibold text-slate-700">{methode.uWert}</p>
+                    </div>
+                  )}
+                  <div class="flex-1 bg-teal-100 rounded-lg p-3 text-center">
+                    <p class="text-teal-600 text-xs">Kosten ab</p>
+                    <p class="font-semibold text-teal-700">{methode.kosten}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Materialien -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-8 text-center">
+            Welches Dämmmaterial verwenden wir?
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-slate-50 rounded-xl p-6">
+              <h3 class="text-lg font-bold text-slate-800 mb-3">Mineralwolle (Glaswolle)</h3>
+              <p class="text-slate-600 text-sm mb-4">
+                Der Klassiker unter den Dämmstoffen. Mineralwolle bietet hervorragende Dämmwerte bei gutem Preis-Leistungs-Verhältnis. Sie ist nicht brennbar und verrottet nicht.
+              </p>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span class="text-slate-500">Wärmeleitfähigkeit</span>
+                  <span class="text-slate-700 font-medium">0,032 - 0,040 W/(mK)</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-500">Brandschutzklasse</span>
+                  <span class="text-slate-700 font-medium">A1 (nicht brennbar)</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-slate-50 rounded-xl p-6">
+              <h3 class="text-lg font-bold text-slate-800 mb-3">Hanf</h3>
+              <p class="text-slate-600 text-sm mb-4">
+                Natürlich, nachhaltig, diffusionsoffen. Hanf eignet sich besonders für den Einsatz in Altbauten, weil es Feuchtigkeit gut reguliert und keine Chemikalien enthält.
+              </p>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span class="text-slate-500">Wärmeleitfähigkeit</span>
+                  <span class="text-slate-700 font-medium">0,038 - 0,040 W/(mK)</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-500">Ökobilanz</span>
+                  <span class="text-slate-700 font-medium">Sehr gut</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-slate-50 rounded-xl p-6">
+              <h3 class="text-lg font-bold text-slate-800 mb-3">Zellulose</h3>
+              <p class="text-slate-600 text-sm mb-4">
+                Aus Altpapier hergestellt, ein echter Kreislaufwirtschaftsstoff. Besonders geeignet für Hohlräume, da sie eingeblasen werden kann und alle Ritzen ausfüllt.
+              </p>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span class="text-slate-500">Wärmeleitfähigkeit</span>
+                  <span class="text-slate-700 font-medium">0,035 - 0,045 W/(mK)</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-500">Einsatzbereich</span>
+                  <span class="text-slate-700 font-medium">Einblasdämmung</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-slate-50 rounded-xl p-6">
+              <h3 class="text-lg font-bold text-slate-800 mb-3">Perlit</h3>
+              <p class="text-slate-600 text-sm mb-4">
+                Vulkangestein, das bei hohen Temperaturen aufgebläht wird. Perlite ist wasserabweisend und eignet sich besonders für Flachdächer und feuchte Umgebungen.
+              </p>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span class="text-slate-500">Wärmeleitfähigkeit</span>
+                  <span class="text-slate-700 font-medium">0,040 - 0,050 W/(mK)</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-500">Besonderheit</span>
+                  <span class="text-slate-700 font-medium">Feuchteresistent</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Luftdichtheit -->
+    <section class="py-16 md:py-24 bg-teal-700 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 class="text-2xl font-bold mb-4">
+                Warum Luftdichtheit so wichtig ist
+              </h2>
+              <p class="text-teal-100 mb-4 leading-relaxed">
+                Die beste Dämmung nützt nichts, wenn die Luft durch Undichtigkeiten entweicht. Deshalb verbauen wir immer eine fachgerechte Dampfsperre mit Systemklebeband.
+              </p>
+              <ul class="space-y-3 text-teal-100">
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-teal-300 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Verhindert Schimmelbildung in der Konstruktion</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-teal-300 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Reduziert Heizkosten um bis zu 20 %</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-teal-300 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Schützt die Bausubstanz langfristig</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-teal-300 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Angenehmes Raumklima das ganze Jahr</span>
+                </li>
+              </ul>
+            </div>
+            <div class="bg-teal-800 rounded-2xl p-8">
+              <h3 class="text-xl font-bold mb-4">Optional: Blower-Door-Test</h3>
+              <p class="text-teal-200 text-sm mb-4">
+                Auf Wunsch führen wir nach dem Ausbau einen Blower-Door-Test durch. Dabei wird die Luftdichtheit gemessen und eventuelle Leckagen aufgespürt.
+              </p>
+              <p class="text-sm text-teal-300">
+                Der Test kostet ca. 300-500 € und ist Voraussetzung für einige Förderprogramme. Wir empfehlen ihn bei KfW-geförderten Projekten.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zur Dachdämmung
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <ContactForm showPLZ={true} />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -1,0 +1,278 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const faqs = [
+  {
+    question: 'Kann ich ein Badezimmer im Dachgeschoss einbauen?',
+    answer: 'Ja, ein Badezimmer im Dachgeschoss ist problemlos möglich. Wir kümmern uns um alle Anschlüsse: Abwasser, Trinkwasser, Heizung und Lüftung. Vorausgesetzt, die Anschlüsse können über die bestehende Installation erreicht werden.'
+  },
+  {
+    question: 'Was kostet ein neues Bad im Dachgeschossausbau?',
+    answer: 'Die Kosten für ein neues Badezimmer hängen stark von der Ausstattung ab. Eine einfache Variante mit Dusche, WC und Waschbecken beginnt bei etwa 5.000 Euro. Mit hochwertiger Fliese und Markenarmaturen können es auch 15.000 Euro oder mehr sein.'
+  },
+  {
+    question: 'Welche Leitungen müssen gelegt werden?',
+    answer: 'Für ein Badezimmer im Dachgeschoss brauchen wir Abwasserleitungen (mit Gefälle!), Trinkwasserleitungen für warmes und kaltes Wasser, und einen Heizungsanschluss für die Warmwasseraufbereitung. Manchmal ist auch eine Lüftungsleitung nötig.'
+  },
+  {
+    question: 'Ist die Statik für ein Badezimmer im Dachgeschoss ein Problem?',
+    answer: 'In der Regel nicht. Eine normale Badewanne oder Dusche bringt kaum mehr Last als ein schwerer Schrank. Bei begehbaren Duschen mit Glaswänden oder frei stehenden Badewannen schauen wir die Statik im Einzelfall an.'
+  },
+  {
+    question: 'Wie lange dauert der Einbau eines Badezimmers?',
+    answer: 'Die Installation eines kompletten Badezimmers im Rahmen eines Dachgeschossausbaus dauert typischerweise 2-3 Wochen. Das Abpumpen des Abwassers, die Verrohrung und die Fliesenarbeiten brauchen ihre Zeit.'
+  },
+  {
+    question: 'Kann ich mein Bad selbst gestalten?',
+    answer: 'Absolut. Wir planen das Bad mit Ihnen zusammen: Armaturen, Fliesen, sanitäre Objekte. Sie können Materialien selbst aussuchen oder wir beraten Sie bei der Auswahl. Wichtig ist nur, dass die technischen Anforderungen (Gefälle, Anschlüsse) erfüllt werden.'
+  }
+];
+
+const leistungen = [
+  {
+    title: 'Abwasseranschlüsse',
+    description: 'Verlegung der Abwasserleitung mit dem nötigen Gefälle (mindestens 2 %) zum Hauptanschluss. Bei langen Wegen nutzen wir Hebeanlagen.',
+    icon: '🚿',
+    kosten: '800-2.000 €'
+  },
+  {
+    title: 'Trinkwasser',
+    description: 'Kupfer- oder Kunststoffleitungen für warmes und kaltes Wasser. Vorbereitet für alle gängigen Armaturen und Anschlüsse.',
+    icon: '💧',
+    kosten: '600-1.500 €'
+  },
+  {
+    title: 'Heizungsanschluss',
+    description: 'Anbindung an das bestehende Heizungssystem. Optional: separates Heizkörper oder Fußbodenheizung im Bad.',
+    icon: '🌡️',
+    kosten: '400-1.200 €'
+  },
+  {
+    title: 'Lüftung',
+    description: 'Dezentrale Lüftungsanlage oder Anschluss an die Hauptlüftung. Verhindert Schimmel durch Feuchtigkeit.',
+    icon: '💨',
+    kosten: '300-800 €'
+  }
+];
+
+const kostenbeispiele = [
+  { name: 'Einfache Variante', items: 'Dusche, WC, Waschbecken, Fliesen', preis: 'ab 5.000 €' },
+  { name: 'Standard Bad', items: 'Dusche, WC, Waschbecken, Badmöbel, hochwertige Fliesen', preis: '8.000-12.000 €' },
+  { name: 'Gehobene Ausstattung', items: 'Walk-in-Dusche, Badewanne, Doppelwaschbecken, Designarmaturen', preis: '15.000-25.000 €' }
+];
+
+const schema = {
+  "@type": "Service",
+  "serviceType": "Bad & Sanitär",
+  "provider": {
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Dachgeschossausbau Köln"
+  }
+};
+---
+
+<BaseLayout
+  title="Bad & Sanitär | Dachgeschossausbau Köln"
+  description="Badezimmer und Sanitär für Ihr Dachgeschoss in Köln: Komplette Bäder von der Planung bis zur Fertigstellung. Alles aus einer Hand."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <nav class="text-sm text-slate-300 mb-4">
+          <a href="/">Startseite</a> / <a href="/leistungen">Leistungen</a> / <span class="text-white">Bad & Sanitär</span>
+        </nav>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">
+          Bad & Sanitär für den Dachgeschossausbau in Köln
+        </h1>
+        <p class="text-xl text-slate-300 max-w-2xl">
+          Ein neues Badezimmer macht aus dem Dachgeschoss eine vollwertige Wohnung. Wir installieren alles fachgerecht und koordinieren die Gewerke.
+        </p>
+      </div>
+    </section>
+
+    <!-- Einführung -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 class="text-2xl font-bold text-slate-800 mb-6">
+                Vollwertiges Badezimmer unterm Dach
+              </h2>
+              <div class="space-y-4 text-slate-600 leading-relaxed">
+                <p>
+                  Ob für eine neue Mietwohnung im Dachgeschoss, eine Einliegerwohnung für die Kinder oder einfach ein zusätzliches Bad für die Familie – ein Badezimmer im Dachgeschossausbau in Köln ist schneller realisiert, als viele denken.
+                </p>
+                <p>
+                  Wir kümmern uns um alle sanitären Gewerke: Abwasseranschlüsse mit dem nötigen Gefälle, Trinkwasserleitungen für warmes und kaltes Wasser, die Verbindung zum Heizungssystem und natürlich die Installation von WC, Dusche und Waschbecken.
+                </p>
+                <p>
+                  Besonders bei Altbauten in Veedeln wie Neuehrenfeld oder Bickendorf, wo häufig zwei Parteien auf ein Bad angewiesen sind, schaffen wir mit einem zusätzlichen Badezimmer im Dachgeschoss deutliche Entlastung.
+                </p>
+              </div>
+            </div>
+            <div class="bg-teal-50 rounded-2xl p-8">
+              <h3 class="text-xl font-bold text-slate-800 mb-4">Unsere Sanitärleistungen:</h3>
+              <ul class="space-y-3">
+                {[
+                  'Komplette Badplanung',
+                  'Abwasseranschluss mit Gefälle',
+                  'Trinkwasserleitungen (Kupfer oder Kunststoff)',
+                  'WC, Dusche, Badewanne, Waschbecken',
+                  'Heizungsanschluss für Warmwasser',
+                  'Lüftungsanlage für feuchte Räume'
+                ].map(item => (
+                  <li class="flex items-start gap-3 text-slate-700">
+                    <svg class="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technische Leistungen -->
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+            Was wir technisch leisten
+          </h2>
+          <p class="text-slate-600 max-w-2xl mx-auto">
+            Ein Bad im Dachgeschoss stellt besondere Anforderungen an die Installation. Wir lösen sie alle.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {leistungen.map(leistung => (
+            <div class="bg-white rounded-xl shadow-md p-6">
+              <div class="flex items-start gap-4">
+                <div class="text-3xl">{leistung.icon}</div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-bold text-slate-800 mb-2">{leistung.title}</h3>
+                  <p class="text-slate-600 text-sm mb-4 leading-relaxed">{leistung.description}</p>
+                  <div class="bg-slate-100 rounded-lg px-4 py-2 inline-block">
+                    <span class="text-slate-500 text-xs">Kosten:</span>
+                    <span class="text-slate-700 font-semibold ml-2">{leistung.kosten}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Kostenübersicht -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-8 text-center">
+            Bad-Kosten im Überblick
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {kostenbeispiele.map(bsp => (
+              <div class="bg-slate-50 rounded-xl p-6 text-center">
+                <h3 class="text-lg font-bold text-slate-800 mb-2">{bsp.name}</h3>
+                <p class="text-slate-600 text-sm mb-4">{bsp.items}</p>
+                <p class="text-2xl font-bold text-teal-600">{bsp.preis}</p>
+              </div>
+            ))}
+          </div>
+          <p class="text-center text-slate-500 text-sm mt-6">
+            * Preise verstehen sich als Richtwerte inklusive Installation, ohne Armaturen und Möbel
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Herausforderungen -->
+    <section class="py-16 md:py-24 bg-slate-800 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold mb-8 text-center">
+            Herausforderungen beim Bad im Dachgeschoss
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-4">
+              <div class="bg-slate-700 rounded-xl p-6">
+                <h3 class="text-lg font-bold mb-2">Abwasser bei tief liegendem Hauptabschnitt</h3>
+                <p class="text-slate-300 text-sm">
+                  Wenn das Haupt-Abwassersystem tiefer liegt als Ihr Bad, nutzen wir Hebeanlagen. Diese pumpen das Abwasser nach oben – kompakt, leise, zuverlässig.
+                </p>
+              </div>
+              <div class="bg-slate-700 rounded-xl p-6">
+                <h3 class="text-lg font-bold mb-2">Feuchtigkeit und Schimmel</h3>
+                <p class="text-slate-300 text-sm">
+                  Im Dachgeschoss ist die Feuchtigkeitsbelastung höher. Wir planen immer eine Lüftung mit ein – dezentral oder zentral, je nach Situation.
+                </p>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="bg-slate-700 rounded-xl p-6">
+                <h3 class="text-lg font-bold mb-2">Wärme im Bad</h3>
+                <p class="text-slate-300 text-sm">
+                  Ein Bad muss schnell warm werden und die Feuchtigkeit abkönnen. Wir empfehlen eine Fußbodenheizung oder einen zusätzlichen Handtuchheizkörper.
+                </p>
+              </div>
+              <div class="bg-slate-700 rounded-xl p-6">
+                <h3 class="text-lg font-bold mb-2">Gefälle im Schrägdach</h3>
+                <p class="text-slate-300 text-sm">
+                  Bei verwinkelten Grundrissen unter dem Dach planen wir das Gefälle sorgfältig. Bei Bedarf setzen wir Duschrinnen in der Ebene ein.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zu Bad & Sanitär
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <!-- Förderungshinweis -->
+    <section class="py-12 bg-teal-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6">
+          <div class="flex-1">
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Förderung für sanitäre Maßnahmen</h3>
+            <p class="text-slate-600 text-sm">
+              Wasser sparende Installationen und Heizungsoptimierung können über BAFA gefördert werden. Wir beraten Sie gerne.
+            </p>
+          </div>
+          <a href="/foerderungen" class="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200">
+            Förderungen prüfen
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <ContactForm showPLZ={true} />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
