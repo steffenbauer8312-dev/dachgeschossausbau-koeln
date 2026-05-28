@@ -341,38 +341,156 @@ const schema = {
     <!-- SEO Text Section -->
     <section class="py-16 md:py-20 bg-white">
       <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto content-area">
-          <h2>Welche Förderungen gibt es für den Dachgeschossausbau in Köln?</h2>
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Welche Förderungen gibt es für den Dachgeschossausbau in Köln?
+          </h2>
 
-          <p>
-            Die wichtigste Grundlage ist die <strong>BAFA-Förderung im Rahmen der Bundesförderung für effiziente Gebäude (BEG)</strong>. Für die Dachdämmung und energetische Verbesserung der Gebäudehülle erhalten Eigentümer einen Zuschuss von 15 Prozent der förderfähigen Kosten – mit einem individuellen Sanierungsfahrplan (iSFP) sogar 20 Prozent. Die förderfähigen Kosten sind auf 30.000 Euro pro Wohneinheit und Jahr gedeckelt, mit iSFP auf 60.000 Euro.
-          </p>
+          <!-- Förderungskarten -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            <!-- BAFA -->
+            <div class="bg-teal-50 rounded-xl p-6 border border-teal-100">
+              <div class="flex items-start gap-4 mb-4">
+                <div class="w-12 h-12 bg-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-slate-800">BAFA BEG Förderung</h3>
+                  <p class="text-teal-700 font-semibold">15–20 % Zuschuss</p>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                Die wichtigste Grundlage ist die <strong>BAFA-Förderung im Rahmen der Bundesförderung für effiziente Gebäude (BEG)</strong>. Für die Dachdämmung und energetische Verbesserung der Gebäudehülle erhalten Eigentümer einen Zuschuss von 15 Prozent der förderfähigen Kosten.
+              </p>
+              <ul class="text-sm text-slate-600 space-y-1">
+                <li class="flex items-start gap-2">
+                  <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                  Mit iSFP: <strong>20 %</strong> Förderung
+                </li>
+                <li class="flex items-start gap-2">
+                  <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                  Max. 30.000 € / WE (60.000 € mit iSFP)
+                </li>
+              </ul>
+            </div>
 
-          <p>
-            Wer eine Komplettsanierung zum KfW-Effizienzhaus plant, kann zusätzlich den <strong>KfW-Kredit 261</strong> nutzen. Dieser bietet bis zu 150.000 Euro zinsgünstigen Kredit je Wohneinheit plus einen Tilgungszuschuss von 5 bis 45 Prozent – je nach erreichter Effizienzhaus-Stufe. Auch der Ausbau eines bislang unbeheizten Dachgeschosses zu Wohnraum gilt laut KfW-Merkblatt ausdrücklich als förderfähige Sanierungsmaßnahme.
-          </p>
+            <!-- KfW -->
+            <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+              <div class="flex items-start gap-4 mb-4">
+                <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-slate-800">KfW 261 Kredit</h3>
+                  <p class="text-slate-600 font-semibold">Bis 150.000 € + Tilgungszuschuss</p>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                Wer eine <strong>Komplettsanierung zum KfW-Effizienzhaus</strong> plant, kann zusätzlich den KfW-Kredit 261 nutzen. Dieser bietet bis zu 150.000 Euro zinsgünstigen Kredit je Wohneinheit plus einen Tilgungszuschuss.
+              </p>
+              <ul class="text-sm text-slate-600 space-y-1">
+                <li class="flex items-start gap-2">
+                  <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                  Tilgungszuschuss: <strong>5–45 %</strong>
+                </li>
+                <li class="flex items-start gap-2">
+                  <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                  DG-Ausbau gilt als förderfähige Sanierung
+                </li>
+              </ul>
+            </div>
 
-          <p>
-            Obendrauf legt die <strong>Stadt Köln</strong> einen weiteren Zuschuss von 10 Prozent der förderfähigen BEG-Kosten – vorausgesetzt, ein BAFA- oder KfW-Bescheid liegt bereits vor. Das Programm läuft bis Ende 2026 und ist an kein gesondertes Antragsdatum geknüpft.
-          </p>
+            <!-- Stadt Köln -->
+            <div class="bg-amber-50 rounded-xl p-6 border border-amber-100">
+              <div class="flex items-start gap-4 mb-4">
+                <div class="w-12 h-12 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-slate-800">Stadt Köln Zuschuss</h3>
+                  <p class="text-amber-700 font-semibold">+10 % extra</p>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                Die <strong>Stadt Köln</strong> legt obendrauf: 10 Prozent der förderfähigen BEG-Kosten als zusätzlichen Zuschuss – vorausgesetzt, ein BAFA- oder KfW-Bescheid liegt bereits vor.
+              </p>
+              <ul class="text-sm text-slate-600 space-y-1">
+                <li class="flex items-start gap-2">
+                  <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                  Programm läuft bis <strong>31.12.2026</strong>
+                </li>
+                <li class="flex items-start gap-2">
+                  <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                  Antrag über <strong>Kölner Förderportal</strong>
+                </li>
+              </ul>
+            </div>
 
-          <p>
-            Wer den Dachausbau mit einer neuen Heizanlage oder Photovoltaik verbindet, kann ergänzend <strong>progres.nrw – Klimaschutztechnik</strong> in Anspruch nehmen.
-          </p>
+            <!-- progres.nrw -->
+            <div class="bg-blue-50 rounded-xl p-6 border border-blue-100">
+              <div class="flex items-start gap-4 mb-4">
+                <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-slate-800">progres.nrw</h3>
+                  <p class="text-blue-700 font-semibold">NRW Klimaschutztechnik</p>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                Wer den Dachausbau mit einer <strong>neuen Heizanlage oder Photovoltaik</strong> verbindet, kann ergänzend progres.nrw – Klimaschutztechnik in Anspruch nehmen.
+              </p>
+              <ul class="text-sm text-slate-600 space-y-1">
+                <li class="flex items-start gap-2">
+                  <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                  Schwerpunkt: Wärmepumpen, Solar
+                </li>
+                <li class="flex items-start gap-2">
+                  <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                  Kombinierbar mit BAFA und KfW
+                </li>
+              </ul>
+            </div>
+          </div>
 
-          <h3>Jetzt Förderung berechnen</h3>
-
-          <p>
-            Nutzen Sie unseren interaktiven Förderrechner: Baukosten eingeben, Voraussetzungen anpassen – und sofort sehen, welche Förderungen kombinierbar sind und wie viel Sie sparen. Alle Programme sind direkt mit den offiziellen Quellen von BAFA, KfW und der Stadt Köln verlinkt.
-          </p>
-
-          <div class="bg-teal-50 rounded-xl p-6 my-8">
-            <p class="text-teal-800 font-semibold mb-2">
-              <strong>Wichtig:</strong> BAFA-Anträge müssen zwingend vor der Auftragserteilung gestellt werden.
+          <!-- CTA Box -->
+          <div class="bg-gradient-to-r from-teal-500 to-teal-600 rounded-2xl p-8 text-center text-white mb-12">
+            <h3 class="text-xl font-bold mb-2">Jetzt Förderung berechnen</h3>
+            <p class="text-teal-100 mb-6">
+              Nutzen Sie unseren interaktiven Förderrechner: Baukosten eingeben, Voraussetzungen anpassen – und sofort sehen, welche Förderungen kombinierbar sind.
             </p>
-            <p class="text-slate-600">
-              Sprechen Sie uns frühzeitig an – wir begleiten Sie durch den gesamten Prozess und helfen Ihnen, alle Fördermittel optimal zu nutzen.
-            </p>
+            <div class="inline-flex items-center gap-2 bg-white text-teal-600 font-semibold px-6 py-3 rounded-lg">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              Förderrechner nutzen
+            </div>
+          </div>
+
+          <!-- Important Notice -->
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-6">
+            <div class="flex items-start gap-4">
+              <svg class="w-6 h-6 text-amber-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              <div>
+                <p class="text-amber-800 font-semibold mb-1">
+                  <strong>Wichtig:</strong> BAFA-Anträge müssen zwingend vor der Auftragserteilung gestellt werden.
+                </p>
+                <p class="text-amber-700 text-sm">
+                  Sprechen Sie uns frühzeitig an – wir begleiten Sie durch den gesamten Prozess und helfen Ihnen, alle Fördermittel optimal zu nutzen.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
