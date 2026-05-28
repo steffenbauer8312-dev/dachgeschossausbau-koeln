@@ -48,6 +48,255 @@ body {
   @apply list-decimal pl-6;
 }
 
+/* Förderrechner Styles */
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #8a8a85;
+  margin-bottom: 10px;
+}
+
+.fr-card {
+  background: #ffffff;
+  border: 0.5px solid rgba(0,0,0,0.12);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 12px;
+}
+
+.field-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.field-row:last-child { margin-bottom: 0; }
+.field-label { font-size: 13px; color: #5a5a55; min-width: 175px; flex-shrink: 0; }
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  height: 4px;
+  background: rgba(0,0,0,0.22);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: #1D9E75;
+  border: 2px solid white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: #1D9E75;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.field-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a18;
+  min-width: 80px;
+  text-align: right;
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 0;
+  border-bottom: 0.5px solid rgba(0,0,0,0.12);
+  cursor: pointer;
+  user-select: none;
+  gap: 12px;
+}
+.toggle-row:last-child { border-bottom: none; }
+.tl { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.tl-name { font-size: 14px; font-weight: 500; color: #1a1a18; }
+.tl-sub { font-size: 12px; color: #5a5a55; line-height: 1.4; }
+
+.toggle {
+  width: 40px; height: 22px;
+  border-radius: 11px;
+  border: 0.5px solid rgba(0,0,0,0.22);
+  background: #f5f4f0;
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.toggle.on { background: #1D9E75; border-color: #0F6E56; }
+.toggle::after {
+  content: '';
+  position: absolute;
+  left: 3px; top: 3px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #5a5a55;
+  transition: transform 0.2s, background 0.2s;
+}
+.toggle.on::after { transform: translateX(18px); background: white; }
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.metric {
+  background: #f5f4f0;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.metric .ml { font-size: 12px; color: #5a5a55; margin-bottom: 4px; }
+.metric .mv { font-size: 22px; font-weight: 600; color: #1a1a18; }
+.metric .mv.green { color: #0F6E56; }
+
+.divider { height: 0.5px; background: rgba(0,0,0,0.12); margin: 1rem 0; }
+
+.warn {
+  font-size: 12px;
+  color: #854F0B;
+  background: #FAEEDA;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+.warn svg { flex-shrink: 0; margin-top: 1px; }
+
+.tab-bar { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+.tab {
+  font-size: 12px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 0.5px solid rgba(0,0,0,0.22);
+  cursor: pointer;
+  background: transparent;
+  color: #5a5a55;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s;
+}
+.tab:hover { background: #f5f4f0; }
+.tab.active {
+  background: #1a1a18;
+  color: #ffffff;
+  border-color: #1a1a18;
+}
+
+/* Förderprogramme Liste */
+.prog-list { display: flex; flex-direction: column; gap: 12px; }
+.prog-item {
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 0.5px solid rgba(0,0,0,0.12);
+  background: #ffffff;
+  transition: border-color 0.2s;
+}
+.prog-item.active { border-color: #1D9E75; background: #E1F5EE; }
+.prog-item.inactive { opacity: 0.45; }
+
+.prog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 0.5px solid rgba(0,0,0,0.12);
+}
+.prog-header-left { display: flex; flex-direction: column; gap: 4px; }
+.prog-name { font-size: 15px; font-weight: 600; color: #1a1a18; }
+.prog-item.active .prog-name { color: #085041; }
+.prog-amount { font-size: 16px; font-weight: 600; color: #0F6E56; white-space: nowrap; }
+.prog-item.inactive .prog-amount { color: #8a8a85; }
+.prog-type { font-size: 11px; color: #8a8a85; }
+.prog-item.active .prog-type { color: #0F6E56; }
+
+.prog-section { margin-bottom: 10px; }
+.prog-section:last-child { margin-bottom: 0; }
+.prog-section-title {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #8a8a85;
+  margin-bottom: 6px;
+}
+.prog-item.active .prog-section-title { color: #0F6E56; }
+
+.prog-cond {
+  font-size: 12px;
+  color: #5a5a55;
+  line-height: 1.6;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.prog-item.active .prog-cond { color: #085041; }
+.prog-cond li { margin-bottom: 5px; padding-left: 16px; position: relative; }
+.prog-cond li::before { content: '•'; position: absolute; left: 0; color: #1D9E75; }
+
+.combo-badge {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.combo-yes { background: #E1F5EE; color: #0F6E56; }
+.combo-no { background: #FAECE7; color: #993C1D; }
+
+.source-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 0.5px solid rgba(0,0,0,0.12);
+}
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #185FA5;
+  text-decoration: none;
+  width: fit-content;
+}
+.source-link:hover { text-decoration: underline; }
+.prog-item.active .source-link { color: #0F6E56; }
+
+.footnote {
+  font-size: 11px;
+  color: #8a8a85;
+  line-height: 1.6;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 0.5px solid rgba(0,0,0,0.12);
+}
+
+@media (max-width: 520px) {
+  .field-row { flex-wrap: wrap; }
+  .field-label { min-width: 100%; }
+  .field-val { min-width: auto; }
+}
+
 /* Form focus styles */
 input:focus, textarea:focus, select:focus {
   outline: none;
