@@ -202,13 +202,10 @@ const schema = {
                 border-color: #1a1a18;
               }
 
-              .prog-list { display: flex; flex-direction: column; gap: 8px; }
+              .prog-list { display: flex; flex-direction: column; gap: 12px; }
               .prog-item {
-                display: flex;
-                flex-direction: column;
-                gap: 4px;
-                padding: 12px 14px;
-                border-radius: 8px;
+                padding: 16px 18px;
+                border-radius: 12px;
                 border: 0.5px solid rgba(0,0,0,0.12);
                 background: #ffffff;
                 transition: border-color 0.2s;
@@ -220,42 +217,62 @@ const schema = {
                 display: flex;
                 align-items: flex-start;
                 justify-content: space-between;
-                gap: 10px;
+                gap: 12px;
+                margin-bottom: 12px;
+                padding-bottom: 12px;
+                border-bottom: 0.5px solid rgba(0,0,0,0.12);
               }
-              .prog-header-left { display: flex; flex-direction: column; gap: 2px; }
-              .prog-name { font-size: 13px; font-weight: 600; color: #1a1a18; }
+              .prog-header-left { display: flex; flex-direction: column; gap: 4px; }
+              .prog-name { font-size: 15px; font-weight: 600; color: #1a1a18; }
               .prog-item.active .prog-name { color: #085041; }
-              .prog-amount { font-size: 13px; font-weight: 600; color: #0F6E56; white-space: nowrap; }
+              .prog-amount { font-size: 16px; font-weight: 600; color: #0F6E56; white-space: nowrap; }
               .prog-item.inactive .prog-amount { color: #8a8a85; }
               .prog-type { font-size: 11px; color: #8a8a85; }
               .prog-item.active .prog-type { color: #0F6E56; }
+
+              .prog-section { margin-bottom: 10px; }
+              .prog-section:last-child { margin-bottom: 0; }
+              .prog-section-title {
+                font-size: 10px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                color: #8a8a85;
+                margin-bottom: 6px;
+              }
+              .prog-item.active .prog-section-title { color: #0F6E56; }
+
               .prog-cond {
-                font-size: 11px;
+                font-size: 12px;
                 color: #5a5a55;
-                margin-top: 4px;
                 line-height: 1.6;
+                list-style: none;
+                padding: 0;
+                margin: 0;
               }
               .prog-item.active .prog-cond { color: #085041; }
+              .prog-cond li { margin-bottom: 5px; padding-left: 16px; position: relative; }
+              .prog-cond li::before { content: '•'; position: absolute; left: 0; color: #1D9E75; }
 
               .combo-badge {
                 font-size: 11px;
-                padding: 3px 9px;
-                border-radius: 8px;
+                padding: 4px 10px;
+                border-radius: 6px;
                 display: inline-flex;
                 align-items: center;
-                gap: 4px;
-                margin-top: 3px;
+                gap: 5px;
+                margin-bottom: 6px;
                 font-weight: 500;
               }
               .combo-yes { background: #E1F5EE; color: #0F6E56; }
               .combo-no { background: #FAECE7; color: #993C1D; }
 
-              .source-links { display: flex; flex-direction: column; gap: 3px; margin-top: 6px; }
+              .source-links { display: flex; flex-direction: column; gap: 4px; margin-top: 12px; padding-top: 12px; border-top: 0.5px solid rgba(0,0,0,0.12); }
               .source-link {
                 display: inline-flex;
                 align-items: center;
                 gap: 5px;
-                font-size: 11px;
+                font-size: 12px;
                 color: #185FA5;
                 text-decoration: none;
                 width: fit-content;
@@ -746,6 +763,9 @@ const schema = {
           const linksHtml = p.links
             .map((l: any) => `<a class="source-link" href="${l.url}" target="_blank" rel="noopener noreferrer">${iconLink} ${l.label}</a>`)
             .join('');
+          const bedingungenHtml = p.bedingungen
+            .map((b: string) => `<li>${b}</li>`)
+            .join('');
 
           list.innerHTML +=
             `<div class="prog-item ${cls}">` +
@@ -756,9 +776,14 @@ const schema = {
                 `</div>` +
                 `<span class="prog-amount">${betragText}</span>` +
               `</div>` +
-              `<div class="prog-cond">${p.bedingungen.map((b: string) => '· ' + b).join('<br>')}</div>` +
-              `<div style="margin-top:5px">${comboBadge}</div>` +
-              `<div class="prog-cond" style="margin-top:3px;font-style:italic">${p.kombiText}</div>` +
+              `<div class="prog-section">` +
+                `<div class="prog-section-title">Voraussetzungen</div>` +
+                `<ul class="prog-cond">${bedingungenHtml}</ul>` +
+              `</div>` +
+              `<div class="prog-section">` +
+                comboBadge +
+                `<p class="prog-cond" style="margin-top:6px;font-style:italic">${p.kombiText}</p>` +
+              `</div>` +
               `<div class="source-links">${linksHtml}</div>` +
             `</div>`;
         });
