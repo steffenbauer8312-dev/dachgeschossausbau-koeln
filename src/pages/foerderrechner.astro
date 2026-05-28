@@ -1,0 +1,651 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const schema = {
+  "@type": "WebPage",
+  "about": {
+    "@type": "Service",
+    "serviceType": "Förderrechner Dachgeschossausbau Köln",
+    "description": "Berechnen Sie Ihre Förderung für den Dachgeschossausbau in Köln – BAFA, KfW, Stadt Köln und NRW"
+  }
+};
+---
+
+<BaseLayout
+  title="Förderrechner Dachgeschossausbau Köln | KfW, BAFA & Stadt Köln Zuschüsse"
+  description="Berechnen Sie jetzt Ihre Förderung für den Dachgeschossausbau in Köln: BAFA BEG, KfW 261, Kölner Zuschuss und NRW.Förderung. Alle Zuschüsse auf einen Blick."
+>
+  <Header />
+
+  <main>
+    <!-- SEO Hero Section -->
+    <section class="bg-gradient-to-br from-teal-700 to-teal-900 text-white py-12 md:py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h1 class="text-2xl md:text-3xl font-bold mb-4">
+            Förderung Dachgeschossausbau Köln – alle Zuschüsse auf einen Blick
+          </h1>
+          <p class="text-teal-100 leading-relaxed">
+            Wer in Köln sein Dachgeschoss ausbauen möchte, kann mit attraktiven Fördermitteln von Bund, Land NRW und der Stadt Köln einen erheblichen Teil der Kosten abfedern. Unser kostenloser Förderrechner zeigt Ihnen individuell, welche Programme für Ihr Vorhaben infrage kommen – und wie hoch Ihr möglicher Zuschuss ausfällt.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Förderrechner -->
+    <section class="py-8 md:py-12 bg-slate-100">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+            <style>
+              /* Förderrechner Styles */
+              .fr-header { margin-bottom: 1.5rem; }
+              .fr-header h1 {
+                font-size: 20px;
+                font-weight: 600;
+                color: #1a1a18;
+                margin-bottom: 4px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+              }
+              .fr-header h1 svg { flex-shrink: 0; }
+              .fr-header p { font-size: 13px; color: #5a5a55; }
+
+              .section-label {
+                font-size: 11px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.07em;
+                color: #8a8a85;
+                margin-bottom: 10px;
+              }
+
+              .fr-card {
+                background: #ffffff;
+                border: 0.5px solid rgba(0,0,0,0.12);
+                border-radius: 12px;
+                padding: 1rem 1.25rem;
+                margin-bottom: 12px;
+              }
+
+              .field-row {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 14px;
+              }
+              .field-row:last-child { margin-bottom: 0; }
+              .field-label { font-size: 13px; color: #5a5a55; min-width: 175px; flex-shrink: 0; }
+
+              input[type="range"] {
+                -webkit-appearance: none;
+                appearance: none;
+                flex: 1;
+                height: 4px;
+                background: rgba(0,0,0,0.22);
+                border-radius: 2px;
+                outline: none;
+                cursor: pointer;
+              }
+              input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 18px; height: 18px;
+                border-radius: 50%;
+                background: #1D9E75;
+                border: 2px solid white;
+                box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+                cursor: pointer;
+              }
+              input[type="range"]::-moz-range-thumb {
+                width: 18px; height: 18px;
+                border-radius: 50%;
+                background: #1D9E75;
+                border: 2px solid white;
+                cursor: pointer;
+              }
+
+              .field-val {
+                font-size: 13px;
+                font-weight: 600;
+                color: #1a1a18;
+                min-width: 80px;
+                text-align: right;
+              }
+
+              .toggle-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 9px 0;
+                border-bottom: 0.5px solid rgba(0,0,0,0.12);
+                cursor: pointer;
+                user-select: none;
+                gap: 12px;
+              }
+              .toggle-row:last-child { border-bottom: none; }
+              .tl { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+              .tl-name { font-size: 14px; font-weight: 500; color: #1a1a18; }
+              .tl-sub { font-size: 12px; color: #5a5a55; line-height: 1.4; }
+
+              .toggle {
+                width: 40px; height: 22px;
+                border-radius: 11px;
+                border: 0.5px solid rgba(0,0,0,0.22);
+                background: #f5f4f0;
+                position: relative;
+                flex-shrink: 0;
+                transition: background 0.2s;
+              }
+              .toggle.on { background: #1D9E75; border-color: #0F6E56; }
+              .toggle::after {
+                content: '';
+                position: absolute;
+                left: 3px; top: 3px;
+                width: 14px; height: 14px;
+                border-radius: 50%;
+                background: #5a5a55;
+                transition: transform 0.2s, background 0.2s;
+              }
+              .toggle.on::after { transform: translateX(18px); background: white; }
+
+              .results {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 10px;
+                margin-bottom: 12px;
+              }
+              .metric {
+                background: #f5f4f0;
+                border-radius: 8px;
+                padding: 12px 14px;
+              }
+              .metric .ml { font-size: 12px; color: #5a5a55; margin-bottom: 4px; }
+              .metric .mv { font-size: 22px; font-weight: 600; color: #1a1a18; }
+              .metric .mv.green { color: #0F6E56; }
+
+              .divider { height: 0.5px; background: rgba(0,0,0,0.12); margin: 1rem 0; }
+
+              .warn {
+                font-size: 12px;
+                color: #854F0B;
+                background: #FAEEDA;
+                border-radius: 8px;
+                padding: 8px 12px;
+                margin-bottom: 10px;
+                line-height: 1.5;
+                display: flex;
+                gap: 6px;
+                align-items: flex-start;
+              }
+              .warn svg { flex-shrink: 0; margin-top: 1px; }
+
+              .tab-bar { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+              .tab {
+                font-size: 12px;
+                padding: 5px 14px;
+                border-radius: 20px;
+                border: 0.5px solid rgba(0,0,0,0.22);
+                cursor: pointer;
+                background: transparent;
+                color: #5a5a55;
+                font-family: inherit;
+                transition: background 0.15s, color 0.15s;
+              }
+              .tab:hover { background: #f5f4f0; }
+              .tab.active {
+                background: #1a1a18;
+                color: #ffffff;
+                border-color: #1a1a18;
+              }
+
+              .prog-list { display: flex; flex-direction: column; gap: 8px; }
+              .prog-item {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                padding: 12px 14px;
+                border-radius: 8px;
+                border: 0.5px solid rgba(0,0,0,0.12);
+                background: #ffffff;
+                transition: border-color 0.2s;
+              }
+              .prog-item.active { border-color: #1D9E75; background: #E1F5EE; }
+              .prog-item.inactive { opacity: 0.45; }
+
+              .prog-header {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 10px;
+              }
+              .prog-header-left { display: flex; flex-direction: column; gap: 2px; }
+              .prog-name { font-size: 13px; font-weight: 600; color: #1a1a18; }
+              .prog-item.active .prog-name { color: #085041; }
+              .prog-amount { font-size: 13px; font-weight: 600; color: #0F6E56; white-space: nowrap; }
+              .prog-item.inactive .prog-amount { color: #8a8a85; }
+              .prog-type { font-size: 11px; color: #8a8a85; }
+              .prog-item.active .prog-type { color: #0F6E56; }
+              .prog-cond {
+                font-size: 11px;
+                color: #5a5a55;
+                margin-top: 4px;
+                line-height: 1.6;
+              }
+              .prog-item.active .prog-cond { color: #085041; }
+
+              .combo-badge {
+                font-size: 11px;
+                padding: 3px 9px;
+                border-radius: 8px;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                margin-top: 3px;
+                font-weight: 500;
+              }
+              .combo-yes { background: #E1F5EE; color: #0F6E56; }
+              .combo-no { background: #FAECE7; color: #993C1D; }
+
+              .source-links { display: flex; flex-direction: column; gap: 3px; margin-top: 6px; }
+              .source-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+                font-size: 11px;
+                color: #185FA5;
+                text-decoration: none;
+                width: fit-content;
+              }
+              .source-link:hover { text-decoration: underline; }
+              .prog-item.active .source-link { color: #0F6E56; }
+
+              .footnote {
+                font-size: 11px;
+                color: #8a8a85;
+                line-height: 1.6;
+                margin-top: 12px;
+                padding-top: 12px;
+                border-top: 0.5px solid rgba(0,0,0,0.12);
+              }
+
+              /* Responsive */
+              @media (max-width: 520px) {
+                .field-row { flex-wrap: wrap; }
+                .field-label { min-width: 100%; }
+                .field-val { min-width: auto; }
+              }
+            </style>
+
+            <div class="fr-header">
+              <h1>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                Förderrechner – Dachgeschossausbau Köln
+              </h1>
+              <p>Stand Mai 2026 · Bundesförderung (BAFA / KfW) + Stadt Köln + NRW</p>
+            </div>
+
+            <div class="fr-card">
+              <div class="section-label">Ihr Vorhaben</div>
+              <div class="field-row">
+                <span class="field-label">Geschätzte Baukosten</span>
+                <input type="range" min="15000" max="150000" step="1000" value="60000" id="sliderKosten" oninput="recalc()">
+                <span class="field-val" id="valKosten">60.000 €</span>
+              </div>
+              <div class="field-row">
+                <span class="field-label">davon Dämmung / Hülle</span>
+                <input type="range" min="0" max="100" step="5" value="50" id="sliderDaemmAnt" oninput="recalc()">
+                <span class="field-val" id="valDaemmAnt">50 %</span>
+              </div>
+              <div class="field-row">
+                <span class="field-label">Wohneinheiten im Gebäude</span>
+                <input type="range" min="1" max="6" step="1" value="1" id="sliderWE" oninput="recalc()">
+                <span class="field-val" id="valWE">1</span>
+              </div>
+            </div>
+
+            <div class="fr-card">
+              <div class="section-label">Voraussetzungen & Optionen</div>
+              <div id="toggles"></div>
+            </div>
+
+            <div class="divider"></div>
+            <div class="section-label">Ergebnis</div>
+            <div class="results" id="results"></div>
+            <div id="warnBox"></div>
+
+            <div class="section-label" style="margin-top:8px">Förderprogramme im Detail</div>
+            <div class="tab-bar">
+              <button class="tab active" onclick="setTab('alle',this)">Alle</button>
+              <button class="tab" onclick="setTab('bund',this)">Bundesebene</button>
+              <button class="tab" onclick="setTab('koeln',this)">Stadt Köln</button>
+              <button class="tab" onclick="setTab('nrw',this)">NRW</button>
+            </div>
+            <div class="prog-list" id="progList"></div>
+
+            <p class="footnote">
+              Alle Angaben ohne Gewähr. Förderhöhen und ‑bedingungen können sich jederzeit ändern.
+              Bitte stellen Sie Förderanträge immer <strong>vor</strong> Beauftragung der Handwerker.
+              Quellen: BAFA, KfW, Stadt Köln, NRW.Förderung (Stand Mai 2026).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO Text Section -->
+    <section class="py-16 md:py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto content-area">
+          <h2>Welche Förderungen gibt es für den Dachgeschossausbau in Köln?</h2>
+
+          <p>
+            Die wichtigste Grundlage ist die <strong>BAFA-Förderung im Rahmen der Bundesförderung für effiziente Gebäude (BEG)</strong>. Für die Dachdämmung und energetische Verbesserung der Gebäudehülle erhalten Eigentümer einen Zuschuss von 15 Prozent der förderfähigen Kosten – mit einem individuellen Sanierungsfahrplan (iSFP) sogar 20 Prozent. Die förderfähigen Kosten sind auf 30.000 Euro pro Wohneinheit und Jahr gedeckelt, mit iSFP auf 60.000 Euro.
+          </p>
+
+          <p>
+            Wer eine Komplettsanierung zum KfW-Effizienzhaus plant, kann zusätzlich den <strong>KfW-Kredit 261</strong> nutzen. Dieser bietet bis zu 150.000 Euro zinsgünstigen Kredit je Wohneinheit plus einen Tilgungszuschuss von 5 bis 45 Prozent – je nach erreichter Effizienzhaus-Stufe. Auch der Ausbau eines bislang unbeheizten Dachgeschosses zu Wohnraum gilt laut KfW-Merkblatt ausdrücklich als förderfähige Sanierungsmaßnahme.
+          </p>
+
+          <p>
+            Obendrauf legt die <strong>Stadt Köln</strong> einen weiteren Zuschuss von 10 Prozent der förderfähigen BEG-Kosten – vorausgesetzt, ein BAFA- oder KfW-Bescheid liegt bereits vor. Das Programm läuft bis Ende 2026 und ist an kein gesondertes Antragsdatum geknüpft.
+          </p>
+
+          <p>
+            Wer den Dachausbau mit einer neuen Heizanlage oder Photovoltaik verbindet, kann ergänzend <strong>progres.nrw – Klimaschutztechnik</strong> in Anspruch nehmen.
+          </p>
+
+          <h3>Jetzt Förderung berechnen</h3>
+
+          <p>
+            Nutzen Sie unseren interaktiven Förderrechner: Baukosten eingeben, Voraussetzungen anpassen – und sofort sehen, welche Förderungen kombinierbar sind und wie viel Sie sparen. Alle Programme sind direkt mit den offiziellen Quellen von BAFA, KfW und der Stadt Köln verlinkt.
+          </p>
+
+          <div class="bg-teal-50 rounded-xl p-6 my-8">
+            <p class="text-teal-800 font-semibold mb-2">
+              <strong>Wichtig:</strong> BAFA-Anträge müssen zwingend vor der Auftragserteilung gestellt werden.
+            </p>
+            <p class="text-slate-600">
+              Sprechen Sie uns frühzeitig an – wir begleiten Sie durch den gesamten Prozess und helfen Ihnen, alle Fördermittel optimal zu nutzen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-12 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <p class="text-lg text-slate-700 mb-6">
+            Sie möchten wissen, wie viel Förderung Sie für Ihr Projekt erhalten können?
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:+4915216117439" class="inline-flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              +49 1521 6117439
+            </a>
+            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 bg-slate-700 hover:bg-slate-800 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200">
+              Kostenlose Beratung
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ContactForm showPLZ={true} />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<script>
+  const toggleDefs = [
+    { id: 'gebaeude5j',      label: 'Gebäude mind. 5 Jahre alt',            sub: 'Pflicht für BAFA, KfW 261 und Kölner Zuschuss',                              val: true  },
+    { id: 'isfp',            label: 'Individueller Sanierungsfahrplan (iSFP)', sub: '+5 % BAFA-Bonus; Energieberater erstellt ihn (~1.300 € Kosten, 80 % gefördert)', val: false },
+    { id: 'energieberater',  label: 'Energieeffizienz-Experte eingebunden',  sub: 'Pflicht für BAFA BEG EM und KfW 261',                                        val: true  },
+    { id: 'komplettsanierung', label: 'Komplettsanierung zum Effizienzhaus', sub: 'Für KfW 261 – Gebäude erreicht mind. EH 85',                                  val: false },
+    { id: 'eigennutzung',    label: 'Selbstgenutzte Immobilie',              sub: 'Für einkommensabhängige KfW-Zinsverbilligung relevant',                       val: true  },
+    { id: 'koelnStadt',      label: 'Immobilie im Kölner Stadtgebiet',       sub: 'Voraussetzung für städtische Zuschüsse',                                      val: true  },
+  ];
+
+  let state: Record<string, boolean> = {};
+  toggleDefs.forEach(t => { state[t.id] = t.val; });
+
+  const toggleContainer = document.getElementById('toggles');
+  toggleDefs.forEach(t => {
+    const row = document.createElement('div');
+    row.className = 'toggle-row';
+    row.innerHTML =
+      `<div class="tl"><span class="tl-name">${t.label}</span><span class="tl-sub">${t.sub}</span></div>` +
+      `<div class="toggle ${t.val ? 'on' : ''}" id="tog_${t.id}" role="switch" aria-checked="${t.val}" aria-label="${t.label}"></div>`;
+    row.addEventListener('click', () => {
+      state[t.id] = !state[t.id];
+      const tog = document.getElementById('tog_' + t.id);
+      if (tog) {
+        tog.classList.toggle('on', state[t.id]);
+        tog.setAttribute('aria-checked', String(state[t.id]));
+      }
+      recalc();
+    });
+    if (toggleContainer) {
+      toggleContainer.appendChild(row);
+    }
+  });
+
+  let activeTab = 'alle';
+  function setTab(tab: string, btn: HTMLButtonElement) {
+    activeTab = tab;
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    recalc();
+  }
+
+  function fmt(n: number): string {
+    return n.toLocaleString('de-DE') + '\u00a0€';
+  }
+
+  const iconCheck = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>`;
+  const iconX     = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+  const iconWarn  = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
+  const iconLink  = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+
+  function recalc() {
+    const sliderKosten = document.getElementById('sliderKosten') as HTMLInputElement;
+    const sliderDaemmAnt = document.getElementById('sliderDaemmAnt') as HTMLInputElement;
+    const sliderWE = document.getElementById('sliderWE') as HTMLInputElement;
+
+    const kosten   = parseInt(sliderKosten.value);
+    const daemmAnt = parseInt(sliderDaemmAnt.value) / 100;
+    const we       = parseInt(sliderWE.value);
+
+    const valKosten = document.getElementById('valKosten');
+    const valDaemmAnt = document.getElementById('valDaemmAnt');
+    const valWE = document.getElementById('valWE');
+
+    if (valKosten) valKosten.textContent = kosten.toLocaleString('de-DE') + '\u00a0€';
+    if (valDaemmAnt) valDaemmAnt.textContent = Math.round(daemmAnt * 100) + '\u00a0%';
+    if (valWE) valWE.textContent = String(we);
+
+    const S = state;
+    const daemmKosten = kosten * daemmAnt;
+    const cappedBEG   = Math.min(daemmKosten, S.isfp ? 60000 : 30000) * we;
+    const bafaRate    = S.isfp ? 0.20 : 0.15;
+    const bafaActive  = S.gebaeude5j && S.energieberater;
+    const bafaBetrag  = bafaActive ? Math.round(cappedBEG * bafaRate) : 0;
+
+    const kfw261Active = S.gebaeude5j && S.energieberater && S.komplettsanierung;
+    const kfw261Max    = Math.min(kosten * we, 150000 * we);
+    const kfw261Tilg   = kfw261Active ? Math.round(kfw261Max * 0.05) : 0;
+
+    const koelnAktiv  = S.koelnStadt && S.gebaeude5j && bafaActive;
+    const koelnBetrag = koelnAktiv ? Math.round(bafaBetrag * 0.10) : 0;
+
+    const gesamt      = bafaBetrag + kfw261Tilg + koelnBetrag;
+    const eigenanteil = Math.max(0, kosten - gesamt);
+    const foerderQuote = kosten > 0 ? Math.round((gesamt / kosten) * 100) : 0;
+
+    const resultsEl = document.getElementById('results');
+    if (resultsEl) {
+      resultsEl.innerHTML =
+        `<div class="metric"><div class="ml">Gesamtförderung</div><div class="mv green">${fmt(gesamt)}</div></div>` +
+        `<div class="metric"><div class="ml">Eigenanteil</div><div class="mv">${fmt(eigenanteil)}</div></div>` +
+        `<div class="metric"><div class="ml">Förderquote</div><div class="mv">${foerderQuote}\u00a0%</div></div>` +
+        `<div class="metric"><div class="ml">Wohneinheiten</div><div class="mv">${we}</div></div>`;
+    }
+
+    const warns: string[] = [];
+    if (!S.gebaeude5j)    warns.push('Gebäude muss mind. 5 Jahre alt sein – ohne diese Voraussetzung sind BAFA, KfW 261 und der Kölner Zuschuss nicht möglich.');
+    if (!S.energieberater) warns.push('Ohne eingebundenen Energieeffizienz-Experten (EEE) entfällt die BAFA-Förderung. Der iSFP-Bonus setzt einen zertifizierten Berater voraus.');
+    if (S.komplettsanierung && !S.energieberater) warns.push('KfW 261 erfordert zwingend Fachplanung und Baubegleitung durch einen EEE.');
+
+    const warnBox = document.getElementById('warnBox');
+    if (warnBox) {
+      warnBox.innerHTML = warns.map(w => `<div class="warn">${iconWarn}<span>${w}</span></div>`).join('');
+    }
+
+    const progs = [
+      {
+        id: 'bafa', ebene: 'bund',
+        name: 'BAFA BEG Einzelmaßnahmen (BEG EM)',
+        type: 'Zuschuss – nicht rückzahlbar',
+        betrag: bafaBetrag, active: bafaActive, kombi: true,
+        kombiText: 'Kombinierbar mit KfW 261, Kölner Zuschuss; Steuerbonus § 35c ist alternativ (nicht kumulierbar)',
+        bedingungen: [
+          'Gebäude mind. 5 Jahre alt',
+          'Antrag zwingend vor Auftragsvergabe beim BAFA stellen',
+          'Energieeffizienz-Experte (EEE) einbinden',
+          `Fördersatz: ${bafaRate * 100} % ${S.isfp ? '(inkl. +5 % iSFP-Bonus)' : '– mit iSFP auf 20 % erhöhbar'}`,
+          `Förderfähige Kostenpauschale: ${S.isfp ? '60.000' : '30.000'} € / WE / Jahr`,
+          'U-Wert Dach / Oberste Decke: ≤ 0,14 W/(m²K)',
+        ],
+        links: [
+          { label: 'BAFA – Gebäudehülle (offiziell)', url: 'https://www.bafa.de/DE/Energie/Effiziente_Gebaeude/Sanierung_Wohngebaeude/Gebaeudehuelle/gebaeudehuelle_node.html' },
+          { label: 'BAFA – Antragstellung & Portal',  url: 'https://www.bafa.de/DE/Energie/Effiziente_Gebaeude/Informationen_fuer_Antragstellende/informationen_fuer_antragstellende_node.html' },
+        ]
+      },
+      {
+        id: 'kfw261', ebene: 'bund',
+        name: 'KfW 261 – Wohngebäude-Kredit (Effizienzhaus)',
+        type: 'Zinsgünstiger Kredit + Tilgungszuschuss',
+        betrag: kfw261Tilg, active: kfw261Active, kombi: true,
+        kombiText: 'Kombinierbar mit BAFA BEG EM und Kölner Zuschuss',
+        bedingungen: [
+          'Komplettsanierung auf mind. Effizienzhaus-Stufe 85',
+          'Gebäude mind. 5 Jahre alt',
+          'Antrag vor Baubeginn über eine Hausbank stellen',
+          'Fachplanung + Baubegleitung durch EEE ist Pflicht',
+          `Kredit max. ${(150000 * we).toLocaleString('de-DE')} € (${we} WE × 150.000 €)`,
+          'Tilgungszuschuss: 5 % (EH 85) bis 45 % (EH 40 EE)',
+          'Dachgeschossausbau (vormals unbeheizt → Wohnraum) gilt laut KfW-Merkblatt als förderfähige Sanierung',
+          'Budget 2026 begrenzt (2 Mrd. €) – frühzeitig beantragen!',
+        ],
+        links: [
+          { label: 'KfW 261 – offizielle Produktseite', url: 'https://www.kfw.de/inlandsfoerderung/Privatpersonen/Bestehende-Immobilie/F%C3%B6rderprodukte/Bundesf%C3%B6rderung-f%C3%BCr-effiziente-Geb%C3%A4ude-Wohngeb%C3%A4ude-Kredit-(261-262)/' },
+          { label: 'KfW – Energieeffizienz-Experten finden', url: 'https://www.kfw.de/inlandsfoerderung/Privatpersonen/Bestehende-Immobilie/Energieeffizient-Sanieren/Energieeffizienz-Experten/' },
+        ]
+      },
+      {
+        id: 'koeln', ebene: 'koeln',
+        name: 'Stadt Köln – Zuschuss zur BEG (10 %)',
+        type: 'Kommunaler Zuschuss – nicht rückzahlbar',
+        betrag: koelnBetrag, active: koelnAktiv, kombi: true,
+        kombiText: 'Kombinierbar mit BAFA und KfW 261; Antrag nach Vorliegen des BAFA/KfW-Bescheids',
+        bedingungen: [
+          'Immobilie im Kölner Stadtgebiet',
+          'Gebäude mind. 5 Jahre alt (Bestandsimmobilie)',
+          'BAFA- oder KfW-Bescheid muss vorliegen (nicht älter als 01.01.2022)',
+          'Antrag über das Online-Förderportal der Stadt Köln',
+          'Förderhöhe: 10 % der förderfähigen BEG-Kosten',
+          'Vor Antragstellung dürfen Fachunternehmen beauftragt werden',
+          'Programm läuft bis 31.12.2026 – begrenzte Mittel, first come first served',
+        ],
+        links: [
+          { label: 'Stadt Köln – Zuschuss zur Bundesförderung (offiziell)', url: 'https://www.stadt-koeln.de/artikel/71803/index.html' },
+          { label: 'Stadt Köln – Klimafreundliches Wohnen Übersicht',       url: 'https://www.stadt-koeln.de/artikel/71797/index.html' },
+        ]
+      },
+      {
+        id: 'nrw', ebene: 'nrw',
+        name: 'progres.nrw – Klimaschutztechnik',
+        type: 'NRW-Zuschuss (primär Anlagentechnik)',
+        betrag: 0, active: false, kombi: true,
+        kombiText: 'Kombinierbar mit Bundesmitteln (BAFA, KfW); nicht mit anderen NRW-Landesprogrammen',
+        bedingungen: [
+          'Schwerpunkt: Wärmepumpen, Solarthermie, Lüftung – keine direkte Dachdämmungsförderung',
+          'Vorhaben in NRW, Antrag vor Maßnahmenbeginn',
+          'Aktuell pausiert (Stand Jan. 2026) – voraussichtlich ab Feb. 2026 wieder offen',
+          'Relevant, wenn der Dachausbau mit neuer Heizung oder PV-Anlage kombiniert wird',
+        ],
+        links: [
+          { label: 'progres.nrw – offizielle Förderseite NRW', url: 'https://www.nordrhein-westfalen-foerdert.nrw/foerdermassnahmen/progresnrw-klimaschutztechnik-2026' },
+        ]
+      },
+      {
+        id: 'steuer', ebene: 'bund',
+        name: 'Steuerbonus § 35c EStG (Alternative)',
+        type: 'Steuerermäßigung – alternativ zu BAFA/KfW-Zuschuss',
+        betrag: 0, active: false, kombi: false,
+        kombiText: 'NICHT kombinierbar mit BAFA-Zuschuss oder KfW-Tilgungszuschuss für dieselbe Maßnahme',
+        bedingungen: [
+          '20 % der Sanierungskosten über 3 Jahre absetzbar (7 % / 7 % / 6 %)',
+          'Nur für selbst genutzte Eigentumswohnungen / Häuser',
+          'Mindeststandards an Dämmung wie bei BEG müssen eingehalten werden',
+          'Sinnvolle Alternative, wenn BAFA-Antrag versäumt wurde',
+          'Kein Energieberater-Nachweis für Antragstellung nötig',
+        ],
+        links: [
+          { label: 'BMF – § 35c EStG Steuerermäßigung (Bundesfinanzministerium)', url: 'https://www.bundesfinanzministerium.de/Content/DE/FAQ/2020-03-09-steuerforderung-energetische-gebaudesanierung.html' },
+        ]
+      },
+    ];
+
+    const list = document.getElementById('progList');
+    if (list) {
+      list.innerHTML = '';
+      progs
+        .filter((p: any) => activeTab === 'alle' || p.ebene === activeTab)
+        .forEach((p: any) => {
+          const cls = p.active ? 'active' : 'inactive';
+          const comboBadge = p.kombi
+            ? `<span class="combo-badge combo-yes">${iconCheck} Kombinierbar</span>`
+            : `<span class="combo-badge combo-no">${iconX} Nicht kombinierbar mit BAFA/KfW</span>`;
+          const betragText = p.betrag > 0
+            ? fmt(p.betrag)
+            : (p.id === 'kfw261' && p.active ? '(Kredit + Tilgungszuschuss)' : 'nicht anwendbar');
+          const linksHtml = p.links
+            .map((l: any) => `<a class="source-link" href="${l.url}" target="_blank" rel="noopener noreferrer">${iconLink} ${l.label}</a>`)
+            .join('');
+
+          list.innerHTML +=
+            `<div class="prog-item ${cls}">` +
+              `<div class="prog-header">` +
+                `<div class="prog-header-left">` +
+                  `<span class="prog-name">${p.name}</span>` +
+                  `<span class="prog-type">${p.type}</span>` +
+                `</div>` +
+                `<span class="prog-amount">${betragText}</span>` +
+              `</div>` +
+              `<div class="prog-cond">${p.bedingungen.map((b: string) => '· ' + b).join('<br>')}</div>` +
+              `<div style="margin-top:5px">${comboBadge}</div>` +
+              `<div class="prog-cond" style="margin-top:3px;font-style:italic">${p.kombiText}</div>` +
+              `<div class="source-links">${linksHtml}</div>` +
+            `</div>`;
+        });
+    }
+  }
+
+  recalc();
+</script>
