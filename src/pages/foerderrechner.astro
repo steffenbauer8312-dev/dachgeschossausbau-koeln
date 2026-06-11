@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import ContactForm from '../components/ContactForm.astro';
+import LeadForm from '../components/LeadForm.astro';
 import '../styles/foerderrechner.css';
 
 const schema = {
@@ -283,7 +283,12 @@ const schema = {
       </div>
     </section>
 
-    <ContactForm showPLZ={true} />
+    <LeadForm
+      variant="full"
+      title="Ihren Dachgeschossausbau unverbindlich anfragen"
+      subtitle="Wir melden uns innerhalb von 24 Stunden bei Ihnen."
+      buttonText="Kostenlose Erstberatung anfragen"
+    />
   </main>
 
   <Footer />

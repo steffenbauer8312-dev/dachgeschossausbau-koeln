@@ -1,0 +1,270 @@
+---
+interface Props {
+  variant?: 'inline' | 'full';
+  title?: string;
+  subtitle?: string;
+  buttonText?: string;
+}
+
+const {
+  variant = 'full',
+  title = 'Ihren Dachgeschossausbau unverbindlich anfragen',
+  subtitle = 'Wir melden uns innerhalb von 24 Stunden.',
+  buttonText = 'Kostenlose Erstberatung anfragen'
+} = Astro.props;
+
+const stadtteile = [
+  'Altstadt-Nord', 'Altstadt-Süd', 'Neustadt-Nord', 'Neustadt-Süd',
+  'Deutz', 'Mülheim', 'Kalk', 'Vingst', 'Humboldt/Gremberg',
+  'Chorweiler', 'Ehrenfeld', 'Neuehrenfeld', 'Bickendorf', 'Vogelsang',
+  'Klettenberg', 'Sülz', 'Lindenthal', 'Braunsfeld', 'Müngersdorf',
+  'Junkersdorf', 'Weiden', 'Lövenich', 'Widdersdorf', 'Rodenkirchen',
+  'Weiß', 'Sürth', 'Godorf', 'Hahnwald', 'Marienburg', 'Bayenthal',
+  'Raderberg', 'Raderthal', 'Zollstock', 'Rondorf', 'Meschenich',
+  'Nippes', 'Mauenheim', 'Riehl', 'Niehl', 'Weidenpesch', 'Longerich',
+  'Fühlingen', 'Seeberg', 'Volkhoven/Weiler', 'Chorweiler-Nord',
+  'Porz', 'Eil', 'Ensen', 'Gremberghoven', 'Finkenberg', 'Urbach',
+  'Wahnheide', 'Wahn', 'Lind', 'Libur', 'Zündorf', 'Langel', 'Poll',
+  'Andere', 'Umgebung Kölns'
+];
+
+const projekttypen = [
+  { value: '', label: 'Bitte wählen…' },
+  { value: 'einfacher-ausbau', label: 'Einfacher Ausbau (Dämmung, Boden, Ausbau)' },
+  { value: 'wohnung', label: 'Wohnung im Dachgeschoss (inkl. Bad, Elektrik)' },
+  { value: 'aufstockung', label: 'Dachaufstockung (komplette neue Etage)' },
+  { value: 'gaube', label: 'Dachgaube oder Dachaufbau' },
+  { value: 'daemmung', label: 'Dachdämmung (GEG-konform)' },
+  { value: 'komplett', label: 'Kompletter Dachgeschossausbau' },
+  { value: 'investor-mfh', label: 'Investor: Mehrfamilienhaus-Dachgeschoss' },
+  { value: 'denkmal', label: 'Denkmalgeschütztes Gebäude' },
+  { value: 'sonstiges', label: 'Sonstiges' }
+];
+---
+
+{variant === 'full' && (
+  <section class="bg-gradient-to-br from-teal-600 to-teal-700 text-white py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold mb-2 text-center">
+          {title}
+        </h2>
+        <p class="text-teal-100 text-center mb-8">
+          {subtitle}
+        </p>
+
+        <form class="bg-white rounded-xl p-6 md:p-8 shadow-2xl" id="leadform-{variant}">
+          <div class="space-y-5">
+            <div>
+              <label for="lf-name" class="block text-slate-700 font-medium mb-1.5 text-sm">Name *</label>
+              <input
+                type="text"
+                id="lf-name"
+                name="name"
+                required
+                placeholder="Max Mustermann"
+                class="lf-input"
+              />
+            </div>
+
+            <div>
+              <label for="lf-email" class="block text-slate-700 font-medium mb-1.5 text-sm">E-Mail *</label>
+              <input
+                type="email"
+                id="lf-email"
+                name="email"
+                required
+                placeholder="ihre@email.de"
+                class="lf-input"
+              />
+            </div>
+
+            <div>
+              <label for="lf-phone" class="block text-slate-700 font-medium mb-1.5 text-sm">Telefon *</label>
+              <input
+                type="tel"
+                id="lf-phone"
+                name="phone"
+                required
+                placeholder="+49 1521 6117439"
+                class="lf-input"
+              />
+            </div>
+
+            <div>
+              <label for="lf-projekt" class="block text-slate-700 font-medium mb-1.5 text-sm">Projekttyp *</label>
+              <select id="lf-projekt" name="projekttyp" required class="lf-input">
+                {projekttypen.map(t => (
+                  <option value={t.value}>{t.label}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label for="lf-stadtteil" class="block text-slate-700 font-medium mb-1.5 text-sm">Kölner Stadtteil / Region</label>
+              <select id="lf-stadtteil" name="stadtteil" class="lf-input">
+                <option value="">Bitte wählen…</option>
+                {stadtteile.map(s => (
+                  <option value={s}>{s}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label for="lf-message" class="block text-slate-700 font-medium mb-1.5 text-sm">Ihre Nachricht</label>
+              <textarea
+                id="lf-message"
+                name="message"
+                rows={4}
+                placeholder="Beschreiben Sie kurz Ihr Vorhaben..."
+                class="lf-input resize-none"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="lf-submit"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              </svg>
+              <span class="lf-submit-text">{buttonText}</span>
+            </button>
+
+            <p class="text-xs text-slate-500 text-center">
+              Mit dem Absenden stimmen Sie unserer <a href="/datenschutz" class="text-teal-600 hover:underline">Datenschutzerklärung</a> zu.
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+)}
+
+{variant === 'inline' && (
+  <div class="bg-white rounded-xl shadow-2xl p-5">
+    <h2 class="text-lg font-bold text-slate-800 mb-1">
+      {title}
+    </h2>
+    <p class="text-slate-600 text-xs mb-4">
+      {subtitle}
+    </p>
+    <form class="space-y-3" id="leadform-{variant}">
+      <input
+        type="text"
+        name="name"
+        required
+        placeholder="Name *"
+        class="lf-input-inline"
+      />
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder="E-Mail *"
+        class="lf-input-inline"
+      />
+      <input
+        type="tel"
+        name="phone"
+        required
+        placeholder="Telefon *"
+        class="lf-input-inline"
+      />
+      <select name="projekttyp" required class="lf-input-inline">
+        {projekttypen.map(t => (
+          <option value={t.value}>{t.label}</option>
+        ))}
+      </select>
+      <button
+        type="submit"
+        class="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition-all duration-200"
+      >
+        <span class="lf-submit-text">{buttonText}</span>
+      </button>
+    </form>
+  </div>
+)}
+
+<style>
+  .lf-input {
+    width: 100%;
+    padding: 0.625rem 1rem;
+    border: 1px solid rgb(203 213 225);
+    border-radius: 0.5rem;
+    color: rgb(30 41 59);
+    transition: all 0.2s;
+    background: white;
+  }
+  .lf-input:focus {
+    outline: none;
+    border-color: rgb(13 148 136);
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+  }
+  .lf-input-inline {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid rgb(203 213 225);
+    border-radius: 0.5rem;
+    color: rgb(30 41 59);
+    font-size: 0.875rem;
+    transition: all 0.2s;
+    background: white;
+  }
+  .lf-input-inline:focus {
+    outline: none;
+    border-color: rgb(13 148 136);
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+  }
+  .lf-submit {
+    width: 100%;
+    background: rgb(13 148 136);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+  }
+  .lf-submit:hover {
+    background: rgb(15 118 110);
+  }
+  .lf-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('form[id^="leadform-"]').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const submitText = form.querySelector('.lf-submit-text') as HTMLElement;
+      const originalText = submitText?.textContent || 'Absenden';
+
+      submitBtn.disabled = true;
+      if (submitText) submitText.textContent = 'Wird gesendet...';
+
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      if (submitText) submitText.textContent = 'Danke für Ihre Anfrage!';
+      submitBtn.classList.remove('bg-teal-500', 'hover:bg-teal-600');
+      submitBtn.classList.add('bg-green-500');
+
+      setTimeout(() => {
+        (form as HTMLFormElement).reset();
+        submitBtn.disabled = false;
+        if (submitText) submitText.textContent = originalText;
+        submitBtn.classList.remove('bg-green-500');
+        submitBtn.classList.add('bg-teal-500', 'hover:bg-teal-600');
+      }, 4000);
+    });
+  });
+</script>

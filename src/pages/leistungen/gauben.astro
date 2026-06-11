@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import FAQ from '../../components/FAQ.astro';
-import ContactForm from '../../components/ContactForm.astro';
+import LeadForm from '../../components/LeadForm.astro';
 
 const faqs = [
   {
@@ -57,76 +57,15 @@ const schema = {
             </p>
           </div>
           <!-- Kompaktes Leadformular -->
-          <div class="bg-white rounded-xl shadow-2xl p-5">
-            <h2 class="text-lg font-bold text-slate-800 mb-1">
-              Gaube planen?
-            </h2>
-            <p class="text-slate-600 text-xs mb-4">
-              Wir beraten Sie zur Machbarkeit in Ihrem Veedel.
-            </p>
-            <form class="space-y-3" id="hero-form">
-              <input
-                type="text"
-                name="name"
-                required
-                placeholder="Name *"
-                class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm text-slate-800 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-              />
-              <div class="grid grid-cols-2 gap-3">
-                <input
-                  type="tel"
-                  name="phone"
-                  required
-                  placeholder="Telefon *"
-                  class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm text-slate-800 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-                />
-                <input
-                  type="text"
-                  name="plz"
-                  placeholder="PLZ"
-                  class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm text-slate-800 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-                />
-              </div>
-              <textarea
-                name="message"
-                rows={2}
-                placeholder="Beschreiben Sie kurz Ihr Vorhaben..."
-                class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm text-slate-800 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 resize-none"
-              ></textarea>
-              <button
-                type="submit"
-                class="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition-all duration-200"
-              >
-                Kostenlose Beratung
-              </button>
-            </form>
-          </div>
+          <LeadForm
+            variant="inline"
+            title="Gaube planen?"
+            subtitle="Wir beraten Sie zur Machbarkeit in Ihrem Veedel."
+            buttonText="Kostenlose Beratung"
+          />
         </div>
       </div>
     </section>
-
-    <script>
-      const form = document.getElementById('hero-form') as HTMLFormElement;
-      if (form) {
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const btn = form.querySelector('button') as HTMLButtonElement;
-          btn.disabled = true;
-          btn.textContent = 'Wird gesendet...';
-          await new Promise(r => setTimeout(r, 1500));
-          btn.textContent = 'Gesendet!';
-          btn.classList.remove('bg-teal-500', 'hover:bg-teal-600');
-          btn.classList.add('bg-green-500');
-          setTimeout(() => {
-            form.reset();
-            btn.disabled = false;
-            btn.textContent = 'Kostenlose Beratung';
-            btn.classList.remove('bg-green-500');
-            btn.classList.add('bg-teal-500', 'hover:bg-teal-600');
-          }, 3000);
-        });
-      }
-    </script>
 
     <section class="py-16 md:py-24 bg-white">
       <div class="container mx-auto px-4">
@@ -176,7 +115,12 @@ const schema = {
       </div>
     </section>
 
-    <ContactForm showPLZ={true} />
+    <LeadForm
+      variant="full"
+      title="Ihren Dachgeschossausbau unverbindlich anfragen"
+      subtitle="Wir melden uns innerhalb von 24 Stunden bei Ihnen."
+      buttonText="Kostenlose Erstberatung anfragen"
+    />
   </main>
 
   <Footer />

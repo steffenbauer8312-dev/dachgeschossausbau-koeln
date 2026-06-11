@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import ServiceGrid from '../components/ServiceGrid.astro';
 import FAQ from '../components/FAQ.astro';
 import CostTable from '../components/CostTable.astro';
-import ContactForm from '../components/ContactForm.astro';
+import LeadForm from '../components/LeadForm.astro';
 
 const heroHeadline = 'Dachgeschossausbau Köln – Wohnraum gewinnen über den Dächern der Stadt';
 const heroSubline = 'Wir bauen Dachgeschosse in Köln aus – mit eigenen Leuten, seit vielen Jahren. Ein Ansprechpartner für alles: Statik, Dämmung, Gauben, Innenausbau.';
@@ -173,121 +173,15 @@ const serviceSchema = {
         </div>
 
         <!-- Rechte Spalte: Kompaktes Leadformular -->
-        <div class="bg-white rounded-xl shadow-2xl p-6 md:p-8">
-          <h2 class="text-xl font-bold text-slate-800 mb-2">
-            Kostenlose Beratung anfragen
-          </h2>
-          <p class="text-slate-600 text-sm mb-6">
-            Wir melden uns innerhalb von 24 Stunden bei Ihnen.
-          </p>
-
-          <form class="space-y-4" id="hero-contact-form">
-            <div>
-              <input
-                type="text"
-                name="name"
-                required
-                placeholder="Ihr Name *"
-                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-slate-800 transition-all duration-200 text-sm"
-              />
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <input
-                  type="tel"
-                  name="phone"
-                  required
-                  placeholder="Telefon *"
-                  class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-slate-800 transition-all duration-200 text-sm"
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  name="plz"
-                  placeholder="PLZ (Köln)"
-                  pattern="[0-9]{5}"
-                  class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-slate-800 transition-all duration-200 text-sm"
-                />
-              </div>
-            </div>
-            <div>
-              <select
-                name="project-type"
-                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-slate-800 transition-all duration-200 text-sm"
-              >
-                <option value="">Art des Vorhabens...</option>
-                <option value="wohnraumausbau">Wohnraumausbau im Dachgeschoss</option>
-                <option value="dachgaube">Einbau einer Dachgaube</option>
-                <option value="daemmung">Dachdämmung (GEG)</option>
-                <option value="komplett">Kompletter Dachgeschossausbau</option>
-                <option value="sonstiges">Sonstiges</option>
-              </select>
-            </div>
-            <div>
-              <textarea
-                name="message"
-                rows={3}
-                placeholder="Beschreiben Sie kurz Ihr Vorhaben..."
-                class="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-slate-800 transition-all duration-200 resize-none text-sm"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              class="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-              </svg>
-              Jetzt Beratung anfragen
-            </button>
-            <p class="text-xs text-slate-500 text-center">
-              Mit dem Absenden stimmen Sie unserer <a href="/datenschutz" class="text-teal-600 hover:underline">Datenschutzerklärung</a> zu.
-            </p>
-          </form>
-        </div>
+        <LeadForm
+          variant="inline"
+          title="Kostenlose Beratung anfragen"
+          subtitle="Wir melden uns innerhalb von 24 Stunden bei Ihnen."
+          buttonText="Jetzt Beratung anfragen"
+        />
       </div>
     </div>
   </section>
-
-  <script>
-    const heroForm = document.getElementById('hero-contact-form') as HTMLFormElement;
-    if (heroForm) {
-      heroForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const button = heroForm.querySelector('button[type="submit"]') as HTMLButtonElement;
-        button.disabled = true;
-        button.innerHTML = `
-          <svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-          </svg>
-          Wird gesendet...
-        `;
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        button.innerHTML = `
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-          </svg>
-          Anfrage gesendet!
-        `;
-        button.classList.remove('bg-teal-500', 'hover:bg-teal-600');
-        button.classList.add('bg-green-500');
-        setTimeout(() => {
-          heroForm.reset();
-          button.disabled = false;
-          button.innerHTML = `
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-            Jetzt Beratung anfragen
-          `;
-          button.classList.remove('bg-green-500');
-          button.classList.add('bg-teal-500', 'hover:bg-teal-600');
-        }, 3000);
-      });
-    }
-  </script>
 
     <!-- Über uns Section -->
     <section class="py-16 md:py-24 bg-white">
@@ -513,7 +407,7 @@ const serviceSchema = {
           </div>
 
           <div class="mt-8 text-center">
-            <a href="/foerderungen" class="inline-flex items-center gap-2 bg-teal-100 text-teal-700 font-semibold px-5 py-3 rounded-lg hover:bg-teal-200 transition-colors duration-200">
+            <a href="/foerderrechner" class="inline-flex items-center gap-2 bg-teal-100 text-teal-700 font-semibold px-5 py-3 rounded-lg hover:bg-teal-200 transition-colors duration-200">
               Fördermittel für Ihren Dachausbau in Köln
             </a>
           </div>
@@ -600,7 +494,12 @@ const serviceSchema = {
     <FAQ faqs={faqs} />
 
     <!-- CTA Section -->
-    <ContactForm showPLZ={true} />
+    <LeadForm
+      variant="full"
+      title="Ihren Dachgeschossausbau unverbindlich anfragen"
+      subtitle="Wir melden uns innerhalb von 24 Stunden bei Ihnen."
+      buttonText="Kostenlose Erstberatung anfragen"
+    />
   </main>
 
   <Footer />
