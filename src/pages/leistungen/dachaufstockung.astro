@@ -1,0 +1,607 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet eine Dachaufstockung in Köln?',
+    answer: 'Eine Dachaufstockung in Köln kostet zwischen 2.500 und 4.500 Euro pro Quadratmeter – je nach Statik, Dachform und Ausstattung. Für ein typisches 25 m² großes Staffelgeschoss müssen Sie mit 60.000 bis 110.000 Euro rechnen. Im Festpreis-Angebot kalkulieren wir alle Gewerke transparent: Zimmerarbeiten, Dämmung, Dachdecker, Elektro, Heizung, Sanitär.'
+  },
+  {
+    question: 'Brauche ich für eine Dachaufstockung in Köln eine Baugenehmigung?',
+    answer: 'Ja, in Köln ist für jede Dachaufstockung eine Baugenehmigung erforderlich. Zuständig ist das Bauaufsichtsamt Köln. Wir übernehmen die komplette Antragstellung inklusive der erforderlichen Unterlagen: Bauantrag, Statik, Energieausweis, Entwässerungsplan. In denkmalgeschützten Veedeln wie der Südstadt oder in Marienburg kommen zusätzliche Auflagen hinzu, die wir mit Ihnen besprechen.'
+  },
+  {
+    question: 'Welche Voraussetzungen muss mein Dach für eine Aufstockung erfüllen?',
+    answer: 'Das Bestandsdach muss die Lasten der Aufstockung tragen können. Wir prüfen dafür die vorhandene Statik: Tragfähigkeit der Wände, Zustand der Geschossdecke, Fundamente. Bei älteren Häusern in Köln ist eine Verstärkung der Tragwerke häufig nötig – das kalkulieren wir von Anfang an mit ein. Außerdem relevant: die Grundflächenzahl (GRZ) und die Geschossflächenzahl (GFZ) gemäß Bebauungsplan müssen eingehalten werden.'
+  },
+  {
+    question: 'Welche Dachaufstockungs-Arten gibt es?',
+    answer: 'Es gibt drei gängige Varianten: die klassische Holzständer-Aufstockung (kostengünstig, schnell), die Massivbau-Aufstockung mit Mauerwerk oder Beton (besserer Schallschutz) sowie die vorgefertigte Modulbauweise (kürzeste Bauzeit, ideal bei engen Innenstadtlagen). Welche Lösung für Ihr Haus in Köln die richtige ist, hängt von der Statik, dem Bebauungsplan und Ihrem Budget ab.'
+  },
+  {
+    question: 'Wie lange dauert eine Dachaufstockung?',
+    answer: 'Eine Dachaufstockung dauert in der Regel 8 bis 14 Wochen reine Bauzeit. Dazu kommt die Vorlaufzeit für Planung, Statik und Baugenehmigung – je nach Auslastung des Kölner Bauaufsichtsamts sind das 2 bis 4 Monate. Von der ersten Beratung bis zur schlüsselfertigen Übergabe sollten Sie 5 bis 7 Monate einplanen.'
+  },
+  {
+    question: 'Bekomme ich für eine Dachaufstockung Förderung?',
+    answer: 'Ja, eine Dachaufstockung kann über die BAFA BEG EM (15–20 % Zuschuss) gefördert werden, sofern die energetischen Mindeststandards erfüllt werden. Auch die Stadt Köln gewährt einen Zuschuss von 10 % auf die BEG-Förderung. Den Steuerbonus nach § 35c EStG können Sie alternativ nutzen. Unser Förderrechner zeigt Ihnen die mögliche Förderung für Ihr Vorhaben.'
+  },
+  {
+    question: 'Ist eine Dachaufstockung auch in Reihenhaussiedlungen möglich?',
+    answer: 'Ja, das ist sogar einer der häufigsten Fälle in Köln. In Reihenhaussiedlungen wie in Chorweiler, Porz oder Mülheim gibt es oft einheitliche Dachformen – bei einer Aufstockung muss die neue Etage sich in die bestehende Dachlandschaft einfügen. Wir achten auf harmonische Übergänge zu den Nachbarhäusern und kümmern uns um die Abstimmung mit den Anliegern.'
+  },
+  {
+    question: 'Was ist der Unterschied zwischen Dachausbau und Dachaufstockung?',
+    answer: 'Kurz: Beim Dachausbau wird das bereits vorhandene Dachgeschoss zu Wohnraum umgebaut. Bei der Dachaufstockung wird ein komplett neues Geschoss auf das bestehende Dach aufgesetzt. Beide Maßnahmen kombiniert sind möglich – dann sprechen wir von einer Komplettsanierung mit Aufstockung. Welche Variante für Sie sinnvoll ist, hängt von der Höhe des Kniestocks und der Tragfähigkeit ab.'
+  }
+];
+
+const aufstockungsArten = [
+  {
+    name: 'Holzständer-Aufstockung',
+    kurzbeschreibung: 'Die häufigste und wirtschaftlichste Variante in Köln',
+    details: [
+      'Schnelle Bauweise durch vorgefertigte Holzständer-Elemente',
+      'Geringes Eigengewicht – oft ohne statische Verstärkung möglich',
+      'Hervorragende Dämmwerte (U-Wert bis 0,12 W/(m²K))',
+      'Ideal für Sattel- und Walmdächer',
+      'Bauzeit: 2–3 Wochen Rohbau'
+    ],
+    icon: '🏠',
+    kosten: '2.500–3.500 €/m²'
+  },
+  {
+    name: 'Massivbau-Aufstockung',
+    kurzbeschreibung: 'Bester Schallschutz und hohe Wertbeständigkeit',
+    details: [
+      'Mauerwerk oder Beton – solide Bauweise',
+      'Optimaler Schallschutz zwischen den Geschossen',
+      'Hohe Wertbeständigkeit der Immobilie',
+      'Statische Verstärkung meist erforderlich',
+      'Bauzeit: 4–6 Wochen Rohbau'
+    ],
+    icon: '🏢',
+    kosten: '3.000–4.500 €/m²'
+  },
+  {
+    name: 'Modulbauweise',
+    kurzbeschreibung: 'Vorgefertigt – kürzeste Bauzeit auf der Baustelle',
+    details: [
+      'Komplette Module werden im Werk vorgefertigt',
+      'Aufbau in 1–2 Tagen auf der Baustelle',
+      'Weniger Baulärm in der Nachbarschaft',
+      'Ideal bei engen Innenstadtlagen in Köln',
+      'Bauzeit: 1–2 Tage Aufbau vor Ort'
+    ],
+    icon: '⚡',
+    kosten: '3.500–4.500 €/m²'
+  }
+];
+
+const vorteile = [
+  {
+    title: 'Mehr Wohnfläche ohne Grundstücksverlust',
+    description: 'Eine Dachaufstockung schafft neue Wohnfläche, ohne dass Sie ein größeres Grundstück kaufen müssen. In Köln, wo Bauland knapp und teuer ist, ein entscheidender Vorteil.'
+  },
+  {
+    title: 'Wertsteigerung der Immobilie',
+    description: 'Eine fachgerechte Aufstockung steigert den Wert Ihres Hauses deutlich – oft um den Faktor 1,5 bis 2 der Baukosten. Die zusätzliche Fläche wirkt wie ein kostenloser Vermögensaufbau.'
+  },
+  {
+    title: 'Energetische Sanierung inklusive',
+    description: 'Bei einer Aufstockung wird das gesamte Dach neu aufgebaut. Sie erfüllen die Anforderungen des Gebäudeenergiegesetzes (GEG) automatisch und profitieren von BAFA-Förderung.'
+  },
+  {
+    title: 'Kein Verlust von Gartenfläche',
+    description: 'Anders als bei einem Anbau bleibt Ihr Garten vollständig erhalten. Gerade in den innerstädtischen Veedeln mit kleinen Grundstücken ein unschätzbarer Vorteil.'
+  },
+  {
+    title: 'Schneller bezugsfertig als Neubau',
+    description: 'Sie wohnen während der Bauphase fast immer im Haus. Die Aufstockung findet oben statt – kein Umzug, keine Doppelbelastung.'
+  },
+  {
+    title: 'Flexible Grundrisse',
+    description: 'Ob zusätzliche Kinderzimmer, ein Homeoffice, eine Einliegerwohnung oder ein Mehrgenerationen-Projekt – die Gestaltungsmöglichkeiten sind vielfältig.'
+  }
+];
+
+const schema = {
+  "@type": "Service",
+  "serviceType": "Dachaufstockung",
+  "provider": {
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Dachgeschossausbau Köln"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Köln"
+  }
+};
+---
+
+<BaseLayout
+  title="Dachaufstockung Köln – mehr Wohnraum auf Bestandsdach | Festpreis"
+  description="Dachaufstockung in Köln vom Meisterbetrieb: Holzständer, Massivbau oder Modulbau. Mehr Wohnfläche ohne Grundstücksverlust. Festpreis-Garantie & Förderung bis zu 30 %."
+>
+  <Header />
+
+  <main>
+    <!-- Hero mit Inline-Formular -->
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/">Startseite</a> / <a href="/leistungen">Leistungen</a> / <span class="text-white">Dachaufstockung</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachaufstockung in Köln – mehr Wohnraum auf Ihrem Bestandsdach
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Eine Dachaufstockung schafft komplett neue Wohnfläche, ohne dass Sie ein größeres Grundstück kaufen müssen. Wir planen, genehmigen und bauen Ihr neues Geschoss in Köln – mit Festpreis und Fördermittel-Optimierung.
+            </p>
+          </div>
+          <!-- Kompaktes Leadformular -->
+          <div class="bg-white rounded-xl shadow-2xl p-5">
+            <h2 class="text-lg font-bold text-slate-800 mb-1">
+              Dachaufstockung anfragen
+            </h2>
+            <p class="text-slate-600 text-xs mb-4">
+              Kostenlose Vor-Ort-Beratung in Köln & Umland.
+            </p>
+            <form class="space-y-3" id="hero-form">
+              <input
+                type="text"
+                name="name"
+                required
+                placeholder="Name *"
+                class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm text-slate-800 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+              />
+              <div class="grid grid-cols-2 gap-3">
+                <input
+                  type="tel"
+                  name="phone"
+                  required
+                  placeholder="Telefon *"
+                  class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm text-slate-800 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                />
+                <input
+                  type="text"
+                  name="plz"
+                  placeholder="PLZ"
+                  class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm text-slate-800 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                />
+              </div>
+              <select
+                name="project-type"
+                class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm text-slate-800 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+              >
+                <option value="">Vorhaben auswählen...</option>
+                <option value="aufstockung">Reine Dachaufstockung</option>
+                <option value="kombi">Aufstockung + DG-Ausbau</option>
+                <option value="sonstiges">Sonstiges</option>
+              </select>
+              <textarea
+                name="message"
+                rows={2}
+                placeholder="Kurze Beschreibung Ihres Vorhabens..."
+                class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm text-slate-800 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 resize-none"
+              ></textarea>
+              <button
+                type="submit"
+                class="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition-all duration-200"
+              >
+                Kostenlose Beratung
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const form = document.getElementById('hero-form') as HTMLFormElement;
+      if (form) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const btn = form.querySelector('button') as HTMLButtonElement;
+          btn.disabled = true;
+          btn.textContent = 'Wird gesendet...';
+          await new Promise(r => setTimeout(r, 1500));
+          btn.textContent = 'Gesendet!';
+          btn.classList.remove('bg-teal-500', 'hover:bg-teal-600');
+          btn.classList.add('bg-green-500');
+          setTimeout(() => {
+            form.reset();
+            btn.disabled = false;
+            btn.textContent = 'Kostenlose Beratung';
+            btn.classList.remove('bg-green-500');
+            btn.classList.add('bg-teal-500', 'hover:bg-teal-600');
+          }, 3000);
+        });
+      }
+    </script>
+
+    <!-- Einleitung: Was ist eine Dachaufstockung -->
+    <section class="py-16 md:py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto content-area">
+          <h2>Was ist eine Dachaufstockung?</h2>
+          <p>
+            Bei einer <strong>Dachaufstockung in Köln</strong> wird auf das bestehende Dach eines Hauses ein komplett neues Geschoss aufgesetzt. Im Gegensatz zum klassischen <a href="/leistungen" class="text-teal-600 hover:underline">Dachgeschossausbau</a> entsteht dabei kein Raum innerhalb des bereits vorhandenen Daches, sondern ein neues Stockwerk – entweder als vollständiges Vollgeschoss oder als Staffelgeschoss mit reduzierter Grundfläche.
+          </p>
+          <p>
+            Die Dachaufstockung ist in Köln besonders attraktiv, weil das Bauland knapp und teuer ist. Wer mehr Wohnraum braucht, hat drei Optionen: ein größeres Grundstück kaufen (in den meisten Veedeln unrealistisch), einen Anbau ins Grundstück setzen (frisst Gartenfläche) oder nach oben bauen. Die Aufstockung ist oft die wirtschaftlichste und schnellste Lösung – besonders in dicht bebauten Stadtteilen wie Ehrenfeld, Nippes oder der Südstadt.
+          </p>
+          <p>
+            Voraussetzung ist eine tragfähige Statik des Bestandsgebäudes und die Einhaltung des Bebauungsplans. Wir prüfen beides vorab und sagen Ihnen ehrlich, ob eine Aufstockung bei Ihnen möglich ist und was sie kostet.
+          </p>
+
+          <h2>Dachaufstockung vs. Dachgeschossausbau – was ist der Unterschied?</h2>
+          <p>
+            Viele Hausbesitzer verwechseln die beiden Begriffe, dabei sind es grundverschiedene Maßnahmen:
+          </p>
+          <p>
+            <strong>Dachgeschossausbau:</strong> Das bereits vorhandene Dachgeschoss wird zu Wohnraum umgebaut. Voraussetzung ist ein ausreichend hoher Kniestock (mindestens 1,20 m) und genügend Stehhöhe unter dem First. Der typische Einsatzbereich ist die Schaffung einer Wohnung im vorhandenen Dachvolumen.
+          </p>
+          <p>
+            <strong>Dachaufstockung:</strong> Ein neues, komplettes Geschoss wird auf das Bestandsdach aufgesetzt. Das alte Dach wird abgetragen oder überbaut, und es entsteht eine zusätzliche Etage mit voller Geschosshöhe. Einsatzbereich: deutliche Vergrößerung der Wohnfläche um ein ganzes Stockwerk (typisch 40–80 m² zusätzliche Wohnfläche).
+          </p>
+          <p>
+            In Köln sehen wir häufig die Kombination beider Maßnahmen – eine Aufstockung mit gleichzeitigem Ausbau des neuen Geschosses. Das ist die Königsdisziplin, bei der wir alle Gewerke aus einer Hand koordinieren.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vorteile -->
+    <section class="py-16 md:py-20 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4 text-center">
+            Warum eine Dachaufstockung in Köln sinnvoll ist
+          </h2>
+          <p class="text-slate-600 text-center max-w-2xl mx-auto mb-12">
+            Köln wächst – und der Platz wird knapper. Eine Aufstockung nutzt die einzige Ressource, die noch vorhanden ist: die Höhe.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {vorteile.map(vorteil => (
+              <div class="bg-white rounded-xl p-6 shadow-sm">
+                <div class="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">{vorteil.title}</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">{vorteil.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Aufstockungsarten -->
+    <section class="py-16 md:py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+              Die drei Arten der Dachaufstockung
+            </h2>
+            <p class="text-slate-600 max-w-2xl mx-auto">
+              Welche Bauweise für Ihr Haus in Köln die richtige ist, hängt von der Statik, dem Bebauungsplan und Ihren Anforderungen ab.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {aufstockungsArten.map(art => (
+              <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-100">
+                <div class="p-6">
+                  <div class="text-4xl mb-4">{art.icon}</div>
+                  <h3 class="text-xl font-bold text-slate-800 mb-2">{art.name}</h3>
+                  <p class="text-slate-600 text-sm mb-4">{art.kurzbeschreibung}</p>
+                  <ul class="space-y-2 mb-6">
+                    {art.details.map(detail => (
+                      <li class="flex items-start gap-2 text-sm text-slate-700">
+                        <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                  <div class="bg-teal-50 border border-teal-100 rounded-lg p-3 text-center">
+                    <p class="text-xs text-teal-600 mb-1">Richtpreis schlüsselfertig</p>
+                    <p class="font-bold text-teal-700">{art.kosten}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ablauf -->
+    <section class="py-16 md:py-20 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-12 text-center">
+            So läuft Ihre Dachaufstockung in Köln ab
+          </h2>
+          <div class="space-y-6">
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
+                <div>
+                  <h3 class="text-lg font-bold text-slate-800 mb-2">Erstgespräch und Vor-Ort-Termin</h3>
+                  <p class="text-slate-600 text-sm leading-relaxed">
+                    Wir kommen zu Ihnen, schauen uns das Haus an und besprechen Ihre Wünsche. Dabei prüfen wir die Statik-Eignung, die baurechtlichen Möglichkeiten und das Potenzial. Innerhalb von 7 Tagen bekommen Sie eine erste Einschätzung mit Grobbudget.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">2</div>
+                <div>
+                  <h3 class="text-lg font-bold text-slate-800 mb-2">Planung und Bauantrag</h3>
+                  <p class="text-slate-600 text-sm leading-relaxed">
+                    Wir erstellen die Entwurfsplanung, lassen die Statik berechnen und reichen den Bauantrag beim Bauaufsichtsamt Köln ein. Die Bearbeitungszeit dort liegt aktuell bei 6–10 Wochen. Parallel beantragen wir – falls gewünscht – die Förderung (BAFA / KfW) VOR Beginn der Baumaßnahme.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">3</div>
+                <div>
+                  <h3 class="text-lg font-bold text-slate-800 mb-2">Dach abtragen und Rohbau</h3>
+                  <p class="text-slate-600 text-sm leading-relaxed">
+                    Das alte Dach wird abgedeckt, ggf. aufgestockt und neu eingedeckt. Bei einer Holzständer-Aufstockung hebt ein Kran die vorgefertigten Elemente in 1–2 Tagen auf das Haus. Beim Massivbau entsteht das neue Geschoss Stein auf Stein.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">4</div>
+                <div>
+                  <h3 class="text-lg font-bold text-slate-800 mb-2">Innenausbau und Technik</h3>
+                  <p class="text-slate-600 text-sm leading-relaxed">
+                    Dämmung, Trockenbau, Elektro, Heizung, Sanitär, Bodenbeläge, Maler – alle Gewerke koordinieren wir aus einer Hand. Sie haben einen festen Ansprechpartner und wissen jederzeit, was als Nächstes passiert.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">5</div>
+                <div>
+                  <h3 class="text-lg font-bold text-slate-800 mb-2">Schlüsselübergabe</h3>
+                  <p class="text-slate-600 text-sm leading-relaxed">
+                    Nach der Endabnahme durch das Bauaufsichtsamt und der Schlussrechnung bekommen Sie die Schlüssel für Ihr neues Geschoss. Auf Wunsch begleiten wir die ersten Tage und beheben eventuelle Restmängel.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kosten -->
+    <section class="py-16 md:py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6 text-center">
+            Was kostet eine Dachaufstockung in Köln?
+          </h2>
+          <p class="text-slate-600 text-center max-w-2xl mx-auto mb-8">
+            Die Kosten hängen von der Größe, der Bauweise, der Statik und der Ausstattung ab. Hier eine Orientierung für typische Projekte in Köln:
+          </p>
+          <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 mb-8">
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead>
+                  <tr class="bg-slate-800 text-white">
+                    <th class="text-left px-6 py-3 font-semibold text-sm">Projekt</th>
+                    <th class="text-right px-6 py-3 font-semibold text-sm">Größe</th>
+                    <th class="text-right px-6 py-3 font-semibold text-sm">Kosten (schlüsselfertig)</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200">
+                  <tr>
+                    <td class="px-6 py-3 text-slate-700">Kleine Aufstockung (z. B. Schleppgaube-Staffel)</td>
+                    <td class="px-6 py-3 text-slate-600 text-right">ca. 20 m²</td>
+                    <td class="px-6 py-3 text-slate-700 text-right font-medium">ab 50.000 €</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-6 py-3 text-slate-700">Mittlere Aufstockung (Vollgeschoss)</td>
+                    <td class="px-6 py-3 text-slate-600 text-right">ca. 40 m²</td>
+                    <td class="px-6 py-3 text-slate-700 text-right font-medium">ab 100.000 €</td>
+                  </tr>
+                  <tr>
+                    <td class="px-6 py-3 text-slate-700">Große Aufstockung (zweigeschossig)</td>
+                    <td class="px-6 py-3 text-slate-600 text-right">ca. 70 m²</td>
+                    <td class="px-6 py-3 text-slate-700 text-right font-medium">ab 175.000 €</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-6 py-3 text-slate-700">Premium mit Einliegerwohnung</td>
+                    <td class="px-6 py-3 text-slate-600 text-right">ca. 60 m²</td>
+                    <td class="px-6 py-3 text-slate-700 text-right font-medium">ab 180.000 €</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="bg-teal-50 border border-teal-100 rounded-xl p-6">
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Was im Festpreis enthalten ist</h3>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                Zimmermanns- und Holzbauarbeiten
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                Dachdecker- und Klempnerarbeiten
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                Dämmung nach GEG-Standard
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                Trockenbau und Maler
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                Elektroinstallation
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                Heizung und Sanitär
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                Fenster und Türen
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                Bodenbeläge nach Wahl
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Baurechtliche Hinweise Köln -->
+    <section class="py-16 md:py-20 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto content-area">
+          <h2>Wichtige baurechtliche Hinweise für Dachaufstockungen in Köln</h2>
+          <p>
+            In Köln gelten die Vorschriften der <strong>Bayerischen Bauordnung</strong> – pardon, der <strong>Landesbauordnung NRW (BauO NRW)</strong>. Die wichtigsten Punkte für Ihre Aufstockung:
+          </p>
+          <p>
+            <strong>Bebauungsplan prüfen:</strong> In den meisten Kölner Veedeln gibt es einen Bebauungsplan, der die maximale Geschossigkeit, die Firsthöhe und die Baugrenzen festlegt. Wir prüfen vorab, ob Ihr Vorhaben mit den Festsetzungen vereinbar ist oder ob eine Befreiung beantragt werden muss. In § 31 BauGB sind die Regelungen für Befreiungen festgehalten.
+          </p>
+          <p>
+            <strong>GRZ und GFZ einhalten:</strong> Die Grundflächenzahl (GRZ) und die Geschossflächenzahl (GFZ) sind entscheidend. Eine Aufstockung erhöht die Geschossfläche – das heißt, die GFZ kann überschritten werden. In manchen Fällen ist eine Befreiung möglich, in anderen nicht.
+          </p>
+          <p>
+            <strong>Denkmalschutz:</strong> In denkmalgeschützten Ensembles – etwa in der Südstadt, in Marienburg oder Teilen von Deutz – gelten zusätzliche Auflagen. Die Untere Denkmalbehörde muss zustimmen. Wir kennen die Spielregeln und stimmen die Planung frühzeitig mit allen Behörden ab.
+          </p>
+          <p>
+            <strong>Nachbarschaftsrecht NRW:</strong> Bei einer Aufstockung müssen Sie die Abstandsflächen zu Nachbargrundstücken einhalten (§ 6 BauO NRW). In Reihenhaussiedlungen ist das meist unkritisch, bei freistehenden Häusern kann es eng werden. Wir prüfen das vorab.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Förderung -->
+    <section class="py-16 md:py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto content-area">
+          <h2>Förderung für Ihre Dachaufstockung in Köln</h2>
+          <p>
+            Eine Dachaufstockung kann erheblich gefördert werden – vorausgesetzt, die energetischen Anforderungen werden erfüllt. Hier die wichtigsten Programme:
+          </p>
+          <p>
+            <strong>BAFA BEG EM (Einzelmaßnahmen):</strong> Bis zu 15 % Zuschuss auf die förderfähigen Kosten, mit individuellem Sanierungsfahrplan (iSFP) sogar 20 %. Bei einer Dachaufstockung mit Dämmung und neuer Heizung sind das schnell 10.000–25.000 € Zuschuss allein vom Bund. Förderfähig: max. 30.000 € pro Wohneinheit (60.000 € mit iSFP).
+          </p>
+          <p>
+            <strong>KfW 261 (Wohngebäude-Kredit):</strong> Für die Komplettsanierung zum Effizienzhaus gibt es zinsgünstige Kredite bis 150.000 € pro Wohneinheit plus Tilgungszuschuss von 5–45 %. Die Aufstockung zählt laut KfW-Merkblatt ausdrücklich als förderfähige Sanierung, wenn sie in eine Effizienzhaus-Sanierung eingebettet ist.
+          </p>
+          <p>
+            <strong>Stadt Köln – Zuschuss zur BEG:</strong> 10 % extra auf die BAFA-Förderung, sobald ein BAFA- oder KfW-Bescheid vorliegt. Programm läuft bis 31.12.2026 – begrenzte Mittel, first come first served.
+          </p>
+          <p>
+            <strong>Steuerbonus § 35c EStG:</strong> 20 % der Handwerkerkosten von der Steuerschuld absetzen, max. 1.200 € pro Jahr. Alternativ zur BAFA-Förderung nutzbar.
+          </p>
+          <p>
+            Wie viel Förderung Sie konkret erhalten können, sehen Sie in unserem <a href="/foerderrechner" class="text-teal-600 hover:underline">Förderrechner</a>. Wir beantragen die Mittel für Sie – selbstverständlich VOR Beginn der Baumaßnahme, wie es die BAFA vorschreibt.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kölner Veedel -->
+    <section class="py-16 md:py-20 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto content-area">
+          <h2>Dachaufstockung in den Kölner Veedeln – worauf Sie achten sollten</h2>
+          <p>
+            Jedes Veedel hat seine Eigenheiten. Hier ein Überblick, was bei einer Dachaufstockung in den typischen Kölner Stadtteilen zu beachten ist:
+          </p>
+          <p>
+            <strong>Innenstadt (Altstadt-Nord, Neustadt-Nord/Süd):</strong> Enge Straßen, viele denkmalgeschützte Häuser. Modulbauweise oder Holzständer sind hier ideal. Wir achten besonders auf die denkmalrechtliche Abstimmung.
+          </p>
+          <p>
+            <strong>Ehrenfeld, Nippes, Longerich:</strong> Dicht bebaute Gründerzeitviertel mit viel Potenzial für Aufstockungen. Hier lohnt sich der Blick auf den Bebauungsplan – oft sind die Firsthöhen klar geregelt.
+          </p>
+          <p>
+            <strong>Lindenthal, Junkersdorf, Müngersdorf:</strong> Villenviertel mit großen Grundstücken. Aufstockungen sind hier baurechtlich meist einfacher, da die Abstandsflächen großzügig sind.
+          </p>
+          <p>
+            <strong>Porz, Kalk, Mülheim:</strong> Viele Reihenhaussiedlungen aus den 1950er–70er Jahren. Hier sehen wir die häufigsten Dachaufstockungen – oft einheitlich, sodass die Nachbarschaftsabstimmung unkompliziert ist.
+          </p>
+          <p>
+            <strong>Rodenkirchen, Weiß, Sürth:</strong> Wohnlagen mit Einfamilienhäusern der 1980er–90er Jahre. Die Statik ist hier oft schon für eine leichte Aufstockung vorbereitet.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 md:py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Häufige Fragen zur Dachaufstockung
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gradient-to-r from-teal-500 to-teal-600 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">
+            Bereit für mehr Wohnraum in Köln?
+          </h2>
+          <p class="text-teal-100 mb-8 text-lg">
+            Lassen Sie uns gemeinsam prüfen, ob eine Dachaufstockung für Ihr Haus möglich ist. Erstberatung kostenlos, unverbindlich, vor Ort.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:+4915216117439" class="inline-flex items-center justify-center gap-2 bg-white text-teal-600 font-semibold px-6 py-3 rounded-lg hover:bg-teal-50 transition-colors duration-200">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              +49 1521 6117439
+            </a>
+            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 bg-slate-800 text-white font-semibold px-6 py-3 rounded-lg hover:bg-slate-900 transition-colors duration-200">
+              Beratung anfragen
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ContactForm showPLZ={true} />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
