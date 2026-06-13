@@ -13,6 +13,9 @@ const {
   buttonText = 'Kostenlose Erstberatung anfragen'
 } = Astro.props;
 
+// Eindeutige ID pro Instanz, damit mehrere LeadForms pro Seite möglich sind
+const uid = Math.random().toString(36).slice(2, 9);
+
 const stadtteile = [
   'Altstadt-Nord', 'Altstadt-Süd', 'Neustadt-Nord', 'Neustadt-Süd',
   'Deutz', 'Mülheim', 'Kalk', 'Vingst', 'Humboldt/Gremberg',
@@ -53,13 +56,19 @@ const projekttypen = [
           {subtitle}
         </p>
 
-        <form class="bg-white rounded-xl p-6 md:p-8 shadow-2xl" id="leadform-{variant}">
+        <form class="bg-white rounded-xl p-6 md:p-8 shadow-2xl" id={`leadform-full-${uid}`} action="/api/lead" method="POST">
+          <input type="hidden" name="service" value="Dachgeschossausbau">
+          <input type="hidden" name="city" value="Köln">
+          <input type="hidden" name="source" value="Website Formular">
+          <input type="hidden" name="redirect" value="/danke/">
+          <input type="text" name="url" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
           <div class="space-y-5">
             <div>
-              <label for="lf-name" class="block text-slate-700 font-medium mb-1.5 text-sm">Name *</label>
+              <label for={`lf-name-${uid}`} class="block text-slate-700 font-medium mb-1.5 text-sm">Name *</label>
               <input
                 type="text"
-                id="lf-name"
+                id={`lf-name-${uid}`}
                 name="name"
                 required
                 placeholder="Max Mustermann"
@@ -68,10 +77,10 @@ const projekttypen = [
             </div>
 
             <div>
-              <label for="lf-email" class="block text-slate-700 font-medium mb-1.5 text-sm">E-Mail *</label>
+              <label for={`lf-email-${uid}`} class="block text-slate-700 font-medium mb-1.5 text-sm">E-Mail *</label>
               <input
                 type="email"
-                id="lf-email"
+                id={`lf-email-${uid}`}
                 name="email"
                 required
                 placeholder="ihre@email.de"
@@ -80,10 +89,10 @@ const projekttypen = [
             </div>
 
             <div>
-              <label for="lf-phone" class="block text-slate-700 font-medium mb-1.5 text-sm">Telefon *</label>
+              <label for={`lf-phone-${uid}`} class="block text-slate-700 font-medium mb-1.5 text-sm">Telefon *</label>
               <input
                 type="tel"
-                id="lf-phone"
+                id={`lf-phone-${uid}`}
                 name="phone"
                 required
                 placeholder="+49 1521 6117439"
@@ -92,8 +101,8 @@ const projekttypen = [
             </div>
 
             <div>
-              <label for="lf-projekt" class="block text-slate-700 font-medium mb-1.5 text-sm">Projekttyp *</label>
-              <select id="lf-projekt" name="projekttyp" required class="lf-input">
+              <label for={`lf-projekt-${uid}`} class="block text-slate-700 font-medium mb-1.5 text-sm">Projekttyp *</label>
+              <select id={`lf-projekt-${uid}`} name="projekttyp" required class="lf-input">
                 {projekttypen.map(t => (
                   <option value={t.value}>{t.label}</option>
                 ))}
@@ -101,8 +110,8 @@ const projekttypen = [
             </div>
 
             <div>
-              <label for="lf-stadtteil" class="block text-slate-700 font-medium mb-1.5 text-sm">Kölner Stadtteil / Region</label>
-              <select id="lf-stadtteil" name="stadtteil" class="lf-input">
+              <label for={`lf-stadtteil-${uid}`} class="block text-slate-700 font-medium mb-1.5 text-sm">Kölner Stadtteil / Region</label>
+              <select id={`lf-stadtteil-${uid}`} name="stadtteil" class="lf-input">
                 <option value="">Bitte wählen…</option>
                 {stadtteile.map(s => (
                   <option value={s}>{s}</option>
@@ -111,9 +120,9 @@ const projekttypen = [
             </div>
 
             <div>
-              <label for="lf-message" class="block text-slate-700 font-medium mb-1.5 text-sm">Ihre Nachricht</label>
+              <label for={`lf-message-${uid}`} class="block text-slate-700 font-medium mb-1.5 text-sm">Ihre Nachricht</label>
               <textarea
-                id="lf-message"
+                id={`lf-message-${uid}`}
                 name="message"
                 rows={4}
                 placeholder="Beschreiben Sie kurz Ihr Vorhaben..."
@@ -149,7 +158,13 @@ const projekttypen = [
     <p class="text-slate-600 text-xs mb-4">
       {subtitle}
     </p>
-    <form class="space-y-3" id="leadform-{variant}">
+    <form class="space-y-3" id={`leadform-inline-${uid}`} action="/api/lead" method="POST">
+      <input type="hidden" name="service" value="Dachgeschossausbau">
+      <input type="hidden" name="city" value="Köln">
+      <input type="hidden" name="source" value="Website Formular Hero">
+      <input type="hidden" name="redirect" value="/danke/">
+      <input type="text" name="url" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
       <input
         type="text"
         name="name"
@@ -239,32 +254,3 @@ const projekttypen = [
     cursor: not-allowed;
   }
 </style>
-
-<script>
-  document.querySelectorAll('form[id^="leadform-"]').forEach((form) => {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-      const submitText = form.querySelector('.lf-submit-text') as HTMLElement;
-      const originalText = submitText?.textContent || 'Absenden';
-
-      submitBtn.disabled = true;
-      if (submitText) submitText.textContent = 'Wird gesendet...';
-
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      if (submitText) submitText.textContent = 'Danke für Ihre Anfrage!';
-      submitBtn.classList.remove('bg-teal-500', 'hover:bg-teal-600');
-      submitBtn.classList.add('bg-green-500');
-
-      setTimeout(() => {
-        (form as HTMLFormElement).reset();
-        submitBtn.disabled = false;
-        if (submitText) submitText.textContent = originalText;
-        submitBtn.classList.remove('bg-green-500');
-        submitBtn.classList.add('bg-teal-500', 'hover:bg-teal-600');
-      }, 4000);
-    });
-  });
-</script>

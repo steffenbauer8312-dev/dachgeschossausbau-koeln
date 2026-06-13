@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const schema = {
+  "@type": "WebPage",
+  "name": "Vielen Dank fuer Ihre Anfrage"
+};
+---
+
+<BaseLayout
+  title="Vielen Dank fuer Ihre Anfrage | Dachgeschossausbau Koeln"
+  description="Wir haben Ihre Anfrage erhalten und melden uns innerhalb von 24 Stunden bei Ihnen."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-teal-600 to-teal-700 text-white py-20 md:py-28">
+      <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto text-center">
+          <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-bold mb-4">
+            Vielen Dank fuer Ihre Anfrage!
+          </h1>
+          <p class="text-xl text-teal-100 mb-8 leading-relaxed">
+            Wir haben Ihre Nachricht erhalten und melden uns innerhalb von 24 Stunden bei Ihnen. In dringenden Faellen erreichen Sie uns telefonisch unter
+            <a href="tel:+4915216117439" class="font-semibold text-white underline hover:text-teal-50">+49 1521 6117439</a>.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/"
+              class="inline-flex items-center justify-center gap-2 bg-white text-teal-700 font-semibold px-6 py-3 rounded-lg hover:bg-teal-50 transition-colors duration-200"
+            >
+              Zurueck zur Startseite
+            </a>
+            <a
+              href="/leistungen"
+              class="inline-flex items-center justify-center gap-2 bg-slate-800 text-white font-semibold px-6 py-3 rounded-lg hover:bg-slate-900 transition-colors duration-200"
+            >
+              Unsere Leistungen ansehen
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">
+            Was passiert als naechstes?
+          </h2>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 bg-slate-50 rounded-xl p-5">
+              <div class="w-10 h-10 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
+              <div>
+                <h3 class="font-bold text-slate-800 mb-1">Pruefung Ihrer Anfrage</h3>
+                <p class="text-slate-600 text-sm">Wir schauen uns Ihre Angaben an und bereiten uns auf das Gespraech vor.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 bg-slate-50 rounded-xl p-5">
+              <div class="w-10 h-10 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">2</div>
+              <div>
+                <h3 class="font-bold text-slate-800 mb-1">Persoenlicher Anruf</h3>
+                <p class="text-slate-600 text-sm">Ein Ansprechpartner ruft Sie an, um Ihre Wuensche und die Lage vor Ort zu besprechen.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 bg-slate-50 rounded-xl p-5">
+              <div class="w-10 h-10 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">3</div>
+              <div>
+                <h3 class="font-bold text-slate-800 mb-1">Vor-Ort-Termin & Festpreis</h3>
+                <p class="text-slate-600 text-sm">Wir kommen vorbei, schauen uns das Dach an und erstellen Ihnen ein unverbindliches Festpreis-Angebot.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
