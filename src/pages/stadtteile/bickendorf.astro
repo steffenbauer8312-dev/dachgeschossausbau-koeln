@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein DG-Ausbau in Bickendorf?',
+    answer: 'Bickendorf liegt im Mittelfeld: 1.600 bis 2.100 Euro pro Quadratmeter. Die moderate Preisentwicklung macht das Viertel für Erstkäufer und Familien attraktiv.'
+  },
+  {
+    question: 'Welche Bausubstanz hat Bickendorf?',
+    answer: 'Bickendorf hat eine Mischung aus Reihenhäusern, Mehrfamilienhäusern und Villen aus den 1950er/60er Jahren. Die Kniestöcke liegen zwischen 80 und 120 cm – gute Voraussetzungen für den DG-Ausbau.'
+  },
+  {
+    question: 'Welche Gauben passen in Bickendorf?',
+    answer: 'Moderate Gaubenformate passen gut zu Bickendorf. Sattelgauben fügen sich harmonisch in die Nachbarbebauung ein. Bei den Mehrfamilienhäusern sind auch Trapezgauben üblich.'
+  },
+  {
+    question: 'Wie ist die Lage in Bickendorf?',
+    answer: 'Bickendorf ist familienfreundlich – Parks, Schulen und eine gute Infrastruktur. Die Nähe zu Ehrenfeld und Neuehrenfeld bringt urbanes Flair, ohne die Ruhe des Wohnviertels zu verlieren.'
+  },
+  {
+    question: 'Lohnt sich der DG-Ausbau in Bickendorf?',
+    answer: 'Ja, Bickendorf hat eine stabile Wertentwicklung. Die moderate Preisentwicklung und die wachsende Beliebtheit des Viertels machen den DG-Ausbau zu einer sicheren Investition.'
+  }
+];
+
+const nachbarstadtteile = [
+  { name: 'Ehrenfeld', slug: 'ehrenfeld', beschreibung: 'Urban, lebendig' },
+  { name: 'Neuehrenfeld', slug: 'neuehrenfeld', beschreibung: 'Ebenfalls im Wandel' },
+  { name: 'Ossendorf', slug: 'ossendorf', beschreibung: 'Ruhiger, Eigenheim-Charakter' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "Bickendorf, Köln",
+  "containedInPlace": { "@type": "City", "name": "Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachgeschossausbau in Bickendorf (Köln) | Familienfreundlich"
+  description="Dachgeschossausbau in Köln-Bickendorf: Solide Investition in einem familienfreundlichen Viertel. Kostenlose Beratung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/stadtteile" class="hover:text-teal-400">Stadtteile</a> /
+              <span class="text-white">Bickendorf</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachgeschossausbau in Bickendorf
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Bickendorf hat sich vom Arbeiter- zum beliebten Wohnviertel entwickelt. Wir bauen Dachgeschosse in Bickendorf, die zur gewachsenen Struktur des Viertels passen – solide, wertstabil, familienfreundlich.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Beratung in Bickendorf" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Dachgeschossausbau in Bickendorf: gewachsene Qualität
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Bickendorf hat sich in den letzten Jahren zu einem der beliebtesten Wohnviertel im Kölner Westen entwickelt. Die Mischung aus gewachsener Struktur, guter Infrastruktur und der Nähe zu Ehrenfeld macht den Stadtteil attraktiv für Familien und Berufspendler.
+            </p>
+            <p>
+              Die Bausubstanz in Bickendorf ist solide: Reihenhäuser aus den 1950er Jahren, Mehrfamilienhäuser und einige Villen aus den 1960ern. Mit Kniestöcken zwischen 80 und 120 cm sind die Voraussetzungen für einen DG-Ausbau gut. Wir setzen auf moderate <a href="/leistungen/gauben" class="text-teal-600 hover:underline">Gaubenlösungen</a>, die sich in die Nachbarbebauung einfügen.
+            </p>
+            <p>
+              Die Wertentwicklung in Bickendorf ist stabil bis positiv. Eine zusätzliche Wohneinheit im Dach steigert den Wert einer Immobilie typischerweise um 12 bis 18 Prozent. Wir zeigen Ihnen in einer kostenlosen Erstberatung, was möglich ist.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zum Dachgeschossausbau in Bickendorf
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">
+            Angrenzende Stadtteile
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {nachbarstadtteile.map(st => (
+              <a href={`/stadtteile/${st.slug}`} class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">{st.name}</h3>
+                <p class="text-slate-600 text-sm">{st.beschreibung}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachgeschossausbau in Bickendorf anfragen" subtitle="Wir melden uns innerhalb von 24 Stunden." buttonText="Kostenlose Beratung" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein Dachgeschossausbau pro Quadratmeter in Köln?',
+    answer: 'Die Kosten pro Quadratmeter liegen in Köln zwischen 1.400 und 2.800 Euro – je nach Ausbauart, Ausstattung und Stadtteil. Ein einfacher Ausbau (Dämmung, Trockenbau, Boden) beginnt bei 1.400 €/m². Eine vollständige Wohnung mit Bad und Küche kostet 1.800–2.400 €/m². Dachaufstockungen sind mit 2.500–3.500 €/m² am teuersten.'
+  },
+  {
+    question: 'Welche Faktoren bestimmen den Preis pro Quadratmeter?',
+    answer: 'Wesentliche Preistreiber sind: Zustand des Dachs (Statik, Tragfähigkeit), Kniestockhöhe, Gaubenanzahl und -größe, Ausstattung (Standard vs. Premium), technische Gewerke (Elektro, Sanitär, Heizung), Dachneigung und Erreichbarkeit der Baustelle. Auch der Stadtteil spielt eine Rolle: In Marienburg ist der Quadratmeterpreis höher als in Kalk.'
+  },
+  {
+    question: 'Sind die Kosten pro Quadratmeter brutto oder netto?',
+    answer: 'Unsere Richtwerte sind brutto (inkl. 19 % MwSt.) und enthalten alle Gewerke: Statik, Dämmung, Trockenbau, Elektro, Sanitär, Heizung, Gauben, Dacheindeckung, Malerarbeiten und Bodenbeläge. Nicht enthalten: Möbel, Küche, Außenanlagen.'
+  },
+  {
+    question: 'Wie viel kostet ein 60-qm-Dachgeschossausbau?',
+    answer: 'Für 60 Quadratmeter Wohnfläche rechnen Sie mit 84.000 bis 168.000 Euro – je nach Ausbauart. Mit KfW-Förderung können Sie bis zu 30 % der Kosten sparen (bis ca. 50.000 €). Wir erstellen Ihnen gerne eine kostenlose Vor-Ort-Schätzung.'
+  },
+  {
+    question: 'Was ist günstiger: Ausbau oder Aufstockung?',
+    answer: 'Der klassische Ausbau ist günstiger als eine <a href="/ratgeber/dachaufstockung-oder-ausbau" class="text-teal-600 hover:underline">Aufstockung</a>, weil die bestehende Dachkonstruktion erhalten bleibt. Eine Aufstockung kostet 30–50 % mehr, bietet aber mehr Wohnraum und Gestaltungsfreiheit. Welche Lösung für Sie günstiger ist, hängt von Ihrem Haus und Ihren Zielen ab.'
+  },
+  {
+    question: 'Welche Förderung reduziert die Kosten pro Quadratmeter?',
+    answer: 'BAFA BEG EM (15–20 %), KfW 261 (bis zu 150.000 € Kredit), Steuerbonus nach § 35c EStG (20 % der Handwerkerkosten, max. 1.200 €/Jahr), und die Stadt Köln bietet zusätzliche Zuschüsse. Mit optimaler Förderung reduzieren sich die effektiven Kosten um 20–35 %. Nutzen Sie unseren <a href="/foerderrechner" class="text-teal-600 hover:underline">Förderrechner</a> für eine erste Schätzung.'
+  }
+];
+
+const kostenBeispiele = [
+  { typ: 'Einfacher Ausbau', range: '1.400 – 1.700 €/m²', beispiel: '60 m² = 84.000 – 102.000 €' },
+  { typ: 'Vollständige Wohnung', range: '1.800 – 2.400 €/m²', beispiel: '60 m² = 108.000 – 144.000 €' },
+  { typ: 'Premium-Ausbau', range: '2.500 – 2.800 €/m²', beispiel: '60 m² = 150.000 – 168.000 €' },
+  { typ: 'Dachaufstockung', range: '2.800 – 3.500 €/m²', beispiel: '60 m² = 168.000 – 210.000 €' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Dachgeschossausbau Kosten pro qm in Köln 2026",
+  "description": "Aktuelle Kosten pro Quadratmeter für den Dachgeschossausbau in Köln – mit konkreten Beispielen und Spartipps."
+};
+---
+
+<BaseLayout
+  title="Dachgeschossausbau Kosten pro qm Köln 2026 | Aktuelle Preise"
+  description="Was kostet ein Dachgeschossausbau pro Quadratmeter in Köln? Konkrete Preise 2026, Beispiele und Spartipps mit Förderung. Kostenlose Beratung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/ratgeber" class="hover:text-teal-400">Ratgeber</a> /
+              <span class="text-white">Kosten pro qm</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachgeschossausbau: Kosten pro qm in Köln 2026
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Was kostet ein Dachgeschossausbau in Köln wirklich? Wir zeigen konkrete Preise pro Quadratmeter, Beispiele aus der Praxis und wie Sie mit Förderung bis zu 30 % sparen können.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Kostenlose Kostenschätzung" subtitle="Vor-Ort-Termin in Köln." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Kosten pro Quadratmeter: Was Sie 2026 in Köln erwartet
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Die Kosten für einen Dachgeschossausbau in Köln variieren stark – zwischen 1.400 und 3.500 Euro pro Quadratmeter ist alles möglich. Der Preis hängt von der Ausbauart, dem Zustand des Dachs und dem gewünschten Komfort ab. Wer nur dämmt und den Boden legt, zahlt am wenigsten. Wer eine vollständige Wohnung mit Gauben, Bad und hochwertiger Ausstattung realisiert, liegt im oberen Bereich.
+            </p>
+            <p>
+              Wir beobachten die Kölner Baupreise seit vielen Jahren und können Ihnen realistische Richtwerte geben. Die wichtigste Erkenntnis: Mit optimaler <a href="/foerderrechner" class="text-teal-600 hover:underline">Förderung</a> reduzieren sich die effektiven Kosten deutlich. Ein 60-qm-Ausbau für 144.000 Euro wird mit 30 % Förderung effektiv zu einem Projekt für rund 100.000 Euro.
+            </p>
+            <p>
+              Was die Kosten pro Quadratmeter treibt, ist vor allem die <a href="/leistungen/statik" class="text-teal-600 hover:underline">Statik</a>: Wenn das Dach verstärkt werden muss, kann das 200–400 €/m² extra kosten. Auch <a href="/leistungen/gauben" class="text-teal-600 hover:underline">Gauben</a> schlagen mit 8.000–15.000 € pro Stück zu Buche. Wir zeigen Ihnen in einer kostenlosen Vor-Ort-Beratung, was bei Ihrem Haus konkret anfällt.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-8 text-center">
+            Kosten pro qm nach Ausbauart
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {kostenBeispiele.map(item => (
+              <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-teal-500">
+                <h3 class="text-lg font-bold text-slate-800 mb-2">{item.typ}</h3>
+                <p class="text-2xl font-bold text-teal-600 mb-2">{item.range}</p>
+                <p class="text-sm text-slate-500">{item.beispiel}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Was treibt die Kosten in die Höhe?
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              <strong>1. Statische Ertüchtigung:</strong> Alte Dachstühle brauchen oft Verstärkungen. Das kann 5.000–20.000 € extra kosten, abhängig vom Zustand. Wir prüfen das vorab mit unserem Statiker.
+            </p>
+            <p>
+              <strong>2. Gauben:</strong> Jede Gaube kostet 8.000–15.000 €. Drei Trapezgauben können also 30.000–45.000 € zur Gesamtsumme beitragen. Wer keine Gauben braucht, spart erheblich.
+            </p>
+            <p>
+              <strong>3. Dachneigung und -form:</strong> Steile Satteldächer sind einfacher auszubauen als flache Dächer oder komplexe Dachformen. Bei Walmdächern oder Mansarden ist mit Aufschlägen von 10–20 % zu rechnen.
+            </p>
+            <p>
+              <strong>4. Technische Gewerke:</strong> Elektro, Sanitär und Heizung machen 20–30 % der Gesamtkosten aus. Je mehr Bäder und Steckdosen, desto höher. Eine Heizungsanbindung kann 2.000–5.000 € extra kosten.
+            </p>
+            <p>
+              <strong>5. Ausstattung:</strong> Standard-Sanitär (1.500 €/Bad) vs. Premium-Sanitär (5.000 €/Bad) – die Spanne ist enorm. Auch bei Bodenbelägen, Malerarbeiten und Elektrodetails entscheidet die Ausstattung über den Endpreis.
+            </p>
+            <p>
+              <strong>6. Stadtteil:</strong> In <a href="/stadtteile/marienburg" class="text-teal-600 hover:underline">Marienburg</a> oder <a href="/stadtteile/lindenthal" class="text-teal-600 hover:underline">Lindenthal</a> ist das Preisniveau höher als in <a href="/stadtteile/kalk" class="text-teal-600 hover:underline">Kalk</a> oder <a href="/stadtteile/porz" class="text-teal-600 hover:underline">Porz</a>. Das liegt an höheren Handwerkerpreisen und strengeren Auflagen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Häufige Fragen zu den Kosten
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">
+            Verwandte Themen im Ratgeber
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <a href="/ratgeber/foerderung-dachgeschossausbau-2026" class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-2">Förderung 2026</h3>
+              <p class="text-slate-600 text-sm">BAFA, KfW, Stadt Köln, NRW – alle Förderprogramme im Überblick.</p>
+            </a>
+            <a href="/ratgeber/dachaufstockung-oder-ausbau" class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-2">Aufstockung oder Ausbau?</h3>
+              <p class="text-slate-600 text-sm">Welche Lösung für Ihr Haus die richtige ist.</p>
+            </a>
+            <a href="/ratgeber/baugenehmigung-dachgeschoss-koeln" class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-2">Baugenehmigung Köln</h3>
+              <p class="text-slate-600 text-sm">Was Sie bei der Beantragung beachten müssen.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Kostenlose Vor-Ort-Schätzung" subtitle="Wir kommen zu Ihnen und kalkulieren konkret." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

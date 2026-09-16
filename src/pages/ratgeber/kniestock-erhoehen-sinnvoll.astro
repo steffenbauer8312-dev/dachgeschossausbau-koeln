@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet es, den Kniestock zu erhöhen?',
+    answer: 'Das Erhöhen des Kniestocks kostet zwischen 800 und 2.000 Euro pro laufendem Meter – abhängig von Konstruktion, Statik und Aufwand. Für ein typisches Reihenhaus mit 8 m Trauflänge rechnen Sie mit 6.000–16.000 Euro Aufschlag.'
+  },
+  {
+    question: 'Wann lohnt sich das Erhöhen des Kniestocks?',
+    answer: 'Wenn der bestehende Kniestock unter 1,00 m liegt und Sie ohne Gauben vollwertige Stehhöhe erreichen wollen. Bei Kniestöcken über 1,20 m lohnt sich die Erhöhung selten – eine Gaube ist dann günstiger und bringt mehr Licht.'
+  },
+  {
+    question: 'Brauche ich für die Kniestock-Erhöhung eine Baugenehmigung?',
+    answer: 'Ja, immer. Eine Kniestock-Erhöhung verändert die Proportionen des Hauses und ist genehmigungspflichtig. Wir kümmern uns um den Bauantrag und die Abstimmung mit dem Bauaufsichtsamt.'
+  },
+  {
+    question: 'Welcher Kniestock ist in Köln Standard?',
+    answer: 'In Köln liegt der Standard bei 1,00–1,50 m. Die Gründerzeitbauten in <a href="/stadtteile/ehrenfeld" class="text-teal-600 hover:underline">Ehrenfeld</a> haben oft nur 80–120 cm, was historisch bedingt ist. Mit einer Erhöhung auf 1,50 m erreichen Sie in den meisten Häusern komfortable Stehhöhe.'
+  },
+  {
+    question: 'Welche Alternativen gibt es zur Kniestock-Erhöhung?',
+    answer: '<a href="/leistungen/gauben" class="text-teal-600 hover:underline">Dachgauben</a> schaffen Stehhöhe punktuell und bringen gleichzeitig mehr Licht. Eine <a href="/leistungen/dachaufstockung" class="text-teal-600 hover:underline">Dachaufstockung</a> ist die radikale Lösung – komplett neues Geschoss. Welche Lösung für Sie richtig ist, hängt vom Haus und Ihren Zielen ab.'
+  },
+  {
+    question: 'Kann ich den Kniestock bei einem denkmalgeschützten Haus erhöhen?',
+    answer: 'In <a href="/stadtteile/innenstadt" class="text-teal-600 hover:underline">denkmalgeschützten Bereichen</a> ist die Kniestock-Erhöhung nur mit Zustimmung der Denkmalbehörde möglich. In manchen Fällen werden Sonderlösungen verlangt. Wir beraten Sie zu den Möglichkeiten.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Kniestock erhöhen – wann sinnvoll?"
+};
+---
+
+<BaseLayout
+  title="Kniestock erhöhen – sinnvoll? | Kosten & Tipps Köln"
+  description="Wann lohnt es sich, den Kniestock zu erhöhen? Kosten, Voraussetzungen und Alternativen für Ihren Dachgeschossausbau in Köln."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/ratgeber" class="hover:text-teal-400">Ratgeber</a> /
+              <span class="text-white">Kniestock</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Kniestock erhöhen – wann ist es sinnvoll?
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Viele Kölner Altbauten haben einen niedrigen Kniestock. Wir erklären, wann sich eine Erhöhung lohnt und welche Alternativen es gibt.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Kniestock prüfen lassen" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Der Kniestock und seine Bedeutung
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Der Kniestock ist die Höhe der Außenwand im Dachgeschoss – gemessen vom Boden bis zum Schnittpunkt mit der Dachschräge. Er bestimmt, wie viel nutzbare Stehhöhe Sie im Dachgeschoss haben. Mindestens 1,00 m ist empfehlenswert, optimal sind 1,20–1,50 m.
+            </p>
+            <p>
+              Viele Kölner Altbauten haben niedrige Kniestöcke: 60–100 cm in <a href="/stadtteile/nippes" class="text-teal-600 hover:underline">Nippes</a> oder <a href="/stadtteile/muelheim" class="text-teal-600 hover:underline">Mülheim</a>, 80–120 cm in <a href="/stadtteile/ehrenfeld" class="text-teal-600 hover:underline">Ehrenfeld</a>. Das macht den Dachgeschossausbau dort aufwendiger – aber nicht unmöglich.
+            </p>
+            <p>
+              Es gibt drei Lösungen für niedrige Kniestöcke: den Kniestock erhöhen, Gauben einbauen oder das Dach aufstocken. Welche Lösung für Sie richtig ist, hängt von Ihrem Haus und Ihren Zielen ab. Wir beraten Sie seit vielen Jahren zu allen drei Varianten und kennen die Vor- und Nachteile genau.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">
+            Drei Lösungen im Vergleich
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <h3 class="text-lg font-bold text-slate-800 mb-2">Kniestock erhöhen</h3>
+              <p class="text-sm text-slate-500 mb-3">800–2.000 €/lfm</p>
+              <ul class="text-sm text-slate-600 space-y-1">
+                <li>✓ Mehr Stehhöhe über die gesamte Fläche</li>
+                <li>✓ Kein zusätzlicher Dachaufbau</li>
+                <li>– Aufwendige Statik</li>
+                <li>– Verändert die Haus-Proportionen</li>
+              </ul>
+            </div>
+            <div class="bg-teal-50 border-2 border-teal-500 rounded-xl p-6 shadow-sm">
+              <h3 class="text-lg font-bold text-teal-800 mb-2">Gauben einbauen</h3>
+              <p class="text-sm text-teal-700 mb-3">8.000–15.000 € pro Stück</p>
+              <ul class="text-sm text-slate-600 space-y-1">
+                <li>✓ Stehhöhe punktuell</li>
+                <li>✓ Mehr Licht und Luft</li>
+                <li>✓ Oft günstiger als Erhöhung</li>
+                <li>– Nur in Teilbereichen</li>
+              </ul>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <h3 class="text-lg font-bold text-slate-800 mb-2">Dachaufstockung</h3>
+              <p class="text-sm text-slate-500 mb-3">2.500–3.500 €/m²</p>
+              <ul class="text-sm text-slate-600 space-y-1">
+                <li>✓ Maximale Wohnfläche</li>
+                <li>✓ Komplett neues Geschoss</li>
+                <li>– Aufwendigste Lösung</li>
+                <li>– Höchste Kosten</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zum Kniestock
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Kniestock prüfen lassen" subtitle="Welche Lösung passt zu Ihrem Haus?" buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

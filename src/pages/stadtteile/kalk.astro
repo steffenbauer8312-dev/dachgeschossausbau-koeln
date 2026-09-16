@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein DG-Ausbau in Kalk?',
+    answer: 'Kalk ist einer der günstigsten Stadtteile Kölns: 1.300 bis 1.800 Euro pro Quadratmeter. Die niedrigen Ausgangskosten machen den DG-Ausbau hier besonders attraktiv – die prozentuale Wertsteigerung ist überdurchschnittlich.'
+  },
+  {
+    question: 'Welche Bausubstanz hat Kalk?',
+    answer: 'Kalk hat Nachkriegsbauten, Altbauquartiere und neuere Geschossbauten. Die Kniestöcke liegen zwischen 70 und 100 cm. Wir kennen die Kalk-Bausubstanz aus vielen Projekten.'
+  },
+  {
+    question: 'Welche Gauben passen in Kalk?',
+    answer: 'Trapezgauben und Flachdachgauben sind in Kalk üblich. Bei Nachkriegsbauten kommen auch moderne Gaubenlösungen in Frage. Wir stimmen die Lösung auf Ihr Haus ab.'
+  },
+  {
+    question: 'Lohnt sich der DG-Ausbau in Kalk?',
+    answer: 'Ja, sehr. Kalk ist im Aufwind – die Messenähe und die gute Verkehrsanbindung sorgen für stabile Mietnachfrage. Eine zusätzliche Wohneinheit im Dach bringt eine überdurchschnittliche Wertsteigerung.'
+  },
+  {
+    question: 'Wie ist die Lage für Investoren in Kalk?',
+    answer: 'Kalk ist bei Investoren beliebt – die niedrigen Ausgangskosten und die gute Lage machen Mehrfamilienhaus-Dachaufstockungen wirtschaftlich attraktiv. Wir betreuen auch Investoren-Projekte mit mehreren Wohneinheiten.'
+  }
+];
+
+const nachbarstadtteile = [
+  { name: 'Mülheim', slug: 'muelheim', beschreibung: 'Angrenzend, ähnlich günstig' },
+  { name: 'Deutz', slug: 'deutz', beschreibung: 'Aufstrebend, Messenähe' },
+  { name: 'Vingst', slug: 'vingst', beschreibung: 'Ruhige Wohnlage, ähnliche Bausubstanz' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "Kalk, Köln",
+  "containedInPlace": { "@type": "City", "name": "Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachgeschossausbau in Kalk (Köln) | Aufstrebend & Günstig"
+  description="Dachgeschossausbau in Köln-Kalk: Überdurchschnittliche Wertsteigerung, niedrige Ausgangskosten. Kostenlose Beratung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/stadtteile" class="hover:text-teal-400">Stadtteile</a> /
+              <span class="text-white">Kalk</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachgeschossausbau in Kalk
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Kalk ist im Aufwind. Die Nähe zum Messegelände, die gute Verkehrsanbindung und die niedrigen Grundstückspreise machen den DG-Ausbau in Kalk zu einer wirtschaftlich attraktiven Investition.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Beratung in Kalk" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Dachgeschossausbau in Kalk: Potenzial nutzen
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Kalk hat sich in den letzten Jahren positiv entwickelt. Die Nähe zum Messegelände bringt Geschäftsreisende und Kurzzeitmieter, die gute Verkehrsanbindung mit S-Bahn und Autobahn macht den Stadtteil attraktiv für Berufspendler. Wer hier in einen Dachgeschossausbau investiert, profitiert von dieser Dynamik.
+            </p>
+            <p>
+              Die Bausubstanz in Kalk ist überwiegend Nachkriegsbau mit ergänzenden Altbauquartieren. Die Dächer sind oft noch nie ausgebaut worden – ideale Voraussetzungen für einen vollständigen DG-Ausbau oder eine <a href="/leistungen/dachaufstockung" class="text-teal-600 hover:underline">Dachaufstockung</a>. Wir setzen auf Lösungen, die zur Aufwärtsentwicklung des Stadtteils passen.
+            </p>
+            <p>
+              Für Investoren ist Kalk besonders interessant: Die niedrigen Ausgangskosten und die hohe Nachfrage nach Mietwohnungen sorgen für attraktive Renditen. Wir betreuen auch MFH-Projekte mit mehreren Dachgeschoss-Wohneinheiten. Eine kostenlose Erstberatung gibt Ihnen Klarheit über Ihr Potenzial.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zum Dachgeschossausbau in Kalk
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">
+            Stadtteile rund um Kalk
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {nachbarstadtteile.map(st => (
+              <a href={`/stadtteile/${st.slug}`} class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">{st.name}</h3>
+                <p class="text-slate-600 text-sm">{st.beschreibung}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachgeschossausbau in Kalk anfragen" subtitle="Wir melden uns innerhalb von 24 Stunden." buttonText="Kostenlose Beratung" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

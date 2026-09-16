@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein DG-Ausbau in Lindweiler?',
+    answer: 'Lindweiler gehört zu den günstigsten Stadtteilen Kölns: 1.300 bis 1.700 Euro pro Quadratmeter. Der dörfliche Charakter und die niedrigen Ausgangskosten machen den DG-Ausbau hier wirtschaftlich attraktiv.'
+  },
+  {
+    question: 'Welche Bausubstanz hat Lindweiler?',
+    answer: 'Lindweiler liegt am Rand von Köln und hat einen dörflichen Charakter. Die Bausubstanz ist überwiegend aus den 1970er Jahren: Einfamilienhäuser, Reihenhäuser und kleiner Geschosswohnungsbau. Kniestöcke 80 bis 100 cm.'
+  },
+  {
+    question: 'Welche Gauben passen in Lindweiler?',
+    answer: 'Schlichte Gaubenformate passen gut zu Lindweiler. Moderne Lösungen werden bevorzugt – z.B. flache Gauben oder schlichte Trapezgauben. Wir stimmen die Lösung auf den Bestand ab.'
+  },
+  {
+    question: 'Wie ist die Lage in Lindweiler?',
+    answer: 'Lindweiler liegt am Stadtrand mit Anbindung an die Kölner City. Der dörfliche Charakter und die ruhige Wohnlage machen das Viertel für Familien attraktiv. Die Preise sind niedrig, die Wertentwicklung stabil.'
+  },
+  {
+    question: 'Lohnt sich der DG-Ausbau in Lindweiler?',
+    answer: 'Ja. In Lindweiler rechnen sich DG-Ausbauten oft schneller als in teureren Stadtteilen – die Investition ist niedriger, die Wertsteigerung prozentual aber überdurchschnittlich. Wir beraten Sie gerne.'
+  }
+];
+
+const nachbarstadtteile = [
+  { name: 'Pesch', slug: 'pesch', beschreibung: 'Angrenzend, ebenfalls günstig' },
+  { name: 'Chorweiler', slug: 'chorweiler', beschreibung: 'Großsiedlung in der Nähe' },
+  { name: 'Volkhoven/Weiler', slug: 'volkhoven-weiler', beschreibung: 'Dörflich, ebenfalls Stadtrand' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "Lindweiler, Köln",
+  "containedInPlace": { "@type": "City", "name": "Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachgeschossausbau in Lindweiler (Köln) | Dörflich & Günstig"
+  description="Dachgeschossausbau in Köln-Lindweiler: Dörflicher Charakter am Stadtrand. Kostenlose Beratung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/stadtteile" class="hover:text-teal-400">Stadtteile</a> /
+              <span class="text-white">Lindweiler</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachgeschossausbau in Lindweiler
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Lindweiler hat dörflichen Charakter am Stadtrand Kölns. Wir bauen Dachgeschosse in Lindweiler schlicht und solide – passend zum Bestand, mit überdurchschnittlicher Wertsteigerung.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Beratung in Lindweiler" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Dachgeschossausbau in Lindweiler: dörflicher Charme
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Lindweiler liegt am Rand von Köln und hat einen ausgeprägten dörflichen Charakter. Die Bausubstanz ist überwiegend aus den 1970er Jahren – Einfamilienhäuser und Reihenhäuser, die in den letzten Jahren peu à peu modernisiert wurden. Hier passt ein DG-Ausbau, der den Bestand respektiert.
+            </p>
+            <p>
+              Die Kniestöcke in Lindweiler liegen zwischen 80 und 100 cm – nicht ideal, aber mit modernen Gaubenlösungen lässt sich auch daraus vollwertiger Wohnraum machen. Wir setzen auf schlichte, moderne <a href="/leistungen/gauben" class="text-teal-600 hover:underline">Gauben</a>, die zum Charakter des Viertels passen.
+            </p>
+            <p>
+              Die Wertsteigerung durch einen DG-Ausbau ist in Lindweiler prozentual überdurchschnittlich, weil die Ausgangskosten niedrig sind. Eine 80-qm-Wohnung im Dach kann den Wert einer Lindweiler Immobilie um 80.000 bis 120.000 Euro steigern. Wir zeigen Ihnen in einer kostenlosen Erstberatung, was möglich ist.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zum Dachgeschossausbau in Lindweiler
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">
+            Angrenzende Stadtteile
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {nachbarstadtteile.map(st => (
+              <a href={`/stadtteile/${st.slug}`} class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">{st.name}</h3>
+                <p class="text-slate-600 text-sm">{st.beschreibung}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachgeschossausbau in Lindweiler anfragen" subtitle="Wir melden uns innerhalb von 24 Stunden." buttonText="Kostenlose Beratung" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -329,7 +329,7 @@ const schema = {
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {stadtteile.filter(s => s.bezirk === bezirk).map(stadtteil => (
-              <div id={stadtteil.slug} class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <a href={`/stadtteile/${stadtteil.slug}`} id={stadtteil.slug} class="block bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
                 <div class="p-6">
                   <div class="flex items-start justify-between mb-4">
                     <div>
@@ -396,12 +396,12 @@ const schema = {
                     }`}>
                       Kostenfaktor: {stadtteil.kostenFaktor}
                     </span>
-                    <a href="/kontakt" class="text-teal-600 text-sm font-medium hover:text-teal-700">
-                      Beratung anfragen →
-                    </a>
+                    <span class="text-teal-600 text-sm font-medium">
+                      Mehr zu {stadtteil.name} →
+                    </span>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>

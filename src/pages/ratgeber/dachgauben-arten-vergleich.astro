@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const gaubenArten = [
+  {
+    name: 'Trapezgaube',
+    kurz: 'Die häufigste Gaubenform in Köln',
+    vorteile: ['Viel Tageslicht', 'Passt zu fast allen Dächern', 'Gutes Preis-Leistungs-Verhältnis'],
+    nachteile: ['Weniger traditionell als Sattelgaube'],
+    kosten: '8.000 – 12.000 €',
+    passend: 'Ehrenfeld, Nippes, Sülz, Lindenthal',
+    bild: '📐'
+  },
+  {
+    name: 'Sattelgaube',
+    kurz: 'Klassisch und traditionell',
+    vorteile: ['Traditioneller Charakter', 'Bei Denkmalschutz oft Pflicht', 'Passt zu Altbauten'],
+    nachteile: ['Weniger Tageslicht als Trapezgaube'],
+    kosten: '9.000 – 14.000 €',
+    passend: 'Innenstadt, Marienburg, Ehrenfeld (Ensembleschutz)',
+    bild: '🏠'
+  },
+  {
+    name: 'Rundgaube',
+    kurz: 'Besonders elegant',
+    vorteile: ['Auffällige Optik', 'Viel Platz innen', 'Premium-Lösung'],
+    nachteile: ['Höhere Kosten', 'Nicht für alle Dächer'],
+    kosten: '12.000 – 18.000 €',
+    passend: 'Marienburg, Rodenkirchen',
+    bild: '⭕'
+  },
+  {
+    name: 'Flachdachgaube',
+    kurz: 'Modern und schlicht',
+    vorteile: ['Moderne Optik', 'Gute Raumnutzung', 'Einfache Konstruktion'],
+    nachteile: ['Bei historischen Häusern oft nicht passend'],
+    kosten: '7.000 – 11.000 €',
+    passend: 'Kalk, Deutz, Chorweiler, Pesch',
+    bild: '▭'
+  },
+  {
+    name: 'Schleppgaube',
+    kurz: 'Flach und lang',
+    vorteile: ['Viel zusätzliche Fläche', 'Schlichte Optik', 'Gut für breite Dächer'],
+    nachteile: ['Weniger Höhe als andere Gauben'],
+    kosten: '10.000 – 15.000 €',
+    passend: 'Reihenhäuser mit langem Dach',
+    bild: '⬛'
+  },
+  {
+    name: 'Zwerchgiebel',
+    kurz: 'Mit eigenem First',
+    vorteile: ['Sehr viel Platz', 'Markante Optik', 'Fast ein Vollgeschoss'],
+    nachteile: ['Aufwendige Konstruktion', 'Hohe Kosten'],
+    kosten: '15.000 – 25.000 €',
+    passend: 'Marienburg, Lindenthal, Villen',
+    bild: '⛰️'
+  }
+];
+
+const faqs = [
+  {
+    question: 'Welche Gaubenform ist in Köln am häufigsten?',
+    answer: 'In Köln ist die <a href="/leistungen/gauben" class="text-teal-600 hover:underline">Trapezgaube</a> am weitesten verbreitet. Sie passt zu den meisten Dächern, bringt viel Licht und fügt sich harmonisch in die Dachlandschaft ein. In <a href="/stadtteile/ehrenfeld" class="text-teal-600 hover:underline">Ehrenfeld</a> und <a href="/stadtteile/marienburg" class="text-teal-600 hover:underline">Marienburg</a> sind auch Sattelgauben häufig.'
+  },
+  {
+    question: 'Welche Gaube ist am günstigsten?',
+    answer: 'Flachdachgauben sind mit 7.000–11.000 € am günstigsten. Trapezgauben beginnen bei 8.000 €. Sattelgauben und Schleppgauben kosten 9.000–15.000 €. Rundgauben und Zwerchgiebel sind mit 12.000–25.000 € am teuersten.'
+  },
+  {
+    question: 'Brauche ich für jede Gaube eine Baugenehmigung?',
+    answer: 'Ja, jede Gaube ist in Köln genehmigungspflichtig. Wir kümmern uns um den Bauantrag und die Abstimmung mit dem Bauaufsichtsamt. In <a href="/stadtteile/innenstadt" class="text-teal-600 hover:underline">denkmalgeschützten Bereichen</a> ist zusätzlich die Zustimmung des Denkmalschutzes nötig.'
+  },
+  {
+    question: 'Wie viele Gauben sind sinnvoll?',
+    answer: 'Für ein 60-m²-Dachgeschoss reichen meist 2–3 Gauben. Mehr Gauben bringen mehr Licht, kosten aber auch mehr und verändern das Stadtbild stärker. Wir empfehlen die Anzahl, die zur Statik, zum Haus und zum Stadtbild passt.'
+  },
+  {
+    question: 'Welche Gaube bringt am meisten Licht?',
+    answer: 'Rundgauben und große Trapezgauben bringen am meisten Licht. Flachdachgauben und Schleppgauben sind in der Regel etwas schmaler. Wir beraten Sie, welche Gaube für Ihr Dach optimal ist.'
+  },
+  {
+    question: 'Welche Gaube passt zu meinem Haus?',
+    answer: 'Das hängt von Dachneigung, Baustil und Bebauungsplan ab. Wir prüfen vor Ort, welche Formen zulässig sind und empfehlen die Lösung, die zu Ihrem Haus passt. In <a href="/stadtteile/ehrenfeld" class="text-teal-600 hover:underline">Ehrenfeld</a> sind oft nur bestimmte Formen erlaubt.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Dachgauben Arten Vergleich Köln"
+};
+---
+
+<BaseLayout
+  title="Dachgauben Arten Vergleich Köln | Welche passt zu Ihnen?"
+  description="Welche Dachgaubenform passt zu Ihrem Haus? Vergleich von Trapez-, Sattel-, Rund- und Flachdachgauben. Kosten, Vor- und Nachteile im Überblick."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/ratgeber" class="hover:text-teal-400">Ratgeber</a> /
+              <span class="text-white">Gaubenarten</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachgauben-Arten im Vergleich
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Trapezgaube, Sattelgaube, Rundgaube oder Flachdachgaube? Wir zeigen die Vor- und Nachteile jeder Form und welche zu Ihrem Haus passt.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Welche Gaube passt zu Ihnen?" subtitle="Kostenlose Beratung vor Ort." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Sechs Gaubenformen im Überblick
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {gaubenArten.map(g => (
+              <div class="bg-white rounded-xl p-6 shadow-md border-t-4 border-teal-500">
+                <div class="text-4xl mb-3">{g.bild}</div>
+                <h3 class="text-xl font-bold text-slate-800 mb-2">{g.name}</h3>
+                <p class="text-sm text-slate-500 italic mb-3">{g.kurz}</p>
+                <p class="text-lg font-bold text-teal-600 mb-3">{g.kosten}</p>
+                <div class="space-y-2 mb-3">
+                  <p class="text-xs font-semibold text-slate-700">Vorteile:</p>
+                  <ul class="text-sm text-slate-600 space-y-1">
+                    {g.vorteile.map(v => <li class="flex items-start gap-1"><span class="text-teal-500">✓</span> {v}</li>)}
+                  </ul>
+                </div>
+                <div class="space-y-2 mb-3">
+                  <p class="text-xs font-semibold text-slate-700">Nachteile:</p>
+                  <ul class="text-sm text-slate-600 space-y-1">
+                    {g.nachteile.map(n => <li class="flex items-start gap-1"><span class="text-red-400">–</span> {n}</li>)}
+                  </ul>
+                </div>
+                <p class="text-xs text-slate-500"><strong>Besonders passend:</strong> {g.passend}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zu Dachgauben
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Gauben planen" subtitle="Wir beraten Sie zur optimalen Form für Ihr Dach." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

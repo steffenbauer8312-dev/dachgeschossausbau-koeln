@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein DG-Ausbau in Deutz?',
+    answer: 'Deutz liegt preislich im Mittelfeld: 1.700 bis 2.300 Euro pro Quadratmeter. Die Bausubstanz variiert stark – von Altbau bis Neubau – daher die große Bandbreite.'
+  },
+  {
+    question: 'Welche Häuser prägen Deutz?',
+    answer: 'Deutz hat Altbau-Mehrfamilienhäuser, neuere Geschossbauten und Gewerbeumbauten. Die Kniestöcke variieren stark (60 bis 100 cm). Wir prüfen vorab, welche Lösung bei Ihrem Haus möglich ist.'
+  },
+  {
+    question: 'Welche Gauben passen in Deutz?',
+    answer: 'In Deutz sind moderne Gaubenlösungen üblich: Flachdachgauben oder Gauben in modernem Stil. Das Stadtbild ist hier weniger von historischen Dachlandschaften geprägt als in Ehrenfeld oder Marienburg.'
+  },
+  {
+    question: 'Wie entwickelt sich Deutz?',
+    answer: 'Deutz ist im Wandel – die Trade Show, die Rheinpromenade und neue Wohngebiete ziehen Investoren an. Ein DG-Ausbau ist eine zukunftssichere Investition in einem aufstrebenden Stadtteil.'
+  },
+  {
+    question: 'Brauche ich in Deutz eine Baugenehmigung?',
+    answer: 'Ja, wie in ganz Köln. In Deutz verläuft die Genehmigung meist unkompliziert, weil es wenig Denkmalschutz gibt. Wir übernehmen den Bauantrag komplett.'
+  }
+];
+
+const nachbarstadtteile = [
+  { name: 'Innenstadt', slug: 'innenstadt', beschreibung: 'Direkt gegenüber, Altstadt-Nähe' },
+  { name: 'Mülheim', slug: 'muelheim', beschreibung: 'Angrenzend rechtsrheinisch' },
+  { name: 'Kalk', slug: 'kalk', beschreibung: 'Ebenfalls aufstrebend, vergleichbare Lage' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "Deutz, Köln",
+  "containedInPlace": { "@type": "City", "name": "Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachgeschossausbau in Deutz (Köln) | Aufstrebender Stadtteil"
+  description="Dachgeschossausbau in Köln-Deutz: Investition in einen aufstrebenden Stadtteil. Kostenlose Erstberatung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/stadtteile" class="hover:text-teal-400">Stadtteile</a> /
+              <span class="text-white">Deutz</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachgeschossausbau in Deutz
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Deutz entwickelt sich rasant – neuer Wohnraum ist gefragt. Wir bauen Dachgeschosse in Deutz, die zum Wandel des Stadtteils passen: modern, energieeffizient, zukunftssicher.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Beratung in Deutz" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Dachgeschossausbau in Deutz: modernes Wohnen
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Deutz hat sich in den letzten Jahren stark verändert. Mit der Trade Show, der Rheinpromenade und neuen Wohngebieten ist aus dem einstigen Industrie-Standort ein lebendiges Stadtquartier geworden. Wer hier ein Dachgeschoss ausbaut, investiert in einen Stadtteil mit klarer Aufwärtsdynamik.
+            </p>
+            <p>
+              Die Bausubstanz in Deutz ist sehr gemischt: Altbau-Mehrfamilienhäuser aus der Gründerzeit neben modernen Geschossbauten und Gewerbeumbauten. Wir beraten Sie ehrlich, welche Lösungen bei Ihrem Haus möglich sind – vom klassischen DG-Ausbau bis zur <a href="/leistungen/dachaufstockung" class="text-teal-600 hover:underline">Dachaufstockung</a>.
+            </p>
+            <p>
+              In Deutz sind moderne Gaubenlösungen üblich – Flachdachgauben oder Gauben in zeitgemäßer Formensprache. Denkmalschutz spielt hier selten eine Rolle, was die Planung vereinfacht. Wir zeigen Ihnen in einer kostenlosen Beratung, was möglich ist.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zum Dachgeschossausbau in Deutz
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">
+            Stadtteile rund um Deutz
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {nachbarstadtteile.map(st => (
+              <a href={`/stadtteile/${st.slug}`} class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">{st.name}</h3>
+                <p class="text-slate-600 text-sm">{st.beschreibung}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachgeschossausbau in Deutz anfragen" subtitle="Wir melden uns innerhalb von 24 Stunden." buttonText="Kostenlose Beratung" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

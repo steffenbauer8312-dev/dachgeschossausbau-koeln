@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const ratgeber = [
+  {
+    title: 'Kosten pro qm',
+    slug: 'kosten-dachgeschossausbau-pro-qm',
+    description: 'Was kostet ein Dachgeschossausbau pro Quadratmeter in Köln? Konkrete Preise 2026.',
+    icon: '💰'
+  },
+  {
+    title: 'Aufstockung oder Ausbau?',
+    slug: 'dachaufstockung-oder-ausbau',
+    description: 'Welche Lösung passt zu Ihrem Haus? Direkter Vergleich.',
+    icon: '🏗️'
+  },
+  {
+    title: 'Baugenehmigung Köln',
+    slug: 'baugenehmigung-dachgeschoss-koeln',
+    description: 'Welche Unterlagen, wie lange dauert es, was kostet es?',
+    icon: '📋'
+  },
+  {
+    title: 'Denkmalschutz',
+    slug: 'denkmalschutz-dachgeschossausbau',
+    description: 'Welche Auflagen gelten bei denkmalgeschützten Häusern?',
+    icon: '🏛️'
+  },
+  {
+    title: 'GEG Dämmung Pflicht 2026',
+    slug: 'geg-daemmung-pflicht-2026',
+    description: 'Was schreibt das GEG vor? U-Werte, Nachrüstpflicht.',
+    icon: '🌡️'
+  },
+  {
+    title: 'Kniestock erhöhen',
+    slug: 'kniestock-erhoehen-sinnvoll',
+    description: 'Wann lohnt sich die Erhöhung, wann nicht?',
+    icon: '📏'
+  },
+  {
+    title: 'Dachgauben-Arten Vergleich',
+    slug: 'dachgauben-arten-vergleich',
+    description: 'Trapez, Sattel, Rund, Flach – welche passt zu Ihnen?',
+    icon: '🏠'
+  },
+  {
+    title: 'Förderung 2026',
+    slug: 'foerderung-dachgeschossausbau-2026',
+    description: 'BAFA, KfW, Stadt Köln, NRW – alle Programme im Überblick.',
+    icon: '💸'
+  }
+];
+
+const schema = {
+  "@type": "CollectionPage",
+  "about": {
+    "@type": "Thing",
+    "name": "Dachgeschossausbau Ratgeber"
+  }
+};
+---
+
+<BaseLayout
+  title="Ratgeber Dachgeschossausbau Köln | Wissen & Tipps"
+  description="Aktuelle Ratgeber zum Dachgeschossausbau in Köln: Kosten, Förderung, Baugenehmigung, Denkmalschutz und mehr. Expertenwissen kompakt."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">
+          Ratgeber Dachgeschossausbau Köln
+        </h1>
+        <p class="text-xl text-slate-300 max-w-2xl">
+          Wissen, Tipps und Hintergründe rund um den Dachgeschossausbau. Von Kosten über Förderung bis zu rechtlichen Fragen – kompakt und verständlich erklärt.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {ratgeber.map(r => (
+              <a href={`/ratgeber/${r.slug}`} class="block bg-slate-50 rounded-xl p-6 hover:bg-teal-50 hover:shadow-md transition-all">
+                <div class="text-4xl mb-3">{r.icon}</div>
+                <h2 class="text-xl font-bold text-slate-800 mb-2">{r.title}</h2>
+                <p class="text-slate-600 text-sm mb-3">{r.description}</p>
+                <span class="text-teal-600 text-sm font-medium">→ Artikel lesen</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Persönliche Beratung gewünscht?" subtitle="Wir beantworten Ihre Fragen zum Dachgeschossausbau." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

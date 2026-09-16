@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein DG-Ausbau in Mülheim?',
+    answer: 'Mülheim gehört zu den günstigeren Stadtteilen Kölns: 1.400 bis 1.900 Euro pro Quadratmeter. Die niedrigeren Grundstückspreise machen den DG-Ausbau besonders attraktiv – die Wertsteigerung pro investiertem Euro ist hoch.'
+  },
+  {
+    question: 'Welche Bausubstanz prägt Mülheim?',
+    answer: 'Mülheim ist ein traditionelles Arbeiterviertel mit gründerzeitlichen Mietskasernen, Reihenhäusern und Arbeiterwohnungen. Die Kniestöcke sind oft niedrig (60-90 cm). Wir setzen daher auf kompakte Lösungen mit kleinen Gauben.'
+  },
+  {
+    question: 'Welche Gauben passen in Mülheim?',
+    answer: 'In Mülheim sind kleine, schlichte Gauben üblich. Sattelgauben passen gut zum traditionellen Charakter des Viertels. Wir stimmen die Gaubengröße auf die Nachbarbebauung ab.'
+  },
+  {
+    question: 'Lohnt sich der DG-Ausbau in Mülheim?',
+    answer: 'Sehr. Die niedrigen Grundstückspreise in Mülheim bedeuten, dass eine zusätzliche Wohneinheit im Dach eine besonders hohe prozentuale Wertsteigerung bringt. Die Mietnachfrage ist durch die gute Verkehrsanbindung und die Nahversorgung stabil.'
+  },
+  {
+    question: 'Wie ist die Statik in Mülheimer Altbauten?',
+    answer: 'Die gründerzeitlichen Mietskasernen in Mülheim haben solide Dachstühle, die oft noch nie für Wohnzwecke ausgebaut wurden. Eine <a href="/leistungen/statik" class="text-teal-600 hover:underline">statische Prüfung</a> ist Pflicht – wir dokumentieren alles für die Baugenehmigung.'
+  }
+];
+
+const nachbarstadtteile = [
+  { name: 'Deutz', slug: 'deutz', beschreibung: 'Angrenzend, aufstrebend' },
+  { name: 'Kalk', slug: 'kalk', beschreibung: 'Ebenfalls günstig, ähnliche Bausubstanz' },
+  { name: 'Buchheim', slug: 'buchheim', beschreibung: 'Direkt neben Mülheim, ruhige Wohnlage' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "Mülheim, Köln",
+  "containedInPlace": { "@type": "City", "name": "Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachgeschossausbau in Mülheim (Köln) | Günstig & Wertstabil"
+  description="Dachgeschossausbau in Köln-Mülheim: Hohe Wertsteigerung bei niedrigen Ausgangskosten. Kostenlose Beratung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/stadtteile" class="hover:text-teal-400">Stadtteile</a> /
+              <span class="text-white">Mülheim</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachgeschossausbau in Mülheim
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Mülheim gehört zu den preiswerten Stadtteilen Kölns – und gerade deshalb ist der DG-Ausbau hier eine besonders rentable Investition. Wir kennen die gründerzeitlichen Mietskasernen und die Besonderheiten des Viertels.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Beratung in Mülheim" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Dachgeschossausbau in Mülheim: wirtschaftlich sinnvoll
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Mülheim hat ein eigenes Flair – traditionsreich, lebendig, mit guter Verkehrsanbindung. Die niedrigeren Grundstückspreise im Vergleich zu Marienburg oder Lindenthal bedeuten: Wer hier in einen Dachgeschossausbau investiert, holt pro investiertem Euro mehr heraus. Die Wertsteigerung pro zusätzlichem Quadratmeter ist in Mülheim besonders hoch.
+            </p>
+            <p>
+              Die typischen gründerzeitlichen Mietskasernen in Mülheim haben ungenutzte Dachgeschosse mit soliden Dachstühlen. Hier lässt sich mit überschaubarem Aufwand viel neuer Wohnraum schaffen. Wir setzen auf kompakte Lösungen, die zur kleinteiligen Struktur des Viertels passen.
+            </p>
+            <p>
+              Bei der Mülheimer Bauaufsicht sind DG-Ausbauten gut bekannt. Die Genehmigungen verlaufen in der Regel unkompliziert, weil die Mehrfamilienhaus-Strukturen einheitlich sind. Wir kümmern uns um den kompletten Bauantrag und die Abstimmung mit den Behörden.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zum Dachgeschossausbau in Mülheim
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">
+            Stadtteile rund um Mülheim
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {nachbarstadtteile.map(st => (
+              <a href={`/stadtteile/${st.slug}`} class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">{st.name}</h3>
+                <p class="text-slate-600 text-sm">{st.beschreibung}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachgeschossausbau in Mülheim anfragen" subtitle="Wir melden uns innerhalb von 24 Stunden." buttonText="Kostenlose Beratung" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

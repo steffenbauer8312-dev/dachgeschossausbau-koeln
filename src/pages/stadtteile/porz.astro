@@ -1,0 +1,231 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein Dachgeschossausbau in Porz?',
+    answer: 'In Porz liegen die Kosten pro Quadratmeter zwischen 1.400 und 2.200 Euro. Damit ist Porz einer der günstigeren Stadtteile in Köln – die Bausubstanz ist oft solide Nachkriegsbauweise, und die Genehmigungslage ist entspannter als in den innenstadtnahmen Veedeln. Wir beraten Sie kostenlos zu Ihrem konkreten Projekt.'
+  },
+  {
+    question: 'Brauche ich in Porz eine Baugenehmigung?',
+    answer: 'Ja, wie in ganz Köln ist auch in Porz für den Dachgeschossausbau eine Baugenehmigung erforderlich. Bei den typischen Reihenhäusern und Mietskasernen verläuft die Genehmigung in der Regel problemlos – Denkmalschutz spielt in Porz (bis auf einzelne Bereiche) selten eine Rolle.'
+  },
+  {
+    question: 'Welche Dächer finden wir in Porz?',
+    answer: 'Porz hat eine sehr gemischte Dachlandschaft: Vom klassischen Satteldach mit 45 Grad Neigung in den Reihenhaussiedlungen bis zum Flachdach auf den Nachkriegs-Geschossbauten ist alles dabei. Besonders die 60er/70er-Jahre-Bauten haben oft Potenzial für großzügige Dachaufstockungen.'
+  },
+  {
+    question: 'Wie lange dauert ein DG-Ausbau in Porz?',
+    answer: 'Von der ersten Anfrage bis zur schlüsselfertigen Übergabe rechnen Sie mit 4 bis 6 Monaten. Davon entfallen 6 bis 10 Wochen auf die Bauphase selbst. Wir kennen die Porzer Behörden und stimmen die Bauanträge effizient ab.'
+  },
+  {
+    question: 'Ist die Wertsteigerung in Porz durch einen DG-Ausbau hoch?',
+    answer: 'Ja, gerade in Porz ist die Wertsteigerung durch einen Dachgeschossausbau besonders attraktiv. Die Grundstückspreise sind niedriger als in Marienburg oder Lindenthal – aber mit zusätzlichem Wohnraum holen Sie deutlich mehr heraus. In vielen Porzer Veedeln rechnet sich der Ausbau schon nach 8 bis 12 Jahren.'
+  }
+];
+
+const nachbarstadtteile = [
+  { name: 'Kalk', slug: 'kalk', beschreibung: 'Angrenzend, ähnlich aufstrebend' },
+  { name: 'Mülheim', slug: 'muelheim', beschreibung: 'Rechtsrheinisch, günstige Wohnlage' },
+  { name: 'Deutz', slug: 'deutz', beschreibung: 'Messenähe, im Wandel' },
+  { name: 'Innenstadt', slug: 'innenstadt', beschreibung: 'Gegenüber, rheinnahe Altstadt' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "Porz, Köln",
+  "containedInPlace": { "@type": "City", "name": "Köln" },
+  "description": "Dachgeschossausbau in Köln-Porz – unser Standort. Wir kennen die Eigenheiten der Bausubstanz vom Reihenhaus bis zur Mietskaserne."
+};
+---
+
+<BaseLayout
+  title="Dachgeschossausbau in Porz (Köln) – Unser Standort | Dachgeschossausbau Köln"
+  description="Dachgeschossausbau in Köln-Porz: Unser Heimatstandort. Wir kennen jedes Veedel – von Reihenhäusern bis zu großen Mietskasernen. Kostenlose Beratung vor Ort."
+>
+  <Header />
+
+  <main>
+    <!-- Hero mit Inline-Formular -->
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/stadtteile" class="hover:text-teal-400">Stadtteile</a> /
+              <span class="text-white">Porz</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachgeschossausbau in Porz – unser Standort
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Von Porz aus betreuen wir Dachgeschossausbauten im gesamten rechtsrheinischen Köln. Wir kennen die Bausubstanz, die Behördenwege und die Besonderheiten jedes Veedels zwischen Eil, Ensen und Urbach.
+            </p>
+          </div>
+          <LeadForm
+            variant="inline"
+            title="Beratung in Porz"
+            subtitle="Wir kommen kostenlos zu Ihnen vor Ort."
+            buttonText="Termin anfragen"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Lokale Einleitung -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Warum Porz für den Dachgeschossausbau besonders gut geeignet ist
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Porz ist einer der vielseitigsten Stadtteile Kölns – und gerade deshalb prädestiniert für den Dachgeschossausbau. Hier finden Sie große Mietskasernen aus der Gründerzeit, deren oberste Geschosse oft noch nie ausgebaut wurden. Reihenhaus-Siedlungen aus den 1950er bis 1970er Jahren, deren Flachdächer eine vollständige Aufstockung erlauben. Und Einfamilienhausgebiete, in denen eine zusätzliche Etage den Wohnwert verdoppelt.
+            </p>
+            <p>
+              Weil unser Büro direkt in Porz an der Hauptstraße sitzt, kennen wir die örtliche Bausubstanz besonders gut. Wir haben in den letzten Jahren Dutzende Projekte zwischen Eil, Ensen, Urbach, Finkenberg und Gremberghoven realisiert. Diese Erfahrung spart Ihnen Zeit – bei der Bestandsaufnahme, beim Bauantrag und bei der Abstimmung mit dem Porzer Bauaufsichtsamt.
+            </p>
+            <p>
+              Die Grundstückspreise in Porz sind niedriger als in Marienburg oder Lindenthal – aber durch einen gelungenen Dachgeschossausbau holen Sie deutlich mehr aus Ihrer Immobilie heraus. Wir zeigen Ihnen in einer kostenlosen Erstberatung, welches Potenzial in Ihrem Dach steckt und welche <a href="/foerderrechner" class="text-teal-600 hover:underline">Fördermittel</a> Sie nutzen können.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typische Bausubstanz -->
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-8">
+            Typische Bausubstanz in Porz
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <h3 class="text-lg font-bold text-slate-800 mb-3">Große Mietskasernen</h3>
+              <p class="text-slate-600 text-sm">Aus der Gründerzeit und Zwischenkriegszeit. Hohe Kniestöcke (oft 100-140 cm), intakte Dachstühle, viel ungenutzter Wohnraum unter dem Dach.</p>
+              <p class="text-teal-600 text-sm mt-3 font-medium">→ Ideal für DG-Ausbau</p>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <h3 class="text-lg font-bold text-slate-800 mb-3">Reihenhäuser</h3>
+              <p class="text-slate-600 text-sm">1950er bis 1970er Jahre. Kniestöcke 60-120 cm, Satteldächer mit 35-45 Grad Neigung. Oft Gauben nötig, um nutzbare Raumhöhe zu schaffen.</p>
+              <p class="text-teal-600 text-sm mt-3 font-medium">→ Mit Gauben sehr gut machbar</p>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <h3 class="text-lg font-bold text-slate-800 mb-3">Einfamilienhausgebiete</h3>
+              <p class="text-slate-600 text-sm">Vor allem in Langel, Zündorf und Teilen von Libur. Hier ist eine <a href="/leistungen/dachaufstockung" class="text-teal-600 hover:underline">Dachaufstockung</a> oft die sinnvollste Lösung.</p>
+              <p class="text-teal-600 text-sm mt-3 font-medium">→ Vollständige neue Etage möglich</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kosten in Porz -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-teal-50 border-l-4 border-teal-500 p-6 md:p-8 rounded-r-xl">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">
+              Kosten für den Dachgeschossausbau in Porz
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              <div>
+                <p class="text-sm text-slate-500">Einfacher Ausbau</p>
+                <p class="text-2xl font-bold text-slate-700">1.400 - 1.700 €/m²</p>
+              </div>
+              <div>
+                <p class="text-sm text-slate-500">Vollständige Wohnung</p>
+                <p class="text-2xl font-bold text-slate-700">1.800 - 2.200 €/m²</p>
+              </div>
+              <div>
+                <p class="text-sm text-slate-500">Dachaufstockung</p>
+                <p class="text-2xl font-bold text-slate-700">2.500 - 3.200 €/m²</p>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm">
+              Die genauen Kosten hängen von Zustand, Größe und Ausstattung ab. Eine kostenlose Vor-Ort-Beratung in Porz gibt Ihnen eine verbindliche Schätzung. Mehr Details in unserem <a href="/kosten" class="text-teal-600 hover:underline">Kosten-Ratgeber</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Verwandte Leistungen -->
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">
+            Welche Leistungen in Porz besonders gefragt sind
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <a href="/leistungen/dachaufstockung" class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-2">Dachaufstockung</h3>
+              <p class="text-slate-600 text-sm">In den EFH-Gebieten von Porz die beliebteste Lösung – eine komplette neue Etage auf das bestehende Dach.</p>
+            </a>
+            <a href="/leistungen/gauben" class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-2">Dachgauben</h3>
+              <p class="text-slate-600 text-sm">Bei den typischen Porzer Reihenhäusern oft unerlässlich, um nutzbare Raumhöhe zu schaffen.</p>
+            </a>
+            <a href="/leistungen/daemmung" class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-2">Dachdämmung nach GEG</h3>
+              <p class="text-slate-600 text-sm">Die älteren Dächer in Porz brauchen fast immer eine neue Dämmung – wir machen sie KfW-konform.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Häufige Fragen zum Dachgeschossausbau in Porz
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <!-- In der Nähe -->
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">
+            Dachgeschossausbau in der Nähe von Porz
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {nachbarstadtteile.map(st => (
+              <a href={`/stadtteile/${st.slug}`} class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex items-start gap-4">
+                <span class="text-3xl">📍</span>
+                <div>
+                  <h3 class="text-lg font-bold text-slate-800 mb-1">{st.name}</h3>
+                  <p class="text-slate-600 text-sm">{st.beschreibung}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm
+      variant="full"
+      title="Dachgeschossausbau in Porz anfragen"
+      subtitle="Wir melden uns innerhalb von 24 Stunden bei Ihnen."
+      buttonText="Kostenlose Vor-Ort-Beratung"
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

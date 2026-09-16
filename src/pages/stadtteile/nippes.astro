@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was ist typisch für den Dachgeschossausbau in Nippes?',
+    answer: 'Nippes hat einen dörflichen Charakter mit engen Straßen und vielen Reihenhäusern. Die Kniestöcke sind oft niedriger (60-100 cm), die Grundstücke eng. Wir setzen daher auf kompakte Lösungen mit kleinen Gauben und cleverer Raumaufteilung.'
+  },
+  {
+    question: 'Welche Gauben passen in Nippes?',
+    answer: 'Sattelgauben passen zum dörflichen Charakter von Nippes besonders gut. Sie fügen sich harmonisch in die bestehende Dachlandschaft ein. Trapezgauben sind ebenfalls möglich und bringen mehr Licht, sollten aber zur Häuserreihe passen.'
+  },
+  {
+    question: 'Was kostet der DG-Ausbau in Nippes?',
+    answer: 'In Nippes liegen die Kosten zwischen 1.600 und 2.200 Euro pro Quadratmeter. Die enge Bebauung erfordert manchmal Sonderlösungen beim Materialtransport – das schlägt sich im Preis nieder. Dafür ist die Nachfrage nach Mietwohnungen in Nippes hoch.'
+  },
+  {
+    question: 'Wie ist die Statik in Nippeser Altbauten?',
+    answer: 'Viele Nippeser Reihenhäuser stammen aus der Gründerzeit oder der Nachkriegszeit. Die Tragfähigkeit ist meist solide, aber eine <a href="/leistungen/statik" class="text-teal-600 hover:underline">statische Prüfung</a> ist immer sinnvoll. Wir dokumentieren alle relevanten Daten für Ihren Bauantrag.'
+  },
+  {
+    question: 'Muss ich in Nippes mit Auflagen rechnen?',
+    answer: 'In Nippes gibt es vereinzelt Ensembleschutz-Bereiche, aber die meisten Straßen sind unbürokratisch zu genehmigen. Die enge Bebauung erfordert jedoch oft eine Baustelleneinrichtung mit Nachbarschaftsabsprache – das übernehmen wir für Sie.'
+  }
+];
+
+const nachbarstadtteile = [
+  { name: 'Ehrenfeld', slug: 'ehrenfeld', beschreibung: 'Angrenzendes Veedel mit größerem Gauben-Spielraum' },
+  { name: 'Longerich', slug: 'longerich', beschreibung: 'Ländlicher Charakter, ähnliche Reihenhaus-Struktur' },
+  { name: 'Bickendorf', slug: 'bickendorf', beschreibung: 'Beliebtes Wohnviertel mit vielen Ausbau-Möglichkeiten' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "Nippes, Köln",
+  "containedInPlace": { "@type": "City", "name": "Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachgeschossausbau in Nippes (Köln) | Reihenhäuser & Sattelgauben"
+  description="Dachgeschossausbau in Köln-Nippes: Kompakte Lösungen für enge Reihenhäuser mit dörflichem Charakter. Kostenlose Beratung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/stadtteile" class="hover:text-teal-400">Stadtteile</a> /
+              <span class="text-white">Nippes</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachgeschossausbau in Nippes
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Nippes hat seinen eigenen Charakter – dörflich, eng, lebendig. Wir bauen Dachgeschosse in Nippes so, dass sie zum Veedel passen: kompakt, mit Sattelgauben, hochwertig.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Beratung in Nippes" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Dachgeschossausbau in Nippes: Besonderheiten
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Nippes ist eines der charmantesten Veedel Kölns – und gerade deshalb eine Herausforderung beim Dachgeschossausbau. Die engen Straßen mit ihren Reihenhäusern aus der Gründerzeit und der Nachkriegszeit lassen wenig Spielraum für große Gauben oder Aufstockungen. Wir arbeiten hier mit kompakten, durchdachten Lösungen.
+            </p>
+            <p>
+              Typische Kniestöcke in Nippes liegen zwischen 60 und 100 cm – niedriger als in Ehrenfeld. Mit einer gut geplanten <a href="/leistungen/gauben" class="text-teal-600 hover:underline">Sattelgaube</a> lässt sich aber auch daraus ein vollwertiges Geschoss machen. Wir setzen in Nippes bevorzugt auf Sattelgauben, die zum dörflichen Charakter passen und von den Nachbarn meist akzeptiert werden.
+            </p>
+            <p>
+              Die Nachfrage nach Wohnraum in Nippes ist hoch. Wer hier ein Dachgeschoss ausbaut, kann mit einer deutlich überdurchschnittlichen Wertsteigerung rechnen. Eine Beratung vor Ort zeigt Ihnen, was in Ihrem Haus möglich ist und welche <a href="/foerderrechner" class="text-teal-600 hover:underline">Förderprogramme</a> greifen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zum Dachgeschossausbau in Nippes
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">
+            Stadtteile in der Nähe von Nippes
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {nachbarstadtteile.map(st => (
+              <a href={`/stadtteile/${st.slug}`} class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">{st.name}</h3>
+                <p class="text-slate-600 text-sm">{st.beschreibung}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachgeschossausbau in Nippes anfragen" subtitle="Wir melden uns innerhalb von 24 Stunden." buttonText="Kostenlose Beratung" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

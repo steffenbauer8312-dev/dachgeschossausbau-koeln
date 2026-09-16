@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Welche Dämm-Pflichten schreibt das GEG 2026 vor?',
+    answer: 'Das GEG (§ 47) verpflichtet Eigentümer, die oberste Geschossdecke oder das Dach auf einen U-Wert von max. 0,24 W/(m²·K) zu dämmen. Bei Sanierung von mehr als 10 % der Dachfläche gilt § 48 mit derselben Anforderung. Die BAFA-Förderung verlangt strengere 0,14 W/(m²·K) für den Zuschuss.'
+  },
+  {
+    question: 'Gilt die Nachrüstpflicht auch für selbstgenutzte Häuser?',
+    answer: 'Für selbstgenutzte Ein- und Zweifamilienhäuser, die vor dem 1. Februar 2002 bezogen wurden, gilt die Nachrüstpflicht nicht – solange der Eigentümer nicht wechselt. Nach einem Eigentümerwechsel haben Sie 2 Jahre Zeit zur Nachrüstung. Mehr dazu in unserem <a href="/leistungen/daemmung" class="text-teal-600 hover:underline">Dämmung-Ratgeber</a>.'
+  },
+  {
+    question: 'Welcher U-Wert ist Standard in Köln?',
+    answer: 'In Köln setzen wir bei DG-Ausbauten meist den BAFA-Förderstandard von ≤ 0,14 W/(m²·K) um. Das ist energieeffizienter als die GEG-Mindestanforderung und bringt 15 % BAFA-Förderung. Die Mehrkosten amortisieren sich durch die Heizkostenersparnis.'
+  },
+  {
+    question: 'Welches Dämmmaterial ist für Köln am besten?',
+    answer: 'Für Köln empfehlen wir Mineralwolle oder Hanf. Beide sind diffusionsoffen und vermeiden Feuchtigkeitsprobleme. Bei begrenztem Sparrenzwischenraum ist Einblasdämmung (Zellulose oder Mineralwolle) ideal – sie füllt alle Hohlräume.'
+  },
+  {
+    question: 'Brauche ich eine Dampfsperre?',
+    answer: 'Ja, immer. Die Dampfsperre (auf der warmen Seite der Dämmung) verhindert, dass Raumfeuchtigkeit in die Dämmung eindringt und Schäden verursacht. Wir installieren Dampfsperren immer als System mit Klebebändern und Manschetten.'
+  },
+  {
+    question: 'Wie viel Heizkosten spare ich mit GEG-konformer Dämmung?',
+    answer: 'Mit einem U-Wert von 0,14 W/(m²·K) statt ungedämmt (ca. 2,0 W/(m²·K)) sparen Sie 80–90 % der Heizkosten für das Dachgeschoss. Bei einem typischen 60-m²-Dachgeschoss sind das 600–1.000 € pro Jahr – die Dämmung amortisiert sich in 8–12 Jahren.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "GEG Dämmung Pflicht 2026"
+};
+---
+
+<BaseLayout
+  title="GEG Dämmung Pflicht 2026 | Dachgeschoss in Köln"
+  description="GEG 2026: Welche Dämm-Pflichten gelten beim Dachgeschossausbau? U-Werte, Nachrüstpflicht, Förderstandard. Kompletter Leitfaden."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/ratgeber" class="hover:text-teal-400">Ratgeber</a> /
+              <span class="text-white">GEG 2026</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              GEG Dämmung Pflicht 2026: Was Sie wissen müssen
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Das Gebäudeenergiegesetz schreibt klare Dämmstandards vor. Wir erklären die Pflichten, die Ausnahmen und wie Sie mit optimaler Dämmung Förderung erhalten.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="GEG-Beratung" subtitle="Welcher U-Wert ist für Sie Pflicht?" buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Was schreibt das GEG 2026 vor?
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Das Gebäudeenergiegesetz (GEG) regelt die energetischen Anforderungen an Gebäude. Für den Dachgeschossausbau in Köln sind zwei Paragraphen relevant: § 48 GEG (bedingte Anforderungen bei Sanierung) und § 47 GEG (Nachrüstpflicht).
+            </p>
+            <p>
+              <strong>§ 48 GEG:</strong> Wenn Sie mehr als 10 % Ihrer Dachfläche sanieren (z.B. Neueindeckung, Gaubeneinbau), muss die gedämmte Fläche einen U-Wert von max. 0,24 W/(m²·K) erreichen. Das ist die gesetzliche Mindestanforderung.
+            </p>
+            <p>
+              <strong>§ 47 GEG:</strong> Wenn Ihre oberste Geschossdecke oder Ihr Dach ungedämmt ist, besteht eine Nachrüstpflicht mit demselben U-Wert von 0,24 W/(m²·K). Ausnahme: selbstgenutzte EFH/ZFH, die vor dem 1. Februar 2002 bezogen wurden.
+            </p>
+            <p>
+              <strong>BAFA-Förderstandard:</strong> Die Bundesförderung für effiziente Gebäude (BAFA) verlangt einen strengeren U-Wert von ≤ 0,14 W/(m²·K). Mit diesem Standard erreichen Sie 15–20 % Zuschuss – die Mehrkosten amortisieren sich durch Heizkostenersparnis und Förderung.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">
+            U-Werte im Vergleich
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <p class="text-sm text-slate-500 mb-1">Ungedämmtes Dach</p>
+              <p class="text-3xl font-bold text-slate-600">~ 2,0</p>
+              <p class="text-xs text-slate-500">W/(m²·K)</p>
+              <p class="text-xs text-red-500 mt-2">Hohe Heizkosten, kein GEG-konform</p>
+            </div>
+            <div class="bg-yellow-50 border-2 border-yellow-400 rounded-xl p-6 shadow-sm">
+              <p class="text-sm text-yellow-700 mb-1">GEG-Mindeststandard</p>
+              <p class="text-3xl font-bold text-yellow-700">≤ 0,24</p>
+              <p class="text-xs text-yellow-600">W/(m²·K)</p>
+              <p class="text-xs text-yellow-700 mt-2">Gesetzlich ausreichend, keine Förderung</p>
+            </div>
+            <div class="bg-teal-50 border-2 border-teal-500 rounded-xl p-6 shadow-sm">
+              <p class="text-sm text-teal-600 mb-1">BAFA-Förderstandard</p>
+              <p class="text-3xl font-bold text-teal-600">≤ 0,14</p>
+              <p class="text-xs text-teal-600">W/(m²·K)</p>
+              <p class="text-xs text-teal-700 mt-2">15–20 % Zuschuss, langfristig sparsam</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zur GEG-Dämmung
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="GEG-konforme Dämmung anfragen" subtitle="Wir berechnen den optimalen U-Wert für Ihr Dach." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

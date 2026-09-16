@@ -493,6 +493,50 @@ const serviceSchema = {
     <!-- FAQ Section -->
     <FAQ faqs={faqs} />
 
+    <!-- Ratgeber Section -->
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+            Wissen aus unserem Ratgeber
+          </h2>
+          <p class="text-slate-600 max-w-2xl mx-auto">
+            Kosten, Förderung, Baugenehmigung – die wichtigsten Themen rund um Ihren Dachgeschossausbau in Köln.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <a href="/ratgeber/kosten-dachgeschossausbau-pro-qm" class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+            <div class="text-3xl mb-3">💰</div>
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Kosten pro qm</h3>
+            <p class="text-slate-600 text-sm">Aktuelle Preise 2026 für Köln – mit konkreten Beispielen.</p>
+          </a>
+          <a href="/ratgeber/foerderung-dachgeschossausbau-2026" class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+            <div class="text-3xl mb-3">💸</div>
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Förderung 2026</h3>
+            <p class="text-slate-600 text-sm">BAFA, KfW, Stadt Köln – bis zu 40 % sparen.</p>
+          </a>
+          <a href="/ratgeber/baugenehmigung-dachgeschoss-koeln" class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+            <div class="text-3xl mb-3">📋</div>
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Baugenehmigung</h3>
+            <p class="text-slate-600 text-sm">Welche Unterlagen, wie lange dauert es?</p>
+          </a>
+          <a href="/ratgeber/dachgauben-arten-vergleich" class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+            <div class="text-3xl mb-3">🏠</div>
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Dachgauben-Vergleich</h3>
+            <p class="text-slate-600 text-sm">Welche Form passt zu Ihrem Haus?</p>
+          </a>
+        </div>
+        <div class="text-center mt-8">
+          <a href="/ratgeber" class="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200">
+            Alle Ratgeber-Artikel
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA Section -->
     <LeadForm
       variant="full"

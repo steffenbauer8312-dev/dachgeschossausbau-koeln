@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was zeichnet den Dachgeschossausbau in Ehrenfeld aus?',
+    answer: 'Ehrenfeld hat eine besonders hohe Dichte an Gründerzeitvillen mit Kniestöcken zwischen 80 und 120 cm. Die typischen Krümelkoppelfassaden erfordern bei Gauben besondere Sorgfalt. Wir kennen die Ehrenfelder Bebauungspläne und stimmen unsere Planung mit dem Denkmalschutz ab.'
+  },
+  {
+    question: 'Brauche ich in Ehrenfeld eine Baugenehmigung?',
+    answer: 'Ja, immer. In Ehrenfeld sind die Anforderungen besonders hoch, weil viele Gebäude unter Ensembleschutz stehen. Wir übernehmen die komplette Antragstellung beim Bauaufsichtsamt und koordinieren die Abstimmung mit dem Denkmalschutz.'
+  },
+  {
+    question: 'Welche Gauben passen in Ehrenfeld?',
+    answer: 'Trapezgauben sind in Ehrenfeld Standard und passen zu fast allen Dächern. Bei denkmalgeschützten Gebäuden oder im Bereich der Krümelkoppelfassaden sind oft Sattelgauben vorgegeben. Wir prüfen vorab, was bei Ihrem Haus möglich ist.'
+  },
+  {
+    question: 'Was kostet ein DG-Ausbau in Ehrenfeld?',
+    answer: 'Ehrenfeld liegt im oberen Mittelfeld: 1.800 bis 2.500 Euro pro Quadratmeter. Die höheren Kosten ergeben sich durch die oft aufwendigere Statik, denkmalschutz-relevante Auflagen und die gehobene Ausstattung, die in Ehrenfeld üblich ist.'
+  },
+  {
+    question: 'Lohnt sich eine Dachaufstockung in Ehrenfeld?',
+    answer: 'Bei den vielen Mehrfamilienhäusern in Ehrenfeld ist eine vollständige Dachaufstockung oft die wirtschaftlichste Lösung. Die Wertsteigerung pro zusätzlichem Quadratmeter ist in Ehrenfeld besonders hoch – nicht zuletzt wegen der sehr guten Verkehrsanbindung und der lebendigen Nachbarschaft.'
+  }
+];
+
+const nachbarstadtteile = [
+  { name: 'Neuehrenfeld', slug: 'neuehrenfeld', beschreibung: 'Angrenzendes Veedel mit ähnlicher Gründerzeitstruktur' },
+  { name: 'Bickendorf', slug: 'bickendorf', beschreibung: 'Ebenfalls viele Altbauten mit Ausbaupotenzial' },
+  { name: 'Sülz', slug: 'sulz', beschreibung: 'Uninah und lebendig, gemischte Bausubstanz' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "Ehrenfeld, Köln",
+  "containedInPlace": { "@type": "City", "name": "Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachgeschossausbau in Ehrenfeld (Köln) | Trapezgauben & Altbau"
+  description="Dachgeschossausbau in Köln-Ehrenfeld: Wir kennen die Krümelkoppelfassaden und die Besonderheiten der Gründerzeitvillen. Kostenlose Erstberatung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/stadtteile" class="hover:text-teal-400">Stadtteile</a> /
+              <span class="text-white">Ehrenfeld</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachgeschossausbau in Ehrenfeld
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Ehrenfelds Gründerzeitvillen und Mehrfamilienhäuser bieten enormes Potenzial für den Dachgeschossausbau. Wir kennen die Krümelkoppelfassaden, die Bebauungspläne und die Ehrenfelder Denkmalschutzauflagen.
+            </p>
+          </div>
+          <LeadForm
+            variant="inline"
+            title="Beratung in Ehrenfeld"
+            subtitle="Kostenlose Vor-Ort-Inspektion."
+            buttonText="Termin anfragen"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Dachgeschossausbau in Ehrenfeld – was Sie wissen müssen
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Ehrenfeld gehört zu den gefragtesten Veedeln Kölns – und genau das macht den Dachgeschossausbau hier besonders attraktiv. Die typischen Gründerzeitvillen aus der Zeit zwischen 1870 und 1918 haben Kniestöcke zwischen 80 und 120 cm und Satteldächer mit Neigungen zwischen 45 und 55 Grad. Das ist ideale Ausgangsbasis für hochwertigen Wohnraum unter dem Dach.
+            </p>
+            <p>
+              Was den Ausbau in Ehrenfeld anspruchsvoll macht, sind die gestalterischen Auflagen: Viele Häuser stehen unter Ensembleschutz, die typischen Krümelkoppelfassaden müssen erhalten bleiben, und die Dachlandschaft ist oft einheitlich geregelt. Wir haben in den letzten Jahren zahlreiche Projekte in Ehrenfeld realisiert und kennen die Anforderungen des Bauaufsichtsamts genau.
+            </p>
+            <p>
+              Für <a href="/leistungen/gauben" class="text-teal-600 hover:underline">Dachgauben</a> sind in Ehrenfeld meist Trapezgauben die erste Wahl. Sie fügen sich gut in die bestehende Dachlandschaft ein, bringen viel Licht und schaffen Stehhöhe. Bei denkmalgeschützten Gebäuden setzen wir auf Sattelgauben, die den historischen Charakter bewahren. Eine erste Einschätzung bekommen Sie in unserer kostenlosen Vor-Ort-Beratung.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-8">
+            Typische Projekte in Ehrenfeld
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <a href="/leistungen/dachaufstockung" class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-2">Dachaufstockung auf MFH</h3>
+              <p class="text-slate-600 text-sm">Bei großen Mehrfamilienhäusern in Ehrenfeld lohnt sich oft die vollständige Aufstockung – eine zusätzliche Etage bringt erhebliche Mieterträge.</p>
+            </a>
+            <a href="/leistungen/statik" class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-2">Statik bei Altbauten</h3>
+              <p class="text-slate-600 text-sm">Die alten Dachstühle in Ehrenfeld brauchen oft Verstärkungen. Unsere Statiker prüfen Tragfähigkeit und planen Sanierungen mit.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zum Dachgeschossausbau in Ehrenfeld
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">
+            Weitere Stadtteile rund um Ehrenfeld
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {nachbarstadtteile.map(st => (
+              <a href={`/stadtteile/${st.slug}`} class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">{st.name}</h3>
+                <p class="text-slate-600 text-sm">{st.beschreibung}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachgeschossausbau in Ehrenfeld anfragen" subtitle="Wir melden uns innerhalb von 24 Stunden." buttonText="Kostenlose Beratung" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

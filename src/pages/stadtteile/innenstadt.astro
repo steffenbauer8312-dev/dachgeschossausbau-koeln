@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein DG-Ausbau in der Kölner Innenstadt?',
+    answer: 'Die Kölner Innenstadt ist anspruchsvoll und teuer: 2.200 bis 3.200 Euro pro Quadratmeter. Die hohen Kosten ergeben sich durch Denkmalschutzauflagen, enge Bebauung und aufwendige Statik bei historischen Gebäuden.'
+  },
+  {
+    question: 'Welche Auflagen gibt es durch den Denkmalschutz?',
+    answer: 'In der Innenstadt stehen viele Gebäude unter Denkmalschutz oder Ensembleschutz. Vor allem Gaubenform, Dachziegel und Fassadenveränderungen sind genau geregelt. Wir stimmen unsere Planung eng mit dem Denkmalschutz ab und finden auch für denkmalgeschützte Häuser genehmigungsfähige Lösungen.'
+  },
+  {
+    question: 'Welche Häuser stehen in der Innenstadt?',
+    answer: 'Historische Altbauten, Fachwerkhäuser und Gründerzeitfassaden prägen die Innenstadt. Die Kniestöcke variieren stark (70 bis 100 cm). Die engen Gassen erfordern kreative Lösungen.'
+  },
+  {
+    question: 'Welche Gauben passen in der Innenstadt?',
+    answer: 'In der Innenstadt sind oft nur bestimmte Gaubenformen erlaubt – meist Sattelgauben oder Schleppgauben, die den historischen Charakter bewahren. Trapezgauben kommen nur in nicht denkmalgeschützten Bereichen in Frage.'
+  },
+  {
+    question: 'Ist der DG-Ausbau in der Innenstadt überhaupt möglich?',
+    answer: 'Ja, auch in denkmalgeschützten Häusern ist ein DG-Ausbau möglich. Allerdings erfordert er eine enge Abstimmung mit dem Denkmalschutz und oft kreative Lösungen – z.B. innenliegende Gauben oder Sonderkonstruktionen. Wir haben Erfahrung mit solchen Projekten.'
+  }
+];
+
+const nachbarstadtteile = [
+  { name: 'Deutz', slug: 'deutz', beschreibung: 'Direkt gegenüber, modernes Pendant' },
+  { name: 'Ehrenfeld', slug: 'ehrenfeld', beschreibung: 'Angrenzend, ebenfalls Altbau' },
+  { name: 'Bayenthal', slug: 'bayenthal', beschreibung: 'Südlich, Villenstruktur' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "Innenstadt, Köln",
+  "containedInPlace": { "@type": "City", "name": "Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachgeschossausbau Innenstadt Köln | Denkmalschutz & Altbau"
+  description="Dachgeschossausbau in der Kölner Innenstadt: Erfahrung mit Denkmalschutz, engen Gassen und historischen Altbauten. Beratung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/stadtteile" class="hover:text-teal-400">Stadtteile</a> /
+              <span class="text-white">Innenstadt</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachgeschossausbau in der Kölner Innenstadt
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Die Kölner Innenstadt ist eine besondere Herausforderung: Denkmalschutz, enge Gassen, historische Bausubstanz. Wir finden auch hier Lösungen – mit Erfahrung und Fingerspitzengefühl.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Beratung in der Innenstadt" subtitle="Diskret und erfahren." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Dachgeschossausbau in der Innenstadt: Denkmalschutz meistern
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Die Kölner Innenstadt ist einzigartig – und genau deshalb eine besondere Herausforderung beim Dachgeschossausbau. Historische Altbauten, Fachwerkhäuser und Gründerzeitfassaden stehen unter Denkmalschutz oder Ensembleschutz. Wer hier ausbaut, muss mit dem Amt für Denkmalschutz eng zusammenarbeiten.
+            </p>
+            <p>
+              Wir haben in den letzten Jahren mehrere Projekte in der Innenstadt realisiert und kennen die Auflagen genau. Wo Standard-Lösungen scheitern, entwickeln wir kreative Alternativen: innenliegende Gauben, Sonderkonstruktionen, die das Stadtbild nicht verändern, oder komplette <a href="/leistungen/dachaufstockung" class="text-teal-600 hover:underline">Dachaufstockungen</a> in moderner Architektur.
+            </p>
+            <p>
+              Die engen Gassen der Innenstadt erfordern zudem eine durchdachte Baustellenlogistik. Wir koordinieren Materialtransporte, Nachbarschaftsabsprachen und Behördenkommunikation, damit Ihr Projekt reibungslos läuft. Eine kostenlose Erstberatung gibt Ihnen Klarheit über die Möglichkeiten.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zum Dachgeschossausbau in der Innenstadt
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">
+            Angrenzende Stadtteile
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {nachbarstadtteile.map(st => (
+              <a href={`/stadtteile/${st.slug}`} class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">{st.name}</h3>
+                <p class="text-slate-600 text-sm">{st.beschreibung}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachgeschossausbau in der Innenstadt anfragen" subtitle="Wir melden uns innerhalb von 24 Stunden." buttonText="Kostenlose Beratung" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

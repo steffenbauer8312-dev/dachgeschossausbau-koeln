@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein Dachgeschossausbau in Lindenthal?',
+    answer: 'In Lindenthal liegen die Kosten pro Quadratmeter zwischen 2.000 und 2.800 Euro – das ist das obere Ende in Köln. Die höheren Preise ergeben sich durch die gehobene Ausstattung, die in Lindenthal üblich ist, und durch die häufig villenartige Bausubstanz mit großzügigen Grundrissen.'
+  },
+  {
+    question: 'Welche Häuser finden wir in Lindenthal?',
+    answer: 'Lindenthal ist geprägt von villenartigen Einfamilienhäusern und großzügigen Grundstücken am Grüngürtel. Die Kniestöcke sind oft 100 bis 150 cm hoch – ideale Voraussetzungen für großzügige Dachgeschosse. Viele Häuser sind bereits modernisiert.'
+  },
+  {
+    question: 'Welche Gauben passen in Lindenthal?',
+    answer: 'In Lindenthal sind großzügige Gauben möglich. Trapezgauben und Sattelgauben sind beide üblich. Bei den villenartigen Häusern am Stadtwaldgürtel passen auch aufwendigere Gaubenlösungen mit Loggia oder Balkon.'
+  },
+  {
+    question: 'Wie ist die Statik in Lindenthaler Villen?',
+    answer: 'Die Lindenthaler Villen sind meist massiv gebaut und statisch sehr solide. Die Dachstühle wurden oft in hochwertiger Zimmermannsarbeit errichtet. Eine <a href="/leistungen/statik" class="text-teal-600 hover:underline">statische Prüfung</a> bestätigt in der Regel: Hier geht mehr als bei Nachkriegsbauten.'
+  },
+  {
+    question: 'Lohnt sich die Wertsteigerung in Lindenthal?',
+    answer: 'Absolut. Lindenthal gehört zu den stabilsten Wohnlagen Kölns. Ein hochwertiger Dachgeschossausbau steigert den Wert einer Lindenthaler Immobilie oft um 15 bis 25 Prozent – bei den hohen Ausgangspreisen ein erheblicher Betrag.'
+  }
+];
+
+const nachbarstadtteile = [
+  { name: 'Sülz', slug: 'sulz', beschreibung: 'Uninah, gemischte Bausubstanz' },
+  { name: 'Braunsfeld', slug: 'braunsfeld', beschreibung: 'Angrenzend, ähnlich gehobene Wohnlage' },
+  { name: 'Müngersdorf', slug: 'muengersdorf', beschreibung: 'Rhein-Energie-Stadion-Nähe, EFH-Gebiete' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "Lindenthal, Köln",
+  "containedInPlace": { "@type": "City", "name": "Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachgeschossausbau in Lindenthal (Köln) | Villen & Einfamilienhäuser"
+  description="Dachgeschossausbau in Köln-Lindenthal: Hochwertige Lösungen für Villen und Einfamilienhäuser am Grüngürtel. Kostenlose Beratung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/stadtteile" class="hover:text-teal-400">Stadtteile</a> /
+              <span class="text-white">Lindenthal</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachgeschossausbau in Lindenthal
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Lindenthal steht für gehobenes Wohnen am Grüngürtel. Wir bauen Dachgeschosse in Lindenthal auf dem Niveau, das zu diesem Veedel passt: hochwertig, individuell, mit Statik-Sorgfalt.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Beratung in Lindenthal" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Dachgeschossausbau in Lindenthal: hochwertige Lösungen
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Lindenthal ist eine der besten Wohnlagen Kölns – und genau das erwarten die Eigentümer auch beim Dachgeschossausbau. Die villenartigen Einfamilienhäuser aus der ersten Hälfte des 20. Jahrhunderts haben Kniestöcke zwischen 100 und 150 cm. Das sind ideale Voraussetzungen für ein geräumiges, lichtdurchflutetes Dachgeschoss.
+            </p>
+            <p>
+              Wir setzen in Lindenthal auf eine gehobene Ausstattung: Hochwertige <a href="/leistungen/daemmung" class="text-teal-600 hover:underline">Dämmung</a> nach KfW-Standard, großzügige Gaubenlösungen, edle Materialien im Innenausbau. Viele Lindenthaler Eigentümer kombinieren den DG-Ausbau mit einer umfassenden Sanierung des Bestands – wir koordinieren beide Gewerke aus einer Hand.
+            </p>
+            <p>
+              Die Wertsteigerung durch einen hochwertigen Dachgeschossausbau ist in Lindenthal überdurchschnittlich. Eine 120-qm-Wohnung unter dem Dach kann den Wert einer Lindenthaler Immobilie um 200.000 bis 400.000 Euro steigern. Wir zeigen Ihnen in einer kostenlosen Erstberatung, was in Ihrem Haus möglich ist.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zum Dachgeschossausbau in Lindenthal
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">
+            Stadtteile rund um Lindenthal
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {nachbarstadtteile.map(st => (
+              <a href={`/stadtteile/${st.slug}`} class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">{st.name}</h3>
+                <p class="text-slate-600 text-sm">{st.beschreibung}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachgeschossausbau in Lindenthal anfragen" subtitle="Wir melden uns innerhalb von 24 Stunden." buttonText="Kostenlose Beratung" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

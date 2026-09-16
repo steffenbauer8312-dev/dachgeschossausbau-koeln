@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Brauche ich für jeden Dachgeschossausbau in Köln eine Baugenehmigung?',
+    answer: 'Ja, in Köln ist für jeden DG-Ausbau eine Baugenehmigung erforderlich – auch für reine Dämmarbeiten, wenn mehr als 10 % der Dachfläche verändert werden (§ 48 GEG). Zuständig ist das Bauaufsichtsamt Köln. Wir kümmern uns um die komplette Antragstellung.'
+  },
+  {
+    question: 'Wie lange dauert die Baugenehmigung in Köln?',
+    answer: 'Die Bearbeitung beim Bauaufsichtsamt Köln dauert in der Regel 8 bis 14 Wochen. Bei komplexen Projekten oder denkmalgeschützten Gebäuden kann es länger dauern. Wir stimmen die Anträge effizient ab und vermeiden Rückfragen durch vollständige Unterlagen.'
+  },
+  {
+    question: 'Welche Unterlagen brauche ich für den Bauantrag?',
+    answer: 'Für den Bauantrag brauchen Sie: Bauzeichnungen, Statik-Berechnung, Lageplan, Baubeschreibung, Energienachweis (GEG), ggf. denkmalschutzrechtliche Zustimmung. Wir erstellen alle Unterlagen für Sie – Sie müssen nur unterschreiben.'
+  },
+  {
+    question: 'Was kostet die Baugenehmigung in Köln?',
+    answer: 'Die Baugenehmigungsgebühr richtet sich nach den Baukosten. Für einen 100.000-€-Ausbau zahlen Sie ca. 1.500–2.500 € Gebühr. Die Kosten sind im Gesamtpaket enthalten, wenn Sie uns mit dem Ausbau beauftragen.'
+  },
+  {
+    question: 'Was passiert, wenn ich ohne Genehmigung ausbaue?',
+    answer: 'Ein ungenehmigter Ausbau ist eine Ordnungswidrigkeit. Das Bauaufsichtsamt kann einen Baustopp verhängen, den Rückbau verlangen oder Bußgelder verhängen. Außerdem kann der ungenehmigte Ausbau die Versicherung Ihrer Immobilie gefährden. Gehen Sie den legalen Weg.'
+  },
+  {
+    question: 'Brauche ich auch für Gauben eine Baugenehmigung?',
+    answer: 'Ja, jede Gaube ist genehmigungspflichtig. Auch die Form und Größe muss mit dem Bebauungsplan und ggf. dem Denkmalschutz abgestimmt sein. Wir beraten Sie zu den zulässigen Gaubenformen in Ihrem Viertel.'
+  }
+];
+
+const verfahren = [
+  { schritt: '1', titel: 'Bestandsaufnahme', beschreibung: 'Wir prüfen Dachstuhl, Bausubstanz und Bebauungsplan vor Ort.' },
+  { schritt: '2', titel: 'Vorentwurf', beschreibung: 'Skizzen und erste Kostenschätzung – wir besprechen die Optionen.' },
+  { schritt: '3', titel: 'Bauantrag', beschreibung: 'Vollständige Unterlagen: Bauzeichnungen, Statik, GEG-Nachweis.' },
+  { schritt: '4', titel: 'Behördenabstimmung', beschreibung: 'Wir koordinieren mit Bauaufsichtsamt und ggf. Denkmalschutz.' },
+  { schritt: '5', titel: 'Genehmigung', beschreibung: 'Nach 8–14 Wochen erhalten Sie den Bescheid – Bauphase kann starten.' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Baugenehmigung Dachgeschoss Köln 2026"
+};
+---
+
+<BaseLayout
+  title="Baugenehmigung Dachgeschoss Köln 2026 | Antrag & Ablauf"
+  description="Baugenehmigung für den Dachgeschossausbau in Köln: Welche Unterlagen, wie lange dauert es, was kostet es? Kompletter Leitfaden."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/ratgeber" class="hover:text-teal-400">Ratgeber</a> /
+              <span class="text-white">Baugenehmigung</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Baugenehmigung für den Dachgeschossausbau in Köln
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              In Köln brauchen Sie für jeden DG-Ausbau eine Baugenehmigung. Wir erklären den Ablauf, die Unterlagen und was Sie bei den Behörden erwartet.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Bauantrag stellen" subtitle="Wir kümmern uns um alles." buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Brauche ich eine Baugenehmigung in Köln?
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Ja – in Köln ist für jeden Dachgeschossausbau eine Baugenehmigung erforderlich. Auch für reine Dämmarbeiten, wenn mehr als 10 % der Dachfläche verändert werden. Die rechtliche Grundlage ist die Kölner Bauordnung in Verbindung mit dem GEG (§ 48).
+            </p>
+            <p>
+              Zuständig ist das Bauaufsichtsamt Köln. Die Behörde prüft Ihren Antrag auf Vereinbarkeit mit dem Bebauungsplan, den Denkmalschutzauflagen (falls zutreffend), der Statik und dem GEG-Energiestandard. Ohne Genehmigung zu bauen ist eine Ordnungswidrigkeit und kann schwere Folgen haben.
+            </p>
+            <p>
+              Wir betreuen seit vielen Jahren Bauanträge in Köln und kennen die Anforderungen der verschiedenen Stadtteile. In <a href="/stadtteile/innenstadt" class="text-teal-600 hover:underline">denkmalgeschützten Bereichen</a> ist die Abstimmung aufwendiger als in <a href="/stadtteile/porz" class="text-teal-600 hover:underline">Porz</a> oder <a href="/stadtteile/kalk" class="text-teal-600 hover:underline">Kalk</a>. Wir stimmen unsere Anträge effizient auf die jeweiligen Gegebenheiten ab.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-8 text-center">
+            Ablauf: Von der Anfrage zur Genehmigung
+          </h2>
+          <div class="space-y-6">
+            {verfahren.map(v => (
+              <div class="bg-white rounded-xl p-6 shadow-sm flex gap-6 items-start">
+                <div class="w-12 h-12 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">{v.schritt}</div>
+                <div>
+                  <h3 class="text-lg font-bold text-slate-800 mb-2">{v.titel}</h3>
+                  <p class="text-slate-600">{v.beschreibung}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zur Baugenehmigung in Köln
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Bauantrag in Köln stellen" subtitle="Wir übernehmen die komplette Behördenabstimmung." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

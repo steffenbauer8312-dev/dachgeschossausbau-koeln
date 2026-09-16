@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const foerderungen = [
+  {
+    name: 'BAFA BEG EM',
+    kurz: 'Bundesförderung für effiziente Gebäude – Einzelmaßnahmen',
+    ziel: 'Energetische Sanierung',
+    zuschuss: '15 % (20 % mit Sanierungsfahrplan)',
+    voraussetzung: 'U-Wert ≤ 0,14 W/(m²·K), Energieeffizienz-Experte, Antrag VOR Beginn',
+    link: '/foerderrechner'
+  },
+  {
+    name: 'KfW 261',
+    kurz: 'Bundesförderung für effiziente Gebäude – Wohngebäude',
+    ziel: 'Komplettsanierung oder Neubau',
+    zuschuss: 'Bis zu 150.000 € Kredit + 25 % Tilgungszuschuss',
+    voraussetzung: 'Effizienzhaus-Standard EH 55 oder besser, Experte, Antrag VOR Beginn',
+    link: '/foerderrechner'
+  },
+  {
+    name: 'Stadt Köln – Klimafreundliches Wohnen',
+    kurz: 'Zuschuss zur Bundesförderung',
+    ziel: 'Klimaschutz im Wohngebäudebestand',
+    zuschuss: 'Bis zu 5.000 € pro Wohneinheit',
+    voraussetzung: 'Inanspruchnahme BAFA/KfW, Stadt Köln Antrag',
+    link: '/foerderrechner'
+  },
+  {
+    name: 'progres.nrw',
+    kurz: 'Förderung Klimaschutztechnik NRW',
+    ziel: 'Klimaschutz im Gebäudebestand',
+    zuschuss: 'Bis zu 50 % der Kosten',
+    voraussetzung: 'Wohnort in NRW, technische Mindestanforderungen',
+    link: '/foerderrechner'
+  },
+  {
+    name: 'Steuerbonus § 35c EStG',
+    kurz: 'Steuerliche Förderung energetischer Sanierung',
+    ziel: 'Alternative zur BAFA',
+    zuschuss: '20 % der Handwerkerkosten, max. 1.200 €/Jahr über 3 Jahre',
+    voraussetzung: 'Mindestalter 10 Jahre, kein BAFA-Bezug parallel',
+    link: '/foerderrechner'
+  }
+];
+
+const faqs = [
+  {
+    question: 'Welche Förderung gibt es 2026 für den Dachgeschossausbau?',
+    answer: '2026 gibt es fünf relevante Programme: BAFA BEG EM (15–20 %), KfW 261 (Kredit + Tilgungszuschuss), Stadt Köln Klimaförderung (bis 5.000 €), progres.nrw (bis 50 %), und den Steuerbonus nach § 35c EStG. Welche Kombination für Sie optimal ist, berechnen wir in unserem <a href="/foerderrechner" class="text-teal-600 hover:underline">Förderrechner</a>.'
+  },
+  {
+    question: 'Wann muss ich den Förderantrag stellen?',
+    answer: 'Bei BAFA und KfW muss der Antrag VOR Beginn der Bauarbeiten gestellt werden – sonst verfällt der Anspruch. Wir empfehlen, den Antrag direkt nach Auftragserteilung einzureichen. Die Bearbeitung dauert 4–8 Wochen.'
+  },
+  {
+    question: 'Kann ich BAFA und KfW kombinieren?',
+    answer: 'Nein, BAFA und KfW schließen sich für dieselbe Maßnahme aus. Sie können aber verschiedene Maßnahmen kombinieren: z.B. BAFA für die Dämmung und progres.nrw für eine andere Komponente. Wir beraten Sie zur optimalen Kombination.'
+  },
+  {
+    question: 'Wie viel Förderung bekomme ich insgesamt?',
+    answer: 'In der Regel 20–35 % der Gesamtkosten. Bei optimaler Kombination aus BAFA + Stadt Köln + Steuerbonus kann die Förderquote auf über 40 % steigen. Für ein 100.000-€-Projekt sind das 20.000–40.000 € Zuschuss.'
+  },
+  {
+    question: 'Brauche ich einen Energieeffizienz-Experten?',
+    answer: 'Ja, für BAFA und KfW brauchen Sie einen zertifizierten Energieeffizienz-Experten. Wir arbeiten mit erfahrenen Experten zusammen und können Ihnen geeignete Partner empfehlen.'
+  },
+  {
+    question: 'Welche Förderung ist in Köln besonders interessant?',
+    answer: 'Die Stadt Köln hat ein eigenes Förderprogramm, das auf die BAFA-Förderung aufstockt. In Kombination mit BAFA können Sie so bis zu 35 % Förderquote erreichen. Unser <a href="/foerderrechner" class="text-teal-600 hover:underline">Förderrechner</a> zeigt Ihnen Ihre individuelle Förderung.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Förderung Dachgeschossausbau 2026"
+};
+---
+
+<BaseLayout
+  title="Förderung Dachgeschossausbau 2026 | BAFA, KfW, Köln"
+  description="Alle Förderprogramme 2026 für den Dachgeschossausbau: BAFA, KfW 261, Stadt Köln, progres.nrw, Steuerbonus. Bis zu 40 % Förderquote."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/ratgeber" class="hover:text-teal-400">Ratgeber</a> /
+              <span class="text-white">Förderung 2026</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Förderung 2026: BAFA, KfW, Stadt Köln, NRW
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Mit optimaler Förderung reduzieren Sie die Kosten Ihres Dachgeschossausbaus um 20–40 %. Wir zeigen, welche Programme 2026 verfügbar sind und wie Sie sie kombinieren.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Förderung berechnen" subtitle="Kostenlos, unverbindlich." buttonText="Förderung prüfen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Bis zu 40 % Förderung für Ihren Dachgeschossausbau
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Für den Dachgeschossausbau gibt es 2026 eine Vielzahl von Förderprogrammen – auf Bundes-, Landes- und kommunaler Ebene. Die optimale Kombination kann Ihre effektiven Kosten um 20 bis 40 % senken. Bei einem 100.000-€-Projekt sind das bis zu 40.000 € Ersparnis.
+            </p>
+            <p>
+              Die wichtigsten Programme: <strong>BAFA BEG EM</strong> (15 % Zuschuss für energetische Maßnahmen), <strong>KfW 261</strong> (Kredit + Tilgungszuschuss für Komplettsanierungen), <strong>Stadt Köln</strong> (Aufstockung auf BAFA), <strong>progres.nrw</strong> (NRW-Landesprogramm) und der <strong>Steuerbonus § 35c EStG</strong>. Mit unserer Erfahrung kombinieren wir die Programme optimal.
+            </p>
+            <p>
+              Wichtig: Bei BAFA und KfW muss der Antrag VOR Beginn der Bauarbeiten gestellt werden. Wir empfehlen, die Förderung direkt nach der Auftragserteilung zu beantragen. Unser <a href="/foerderrechner" class="text-teal-600 hover:underline">Förderrechner</a> zeigt Ihnen eine erste Schätzung Ihrer individuellen Förderung.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-8 text-center">
+            Förderprogramme im Überblick
+          </h2>
+          <div class="space-y-4">
+            {foerderungen.map(f => (
+              <div class="bg-white rounded-xl p-6 shadow-sm">
+                <h3 class="text-xl font-bold text-slate-800 mb-1">{f.name}</h3>
+                <p class="text-sm text-slate-500 italic mb-3">{f.kurz}</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <p class="text-slate-500 text-xs">Ziel</p>
+                    <p class="text-slate-700">{f.ziel}</p>
+                  </div>
+                  <div>
+                    <p class="text-slate-500 text-xs">Förderung</p>
+                    <p class="text-teal-600 font-bold">{f.zuschuss}</p>
+                  </div>
+                  <div>
+                    <p class="text-slate-500 text-xs">Voraussetzung</p>
+                    <p class="text-slate-700">{f.voraussetzung}</p>
+                  </div>
+                </div>
+                <a href={f.link} class="text-teal-600 text-sm font-medium hover:text-teal-700 inline-block mt-3">→ Im Förderrechner berechnen</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zur Förderung 2026
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Förderung für Ihr Projekt" subtitle="Wir berechnen Ihre individuelle Förderung." buttonText="Förderung prüfen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

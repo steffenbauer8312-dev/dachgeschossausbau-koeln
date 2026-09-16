@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Kann ich in einem denkmalgeschützten Haus in Köln ein Dachgeschoss ausbauen?',
+    answer: 'Ja, das ist möglich – aber nur mit Zustimmung des Amts für Denkmalschutz. Die Behörde prüft, ob der Ausbau die historische Substanz und das Stadtbild beeinträchtigt. Wo Standardlösungen scheitern, finden wir kreative Alternativen. Wir haben Erfahrung mit denkmalgeschützten Projekten in der Kölner Innenstadt und Marienburg.'
+  },
+  {
+    question: 'Welche Auflagen gibt es bei Denkmalschutz?',
+    answer: 'Typische Auflagen: Erhalt der Dachziegel (Material, Farbe), Gaubenform passend zum historischen Bestand, keine Veränderung der Dachneigung, Erhalt sichtbarer Holzbalken oder Stuckdecken, Verwendung traditioneller Materialien. Im Einzelfall können auch Auflagen zur Innenausstattung kommen.'
+  },
+  {
+    question: 'Was kostet ein DG-Ausbau unter Denkmalschutz?',
+    answer: 'Denkmalgeschützte Ausbauten kosten 20–40 % mehr als Standardausbauten. Die Aufschläge kommen durch aufwendigere Materialien (z.B. passende Dachziegel), längere Planungszeit und die Abstimmung mit der Denkmalbehörde. In <a href="/stadtteile/marienburg" class="text-teal-600 hover:underline">Marienburg</a> oder <a href="/stadtteile/innenstadt" class="text-teal-600 hover:underline">der Innenstadt</a> rechnen Sie mit 2.500–3.500 €/m².'
+  },
+  {
+    question: 'Welche Stadtteile in Köln sind besonders vom Denkmalschutz betroffen?',
+    answer: 'Stark betroffen sind die Kölner Innenstadt (Altstadt, Belgisches Viertel), <a href="/stadtteile/marienburg" class="text-teal-600 hover:underline">Marienburg</a>, Teile von <a href="/stadtteile/rodenkirchen" class="text-teal-600 hover:underline">Rodenkirchen</a> (Rheinfront), <a href="/stadtteile/ehrenfeld" class="text-teal-600 hover:underline">Ehrenfeld</a> (Krümelkoppelfassaden) und <a href="/stadtteile/lindenthal" class="text-teal-600 hover:underline">Lindenthal</a> (Villen am Stadtwaldgürtel). Wir kennen die Auflagen in allen Vierteln.'
+  },
+  {
+    question: 'Bekomme ich Förderung bei einem Denkmalschutz-Ausbau?',
+    answer: 'Ja. Es gibt zusätzliche Förderprogramme für denkmalgeschützte Gebäude – z.B. das Landesprogramm Denkmalförderung NRW und Steuerabschreibungen nach § 7i EStG (bis zu 100 % der Herstellungskosten über 12 Jahre). Wir beraten Sie zu den Möglichkeiten.'
+  },
+  {
+    question: 'Brauche ich immer eine denkmalschutzrechtliche Erlaubnis?',
+    answer: 'Ja, für jede Veränderung am äußeren Erscheinungsbild eines Denkmals brauchen Sie eine Erlaubnis nach § 9 DSchG NRW. Wir stellen den Antrag im Rahmen des Bauantrags.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Dachgeschossausbau unter Denkmalschutz in Köln"
+};
+---
+
+<BaseLayout
+  title="Dachgeschossausbau Denkmalschutz Köln | Auflagen & Lösungen"
+  description="Dachgeschossausbau unter Denkmalschutz in Köln: Welche Auflagen gelten, welche Lösungen möglich sind, welche Förderung es gibt."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/ratgeber" class="hover:text-teal-400">Ratgeber</a> /
+              <span class="text-white">Denkmalschutz</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachgeschossausbau unter Denkmalschutz in Köln
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Auch denkmalgeschützte Häuser können ausgebaut werden – mit der richtigen Planung und Erfahrung. Wir zeigen, welche Auflagen gelten und welche Lösungen möglich sind.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Beratung bei Denkmalschutz" subtitle="Erfahren mit denkmalgeschützten Objekten." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Denkmalschutz und Dachgeschossausbau – geht das zusammen?
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Ja – auch in denkmalgeschützten Häusern ist ein Dachgeschossausbau möglich. Die Hürden sind höher, aber die Lösungen sind oft schöner und individueller als im Standardbau. Wir realisieren seit Jahren Projekte in der <a href="/stadtteile/innenstadt" class="text-teal-600 hover:underline">Kölner Innenstadt</a>, in <a href="/stadtteile/marienburg" class="text-teal-600 hover:underline">Marienburg</a> und in <a href="/stadtteile/ehrenfeld" class="text-teal-600 hover:underline">Ehrenfeld</a>.
+            </p>
+            <p>
+              Die Zusammenarbeit mit dem Amt für Denkmalschutz erfordert Erfahrung und Fingerspitzengefühl. Die Behörde will keine museale Konservierung, sondern denkmalgerechte Erhaltung mit moderner Nutzung. Wer mit guter Planung kommt, bekommt in der Regel eine Genehmigung – auch für umfangreiche Ausbauten.
+            </p>
+            <p>
+              Die wichtigste Regel: Frühzeitig mit dem Denkmalschutz sprechen, nicht erst im laufenden Bauantrag. Wir nehmen von Anfang an Kontakt zur Behörde auf und stimmen die Planung ab. So vermeiden Sie böse Überraschungen und Verzögerungen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">
+            Typische Auflagen beim Denkmalschutz
+          </h2>
+          <div class="space-y-4">
+            {[
+              { titel: 'Dachziegel erhalten', text: 'Originale Ziegel oder passende Nachfertigungen in Material und Farbe.' },
+              { titel: 'Gaubenform passend', text: 'Nur Formen, die zum historischen Bestand passen – meist Sattel- oder Schleppgauben.' },
+              { titel: 'Dachneigung beibehalten', text: 'Keine Veränderung der historischen Dachform und -neigung.' },
+              { titel: 'Sichtbalken erhalten', text: 'Vorhandene Holzbalken oder Stuckdecken nicht verkleiden.' },
+              { titel: 'Materialien traditionell', text: 'Verwendung passender Baustoffe – z.B. Holzfenster statt Kunststoff.' },
+              { titel: 'Fassade geschützt', text: 'Bei Krümelkoppelfassaden oder Fachwerk: keine Veränderung der Außenansicht.' }
+            ].map(item => (
+              <div class="bg-white rounded-xl p-5 shadow-sm border-l-4 border-teal-500">
+                <h3 class="font-bold text-slate-800 mb-2">{item.titel}</h3>
+                <p class="text-slate-600 text-sm">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zum Denkmalschutz-Ausbau
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Denkmalschutz-Ausbau anfragen" subtitle="Erfahrene Beratung für anspruchsvolle Objekte." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

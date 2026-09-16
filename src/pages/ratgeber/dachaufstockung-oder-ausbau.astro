@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was ist der Unterschied zwischen Dachaufstockung und Dachgeschossausbau?',
+    answer: 'Beim klassischen Dachgeschossausbau wird das vorhandene Dach zu Wohnraum umgebaut – die Dachkonstruktion bleibt bestehen, der Raum wird nur gedämmt und ausgebaut. Bei der Dachaufstockung wird das bestehende Dach abgetragen und ein komplett neues Geschoss darauf gebaut. Die Aufstockung schafft mehr Raum, kostet aber 30–50 % mehr.'
+  },
+  {
+    question: 'Wann lohnt sich eine Dachaufstockung?',
+    answer: 'Eine Aufstockung lohnt sich besonders bei flachen Dächern (z.B. in <a href="/stadtteile/chorweiler" class="text-teal-600 hover:underline">Chorweiler</a>, <a href="/stadtteile/pesch" class="text-teal-600 hover:underline">Pesch</a>), bei maroden Dachstühlen, die ohnehin erneuert werden müssen, und wenn maximale Wohnflächensteigerung gewünscht ist. Bei intakten Satteldächern mit guter Statik ist der klassische Ausbau wirtschaftlicher.'
+  },
+  {
+    question: 'Was kostet eine Dachaufstockung in Köln?',
+    answer: 'Eine Dachaufstockung kostet in Köln zwischen 2.500 und 3.500 Euro pro Quadratmeter – 30–50 % mehr als ein klassischer Ausbau. Der Aufschlag kommt durch den kompletten Dachabriss, den neuen Dachstuhl und die aufwendigere Statik zustande. Förderung ist möglich, besonders in Kombination mit energetischer Sanierung.'
+  },
+  {
+    question: 'Brauche ich für eine Aufstockung eine Baugenehmigung?',
+    answer: 'Ja, immer. Eine Dachaufstockung verändert die Gebäudehöhe und erfordert eine umfassende bauaufsichtliche Prüfung. Wir kümmern uns um den kompletten Bauantrag – von der Statik bis zur Baugenehmigung.'
+  },
+  {
+    question: 'Welche Statik ist für eine Aufstockung nötig?',
+    answer: 'Eine Aufstockung erfordert eine deutlich verstärkte Statik. Die Lasten aus dem neuen Geschoss müssen sicher in die Außenwände abgeleitet werden. Bei Holzbauweise ist das oft einfacher als bei Massivbau. Wir prüfen vorab, ob die Substanz eine Aufstockung trägt.'
+  },
+  {
+    question: 'Kann ich ein Satteldach zu einem Flachdach aufstocken?',
+    answer: 'Ja, das ist möglich. Allerdings verändert sich das Stadtbild, und je nach Bebauungsplan sind Auflagen zu beachten. In <a href="/stadtteile/innenstadt" class="text-teal-600 hover:underline">denkmalgeschützten Bereichen</a> ist diese Umwandlung oft nicht möglich. Wir beraten Sie zu den Optionen für Ihr Haus.'
+  }
+];
+
+const vergleich = [
+  { merkmal: 'Kosten pro m²', ausbau: '1.400 – 2.400 €', aufstockung: '2.500 – 3.500 €' },
+  { merkmal: 'Bauzeit', ausbau: '8 – 12 Wochen', aufstockung: '12 – 20 Wochen' },
+  { merkmal: 'Wohnfläche möglich', ausbau: '60 – 80 % der Dachfläche', aufstockung: '100 % der Grundfläche' },
+  { merkmal: 'Statik-Aufwand', ausbau: 'Gering bis mittel', aufstockung: 'Hoch' },
+  { merkmal: 'Förderfähigkeit', ausbau: 'BAFA, KfW, Steuerbonus', aufstockung: 'BAFA, KfW, Steuerbonus' },
+  { merkmal: 'Stadtbild-Auswirkung', ausbau: 'Kaum (bei gleichem Gauben-Muster)', aufstockung: 'Hoch (Höhe verändert sich)' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Dachaufstockung oder Dachgeschossausbau? Vergleich Köln"
+};
+---
+
+<BaseLayout
+  title="Dachaufstockung oder Dachgeschossausbau? | Vergleich Köln"
+  description="Dachaufstockung vs. Dachgeschossausbau: Welche Lösung passt zu Ihrem Haus in Köln? Kosten, Aufwand, Vorteile im direkten Vergleich."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/ratgeber" class="hover:text-teal-400">Ratgeber</a> /
+              <span class="text-white">Aufstockung oder Ausbau</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachaufstockung oder Dachgeschossausbau?
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Die richtige Wahl hängt von Ihrem Haus, Ihrem Budget und Ihren Zielen ab. Wir vergleichen beide Lösungen objektiv und zeigen, wann welche Variante sinnvoller ist.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Welche Lösung passt zu Ihnen?" subtitle="Kostenlose Vor-Ort-Beratung." buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Zwei Lösungen, ein Ziel: mehr Wohnraum
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Sowohl der klassische <a href="/leistungen/dachaufstockung" class="text-teal-600 hover:underline">Dachgeschossausbau</a> als auch eine <a href="/leistungen/dachaufstockung" class="text-teal-600 hover:underline">Dachaufstockung</a> schaffen neuen Wohnraum – aber auf sehr unterschiedliche Weise. Beim Ausbau nutzen Sie das vorhandene Dach, bei der Aufstockung setzen Sie ein neues Geschoss obendrauf.
+            </p>
+            <p>
+              Die Wahl hängt von mehreren Faktoren ab: Zustand des bestehenden Dachstuhls, gewünschte Wohnfläche, Kostenrahmen, Stadtbild-Auswirkungen und die Vorgaben des Bebauungsplans. Wir beraten Sie seit vielen Jahren zu beiden Lösungen und kennen die Vor- und Nachteile genau.
+            </p>
+            <p>
+              Grundsätzlich gilt: Bei einem intakten Satteldach mit guter Statik ist der klassische Ausbau wirtschaftlicher. Bei flachen Dächern, maroden Dachstühlen oder maximalem Raumbedarf ist die Aufstockung oft die bessere Wahl.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-8 text-center">
+            Direkter Vergleich: Ausbau vs. Aufstockung
+          </h2>
+          <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+            <table class="w-full">
+              <thead class="bg-slate-800 text-white">
+                <tr>
+                  <th class="text-left p-4">Merkmal</th>
+                  <th class="text-left p-4">Ausbau</th>
+                  <th class="text-left p-4">Aufstockung</th>
+                </tr>
+              </thead>
+              <tbody>
+                {vergleich.map((row, i) => (
+                  <tr class={i % 2 === 0 ? 'bg-slate-50' : 'bg-white'}>
+                    <td class="p-4 font-medium text-slate-700">{row.merkmal}</td>
+                    <td class="p-4 text-slate-600">{row.ausbau}</td>
+                    <td class="p-4 text-slate-600">{row.aufstockung}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Wann welche Lösung sinnvoll ist
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-teal-50 rounded-xl p-6">
+              <h3 class="text-lg font-bold text-slate-800 mb-3">Klassischer Ausbau</h3>
+              <ul class="space-y-2 text-slate-700 text-sm">
+                <li class="flex items-start gap-2"><span class="text-teal-500">✓</span> Satteldach mit guter Statik</li>
+                <li class="flex items-start gap-2"><span class="text-teal-500">✓</span> Intakter Dachstuhl vorhanden</li>
+                <li class="flex items-start gap-2"><span class="text-teal-500">✓</span> Kostenbewusstes Projekt</li>
+                <li class="flex items-start gap-2"><span class="text-teal-500">✓</span> Stadtbild soll erhalten bleiben</li>
+                <li class="flex items-start gap-2"><span class="text-teal-500">✓</span> In <a href="/stadtteile/ehrenfeld" class="text-teal-600 hover:underline">Ehrenfeld</a>, <a href="/stadtteile/marienburg" class="text-teal-600 hover:underline">Marienburg</a></li>
+              </ul>
+            </div>
+            <div class="bg-orange-50 rounded-xl p-6">
+              <h3 class="text-lg font-bold text-slate-800 mb-3">Dachaufstockung</h3>
+              <ul class="space-y-2 text-slate-700 text-sm">
+                <li class="flex items-start gap-2"><span class="text-teal-500">✓</span> Flaches Dach (Chorweiler, Pesch)</li>
+                <li class="flex items-start gap-2"><span class="text-teal-500">✓</span> Maroder Dachstuhl, Abriss nötig</li>
+                <li class="flex items-start gap-2"><span class="text-teal-500">✓</span> Maximale Wohnfläche gewünscht</li>
+                <li class="flex items-start gap-2"><span class="text-teal-500">✓</span> Mehrfamilienhaus-Projekt</li>
+                <li class="flex items-start gap-2"><span class="text-teal-500">✓</span> In <a href="/stadtteile/chorweiler" class="text-teal-600 hover:underline">Chorweiler</a>, <a href="/stadtteile/kalk" class="text-teal-600 hover:underline">Kalk</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zu Aufstockung und Ausbau
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Beratung zur richtigen Lösung" subtitle="Wir analysieren Ihr Haus und empfehlen die beste Variante." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

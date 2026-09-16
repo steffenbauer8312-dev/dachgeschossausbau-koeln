@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein DG-Ausbau in Rodenkirchen?',
+    answer: 'Rodenkirchen liegt im oberen Preissegment: 1.900 bis 2.700 Euro pro Quadratmeter. Die Rheinnähe und der gehobene Wohncharakter sorgen für eine hohe Wertsteigerung durch den DG-Ausbau.'
+  },
+  {
+    question: 'Welche Besonderheiten gibt es durch die Rheinnähe?',
+    answer: 'In Rheinnähe ist Feuchtigkeitsschutz besonders wichtig. Wir setzen auf hochwertige <a href="/leistungen/daemmung" class="text-teal-600 hover:underline">Dämmung</a> mit diffusionsoffenen Konstruktionen und passende Dachziegel. Die schöne Dachlandschaft am Rhein erfordert gestalterisch hochwertige Lösungen.'
+  },
+  {
+    question: 'Welche Häuser prägen Rodenkirchen?',
+    answer: 'Rodenkirchen hat Villen, Mehrfamilienhäuser und eine besondere Rheinfront-Bebauung. Die Kniestöcke liegen zwischen 90 und 140 cm – gute Voraussetzungen für den DG-Ausbau.'
+  },
+  {
+    question: 'Welche Gauben passen in Rodenkirchen?',
+    answer: 'Trapez- und Sattelgauben sind Standard. Bei Rheinfront-Bebauung sind oft Sonderlösungen möglich – z.B. Balkone oder Loggien. Wir stimmen die Gauben auf das Stadtbild ab.'
+  },
+  {
+    question: 'Lohnt sich die Wertsteigerung in Rodenkirchen?',
+    answer: 'Ja, deutlich. Rodenkirchen hat eine sehr stabile Wertentwicklung. Ein DG-Ausbau steigert den Wert typischerweise um 15 bis 20 Prozent – bei den hohen Ausgangspreisen ein erheblicher Betrag.'
+  }
+];
+
+const nachbarstadtteile = [
+  { name: 'Marienburg', slug: 'marienburg', beschreibung: 'Premium-Wohnlage, ebenfalls Villenstruktur' },
+  { name: 'Weiß', slug: 'weiss', beschreibung: 'Rheinnah, ähnlich gehoben' },
+  { name: 'Sürth', slug: 'suerth', beschreibung: 'Angrenzend, dörflicher Charakter' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "Rodenkirchen, Köln",
+  "containedInPlace": { "@type": "City", "name": "Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachgeschossausbau in Rodenkirchen (Köln) | Rhein & Villen"
+  description="Dachgeschossausbau in Köln-Rodenkirchen: Rheinnähe, Villen und besondere Dachlandschaften. Kostenlose Beratung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/stadtteile" class="hover:text-teal-400">Stadtteile</a> /
+              <span class="text-white">Rodenkirchen</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachgeschossausbau in Rodenkirchen
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Rodenkirchen verbindet urbanes Wohnen mit Rheinnähe. Wir bauen Dachgeschosse in Rodenkirchen, die zur hochwertigen Dachlandschaft am Rhein passen – mit besonderem Augenmerk auf Feuchtigkeitsschutz.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Beratung in Rodenkirchen" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Dachgeschossausbau in Rodenkirchen: rheinnahe Lösungen
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Rodenkirchen gehört zu den schönsten Wohnlagen Kölns – direkt am Rhein, mit Villen und einer besonderen Dachlandschaft. Der Dachgeschossausbau hier ist anspruchsvoll: Die hochwertige Umgebung verlangt gestalterisch überzeugende Lösungen, die Rheinnähe erfordert besonderen Feuchtigkeitsschutz.
+            </p>
+            <p>
+              Wir setzen in Rodenkirchen auf diffusionsoffene Konstruktionen und hochwertige Materialien. Wo andere nur Standardlösungen bieten, entwickeln wir Lösungen, die zur Architektur der Häuser passen – von der klassischen Trapezgaube bis zur Sonderlösung mit Balkon.
+            </p>
+            <p>
+              Die Wertsteigerung durch einen DG-Ausbau ist in Rodenkirchen erheblich. Wir zeigen Ihnen in einer kostenlosen Erstberatung, welche Möglichkeiten Ihr Haus bietet und welche <a href="/foerderrechner" class="text-teal-600 hover:underline">Fördermittel</a> Sie nutzen können.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zum Dachgeschossausbau in Rodenkirchen
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">
+            Stadtteile rund um Rodenkirchen
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {nachbarstadtteile.map(st => (
+              <a href={`/stadtteile/${st.slug}`} class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">{st.name}</h3>
+                <p class="text-slate-600 text-sm">{st.beschreibung}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachgeschossausbau in Rodenkirchen anfragen" subtitle="Wir melden uns innerhalb von 24 Stunden." buttonText="Kostenlose Beratung" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -3,18 +3,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
+const stadtteile = ['porz', 'ehrenfeld', 'nippes', 'lindenthal', 'sulz', 'marienburg', 'rodenkirchen', 'deutz', 'muelheim', 'kalk', 'chorweiler', 'innenstadt', 'neuehrenfeld', 'bickendorf', 'ossendorf', 'longerich', 'pesch', 'lindweiler'];
+const ratgeber = ['kosten-dachgeschossausbau-pro-qm', 'dachaufstockung-oder-ausbau', 'baugenehmigung-dachgeschoss-koeln', 'denkmalschutz-dachgeschossausbau', 'geg-daemmung-pflicht-2026', 'kniestock-erhoehen-sinnvoll', 'dachgauben-arten-vergleich', 'foerderung-dachgeschossausbau-2026'];
+
+const BASE = 'https://www.dachgeschossausbau-koeln.de';
+
 const pages = [
-  { url: 'https://www.dachgeschossausbaukoeln.de/', changefreq: 'weekly', priority: '1.0' },
-  { url: 'https://www.dachgeschossausbaukoeln.de/leistungen', changefreq: 'weekly', priority: '0.9' },
-  { url: 'https://www.dachgeschossausbaukoeln.de/leistungen/statik', changefreq: 'monthly', priority: '0.8' },
-  { url: 'https://www.dachgeschossausbaukoeln.de/leistungen/gauben', changefreq: 'monthly', priority: '0.8' },
-  { url: 'https://www.dachgeschossausbaukoeln.de/leistungen/daemmung', changefreq: 'monthly', priority: '0.8' },
-  { url: 'https://www.dachgeschossausbaukoeln.de/leistungen/trockenbau', changefreq: 'monthly', priority: '0.8' },
-  { url: 'https://www.dachgeschossausbaukoeln.de/leistungen/bad', changefreq: 'monthly', priority: '0.8' },
-  { url: 'https://www.dachgeschossausbaukoeln.de/kosten', changefreq: 'monthly', priority: '0.9' },
-  { url: 'https://www.dachgeschossausbaukoeln.de/stadtteile', changefreq: 'monthly', priority: '0.8' },
-  { url: 'https://www.dachgeschossausbaukoeln.de/ueber-uns', changefreq: 'monthly', priority: '0.7' },
-  { url: 'https://www.dachgeschossausbaukoeln.de/kontakt', changefreq: 'monthly', priority: '0.9' },
+  { url: `${BASE}/`, changefreq: 'weekly', priority: '1.0' },
+  { url: `${BASE}/leistungen`, changefreq: 'weekly', priority: '0.9' },
+  { url: `${BASE}/leistungen/dachaufstockung`, changefreq: 'monthly', priority: '0.9' },
+  { url: `${BASE}/leistungen/statik`, changefreq: 'monthly', priority: '0.8' },
+  { url: `${BASE}/leistungen/gauben`, changefreq: 'monthly', priority: '0.8' },
+  { url: `${BASE}/leistungen/daemmung`, changefreq: 'monthly', priority: '0.8' },
+  { url: `${BASE}/leistungen/trockenbau`, changefreq: 'monthly', priority: '0.8' },
+  { url: `${BASE}/leistungen/bad`, changefreq: 'monthly', priority: '0.8' },
+  { url: `${BASE}/kosten`, changefreq: 'monthly', priority: '0.9' },
+  { url: `${BASE}/foerderrechner`, changefreq: 'monthly', priority: '0.8' },
+  { url: `${BASE}/stadtteile`, changefreq: 'monthly', priority: '0.8' },
+  ...stadtteile.map(s => ({ url: `${BASE}/stadtteile/${s}`, changefreq: 'monthly', priority: '0.8' })),
+  { url: `${BASE}/ratgeber`, changefreq: 'weekly', priority: '0.8' },
+  ...ratgeber.map(r => ({ url: `${BASE}/ratgeber/${r}`, changefreq: 'monthly', priority: r.includes('kosten') || r.includes('foerderung') ? '0.9' : '0.8' })),
+  { url: `${BASE}/ueber-uns`, changefreq: 'monthly', priority: '0.7' },
+  { url: `${BASE}/kontakt`, changefreq: 'monthly', priority: '0.9' },
 ];
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -34,12 +44,13 @@ ${pages.map(page => `  <url>
   <Header />
   <main class="py-16 bg-slate-50">
     <div class="container mx-auto px-4">
-      <h1 class="text-3xl font-bold text-slate-800 mb-8">Sitemap</h1>
-      <ul class="space-y-2">
+      <h1 class="text-3xl font-bold text-slate-800 mb-4">Sitemap</h1>
+      <p class="text-slate-600 mb-8">Alle Seiten unserer Website im Überblick.</p>
+      <ul class="space-y-2 columns-1 md:columns-2 lg:columns-3">
         {pages.map(page => (
-          <li>
-            <a href={page.url.replace('https://www.dachgeschossausbaukoeln.de', '')} class="text-teal-600 hover:text-teal-700">
-              {page.url}
+          <li class="break-inside-avoid mb-2">
+            <a href={page.url.replace(BASE, '')} class="text-teal-600 hover:text-teal-700">
+              {page.url.replace(BASE, '') || '/'}
             </a>
           </li>
         ))}

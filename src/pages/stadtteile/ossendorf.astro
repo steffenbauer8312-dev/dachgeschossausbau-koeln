@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein DG-Ausbau in Ossendorf?',
+    answer: 'Ossendorf liegt im Mittelfeld: 1.600 bis 2.100 Euro pro Quadratmeter. Der Eigenheim-Charakter des Viertels macht den DG-Ausbau besonders attraktiv für Familien.'
+  },
+  {
+    question: 'Welche Bausubstanz hat Ossendorf?',
+    answer: 'Ossendorf hat Einfamilienhäuser, Reihenhäuser und neueren Wohnungsbau. Die Kniestöcke liegen zwischen 90 und 130 cm – sehr gute Voraussetzungen für großzügige Dachgeschosse.'
+  },
+  {
+    question: 'Welche Gauben passen in Ossendorf?',
+    answer: 'Alle Formen sind möglich. Bei den vielen Einfamilienhäusern sind großzügige Trapez- und Sattelgauben üblich. Wir stimmen die Gauben auf den Stil Ihres Hauses ab.'
+  },
+  {
+    question: 'Wie ist die Lage in Ossendorf?',
+    answer: 'Ossendorf ist ruhig und familienfreundlich – mit Eigenheim-Charakter trotz Stadtlage. Die Nähe zum Butzweilerhof und die gute Verkehrsanbindung machen das Viertel attraktiv.'
+  },
+  {
+    question: 'Lohnt sich der DG-Ausbau in Ossendorf?',
+    answer: 'Ja, sehr. Die Wertsteigerung durch eine zusätzliche Wohneinheit ist in Ossendorf überdurchschnittlich. Viele Eigentümer schaffen mit dem DG-Ausbau Platz für erwachsene Kinder oder vermieten die Einheit.'
+  }
+];
+
+const nachbarstadtteile = [
+  { name: 'Bickendorf', slug: 'bickendorf', beschreibung: 'Urban, angrenzend' },
+  { name: 'Longerich', slug: 'longerich', beschreibung: 'Ländlich, familienfreundlich' },
+  { name: 'Nippes', slug: 'nippes', beschreibung: 'Dörflicher Charakter' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "Ossendorf, Köln",
+  "containedInPlace": { "@type": "City", "name": "Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachgeschossausbau in Ossendorf (Köln) | Eigenheim-Charakter"
+  description="Dachgeschossausbau in Köln-Ossendorf: Ruhiges Wohnviertel mit viel Eigenheim-Charakter. Kostenlose Beratung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/stadtteile" class="hover:text-teal-400">Stadtteile</a> /
+              <span class="text-white">Ossendorf</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Dachgeschossausbau in Ossendorf
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Ossendorf ist ein ruhiges Wohnviertel mit Eigenheim-Charakter. Wir bauen Dachgeschosse in Ossendorf großzügig und familienfreundlich – passend zum Charakter des Viertels.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Beratung in Ossendorf" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+            Dachgeschossausbau in Ossendorf: Eigenheim-Werte
+          </h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Ossendorf ist ein ruhiger Stadtteil im Kölner Norden mit ausgeprägtem Eigenheim-Charakter. Die vielen Einfamilienhäuser und Reihenhäuser bieten ideale Voraussetzungen für den Dachgeschossausbau – und viele Eigentümer realisieren hier ihren Traum von zusätzlichem Wohnraum für die Familie.
+            </p>
+            <p>
+              Mit Kniestöcken zwischen 90 und 130 cm lassen sich in Ossendorf besonders großzügige Dachgeschosse realisieren. Wir setzen auf helle, offene Grundrisse mit großzügigen <a href="/leistungen/gauben" class="text-teal-600 hover:underline">Gauben</a> für viel Tageslicht. Bei Bedarf kombinieren wir den DG-Ausbau mit einer <a href="/leistungen/dachaufstockung" class="text-teal-600 hover:underline">Dachaufstockung</a> für maximalen Raumgewinn.
+            </p>
+            <p>
+              Die Wertsteigerung durch einen DG-Ausbau ist in Ossendorf besonders hoch, weil die Nachfrage nach familiengerechtem Wohnraum im Viertel stark ist. Viele Eigentümer schaffen so Platz für erwachsene Kinder oder erwirtschaften eine attraktive Rendite durch Vermietung.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Fragen zum Dachgeschossausbau in Ossendorf
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">
+            Angrenzende Stadtteile
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {nachbarstadtteile.map(st => (
+              <a href={`/stadtteile/${st.slug}`} class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                <h3 class="text-lg font-bold text-slate-800 mb-1">{st.name}</h3>
+                <p class="text-slate-600 text-sm">{st.beschreibung}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachgeschossausbau in Ossendorf anfragen" subtitle="Wir melden uns innerhalb von 24 Stunden." buttonText="Kostenlose Beratung" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
