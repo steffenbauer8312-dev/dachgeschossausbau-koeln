@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Wann muss der Dachüberstand erneuert werden?',
+    answer: 'Wenn die sichtbaren Sparren oder Ortgangbretter morsch sind. Wenn die Untersicht sich löst oder Wasser ins Mauerwerk läuft. Wenn Wind und Wetter in den letzten Jahren zu viel Schaden angerichtet haben. Auch optische Gründe spielen oft eine Rolle.'
+  },
+  {
+    question: 'Was kostet die Erneuerung des Dachüberstands?',
+    answer: 'Eine Teilerneuerung mit Brettern und Untersicht beginnt bei 80 Euro pro laufendem Meter. Eine Komplett-Erneuerung mit neuen Sparrenköpfen, Brettern, Untersicht und Traufblech liegt bei 180 bis 320 Euro pro Meter. Plus Gerüst, je nach Höhe.'
+  },
+  {
+    question: 'Können wir den Dachüberstand optisch verändern?',
+    answer: 'Ja, durch kürzere oder längere Sparren können wir den Dachüberstand verlängern oder verkürzen. Auch die Profilform können wir anpassen, zum Beispiel von schlichtem Abschluss auf sichtbare Sparrenköpfe oder dekorative Konsolen.'
+  },
+  {
+    question: 'Welche Holzart nehmen Sie?',
+    answer: 'Lärche oder Douglasie für die sichtbaren Teile, weil sie ohne Imprägnierung 30 Jahre halten. Konstruktionsteile innen aus Konstruktionsvollholz. Bei besonderen optischen Wünschen arbeiten wir mit Eiche oder Astkiefer.'
+  },
+  {
+    question: 'Brauche ich für die Erneuerung eine Baugenehmigung?',
+    answer: 'In der Regel nicht, wenn Geometrie und Optik gleich bleiben. Sobald der Dachüberstand verlängert wird oder sich die Hausansicht verändert, ist eine Anmeldung erforderlich. Bei denkmalgeschützten Gebäuden sowieso.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Dachüberstand erneuern",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachüberstand erneuern Köln | Traufe neu aufbauen"
+  description="Dachüberstand erneuern in Köln: Sparrenköpfe, Ortgang, Untersicht, Traufblech. Morsche Stellen raus, neue Bretter rein."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Dachüberstand</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Dachüberstand erneuern in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Der Dachüberstand ist Sonne, Regen und Wind stark ausgesetzt. Mit der Zeit wird er morsch, die Bretter wellen sich, die Untersicht löst sich. Wir erneuern den Überstand fachgerecht, mit Lärche oder Douglasie und passenden Anschlüssen.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Dachüberstand prüfen" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Wenn der Dachrand bröckelt</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Der Dachüberstand ist ein kritischer Punkt eines Hauses. Hier treffen Wind, Regen, Sonne und Frost zusammen. Holz, das dort verbaut ist, wird über die Jahrzehnte stark beansprucht. Wenn Sie morsches Holz sehen, Risse in den Brettern oder Verformungen, ist es Zeit für eine Erneuerung.
+            </p>
+            <p>
+              In Köln sehen wir Häuser aus der Gründerzeit mit beeindruckenden, ornamentalen Dachüberständen. Die sind oft mit Zierleisten, Konsolen und Profilen verziert. Hier kommt es auf die fachgerechte Rekonstruktion an. Bei weniger aufwendigen Bauten geht es auch pragmatisch: wasserfeste Schalung, sauberes Traufblech, neue Untersicht. Wir setzen um, was sinnvoll ist.'
+            </p>
+            <p>
+              Bei der Erneuerung nehmen wir Sparrenköpfe und Ortgang raus, soweit sie betroffen sind, und setzen neue Hölzer ein. Die Untersicht ist eine gute Gelegenheit, nebenbei die Regenrinne und das Fallrohr zu erneuern oder einen Vogelschutz einzubauen. Wir koordinieren die Arbeiten mit Dachdecker und Klempner.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Was wir erneuern</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Sparrenköpfe', d: 'An der Traufe am stärksten beansprucht. Morsche Stellen herausschneiden, neue Köpfe ansetzen.' },
+              { t: 'Ortgang', d: 'Seitlicher Abschluss des Dachs. Bretter und ggf. Zierleisten erneuern.' },
+              { t: 'Untersicht', d: 'Sichtfläche unter dem Dachüberstand. Profilholz oder Nut-und-Feder.' },
+              { t: 'Traufblech', d: 'Verbindet Dach und Regenrinne. Wird mit erneuert, damit alles dicht ist.' },
+              { t: 'Regenrinne und Fallrohr', d: 'Am sinnvollsten gleich mitmachen, wenn Gerüst und Aufwand eh da sind.' },
+              { t: 'Vogelschutz', d: 'Lüftungsgitter gegen Taubendreck. Sollte am Dachüberstand nicht fehlen.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur Erneuerung</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachüberstand prüfen" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

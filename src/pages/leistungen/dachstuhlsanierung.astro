@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Wann muss ein Dachstuhl saniert werden?',
+    answer: 'Wenn Holzschäden vorliegen, die Statik nicht mehr für den geplanten DG-Ausbau reicht, oder nach 80 bis 120 Jahren Nutzungsdauer. Typische Zeichen: durchfeuchtetes Holz, morsche Sparren, Pilzbefall, Schwamm, verzogene Verbände oder morsche Auflager.'
+  },
+  {
+    question: 'Was kostet eine Dachstuhlsanierung?',
+    answer: 'Je nach Schadensumfang zwischen 8.000 und 45.000 Euro. Eine Teilsanierung mit Verstärkung weniger Sparren liegt bei 8.000 bis 15.000 Euro, eine komplette Sanierung mit Ertüchtigung der Verbände bei 25.000 bis 45.000 Euro.'
+  },
+  {
+    question: 'Bekomme ich für eine Dachstuhlsanierung Förderung?',
+    answer: 'Ja, bei Kombination mit energetischer Sanierung greift die BAFA-Einzelmaßnahmenförderung (15 Prozent Zuschuss). Auch die Stadt Köln und progres.nrw bezuschussen Dacharbeiten an Bestandsgebäuden. Wir prüfen die Förderfähigkeit im Rahmen der Vor-Ort-Beratung.'
+  },
+  {
+    question: 'Muss ich während der Sanierung ausziehen?',
+    answer: 'In den meisten Fällen nicht. Wir arbeiten abschnittsweise und sichern die Baustelle so, dass die darunterliegenden Wohnungen bewohnbar bleiben. Nur bei Komplettsanierungen mit Aufdecken des Daches ist ein Auszug für ein bis zwei Wochen sinnvoll.'
+  },
+  {
+    question: 'Wie lange hält ein sanierter Dachstuhl?',
+    answer: 'Mit fachgerechter Sanierung und moderner Holzschutzbehandlung halten die Bauteile weitere 60 bis 100 Jahre. Wir dokumentieren die Sanierung in einem Bestandsplan und geben 10 Jahre Garantie auf die ausgeführten Arbeiten.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Dachstuhlsanierung",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachstuhlsanierung Köln | Holzschäden & Ertüchtigung"
+  description="Dachstuhlsanierung in Köln: alte Holzsubstanz retten, beschädigte Sparren austauschen, Tragfähigkeit ertüchtigen für den DG-Ausbau."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Dachstuhlsanierung</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Dachstuhlsanierung in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Ein 80 Jahre alter Dachstuhl ist noch lange nicht am Ende. Wir prüfen jedes Bauteil, tauschen kaputtes Holz und ertüchtigen die Statik für die nächsten Jahrzehnte. Schonend, soweit es geht, mit so viel Eingriff wie nötig.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Dachstuhl prüfen lassen" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Wann rettet Sanierung, wann muss es Neubau sein?</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Viele Dächer in Ehrenfeld, Nippes und Lindenthal stammen aus der Gründerzeit. Auch in Porz stehen Nachkriegsbauten mit intakten Dachstühlen aus den 1950ern und 1960ern. Bei Holzbauteilen dieser Altersklassen lohnt es sich fast immer, zu sanieren statt zu ersetzen. Das Holz ist oft noch gut, nur einzelne Teile sind durch Feuchtigkeit oder Insekten geschädigt.
+            </p>
+            <p>
+              Wir gehen nach einem klaren Schema vor: Bestandsaufnahme mit Bohrwiderstandsmessung, Fotodokumentation, Bewertung nach DIN 68800. Dann legen wir fest: welche Hölzer bleiben, welche werden ertüchtigt, welche müssen raus. Erst danach kalkulieren wir verbindlich.
+            </p>
+            <p>
+              In Köln arbeiten wir viel mit denkmalgeschützten Objekten. Hier ist ein behutsames Vorgehen Pflicht. Wir verwenden traditionelle Holzverbindungen (Zapfen, Versatz, Kamm) und passende Holzsorten, damit die historische Substanz erhalten bleibt und der Charakter des Hauses gewahrt wird.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-8">Häufige Schadensbilder</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Hausschwamm', d: 'Brauner oder weißer Porenschwamm zerstört das Holz meist von der Auflagerstelle. Befallenes Holz muss raus, angrenzendes Holz wird behandelt.' },
+              { t: 'Insektenbefall', d: 'Hausbock und Nagekäfer hinterlassen Fraßgänge. Bei aktivem Befall tauschen wir das Holz aus, ansonsten behandeln wir mit zugelassenem Holzschutzmittel.' },
+              { t: 'Durchfeuchtung', d: 'Oft Folge defekter Dachziegel oder Leckagen an Anschlüssen. Holz trocknen, Ursache beseitigen, beschädigte Stelle ertüchtigen.' },
+              { t: 'Überlastung', d: 'Wenn das Dachgeschoss ausgebaut werden soll, reicht die alte Statik oft nicht. Wir verstärken mit Aufdopplungen, Wechseln oder zusätzlichen Pfosten.' },
+              { t: 'Verformung', d: 'Sparren hängen durch, Pfetten verziehen sich. Mit Aufschieblingen, Wechseln oder Verstärkungslaschen wird das Tragwerk wieder gerade.' },
+              { t: 'Morsche Auflager', d: 'Die Sparrenauflager auf der Mauer sind oft die schwächsten Stellen. Wir ersetzen die Köpfe und dichten die Auflager mit Folie und Mörtel ab.' }
+            ].map(s => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{s.t}</h3>
+                <p class="text-slate-600 text-sm">{s.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur Dachstuhlsanierung</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">Verwandte Leistungen</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <a href="/leistungen/dachstuhlbau" class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-1">Dachstuhlbau</h3>
+              <p class="text-slate-600 text-sm">Wenn Sanierung nicht mehr reicht.</p>
+            </a>
+            <a href="/leistungen/dachstuhlverstärkung" class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-1">Verstärkung</h3>
+              <p class="text-slate-600 text-sm">Tragfähigkeit für DG-Ausbau.</p>
+            </a>
+            <a href="/leistungen/holzschaden-dach-reparieren" class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-1">Holzschäden reparieren</h3>
+              <p class="text-slate-600 text-sm">Punktuelle Reparatur statt Totalsanierung.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachstuhl prüfen lassen" subtitle="Kostenlose Erstinspektion." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was ist Ingenieurholzbau?',
+    answer: 'Beim Ingenieurholzbau (auch Ingenieurholzbauweise IHW) werden Bauteile aus Brettschichtholz (BSH) oder Brettsperrholz (BSP) verwendet. Sie sind statisch berechnet, technisch optimiert und kommen bei großen Spannweiten oder komplexen Geometrien zum Einsatz.'
+  },
+  {
+    question: 'Welche Vorteile hat Brettschichtholz gegenüber Vollholz?',
+    answer: 'BSH ist formstabil, reißt weniger und trägt mehr. Aus mehreren lamellenverklebten Brettlagen entstehen Träger und Balken mit definierten Eigenschaften. Wir nutzen BSH für sichtbare Balken, weit gespannte Träger und ästhetische Holzkonstruktionen.'
+  },
+  {
+    question: 'Was kostet Ingenieurholzbau?',
+    answer: 'BSH-Träger beginnen bei 400 Euro pro Kubikmeter. Ein schlankes Bauteil von 12/24 cm in 6 Metern Länge liegt bei rund 700 Euro. Aufwendige BSP-Platten für Wände oder Decken kosten 200 bis 350 Euro pro Quadratmeter, je nach Aufbau.'
+  },
+  {
+    question: 'Kann man mit Ingenieurholzbau auch schlanke Konstruktionen realisieren?',
+    answer: 'Ja, das ist die Stärke. Eine BSP-Decke überbrückt 6 Meter problemlos, schlank und ohne störende Unterzüge. In Köln setzen wir das bei offenen Grundrissen im DG-Ausbau ein, wenn die Kniestockhöhe begrenzt ist und nicht noch Balken den Raum unterteilen sollen.'
+  },
+  {
+    question: 'Ist Ingenieurholzbau bei Denkmalschutz erlaubt?',
+    answer: 'Außen oft nur eingeschränkt, weil das Stadtbild nicht verändert werden darf. Innen ist IHB sehr gut geeignet für Sanierungen. Wir stimmen mit dem Denkmalamt ab, welche Lösungen funktionieren.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Ingenieurholzbau",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Ingenieurholzbau Köln | BSH, BSP, schlanke Träger"
+  description="Ingenieurholzbau in Köln: Brettschichtholz (BSH) und Brettsperrholz (BSP) für schlanke, tragfähige Holzkonstruktionen."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Ingenieurholzbau</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Ingenieurholzbau in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Brettschichtholz, Brettsperrholz und schlanke Holzträger für anspruchsvolle Konstruktionen. Wir nutzen Ingenieurholzbau für Aufstockungen, weit gespannte Dächer und ästhetische Lösungen, die mit Vollholz nicht möglich sind.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Ingenieurholzbau" subtitle="Welche Dimension brauchen Sie?" buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Wenn Vollholz nicht ausreicht</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Vollholz hat seine Grenzen. Bei einer Spannweite über 6 Meter brauchen wir entweder sehr große Querschnitte oder wir gehen auf Brettschichtholz. BSH entsteht aus mehreren Brettlamellen, die faserparallel verklebt sind. Das macht den Träger formstabil, tragfähig und in beliebigen Längen herstellbar. Wir nutzen BSH in Köln für sichtbare Balken und für Konstruktionen, die optisch anspruchsvoll sind.
+            </p>
+            <p>
+              Brettsperrholz (BSP) ist die nächste Stufe. Aus kreuzweise verklebten Brettlagen entstehen plattenförmige Bauteile, die als Wand, Decke oder Dachelement eingesetzt werden. BSP-Platten sind dünner als Massivholzwände, halten aber viel aus. Wir setzen BSP ein, wenn eine Holzdecke über mehrere Meter freitragend sein soll, ohne dass ein Balken stört.'
+            </p>
+            <p>
+              In Köln haben wir Ingenieurholzbau unter anderem in Mülheim und Kalk realisiert, bei Aufstockungen mit knapp dimensionierter Statik. Hier mussten die neuen Holzbauteile leicht und zugleich tragfähig sein. Mit BSH und BSP geht das. Wir arbeiten mit lokalen Holzbau-Werkstätten zusammen, die uns die Bauteile just in time auf die Baustelle liefern.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Was wir mit Ingenieurholzbau lösen</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Weit gespannte Dächer', d: 'Tragwerke über 7 Metern freitragend. BSH oder BSP überbrücken das ohne störende Stützen.' },
+              { t: 'Sichtbare Holzbalken', d: 'Wenn das Holz sichtbar bleibt, achten wir auf Sortierung und Oberfläche. BSH bietet saubere Qualität.' },
+              { t: 'Aufstockung mit Leichtbau', d: 'Wenn die Bestandswände nicht mehr Last tragen, sind BSH und BSP oft die Rettung.' },
+              { t: 'Schlanke Geschossdecken', d: 'BSP-Platten erlauben schlanke Aufbauten mit hoher Tragfähigkeit.' },
+              { t: 'Komplexe Geometrien', d: 'Gebogene Träger, Satteldach-Knicke, Anschlüsse an Aufstockungen: IHB macht es möglich.' },
+              { t: 'Brandschutz mit Holz', d: 'Mit Brandschutzplatten bekleidet, erreichen BSP-Wände Feuerwiderstandsklasse F30 bis F90.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zum Ingenieurholzbau</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Ingenieurholzbau anfragen" subtitle="Welche Dimension brauchen Sie?" buttonText="Beratung anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

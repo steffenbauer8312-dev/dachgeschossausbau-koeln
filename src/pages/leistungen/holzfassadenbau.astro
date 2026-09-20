@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet eine Holzfassade?',
+    answer: 'Je nach Holzart und Profil liegt eine vorgehängte Holzfassade zwischen 130 und 220 Euro pro Quadratmeter komplett montiert. Lärche und Douglasie sind teurer als Fichte mit Holzschutz. Profilholz mit Nut-und-Feder-System ist die häufigste Bauweise in Köln.'
+  },
+  {
+    question: 'Welche Holzarten eignen sich für Fassaden?',
+    answer: 'Lärche, Douglasie und Eiche sind die dauerhaftesten. Sie halten ohne chemischen Holzschutz 30 bis 50 Jahre. Fichte und Tanne gehen auch, brauchen aber eine Holzschutz-Imprägnierung. Bei Sichtbeton oder Pflege-Konzept empfehlen wir widerstandsfähige Hölzer.'
+  },
+  {
+    question: 'Wie lange hält eine Holzfassade?',
+    answer: 'Mit guter Pflege 30 bis 50 Jahre. Ohne Pflege alle 10 bis 15 Jahre eine Lasur. Wir beraten gern, welche Pflege für welches Holz sinnvoll ist, und bieten Wartungsverträge an.'
+  },
+  {
+    question: 'Brauche ich für eine Holzfassade eine Baugenehmigung?',
+    answer: 'Wenn die Fassade Teil einer neuen Bauaufgabe ist (Anbau, Aufstockung), brauchen wir eine Baugenehmigung. Reine Fassadensanierung am Bestand ist in der Regel genehmigungsfrei. Bei denkmalgeschützten Gebäuden ist die Material- und Farbwahl eingeschränkt.'
+  },
+  {
+    question: 'Welche Profile sind in Köln üblich?',
+    answer: 'Rhombusprofil, Stülpschalung, Nut-und-Feder, Boden-Deckel-Schalung. Die Wahl hängt vom Architekturstil ab. Wir empfehlen für moderne Gebäude das Rhombusprofil, für klassische Altbauten Stülpschalung oder Nut-und-Feder.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Holzfassadenbau",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Holzfassadenbau Köln | Vorgehängte Holzfassaden"
+  description="Holzfassadenbau in Köln: Lärche, Douglasie, Fichte als vorgehängte Fassade. Für Neubau, Sanierung und Aufstockung in Holzbauweise."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Holzfassadenbau</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Holzfassadenbau in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Holz an der Fassade sieht gut aus, dämmt gleich mit und sorgt für ein gesundes Raumklima. Wir bauen vorgehängte Holzfassaden in Köln aus heimischen Hölzern, mit passendem Profil und professioneller Montage.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Holzfassade anfragen" subtitle="Welches Profil passt?" buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Holz an der Fassade hat Tradition</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              In Köln ist die Holzfassade eher selten, weil die Mehrheit der Gebäude Putz oder Verblender hat. Aber für moderne Anbauten, Aufstockungen in Holzbauweise und für Liebhaber des Werkstoffs ist Holz eine spannende Alternative. Wir bauen Rhombusprofile in Lärche für moderne Bauten in Kalk und Deutz, Stülpschalung für klassische Ergänzungen in Lindenthal.
+            </p>
+            <p>
+              Vorgehängte Holzfassaden haben mehrere Vorteile. Sie sind diffusionsoffen, sehen lebendig aus, altern mit Patina und sind bei richtiger Auslegung wartungsarm. Die dahinterliegende Lüftungsebene hält die Konstruktion trocken und schützt vor Feuchteproblemen. Bei guter Holzqualität und richtiger Montage hält eine Holzfassade Jahrzehnte.'
+            </p>
+            <p>
+              Für wen Holz infrage kommt: Neubauten in Holzbauweise, Aufstockungen und Anbauten in Holz, Sanierungen von Bestandsgebäuden mit Holzoptik, und für alle, die auf natürliche Materialien setzen. Wir beraten vor Ort zu Profil, Holzart und Befestigung und legen ein Angebot, das passt.'
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Profile und Holzarten</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Rhombusprofil', d: 'Schräge Bretter mit Lüftungsspalt. Modern, klar, sichtbare Befestigung.' },
+              { t: 'Nut-und-Feder', d: 'Klassische Profilbretter. Verdeckte Befestigung, glatte Fläche.' },
+              { t: 'Stülpschalung', d: 'Überlappende Bretter. Traditionell, robust, ideal für Wetterschutz.' },
+              { t: 'Boden-Deckel-Schalung', d: 'Schmale Bretter mit Öffnung. Sichtbare Strukturen, moderner Look.' },
+              { t: 'Lärche', d: 'Heimisch, dauerhaft, witterungsbeständig. Premium-Holz ohne Imprägnierung.' },
+              { t: 'Douglasie', d: 'Etwas heller als Lärche. Auch dauerhaft, mit leichtem Silbergrau-Schimmer im Alter.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zum Holzfassadenbau</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Holzfassade anfragen" subtitle="Welches Profil passt?" buttonText="Beratung anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

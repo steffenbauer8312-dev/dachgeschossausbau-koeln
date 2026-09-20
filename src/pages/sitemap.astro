@@ -5,24 +5,20 @@ import Footer from '../components/Footer.astro';
 
 const stadtteile = ['porz', 'ehrenfeld', 'nippes', 'lindenthal', 'sulz', 'marienburg', 'rodenkirchen', 'deutz', 'muelheim', 'kalk', 'chorweiler', 'innenstadt', 'neuehrenfeld', 'bickendorf', 'ossendorf', 'longerich', 'pesch', 'lindweiler'];
 const ratgeber = ['kosten-dachgeschossausbau-pro-qm', 'dachaufstockung-oder-ausbau', 'baugenehmigung-dachgeschoss-koeln', 'denkmalschutz-dachgeschossausbau', 'geg-daemmung-pflicht-2026', 'kniestock-erhoehen-sinnvoll', 'dachgauben-arten-vergleich', 'foerderung-dachgeschossausbau-2026'];
+const leistungen = ['bad', 'statik', 'trockenbau', 'dachaufstockung', 'daemmung', 'gauben', 'dachbodenausbau', 'dachanhebung', 'kniestockerhoehung', 'gaubenbau', 'dachfenstereinbau', 'dachbalkonbau', 'wohnraumerweiterung-holzbauweise', 'holzrahmenbau', 'holzstaenderbau', 'ingenieurholzbau', 'anbau-holzbauweise', 'dachterrassenbau', 'dachsanierung', 'energetische-dachsanierung', 'aufsparrendaemmung', 'zwischensparrendaemmung', 'dachboden-daemmen', 'holzbalkendecke-sanieren', 'holzbalkendecke-verstaerken', 'fachwerksanierung', 'holzfassadenbau', 'holzfassadensanierung', 'carportbau', 'holzgaragenbau', 'terrassenueberdachung', 'vordachbau', 'balkonbau-aus-holz', 'dachueberstand-erneuern', 'holzschaden-dach-reparieren', 'dachstuhlbau', 'dachstuhlsanierung', 'dachstuhlverstärkung', 'dachstuhlreparatur', 'sparren-austauschen-verstärken', 'pfetten-erneuern-verstärken', 'dachkonstruktionen-anbauten', 'individuelle-zimmererarbeiten'];
 
 const BASE = 'https://www.dachgeschossausbau-koeln.de';
 
 const pages = [
   { url: `${BASE}/`, changefreq: 'weekly', priority: '1.0' },
   { url: `${BASE}/leistungen`, changefreq: 'weekly', priority: '0.9' },
-  { url: `${BASE}/leistungen/dachaufstockung`, changefreq: 'monthly', priority: '0.9' },
-  { url: `${BASE}/leistungen/statik`, changefreq: 'monthly', priority: '0.8' },
-  { url: `${BASE}/leistungen/gauben`, changefreq: 'monthly', priority: '0.8' },
-  { url: `${BASE}/leistungen/daemmung`, changefreq: 'monthly', priority: '0.8' },
-  { url: `${BASE}/leistungen/trockenbau`, changefreq: 'monthly', priority: '0.8' },
-  { url: `${BASE}/leistungen/bad`, changefreq: 'monthly', priority: '0.8' },
+  ...leistungen.map(s => ({ url: `${BASE}/leistungen/${s}`, changefreq: 'monthly', priority: (s === 'dachaufstockung') ? '0.9' : '0.8' })),
   { url: `${BASE}/kosten`, changefreq: 'monthly', priority: '0.9' },
   { url: `${BASE}/foerderrechner`, changefreq: 'monthly', priority: '0.8' },
   { url: `${BASE}/stadtteile`, changefreq: 'monthly', priority: '0.8' },
   ...stadtteile.map(s => ({ url: `${BASE}/stadtteile/${s}`, changefreq: 'monthly', priority: '0.8' })),
   { url: `${BASE}/ratgeber`, changefreq: 'weekly', priority: '0.8' },
-  ...ratgeber.map(r => ({ url: `${BASE}/ratgeber/${r}`, changefreq: 'monthly', priority: r.includes('kosten') || r.includes('foerderung') ? '0.9' : '0.8' })),
+  ...ratgeber.map(r => ({ url: `${BASE}/ratgeber/${r}`, changefreq: 'monthly', priority: (r.includes('kosten') || r.includes('foerderung')) ? '0.9' : '0.8' })),
   { url: `${BASE}/ueber-uns`, changefreq: 'monthly', priority: '0.7' },
   { url: `${BASE}/kontakt`, changefreq: 'monthly', priority: '0.9' },
 ];

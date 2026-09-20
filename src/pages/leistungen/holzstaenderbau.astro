@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was ist der Unterschied zwischen Holzständerbau und Holzrahmenbau?',
+    answer: 'Beide nutzen eine rahmenartige Holzkonstruktion. Holzständerbau ist die ältere Variante und arbeitet mit groben Ständern und Bohlen. Holzrahmenbau ist die moderne, industrielle Form mit dünnen, dicht stehenden Ständern und hohem Dämmgrad. In Köln setzen wir heute auf Holzrahmenbau.'
+  },
+  {
+    question: 'Ist Holzständerbau noch zeitgemäß?',
+    answer: 'Für Sanierungen und Denkmalobjekte durchaus. Wer historische Konstruktionen ertüchtigt, nutzt die gleichen Prinzipien. Für den Neubau ist Holzrahmenbau wirtschaftlicher. Wir beides in Köln, je nach Aufgabenstellung und Denkmalauflagen.'
+  },
+  {
+    question: 'Welche Vor- und Nachteile hat Holzständerbau?',
+    answer: 'Vorteile: gute Dämmung, trockene Bauweise, ressourcenschonend. Nachteile: empfindlich gegen aufsteigende Feuchte, akustisch schlechter als Massivbau, Fachkräftemangel bei traditioneller Ausführung. Wir wissen, wie man die Nachteile minimiert.'
+  },
+  {
+    question: 'Wie viel kostet Holzständerbau pro Quadratmeter?',
+    answer: 'Im Neubau etwa 350 bis 500 Euro pro Quadratmeter Wandfläche. Im Bestand mit historischer Anpassung und Innendämmung eher 400 bis 600 Euro. Bei denkmalgeschützten Objekten kalkulieren wir aufwandsbezogen.'
+  },
+  {
+    question: 'Welche Dämmung passt zum Holzständerbau?',
+    answer: 'Mineralwolle, Hanf, Holzfaserdämmung oder Zellulose. Alle vier sind diffusionsoffen, trocken und gut für das Raumklima. Welche wir nehmen, hängt von Brandschutz, Schallschutz und Budget ab.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Holzständerbau",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Holzständerbau Köln | Tradition trifft Moderne"
+  description="Holzständerbau in Köln: klassische Ständerbauweise für Innenausbauten, Sanierungen und denkmalgeschützte Objekte."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Holzständerbau</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Holzständerbau in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Wer in Köln einen Altbau saniert, profitiert oft von der Holzständerbauweise. Innenwände, Vorsatzschalen, Innendämmung: alles lässt sich trocken und mit guter Dämmung herstellen. Wir setzen die Methode klassisch und modern ein.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Holzständerbau planen" subtitle="Welche Konstruktion passt?" buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Tradition trifft auf moderne Standards</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Der Holzständerbau ist eine uralte Bauweise, schon die mittelalterlichen Fachwerkhäuser in Köln nutzten das Prinzip. Heute setzen wir die Idee mit modernen Materialien fort: KVH-Ständer, Mineralwolle zwischen den Ständern, OSB oder Gipsfaser als Beplankung, dahinter diffusionsoffene Membran. Das ist im Prinzip nichts anderes als das, was die Altvorderen mit Lehm und Stroh gemacht haben, nur zeitgemäß gedämmt.
+            </p>
+            <p>
+              In Köln kommt die Holzständerbauweise vor allem bei inneren Trennwänden, Innendämmung und beim Trockenausbau zum Einsatz. Wenn ein Gründerzeit-Mauerwerk zu wenig Dämmung hat, bauen wir eine Innenschale in Holzständerweise davor. Wenn der Dachboden als Wohnraum erschlossen wird, sind die Innenwände im DG in Holzständer- oder Trockenbauweise deutlich schneller und günstiger als in Massivbau.'
+            </p>
+            <p>
+              Wir kombinieren Holzständerbau auch mit modernen Aufstockungs-Projekten. In Lindenthal haben wir auf ein Bestandsgebäude ein komplettes Stockwerk in Holzständer-Bauweise aufgesetzt, mit diffusionsoffener Dampfbremse und Holzfaserdämmung. Das Ergebnis passt zur heutigen Energieeffizienz und lässt sich später rückstandslos zurückbauen oder umnutzen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Einsatzbereiche</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Innenwände im DG', d: 'Nicht tragende Trennwände im Dachgeschoss in Trockenbauweise.' },
+              { t: 'Innendämmung', d: 'Vorsatzschale auf Außenmauerwerk für mehr Wärmeschutz ohne Außendämmung.' },
+              { t: 'Aufstockungs-Außenwände', d: 'Bei Aufstockungen auf Bestandsgebäude, mit niedrigem Gewicht und guter Dämmung.' },
+              { t: 'Treppenhaus-Wände', d: 'Innere Schächte, Installationswände, Vorbauwände für Sanitär.' },
+              { t: 'Vorsatzschalen', d: 'Für Installationen, Dämmung und zur Egalisierung unebener Wände.' },
+              { t: 'Sanierung Fachwerk', d: 'Instandsetzung historischer Holzständer-Konstruktionen.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zum Holzständerbau</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Holzständerbau anfragen" subtitle="Welche Konstruktion passt?" buttonText="Beratung anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

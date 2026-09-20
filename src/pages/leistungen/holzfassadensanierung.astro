@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Wann lohnt sich eine Sanierung statt Neubau?',
+    answer: 'Wenn mehr als 70 Prozent der Fassade noch intakt sind. Wenn die Unterkonstruktion noch tragfähig ist. Wenn die Profilbretter nur oberflächlich verschlissen sind. Wir prüfen das vor Ort und entscheiden mit Ihnen, was wirtschaftlich richtig ist.'
+  },
+  {
+    question: 'Was kostet eine Holzfassadensanierung?',
+    answer: 'Teilweise Brettersatz und neue Lasur liegen bei 80 bis 140 Euro pro Quadratmeter. Komplette Neueindeckung mit Erhalt der Unterkonstruktion bei 130 bis 200 Euro. Plus Gerüst und Anfahrt. Wir kalkulieren nach Vor-Ort-Aufnahme.'
+  },
+  {
+    question: 'Können wir die Sanierung in Eigenleistung machen?',
+    answer: 'Das Auswechseln einzelner Bretter geht für geübte Heimwerker. Die Lasur und das fachgerechte Schließen der Anschlüsse sollte der Fachbetrieb machen. Bei Gerüstarbeiten ist die Profi-Lösung Pflicht, weil die Sicherheit gewährleistet sein muss.'
+  },
+  {
+    question: 'Welche Lebensdauer hat eine sanierte Holzfassade?',
+    answer: 'Mit fachgerechter Sanierung und Pflegelasur alle 5 bis 10 Jahre hält eine Holzfassade 30 bis 50 Jahre. Die Unterkonstruktion hält deutlich länger, oft 70 Jahre und mehr. Wir beraten zu Wartungsintervallen und bieten Wartungsverträge an.'
+  },
+  {
+    question: 'Welche Lasur oder welcher Anstrich passt?',
+    answer: 'Dünnschicht-Lasuren lassen das Holz atmen und betonen die Maserung. Dickschicht-Lasuren bilden einen Film und sind robuster, aber weniger diffusionsoffen. Wir wählen je nach Holzart und Witterungsbelastung. Auf Wunsch arbeiten wir auch mit Holzölen.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Holzfassadensanierung",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Holzfassadensanierung Köln | Bestand erhalten"
+  description="Holzfassadensanierung in Köln: einzelne Bretter tauschen, Unterkonstruktion prüfen, neue Lasur. Werterhalt statt Komplettneubau."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Holzfassadensanierung</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Holzfassadensanierung in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Eine Holz­fassade vergraut, bekommt Risse oder einzelne Bretter werden morsch. Das ist kein Grund, die ganze Fassade abzureißen. Wir sanieren gezielt, behalten was geht und ergänzen nur, was nötig ist.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Holzfassade prüfen" subtitle="Schadensbegutachtung vor Ort." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Erhalten statt erneuern</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Holzfassaden altern. Sie vergrauen, bekommen Risse, einzelne Bretter verwerfen sich oder werden morsch. Das heißt nicht, dass die ganze Fassade hinüber ist. In den meisten Fällen genügt es, beschädigte Stellen zu tauschen, die Unterkonstruktion zu prüfen und das Holz mit neuer Lasur zu schützen.
+            </p>
+            <p>
+              Wir sehen uns die Fassade vor Ort an, prüfen die Unterkonstruktion (Lattung, Konterlattung, Hinterlüftung) und entscheiden mit Ihnen, was wirtschaftlich sinnvoll ist. Oft reichen 30 Prozent Brettertausch und eine neue Lasur. Wo mehr kaputt ist, wird mehr gemacht.'
+            </p>
+            <p>
+              Für Köln typisch sind Fachwerk-Ausbesserungen und Sanierungen an Bestandsbauten mit Schiefer- oder Putzfassade, bei denen die Holzfensterrahmen oder die Untersicht erneuert werden müssen. Auch das gehört zum Holzfassadenhandwerk dazu.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Typische Sanierungsarbeiten</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Brettertausch', d: 'Einzelne beschädigte Bretter ersetzen. Profil und Holzart passend zum Bestand.' },
+              { t: 'Unterkonstruktion prüfen', d: 'Lattung und Konterlattung auf Standfestigkeit und Fäulnis prüfen.' },
+              { t: 'Lasur oder Öl', d: 'Dünnschicht-Lasur, Dickschicht-Lasur oder Holzöl. Schützt und pflegt die Oberfläche.' },
+              { t: 'Anschlüsse erneuern', d: 'Fensterbänke, Ecken, Sockelanschlüsse. Verhindert Wassereintritt.' },
+              { t: 'Verzug und Schwindung', d: 'Verzogene Bretter ersetzen oder mit Schrauben wieder geraderichten.' },
+              { t: 'Wartungsvertrag', d: 'Regelmäßige Inspektion und Pflege. Verlängert die Lebensdauer erheblich.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur Holzfassadensanierung</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Holzfassade prüfen" subtitle="Schadensbegutachtung vor Ort." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

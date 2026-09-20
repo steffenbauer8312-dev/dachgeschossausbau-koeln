@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein Holzbalkon in Köln?',
+    answer: 'Ein kleiner Anlehn-Balkon von 3 Quadratmetern liegt zwischen 3.500 und 6.500 Euro. Ein vollwertiger Balkon von 8 Quadratmetern mit Geländer und Anschluss an die Bestandsdecke kommt auf 8.000 bis 18.000 Euro. Plus Gerüst und eventuell Statikverstärkung.'
+  },
+  {
+    question: 'Brauche ich für einen Holzbalkon eine Baugenehmigung?',
+    answer: 'Ja, ein Balkon ist genehmigungspflichtig. Wir kümmern uns um den Bauantrag und die Statik. Bei Reihenhäusern brauchen wir meistens auch die Zustimmung der direkten Nachbarn.'
+  },
+  {
+    question: 'Welches Holz für den Balkon?',
+    answer: 'Bangkirai, Douglasie oder Lärche für den Belag. Konstruktion aus Brettschichtholz (BSH) oder verzinktem Stahl. Wir verwenden wetterfeste Holzarten, weil ein Balkon stark beansprucht wird.'
+  },
+  {
+    question: 'Wie ist der Schallschutz bei Holzbalken?',
+    answer: 'Ein Holzbelag ist leiser als Beton oder Keramikfließen. Mit entkoppelter Lagerung der Träger vom Haus kommt kaum Lärm in die Nachbarwohnung. Bei MFH setzen wir auf Schwingungsdämpfer.'
+  },
+  {
+    question: 'Wie lange hält ein Holzbalkon?',
+    answer: 'Mit Bangkirai oder Lärche und guter Pflege 25 bis 40 Jahre. Pflege: alle 2 Jahre ölen. Wer den Belag dunkler werden lässt (Vergrauung), pflegt seltener, aber weniger ästhetisch. Wir beraten zur richtigen Holzart für Ihren Geschmack.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Balkonbau aus Holz",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Balkonbau aus Holz Köln | Holz-Balkone"
+  description="Balkonbau aus Holz in Köln: Anlehn-Balkon, auskragender Balkon oder Holzterrasse. Schlüsselfertig, mit Geländer und Statik."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Balkonbau Holz</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Balkonbau aus Holz in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Ein Balkon aus Holz hat Charakter. Wir bauen in Köln Anlehn-Balkons, auskragende Balkons und Holzterrassen. Schlüsselfertig mit Statik, Bauantrag und Geländer.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Balkon anfragen" subtitle="Welche Lösung passt?" buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Holz statt Beton</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Betonbalkone sind Standard in Köln, aber Holz hat seine eigenen Qualitäten. Es ist warm, lässt sich leichter anbringen, wirkt freundlicher und passt zu Holzhäusern oder ökologischer Bauweise. Wir bauen Balkons in Köln mit einer Konstruktion aus Brettschichtholz, einem Belag aus Bangkirai oder Lärche und einem Geländer aus Holz oder Edelstahl.
+            </p>
+            <p>
+              Bei der Befestigung am Haus gibt es mehrere Möglichkeiten. Anlehn-Balkons liegen auf zwei Stahlkonsolen, die in der Außenwand verankert sind. Die Last geht direkt ins Mauerwerk. Bei auskragenden Balkons tragen die Träger als Kragarm, was mehr Statik erfordert. Bei Holz-Ständer-Balkons kommt das Eigengewicht der Konstruktion in den Ständern darunter auf.
+            </p>
+            <p>
+              Wir gehen vor Ort und prüfen Wandaufbau, Stockwerkshöhe und Anschlüsse. Dann legen wir fest: welche Befestigung passt, welche Holzart ist sinnvoll, wie groß soll der Balkon werden. Sie bekommen ein Festpreis-Angebot und wir kümmern uns um alle Formalitäten.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Balkontypen</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Anlehn-Balkon', d: 'Liegt auf Konsolen an der Wand. Einfach, statisch unkompliziert.' },
+              { t: 'Auskragender Balkon', d: 'Träger ragen frei aus der Wand. Mehr Aufwand, mehr Wirkung.' },
+              { t: 'Holzständer-Balkon', d: 'Auf eigenen Ständern stehend. Wenn die Wand keinen Anlehn-Anschluss hergibt.' },
+              { t: 'Eckbalkon', d: 'Umlaufend um eine Ecke. Mehr Raum, mehr Gestaltung.' },
+              { t: 'Balkon mit Überdachung', d: 'Pergola oder Vordach über dem Balkon. Mehr Aufenthaltstage.' },
+              { t: 'Französischer Balkon', d: 'Tür mit Geländer vor der Fassade. Kein nutzbarer Balkon, aber mehr Raumgefühl.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zum Holzbalkon</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Balkon anfragen" subtitle="Welche Lösung passt?" buttonText="Beratung anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

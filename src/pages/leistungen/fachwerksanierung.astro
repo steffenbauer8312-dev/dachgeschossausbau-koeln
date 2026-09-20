@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet eine Fachwerksanierung in Köln?',
+    answer: 'Eine Teilsanierung mit Auswechseln einzelner Holzteile beginnt bei 4.000 Euro. Eine Komplettsanierung mit Schwellen, Ständern, Riegeln und Ergänzungen liegt zwischen 25.000 und 80.000 Euro. Der Aufwand hängt vom Zustand und von den Auflagen des Denkmalschutzes ab.'
+  },
+  {
+    question: 'Welche Schäden kommen bei Fachwerk am häufigsten vor?',
+    answer: 'Morsches Holz an Schwellen und Auflagern, Schwammbefall, Insektenbefall durch Hausbock oder Nagekäfer, Risse in den Verbindungen, Verformung durch Feuchte. Wir prüfen alle Anschlüsse und nehmen Proben.'
+  },
+  {
+    question: 'Arbeiten Sie nach historischen Methoden oder mit moderner Technik?',
+    answer: 'Beides, je nach Aufgabenstellung. Wo möglich arbeiten wir traditionell mit Zapfen, Versätzen und Holznägeln. Wo es statisch nötig ist, kommen moderne Schrauben, Stabdübel oder verdeckte Stahlbleche zum Einsatz. Bei der Denkmalschutzbehörde ist das erfahrene Handwerker.'
+  },
+  {
+    question: 'Wie lange hält ein saniertes Fachwerk?',
+    answer: 'Mit fachgerechter Sanierung und guter Holzschutzbehandlung halten die Bauteile weitere 80 bis 120 Jahre. Wir dokumentieren jeden Schritt und geben Garantie auf die ausgeführten Arbeiten. Regelmäßige Kontrolle verlängert die Lebensdauer.'
+  },
+  {
+    question: 'Brauche ich für die Fachwerksanierung eine Baugenehmigung?',
+    answer: 'Ja, fast immer. Bei denkmalgeschützten Häusern in Ehrenfeld, der Innenstadt oder Marienburg brauchen wir zusätzlich die Zustimmung des Denkmalschutzamts. Wir kümmern uns um beide Anträge und stimmen das Vorgehen vorher ab.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Fachwerksanierung",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Fachwerksanierung Köln | Historische Substanz retten"
+  description="Fachwerksanierung in Köln: alte Balken retten, morsches Holz ersetzen, Verbindungen erneuern. Mit Erfahrung und Denkmalschutz-Know-how."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Fachwerksanierung</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Fachwerksanierung in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Köln hat eine reiche Fachwerktradition, vor allem in Ehrenfeld, der Südstadt und der Innenstadt. Wir sanieren mit Erfahrung und dem richtigen Werkzeug, von der Schwelle bis zum First. Traditionshandwerk trifft auf moderne Holzschutztechnik.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Fachwerk prüfen lassen" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Fachwerk braucht Spezialwissen</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Fachwerk ist eine anspruchsvolle Bauweise. Die Verbindungen, Holzarten und Konstruktionsprinzipien unterscheiden sich stark von modernem Holzbau. Wer hier arbeitet, muss historische Techniken kennen und sie mit modernen Holzschutzmethoden verbinden. In Köln gibt es nur wenige Betriebe, die beides beherrschen.
+            </p>
+            <p>
+              Wir arbeiten mit erfahrenen Zimmerleuten, die Fachwerk-Sanierung gelernt haben. Die Bestandsaufnahme ist die wichtigste Phase: jede Schwelle, jeder Ständer, jeder Riegel wird geprüft, die Schäden werden kartiert, die Sanierungsmethode festgelegt. Bei denkmalgeschützten Objekten stimmen wir das mit der Behörde ab, bevor wir anfangen.'
+            </p>
+            <p>
+              Häufige Arbeiten sind: Schwellen auswechseln (oft Eiche), Auflager neu betten, morsches Holz herausschneiden und mit Schiffsholz oder frischem Eichenholz ergänzen, Verbindungen mit Holznägeln oder Stabdübeln neu herstellen, Holzoberflächen mit Kieselsäure-Konservierung behandeln und diffusionsoffen beschichten.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Was wir am häufigsten sanieren</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Fachwerkschwellen', d: 'Die untersten horizontalen Hölzer sind am meisten gefährdet durch aufsteigende Feuchte.' },
+              { t: 'Ständer', d: 'Senkrechte Hölzer. Bei Verformung oder Rissbildung auswechseln oder mit Schiffsholz ergänzen.' },
+              { t: 'Riegel und Streben', d: 'Schräge oder waagerechte Hölzer. Verbindungen und Anschlüsse prüfen.' },
+              { t: 'Kopfbänder', d: 'Diagonale Verstärkungselemente. Bei Schwammbefall oder Verformung.' },
+              { t: 'Ausfachungen', d: 'Die Felder zwischen dem Holzgerüst. Lehmgefache oder Ziegelmauerwerk.' },
+              { t: 'Sichtbalken', d: 'Sparren, Pfetten, Balkenlagen. Mit Kieselsäure oder Holzfestiger konservieren.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur Fachwerksanierung</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Fachwerk prüfen lassen" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

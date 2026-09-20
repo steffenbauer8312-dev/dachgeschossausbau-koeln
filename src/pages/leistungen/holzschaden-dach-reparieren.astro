@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Welche Holzschäden am Dach kommen in Köln häufig vor?',
+    answer: 'Hausschwamm, Hausbock, Nagekäfer, Morsche Sparrenköpfe und Auflager, verwitterte Ortgangbretter. Auch Folgeschäden von Wassereinbruch wie aufgequollene Schalung oder Verformung an Anschlüssen.'
+  },
+  {
+    question: 'Wie erkenne ich Holzschäden selbst?',
+    answer: 'Auf Risse achten, auf dunkle Verfärbungen, auf weiches Holz (Druck mit dem Schraubendreher testen), auf Fraßgänge oder Bohrlöcher. Auch ein muffiger Geruch deutet auf Schwamm hin. Bei Unsicherheit kommen wir und prüfen kostenlos.'
+  },
+  {
+    question: 'Was kostet eine Holzschadenreparatur am Dach?',
+    answer: 'Kleinere punktuelle Reparaturen beginnen bei 500 bis 1.500 Euro. Mittlere Eingriffe mit mehreren Sparren und Auflagern liegen bei 3.000 bis 8.000 Euro. Bei Befall durch Schwamm oder Insekten kommen Bekämpfungskosten dazu, plus ggf. Befundgutachten.'
+  },
+  {
+    question: 'Muss das Dach dafür geöffnet werden?',
+    answer: 'Bei Reparaturen am Auflager oder an Sparrenköpfen oft ja, weil die Schäden unter der Eindeckung liegen. Bei Schwamm-Behandlung an der Innenseite reicht oft das Freilegen aus der DG-Wohnung heraus. Wir wägen das vorab ab.'
+  },
+  {
+    question: 'Brauche ich für die Reparatur eine Genehmigung?',
+    answer: 'Reine Reparatur ohne Konstruktionsänderung ist genehmigungsfrei. Wenn mehrere Sparren oder die Statik betroffen sind, läuft es mit der Baugenehmigung des DG-Ausbaus oder der Sanierung mit. Wir kümmern uns um die Formalitäten.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Holzschäden am Dach reparieren",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Holzschäden am Dach reparieren Köln | Schwamm, Käfer, Fäulnis"
+  description="Holzschäden am Dach reparieren in Köln: Schwamm, Käfer, Fäulnis. Punktuelle Reparatur statt großer Sanierung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Holzschäden reparieren</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Holzschäden am Dach reparieren in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Holz am Dach hält Jahrhunderte. Aber nicht, wenn Wasser dran kommt oder Käfer drin sind. Wir reparieren punktuell, tauschen wasser- und pilzgeschädigte Hölzer aus und behandeln den umliegenden Bereich konservierend.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Schadensbegutachtung" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Holzschäden früh erkennen</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Holzschäden am Dach sind meist die Folge von kleinen Leckagen, die jahrelang unbemerkt blieben. Wasser sickert durch eine undichte Stelle, das Holz wird feucht, Pilze und Insekten siedeln sich an. Wer früh reagiert, kann den Schaden mit einer kleinen Reparatur begrenzen. Wer zu lange wartet, braucht eine umfassende Sanierung.'
+            </p>
+            <p>
+              Wir gehen systematisch vor. Erst die Diagnose: Bohrwiderstandsmessung, Feuchtemessung, Sichtprüfung der Anschlüsse. Dann die Bewertung: ist das Holz noch tragfähig? Wie weit reicht der Befall? Welche Maßnahme reicht? Wenn wir das wissen, gibt es einen klaren Plan und einen fairen Preis.'
+            </p>
+            <p>
+              Bei Hausschwamm oder aktivem Insektenbefall brauchen wir ein Holzgutachten durch einen Sachverständigen. Das gehört zu den Pflichten nach DIN 68800. Werden die Hölzer ausgebaut, müssen sie fachgerecht entsorgt und die Umgebung muss konservierend behandelt werden. Wir arbeiten in Köln mit erfahrenen Sachverständigen zusammen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Was wir am häufigsten reparieren</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Morsche Sparrenköpfe', d: 'Im Auflagerbereich eindringende Feuchtigkeit. Holz herausschneiden, neues Stück anschrauben.' },
+              { t: 'Hausschwamm', d: 'Brauner oder weißer Porenschwamm. Befallenes Holz raus, angrenzendes behandeln.' },
+              { t: 'Hausbockbefall', d: 'Insekten bohren Gänge ins Holz. Befallenes Holz tauschen, Holzschutz einbringen.' },
+              { t: 'Nagekäfer', d: 'Kleinere Fraßgänge, oft in alten Möbeln und Verkleidungen. Behandlung meist ohne Materialtausch.' },
+              { t: 'Verwitterte Ortgangbretter', d: 'Witterungsseitig stark beansprucht. Austauschen und neu befestigen.' },
+              { t: 'Schwamm nach Wasserschaden', d: 'Wenn Wasser ins Dach kam: Trocknung, Holzprüfung, ggf. Austausch.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zu Holzschäden</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Schadensbegutachtung" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

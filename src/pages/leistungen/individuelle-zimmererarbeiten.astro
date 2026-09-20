@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was sind individuelle Zimmererarbeiten?',
+    answer: 'Alles, was nicht in einen Standard-Katalog passt. Sonderkonstruktionen, Reparaturen, Anpassungen, Speziallösungen. Vom schmalen Regal bis zur raumhohen Holzkonstruktion, vom Einbauschrank bis zum sichtbaren Dachstuhl.'
+  },
+  {
+    question: 'Wann lohnt sich ein Zimmermann statt eines Generalunternehmers?',
+    answer: 'Wenn die Aufgabe handwerklich anspruchsvoll ist. Wenn Holz das Hauptmaterial ist. Wenn Sichtqualität gefragt ist. Wenn Statik erforderlich ist. Wir arbeiten direkt mit Ihnen, ohne Sub-Sub-Unternehmer-Ketten.'
+  },
+  {
+    question: 'Welche typischen Sonderlösungen gibt es?',
+    answer: 'Maßgefertigte Einbauschränke unter Dachschrägen, sichtbare Holzbalken, rustikale Holzdecken, Innenausbauten mit Akzenten aus Massivholz, integrierte Regale und Bänke, Sonderverkleidungen, Treppenstufen aus Massivholz.'
+  },
+  {
+    question: 'Was kosten Sonderlösungen?',
+    answer: 'Das hängt stark vom Umfang ab. Kleinere Arbeiten beginnen bei 500 Euro, mittlere Sonderlösungen bei 2.000 bis 6.000 Euro, größere Komplettlösungen ab 6.000 Euro. Wir kalkulieren nach Vor-Ort-Termin und Vorstellung des Kunden.'
+  },
+  {
+    question: 'Wie ist die Planung?',
+    answer: 'Wir kommen vorbei, hören zu, messen, skizzieren und kalkulieren. Bei größeren Sachen machen wir einen Werkplan und eine Materialaufstellung. Bei kleineren Sachen reicht ein Foto und ein Telefonat.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Individuelle Zimmererarbeiten",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Individuelle Zimmererarbeiten Köln | Sonderlösungen"
+  description="Individuelle Zimmererarbeiten in Köln: Sonderkonstruktionen, Sonderverkleidungen, Einbaulösungen rund ums Dach und den Holzbau."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Individuelle Zimmererarbeiten</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Individuelle Zimmererarbeiten in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Nicht alles passt in einen Standard-Katalog. Wir bauen Sonderlösungen, Reparaturen und Anpassungen rund ums Dach und den Holzbau. Vom Einbauschrank bis zur sichtbaren Holzkonstruktion.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Sonderlösung anfragen" subtitle="Kostenlose Vor-Ort-Beratung." buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Was nicht in den Katalog passt</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Viele Zimmerer-Aufträge passen nicht in einen Standard-Katalog. Die Einbausituation ist ungewöhnlich, die Maße sind speziell, der Kunde hat eine genaue Vorstellung. Dafür sind wir da: mit Erfahrung, handwerklichem Können und der Bereitschaft, individuelle Lösungen zu entwickeln.
+            </p>
+            <p>
+              In Köln sehen wir regelmäßig Aufträge, die der Generalunternehmer gar nicht will: ein winziges Wandregal in einer Dachschräge, ein maßgefertigter Schuhschrank im Flur, eine sichtbare Holzdecke im Wohnzimmer, ein Bretterverschlag für die Mülltonnen, ein Hochbeet aus Lärchenholz. Klein und groß, Standard und ausgefallen.'
+            </p>
+            <p>
+              Wir bauen alles, was mit Holz zu tun hat und sich lohnt. Sie sagen uns, was Sie brauchen, wir sagen Ihnen, was es kostet und wie es realisierbar ist. Wenn ja, dann machen wir es. Wenn nein, dann sagen wir auch das.'
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Beispiele aus der Praxis</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Einbauschrank unter Schräge', d: 'Maßgefertigt, mit Schubladen, Türen, offenen Fächern.' },
+              { t: 'Sichtbalken', d: 'Aus BSH, in Eiche gebeizt, in den Wohnraum integriert.' },
+              { t: 'Holzdecke', d: 'Sichtbare Balken mit Profilholz-Decke dazwischen.' },
+              { t: 'Innenausbau-Akzente', d: 'Wandverkleidung aus Nussbaum oder Eiche, matt geölt.' },
+              { t: 'Mülltonnen-Box', d: 'Holzkonstruktion mit Lärchenprofil, individuelles Maß.' },
+              { t: 'Hochbeet', d: 'Lärche, Bausatz oder Maßanfertigung. Witterungsbeständig.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zu Sonderlösungen</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Sonderlösung anfragen" subtitle="Kostenlose Vor-Ort-Beratung." buttonText="Beratung anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

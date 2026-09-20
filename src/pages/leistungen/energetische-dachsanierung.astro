@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was bedeutet energetische Dachsanierung?',
+    answer: 'Bei einer energetischen Sanierung wird das Dach so ertüchtigt, dass es heutige Energiestandards erfüllt. Dazu gehören Dämmung nach GEG und idealerweise nach KfW-Standard, luftdichte Anschlüsse, neue Fenster oder Gauben. Das spart Heizkosten und bringt Förderung.'
+  },
+  {
+    question: 'Welcher U-Wert ist Pflicht, welcher ist sinnvoll?',
+    answer: 'GEG-Pflicht ist U-Wert 0,24 W/m²K. BAFA-Standard ist 0,14 W/m²K und bringt 15 Prozent Zuschuss. Wir empfehlen den BAFA-Standard für Köln, weil die Mehrkosten sich über die Förderung und die Heizkostenersparnis rechnen.'
+  },
+  {
+    question: 'Wie viel Förderung bekomme ich für die energetische Dachsanierung?',
+    answer: 'BAFA BEG EM: 15 Prozent Zuschuss auf förderfähige Kosten, mit Sanierungsfahrplan sogar 20 Prozent. KfW 261: bis zu 150.000 Euro Kredit mit 25 Prozent Tilgungszuschuss bei EH 55. Steuerbonus Paragraph 35c: 20 Prozent der Handwerkerkosten, max 1.200 Euro pro Jahr.'
+  },
+  {
+    question: 'Welche Dämmstärke brauche ich für KfW-Standard?',
+    answer: 'Bei Zwischensparrendämmung 220 bis 280 mm Mineralwolle, dazu 40 bis 60 mm Untersparren-Dämmung. Bei Aufsparrendämmung 160 bis 200 mm auf den Sparren. Dann erreichen wir U-Werte um 0,14 W/m²K, mit denen BAFA und KfW zufrieden sind.'
+  },
+  {
+    question: 'Brauche ich einen Energieeffizienz-Experten?',
+    answer: 'Ja, für BAFA und KfW ist ein zertifizierter Experte Pflicht. Er stellt die förderfähige Bestätigung aus und prüft die Baumaßnahme. Wir arbeiten mit erfahrenen Experten zusammen, die das für unsere Kunden in Köln erledigen.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Energetische Dachsanierung",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Energetische Dachsanierung Köln | KfW-Standard"
+  description="Energetische Dachsanierung in Köln: Dämmung auf KfW-Standard, Luftdichtheit, neue Fenster. Mit BAFA- und KfW-Förderung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Energetische Dachsanierung</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Energetische Dachsanierung in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Energieverluste über das Dach sind die größten im Haus. Wer hier sauber dämmt, spart am meisten. Wir bringen Ihr Dach auf den aktuellen Stand, mit BAFA-Förderung und KfW-Standard.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Energieeffizienz prüfen" subtitle="Vor-Ort-Termin in Köln." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Was heißt eigentlich energetisch?</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Energetische Sanierung bedeutet mehr als eine neue Dämmung. Es geht um den U-Wert des Bauteils, um Luftdichtheit, um Wärmebrücken, um die Qualität der Anschlüsse. In Köln erreichen wir mit einer fachgerechten Dachsanierung Heizkostenersparnisse von 20 bis 40 Prozent. Bei Bestandshäusern vor 1980 lohnt sich das immer.'
+            </p>
+            <p>
+              Wir setzen auf das Prinzip: erst die Hülle, dann die Anlage. Wer ein altes Dach auf KfW-Standard bringt, kann die Heizung oft kleiner dimensionieren. Das spart nicht nur Energie, sondern auch Investitionskosten beim Tausch der Heizungsanlage. Synergieeffekte, die viele übersehen.'
+            </p>
+            <p>
+              Wichtig ist die fachgerechte Ausführung. Wir arbeiten mit zertifizierten Energieeffizienz-Experten zusammen, die den Bau begleiten und die Förderfähigkeit bestätigen. Bei Bedarf kommt nach Abschluss ein Blower-Door-Test, der die Luftdichtheit nachweist.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Was gefördert wird</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Dachdämmung', d: 'BAFA BEG EM fördert Dämmung oberhalb 10 Prozent Dachflächen-Anteil.' },
+              { t: 'Gaubendämmung', d: 'Wenn die Gaube als Teil der Sanierung kommt, ist sie förderfähig.' },
+              { t: 'Dachflächenfenster', d: 'Austausch alter Fenster gegen moderne Wärmeschutzglas-Varianten.' },
+              { t: 'Luftdichtheit', d: 'Dampfsperren, Manschetten, Klebebänder. Vorbereitung für Blower-Door-Test.' },
+              { t: 'Eintragung Energieberatung', d: 'Fachplanung und Baubegleitung durch zertifizierte Experten.' },
+              { t: 'Fachplanung', d: 'Erstellung der energetischen Bilanz und Begleitung der Baumaßnahme.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur energetischen Dachsanierung</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Energieeffizienz prüfen" subtitle="Vor-Ort-Termin in Köln." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

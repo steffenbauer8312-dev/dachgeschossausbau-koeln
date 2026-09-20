@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein Anbau in Holzbauweise?',
+    answer: 'Ein eingeschossiger Anbau in Holzbauweise liegt zwischen 2.500 und 3.500 Euro pro Quadratmeter Wohnfläche. Für einen 25 Quadratmeter großen Anbau rechnen wir mit 62.500 bis 87.500 Euro schlüsselfertig. Mit guter Dämmung und KfW-Standard eher im oberen Bereich.'
+  },
+  {
+    question: 'Wie schnell ist ein Holzbau-Anbau fertig?',
+    answer: 'Mit Vorfertigung im Werk steht der Rohbau in zwei bis vier Wochen. Mit Dämmung, Innenausbau und Anschluss an das Bestandsgebäude rechnen wir drei bis vier Monate Gesamtbauzeit. Schneller als Massivbau, weil die Trocknungszeiten entfallen.'
+  },
+  {
+    question: 'Brauche ich für einen Holzbau-Anbau eine Baugenehmigung?',
+    answer: 'Ja, ein Anbau ist immer genehmigungspflichtig. Wir kümmern uns um den Bauantrag, die Statik und die Abstimmung mit dem Bauaufsichtsamt. Bei Reihen- und Doppelhäusern brauchen wir oft auch die Zustimmung der Nachbarn, die wir mitübernehmen.'
+  },
+  {
+    question: 'Wie gut dämmt ein Anbau in Holzbauweise?',
+    answer: 'Sehr gut. Mit 200 bis 300 mm Mineralwolle oder Holzfaser erreichen wir Passivhaus-Standard. Das ist deutlich besser als konventioneller Massivbau und bringt Förderung nach BAFA oder KfW.'
+  },
+  {
+    question: 'Welche Holzarten werden verwendet?',
+    answer: 'Wir setzen auf heimische Fichte und Tanne für die Konstruktion. Für sichtbare Bauteile verwenden wir auch Lärche oder Eiche. Die Außenverkleidung kann aus Lärche, Douglasie oder wetterfest beschichteten Holzfaserplatten bestehen.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Anbau in Holzbauweise",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Anbau in Holzbauweise Köln | Erweiterung in Holz"
+  description="Anbau in Holzbauweise in Köln: schnelle, gut gedämmte Erweiterung für mehr Wohnraum. Schlüsselfertig aus einer Hand."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Anbau Holzbauweise</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Anbau in Holzbauweise in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Wer mehr Platz braucht, kann anbauen oder aufstocken. Holz ist die schnellste und oft günstigste Lösung. Wir bauen Anbauten in Holzbauweise in Köln, schlüsselfertig und mit Statik.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Anbau planen" subtitle="Kostenlose Vor-Ort-Beratung." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Holz als perfekter Anbauwerkstoff</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Holzbau eignet sich hervorragend für Anbauten. Das Material ist leicht, trocken, gut gedämmt und schnell aufgebaut. In Köln sehen wir Anbauten in Holzbauweise vor allem in Vierteln mit knappen Grundstücken: in Lindenthal, Sülz, Longerich. Wo ein Anbau aus Mauerwerk lange Trocknungszeiten hätte und die Baustelle blockiert, ist Holz die clevere Wahl.
+            </p>
+            <p>
+              Wir setzen bei Anbauten in Köln auf Holzrahmenbau mit werkseitiger Vorfertigung. Die Wand- und Dachelemente werden im Werk zugeschnitten, gedämmt und beplankt. Auf der Baustelle stehen sie innerhalb von Stunden. Anschließend werden sie zusammengefügt, die Dampfsperren angeschlossen und der Innenausbau beginnt.'
+            </p>
+            <p>
+              Wo es um mehr geht als nur ein paar zusätzliche Quadratmeter, planen wir den Anbau mit Ihnen gemeinsam: Größe, Raumaufteilung, Anschluss an die Bestandsinstallation, Statik im Altbau. Wir holen die Genehmigung beim Bauaufsichtsamt Köln und stimmen uns mit den Anwohnern ab, wo nötig.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Vorteile des Holzbaus beim Anbau</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Schneller bezugsfertig', d: 'Ohne Trocknungszeiten sind Anbauten in Wochen fertig statt in Monaten.' },
+              { t: 'Geringes Eigengewicht', d: 'Aufstockung über empfindlichen Bestandsdecken oft die einzige Lösung.' },
+              { t: 'Sehr gute Dämmung', d: '200 mm Mineralwolle plus Holzfaser schaffen Passivhaus-Standard.' },
+              { t: 'Trockene Bauweise', d: 'Wenig Feuchtigkeit im Haus, kurze Bauzeit, schneller Einzug.' },
+              { t: 'Nachhaltig', d: 'Holz speichert CO2. Heimische Hölzer sind kurze Transportwege.' },
+              { t: 'Rückbaubar', d: 'Holzbauteile lassen sich später wiederverwenden oder einfach entsorgen.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zum Anbau in Holzbauweise</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Anbau in Holzbauweise" subtitle="Kostenlose Vor-Ort-Beratung." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

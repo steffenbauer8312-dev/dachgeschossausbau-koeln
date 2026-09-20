@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet eine Terrassenüberdachung?',
+    answer: 'Eine freistehende Holz-Terrassenüberdachung von 4 mal 4 Metern liegt zwischen 4.000 und 8.000 Euro schlüsselfertig. Eine Wand-Anbau-Überdachung mit Glasdach zwischen 6.000 und 14.000 Euro. Größe, Holzart und Eindeckung bestimmen den Preis.'
+  },
+  {
+    question: 'Brauche ich für eine Terrassenüberdachung eine Baugenehmigung?',
+    answer: 'In Köln ja, eine Terrassenüberdachung mit mehr als 30 Kubikmeter umbautem Raum ist genehmigungspflichtig. Wir kümmern uns um den Bauantrag und die Abstimmung mit dem Bauaufsichtsamt.'
+  },
+  {
+    question: 'Welches Material empfehlen Sie?',
+    answer: 'Holz als Tragwerk (Lärche oder Douglasie), Eindeckung wahlweise mit Polycarbonat, Glas oder Trapezblech. Glas sieht edel aus und lässt Licht rein, Polycarbonat ist günstiger und schlagfester.'
+  },
+  {
+    question: 'Brauche ich ein Fundament?',
+    answer: 'Ja, Punktfundamente pro Pfosten. Bei größeren Überdachungen auch Streifenfundamente. Wir setzen die Fundamente frostfrei, mindestens 80 cm tief, damit nichts hochfriert.'
+  },
+  {
+    question: 'Hält eine Holz-Terrassenüberdachung das Kölner Wetter aus?',
+    answer: 'Mit Lärche oder Douglasie halten die Pfosten 30 Jahre und mehr, auch ohne Imprägnierung. Wir empfehlen eine Pflege-Lasur alle 5 bis 7 Jahre, dann bleibt das Holz lange schön.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Terrassenüberdachung",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Terrassenüberdachung Köln | Holzterrasse überdacht"
+  description="Terrassenüberdachung in Köln: freistehend oder an der Hauswand. Holzkonstruktion mit Glasdach oder Polycarbonat. Schlüsselfertig."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Terrassenüberdachung</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Terrassenüberdachung in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Eine überdachte Terrasse verlängert die Outdoor-Saison um Monate. Wir bauen in Köln Holz-Konstruktionen mit Glas, Polycarbonat oder Trapezblech. Schlüsselfertig, mit Statik und Bauantrag.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Terrassenüberdachung" subtitle="Welche Größe passt?" buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Mehr Draußen wohnen</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              In Köln ist die Outdoor-Saison kurz, gefühlt vier Monate. Mit einer überdachten Terrasse werden daraus acht. Bei Regen sitzt man trocken, bei Wind geschützt, bei Sonnenschein etwas schattig. Wir bauen Holz-Konstruktionen, die robust sind und zur Architektur passen.
+            </p>
+            <p>
+              Bei freistehenden Überdachungen setzen wir Punktfundamente und tragen das Dach auf eigenen Pfosten. Bei Anbau-Überdachungen nutzen wir die Hauswand, brauchen nur zwei oder drei Pfosten. Welche Lösung passt, hängt vom Grundstück und vom Geschoss des Hauses ab.'
+            </p>
+            <p>
+              Bei der Eindeckung beraten wir je nach Geschmack und Budget. Verbundsicherheitsglas mit warmer Kante ist Premium, Polycarbonat-Stegdoppelplatten sind leicht und günstig. Trapezblech aus Stahl ist industriell-modern und hält ewig. Auch Markisen als nachträgliche Erweiterung sind möglich.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Dacheindeckungen</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Verbundsicherheitsglas', d: 'Premiumlösung mit klarer Sicht und Wärmedämmung. Glas mit warmer Kante.' },
+              { t: 'Polycarbonat klar/milchig', d: 'Lichtdurchlässig, schlagfest, preiswert. Die häufigste Wahl.' },
+              { t: 'Polycarbonat opal', d: 'Milchglas-Optik, kein Durchsehen, mehr Schatten.' },
+              { t: 'Trapezblech', d: 'Stahl- oder Aluminium, modern, langlebig. Geringer Wartungsaufwand.' },
+              { t: 'Holzschalung mit Bitumen', d: 'Klassisch warm. Integriert sich in Holz-Fassaden.' },
+              { t: 'Glas mit Markise', d: 'Aufrollbare Markise unter dem Glasdach. Hitzeschutz und Privacy.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur Terrassenüberdachung</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Terrassenüberdachung anfragen" subtitle="Welche Größe passt?" buttonText="Beratung anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

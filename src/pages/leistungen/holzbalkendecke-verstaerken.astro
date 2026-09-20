@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Wann muss eine Holzbalkendecke verstärkt werden?',
+    answer: 'Wenn sie sich durchbiegt, federt oder knarrt. Wenn Tragfähigkeit für neue Lasten gebraucht wird, etwa weil das Dach ausgebaut werden soll. Wenn die Auflager marode sind oder die Spannweite für die Balken zu groß wurde.'
+  },
+  {
+    question: 'Welche Methoden gibt es zur Verstärkung?',
+    answer: 'Aufdopplung mit KVH oder BSH, also gleicher oder größerer Querschnitt an die bestehenden Balken geschraubt. Wechsel einbauen für neue Lastpfade. Stahlträger unter die Decke für höhere Tragfähigkeit. Verbunddecke aus Holz und Beton für extreme Anforderungen.'
+  },
+  {
+    question: 'Was kostet die Verstärkung?',
+    answer: 'Eine reine Aufdopplung liegt pro Balken zwischen 600 und 1.500 Euro. Ein zusätzlicher Stahlträger mit Anschlüssen kostet 1.500 bis 4.000 Euro. Die Verbunddecke ist die aufwendigste Variante mit 200 bis 350 Euro pro Quadratmeter.'
+  },
+  {
+    question: 'Brauche ich für die Verstärkung eine Baugenehmigung?',
+    answer: 'Bei reiner Ertüchtigung mit gleicher Geometrie oft nicht. Wenn die Tragfähigkeit deutlich erhöht wird oder neue Bauteile dazukommen, ist eine Genehmigung Pflicht. Wir prüfen das vorab.'
+  },
+  {
+    question: 'Können wir während der Arbeiten im Haus wohnen?',
+    answer: 'In den meisten Fällen ja. Bei Aufdopplung von unten bleibt der Boden oben nutzbar. Bei Wechsel-Einbau oder Stahlträgern müssen wir die Decke teilweise öffnen. Dann kann ein Auszug für ein bis zwei Wochen sinnvoll sein.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Holzbalkendecke verstärken",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Holzbalkendecke verstärken Köln | Tragfähigkeit erhöhen"
+  description="Holzbalkendecke verstärken in Köln: Aufdopplung, Wechsel, Stahlträger. Mehr Tragfähigkeit für DG-Ausbau oder zusätzliche Lasten."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Decke verstärken</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Holzbalkendecke verstärken in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Die Decke trägt das ganze Haus. Wenn sie den Anforderungen nicht mehr gewachsen ist, muss man nicht gleich abreißen. Wir ertüchtigen Holzbalkendecken mit Aufdopplung, Wechsel und Stahlträgern.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Decke prüfen lassen" subtitle="Statiker beurteilt Tragfähigkeit." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Wann die Decke mehr tragen muss</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Drei Gründe sprechen für eine Verstärkung der Holzbalkendecke. Erstens: das Dach wird ausgebaut und die Decke muss mehr Last tragen als geplant. Zweitens: die Decke federt sichtbar durch, Risse zeigen sich im Putz oder in den Wänden. Drittens: nachträglich wurden schwere Einbauten geplant, etwa ein Kamin, ein Whirlpool oder eine Bibliothek aus Massivholz.
+            </p>
+            <p>
+              Bei einer Holzbalkendecke in Ehrenfeld oder Nippes haben wir oft 16 bis 20 cm hohe Balken aus alter Fichte. Das reicht für normale Wohnlasten, kommt aber ins Wanken, wenn Dämmung schwerer wird oder wenn das DG zum vollwertigen Wohnraum werden soll. Eine Aufdopplung bringt 6 bis 10 cm mehr Tragfähigkeit und kostet wenig.
+            </p>
+            <p>
+              Bei MFH mit größeren Spannweiten oder wenn Lasten konzentriert anfallen, kommt der Stahlträger ins Spiel. Wir setzen HE-B-Träger oder Doppel-T-Träger unter die Balken, verschrauben alles und schaffen eine Lastverteilung, die auch problematische Grundrisse trägt. Bei Denkmalschutz arbeiten wir mit verdeckten Lösungen, die unter Putz verschwinden.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Methoden im Vergleich</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Aufdopplung mit KVH', d: 'Balken unterseitig mit gleicher Dimension verschraubt. Verdoppelt effektiv die Tragfähigkeit.' },
+              { t: 'Aufdopplung mit BSH', d: 'Hochwertiges Brettschichtholz angeschraubt. Mehr Tragfähigkeit, höhere Kosten.' },
+              { t: 'Wechsel einbauen', d: 'Horizontale Träger zur Lastenumlagerung. Bei Wegfall von Pfosten oder Wänden.' },
+              { t: 'Stahlträger', d: 'HEA- oder IPE-Profil unter der Decke. Für extreme Lasten oder große Spannweiten.' },
+              { t: 'Verbunddecke', d: 'Bohrschrauben mit Beton-Aufbeton. Macht aus einer Holzdecke eine Hybriddecke.' },
+              { t: 'Auflager ertüchtigen', d: 'Wenn die Balkenköpfe morsch sind. Balkenschuhe, Auflagertaschen, neue Mauerwerksauflager.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur Verstärkung</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Decke verstärken" subtitle="Statiker beurteilt Tragfähigkeit." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

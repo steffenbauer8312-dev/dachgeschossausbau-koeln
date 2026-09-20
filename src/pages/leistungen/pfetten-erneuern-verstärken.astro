@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was sind Pfetten und wann müssen sie erneuert werden?',
+    answer: 'Pfetten sind die horizontalen Träger im Dachstuhl, an denen die Sparren anliegen oder eingehängt sind. Wenn sie morsch, verformt oder überlastet sind, muss man sie ertüchtigen oder ersetzen. Bei alten Häusern oft Folge von Dachundichtigkeit oder Schwammbefall.'
+  },
+  {
+    question: 'Wie erkenne ich, dass die Pfetten kaputt sind?',
+    answer: 'Anzeichen sind: wellige Dachlinie, sichtbare Verformungen am Übergang zwischen Sparren und Pfette, Risse im Innenputz, morsches Holz an Auflagern, feuchte Stellen auf der obersten Geschossdecke. Bei Unsicherheit messen wir die Resttragfähigkeit vor Ort.'
+  },
+  {
+    question: 'Können Pfetten verstärkt statt erneuert werden?',
+    answer: 'Ja, sehr oft. Wir setzen eine Parallel-Pfette daneben, schrauben sie voll mit der Bestandspfette und leiten die Lasten gemeinsam ab. Wenn der Holzkern gesund ist, ist das deutlich günstiger als ein kompletter Ersatz.'
+  },
+  {
+    question: 'Was kostet das Erneuern oder Verstärken von Pfetten?',
+    answer: 'Eine Verstärkung mit Parallel-Pfette beginnt bei 1.500 Euro pro Knoten. Eine komplette Erneuerung mit Ausbau und Wiedereinbau liegt bei 5.000 bis 15.000 Euro, je nach Spannweite und Zugänglichkeit. Pauschalpreis gibt es nach Vor-Ort-Aufnahme.'
+  },
+  {
+    question: 'Brauche ich für die Pfettensanierung eine Baugenehmigung?',
+    answer: 'In der Regel läuft das im Bauantrag des DG-Ausbaus mit. Wenn nur einzelne Pfetten ertüchtigt werden und die Geometrie gleich bleibt, oft genehmigungsfrei. Wir prüfen das vorab und stellen die nötigen Anträge.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Pfetten erneuern oder verstärken",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Pfetten erneuern oder verstärken Köln | Zimmerei"
+  description="Pfetten ertüchtigen oder ersetzen in Köln. Auflager, Anschlüsse, Parallel-Pfette. Tragfähigkeit für den Dachgeschossausbau."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Pfetten</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Pfetten erneuern oder verstärken in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Pfetten tragen die Sparren und geben dem Dach Stabilität. Wenn sie morsch oder überlastet sind, geht die Verstärkung vor dem Austausch. Wir prüfen, kalkulieren und arbeiten mit Statik nach DIN.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Pfetten prüfen lassen" subtitle="Statiker beurteilt Tragfähigkeit." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Pfetten sind die unsichtbaren Lastträger</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Eine Pfette läuft horizontal durch das Dach und nimmt die Lasten der Sparren auf. Sie gibt dem Dach die Längsstabilität. In alten Kölner Dächern sind die Pfetten oft erstaunlich massiv, manchmal 14/16 cm oder 16/20 cm, gearbeitet aus Eichenholz oder alten Nadelhölzern. Wenn das Holz noch gesund ist, ist das ein Geschenk.
+            </p>
+            <p>
+              Pfetten können wir auf zwei Wegen ertüchtigen. Erstens: Parallel-Pfette. Wir setzen daneben ein neues, gleichwertiges Holz, schrauben beide voll zusammen und leiten die Lasten über beide Hölzer ab. Zweitens: Aufdopplung von oben oder unten, falls die Pfette nur teilweise überlastet ist. Beides funktioniert ohne Eingriff in die Dacheindeckung.'
+            </p>
+            <p>
+              Bei morschem Holz, etwa durch Hausschwamm oder Dauerfeuchte, hilft nur Erneuern. Wir nehmen das alte Holz raus, schneiden die Anschlüsse neu und setzen eine frische Pfette aus KVH oder BSH ein. Bei Bedarf mit Auflagertaschen aus Beton oder Stahl, weil die Mauerwerksauflager oft mit erneuert werden müssen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Wann welche Methode?</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Holz gesund, Last zu hoch', d: 'Parallel-Pfette oder Aufdopplung. Holz bleibt drin, neue Tragfähigkeit kommt dazu.' },
+              { t: 'Holz morsch, Schwamm', d: 'Erneuerung mit frischem KVH. Auflager im Mauerwerk mit Mörtel oder Beton neu herstellen.' },
+              { t: 'Verformung, keine Schäden', d: 'Mit Wechsel, Zugband oder Pfosten das Tragwerk richten. Verstärkung am Stoß.' },
+              { t: 'Anschluss am Auflager', d: 'Häufig die schwächste Stelle. Wir setzen Balkenschuhe, Stahlwinkel oder Auflagertaschen ein.' },
+              { t: 'Pfette gestoßen', d: 'Stoßverbindungen altern. Wir ersetzen den Stoß durch eine durchgehende Pfette mit Laschen.' },
+              { t: 'DG-Ausbau geplant', d: 'Vor dem Ausbau prüfen wir alle Pfetten, kalkulieren die neue Last und ertüchtigen bei Bedarf.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zu Pfetten</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Pfetten prüfen lassen" subtitle="Statiker beurteilt Tragfähigkeit." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

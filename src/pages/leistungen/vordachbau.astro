@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein Vordach aus Holz?',
+    answer: 'Ein klassisches Hauseingang-Vordach von 1,5 mal 2,5 Metern kostet zwischen 1.800 und 4.500 Euro, je nach Eindeckung und Holzart. Mit Glasdach eher 3.500 bis 6.500 Euro. Schlüsselfertig montiert, mit Statik und Anschluss ans Haus.'
+  },
+  {
+    question: 'Brauche ich für ein Vordach eine Baugenehmigung?',
+    answer: 'Kleine Vordächer unter 3 Metern Breite und 1,5 Metern Tiefe sind oft genehmigungsfrei. Darüber brauchen wir eine Anmeldung oder eine Genehmigung. Wir prüfen das vorab für Ihre konkrete Größe.'
+  },
+  {
+    question: 'Welche Eindeckung empfehlen Sie?',
+    answer: 'Verbundsicherheitsglas für Premiumoptik. Polycarbonat für günstige und schlagfeste Lösungen. Trapezblech für moderne Architektur. Holzschalung mit Bitumen für klassische Bauten. Wir wählen je nach Haus und Vorliebe.'
+  },
+  {
+    question: 'Welche Tragfähigkeit muss das Vordach haben?',
+    answer: 'Wir bemessen nach DIN mit Berücksichtigung von Schneelastzone 1 oder 2 (Köln liegt in Zone 1). Zusätzlich prüfen wir die Wandanschlüsse am Bestand und sichern die Lasten in die Außenwand.'
+  },
+  {
+    question: 'Muss das Vordach gewartet werden?',
+    answer: 'Kaum. Bei Holz-Vordächern reicht eine Lasur alle 7 Jahre. Bei Glas oder Polycarbonat muss gelegentlich gereinigt werden, je nach Standort und Verschmutzung.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Vordachbau",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Vordachbau Köln | Hauseingang überdacht"
+  description="Vordachbau in Köln: Hauseingang überdachen mit Holzkonstruktion, Glas oder Polycarbonat. Schlüsselfertig inklusive Statik."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Vordach</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Vordachbau in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Wer im Regen vor der eigenen Tür steht, ärgert sich. Ein Vordach aus Holz löst das. Wir bauen es in Köln passend zum Haus, schlicht oder Premium, schlüsselfertig mit Anschluss an die Hauswand.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Vordach anfragen" subtitle="Welche Größe passt?" buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Trockener Hauseingang</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Ein Vordach ist mehr als ein Regenschutz. Es ist die Visitenkarte des Hauses, der erste Eindruck für Besucher und Bewohner. Wir sehen in Köln viele Häuser, deren Eingangstür unter einem kleinen, schlichten Vordach liegt, und manche ohne. Wer einen Neubau plant oder eine Sanierung macht, sollte über ein neues Vordach nachdenken.
+            </p>
+            <p>
+              Die Konstruktion ist einfach: zwei Konsolen an der Hauswand, ein Querbalken, Sparren und die Eindeckung. Bei freitragenden Vordächern sind die Konsolen als Stahlblech in die Wand eingelassen oder mit Dübelankern befestigt. Bei sehr kleinen Vordächern reichen auch Holzknaggen, die direkt in die Wand geschraubt werden.'
+            </p>
+            <p>
+              Für Köln empfehlen wir Lärche oder Douglasie wegen ihrer Dauerhaftigkeit. Bei Altbauten in Ehrenfeld oder Nippes passt eine dunkle Lärche sehr gut zu Backstein- oder Putzfassaden. Bei modernen Bauten in Deutz oder Kalk wirken helle Hölzer oder Glas besser.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Was wir bauen</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Klassisches Vordach', d: 'Flach geneigt, mit Bitumen oder Schindeln. Passt zu Altbauten und Reihenhäusern.' },
+              { t: 'Glasvordach', d: 'Premiumlösung mit Edelstahl-Konsolen. Modern, transparent, elegant.' },
+              { t: 'Polycarbonat', d: 'Günstige Alternative, schlagfest, klar oder milchig.' },
+              { t: 'Holz-Schindel-Vordach', d: 'Warmer Charakter, oft für Schwarzwald- oder Berghütten-Look.' },
+              { t: 'Vordach mit Seitenwand', d: 'Seitlicher Wind- und Sichtschutz. Mehr Komfort, mehr Privatsphäre.' },
+              { t: 'Vordach mit Beleuchtung', d: 'Integrierte LED-Bänder oder Spots. Bringt Wärme und Sicherheit.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zum Vordach</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Vordach anfragen" subtitle="Welche Größe passt?" buttonText="Beratung anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

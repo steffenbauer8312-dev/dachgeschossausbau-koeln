@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was sind Dachkonstruktionen für Anbauten?',
+    answer: 'Wenn Sie an Ihr Haus einen Anbau anschließen, braucht der einen eigenen Dachanschluss. Wir bauen das auf das Bestandsdach abgestimmt, mit tragfähigem Anschluss an die Hauswand und einer Dämmung wie beim Hauptbau.'
+  },
+  {
+    question: 'Welche Dachformen sind möglich?',
+    answer: 'Pultdach (häufig bei modernen Anbauten), Satteldach (passend zum Bestand), Flachdach (mit oder ohne Begrünung), Schleppdach (ans Bestandsdach angeschmiegt). Welche Form passt, hängt vom Bestand und vom Bebauungsplan ab.'
+  },
+  {
+    question: 'Was kostet eine Dachkonstruktion für einen Anbau?',
+    answer: 'Je nach Größe und Form zwischen 4.000 und 18.000 Euro. Plus die Dachdeckung, die wir mit unseren Partnerbetrieben koordinieren. Komplettangebot aus einer Hand.'
+  },
+  {
+    question: 'Brauche ich eine Baugenehmigung?',
+    answer: 'Ja, ein Anbau ist immer genehmigungspflichtig. Das Dach ist Teil der Baugenehmigung. Wir kümmern uns um den Bauantrag und die Abstimmung mit dem Bauaufsichtsamt.'
+  },
+  {
+    question: 'Wie wird der Anschluss ans Bestandsdach gemacht?',
+    answer: 'Im Wandbereich: Anschlussblech und Bleischlagblech, unterseitig Dämmung wie beim Anbau. Wenn möglich wird das Bestandsdach über die Hauswand gezogen und das neue Dach darunter angesetzt. Wir achten auf dichte Ausführung und Wärmebrückenfreiheit.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Dachkonstruktionen für Anbauten",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachkonstruktionen für Anbauten Köln | Anschluss ans Haus"
+  description="Dachkonstruktionen für Anbauten in Köln: Pultdach, Satteldach oder Flachdach, sauber ans Bestandsdach angeschlossen."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Dachkonstruktionen Anbauten</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Dachkonstruktionen für Anbauten in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Wer einen Anbau ans Haus setzt, braucht einen Dachanschluss. Wir bauen das so, dass der Anbau trocken, gedämmt und architektonisch stimmig ist. Pultdach, Satteldach oder Flachdach, je nach Bestand und Bebauungsplan.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Dach für Anbau" subtitle="Welche Form passt?" buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Dachanschluss mit Anschluss</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Ein Anbau ist mehr als vier Wände und ein Dach. Der Anschluss an das Bestandshaus ist die kritische Stelle. Hier muss die Last sauber abgetragen werden, hier darf kein Wasser reinkommen, hier muss die Dämmung nahtlos sein. Wer hier patzt, hat Ärger über Jahrzehnte.
+            </p>
+            <p>
+              Wir bauen Anbauten in Köln seit Jahren, deshalb kennen wir die typischen Anschlussprobleme. Bei einem Satteldach-Anbau muss die Traufe ans Bestandsdach angeglichen werden. Bei einem Pultdach-Anbau ist die Höhe so zu wählen, dass das neue Dach unter das alte passt. Bei einem Flachdach-Anbau muss die Entwässerung neu organisiert werden.'
+            </p>
+            <p>
+              Wir gehen vor Ort und sehen uns das Bestandsdach genau an. Dann planen wir den Anschluss, sodass alles trocken und statisch sauber ist. Sie bekommen eine Festpreis-Angebot und wir kümmern uns um die Bauantragsunterlagen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Dachformen für Anbauten</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Pultdach', d: 'Anbau mit flach geneigtem Dach, oft 5 bis 10 Grad. Modern, günstig, einfach anzuschließen.' },
+              { t: 'Satteldach', d: 'Symmetrisch oder einseitig. Passt zu klassischen Häusern in Ehrenfeld oder Lindenthal.' },
+              { t: 'Flachdach', d: 'Mit Bitumen- oder Kunststoffbahnen. Oft mit Begrünung oder PV.' },
+              { t: 'Schleppdach', d: 'Ans Bestandsdach angeschmiegt. Schlanke Optik, schwierige Ausführung.' },
+              { t: 'Verbindungsbau', d: 'Wenn der Anbau durch einen Gang mit dem Haus verbunden ist. Eigene Dachlösung.' },
+              { t: 'Pergola', d: 'Rankhilfe mit Dachlatten. Schattenspender, kein vollwertiges Dach.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zu Dachkonstruktionen</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dach für Anbau planen" subtitle="Welche Form passt?" buttonText="Beratung anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

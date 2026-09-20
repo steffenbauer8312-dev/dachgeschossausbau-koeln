@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein neuer Dachstuhl in Köln?',
+    answer: 'Ein neuer Dachstuhl kostet je nach Größe, Form und Holzsorte zwischen 120 und 280 Euro pro Quadratmeter Grundfläche. Für ein durchschnittliches Einfamilienhaus mit etwa 120 m² Dachfläche rechnen wir mit Gesamtkosten von 14.000 bis 32.000 Euro inklusive Aufrichten, Eindeckung undabbund.'
+  },
+  {
+    question: 'Welches Holz verwenden Sie für Dachstühle?',
+    answer: 'Wir verwenden Konstruktionsvollholz (KVH) aus Fichte oder Tanne, weil es formstabil, rissarm und tragfähig ist. Für sichtbare Balken kommt Leimholz oder BSH zum Einsatz. Auf Wunsch auch Lärche oder Douglasie, vor allem bei Flachdach-Carports und sichtbaren Holzbauwerken.'
+  },
+  {
+    question: 'Brauche ich für einen neuen Dachstuhl eine Baugenehmigung?',
+    answer: 'Ja, ein neuer Dachstuhl verändert die Gebäudegeometrie und ist genehmigungspflichtig in Köln. Wir übernehmen den Bauantrag, die Statik und die Abstimmung mit dem Bauaufsichtsamt komplett. Bei Aufstockungen ist zudem die Tragfähigkeit der Bestandswände zu prüfen.'
+  },
+  {
+    question: 'Wie lange dauert das Aufrichten eines Dachstuhls?',
+    answer: 'Der reine Aufricht-Termin dauert bei einem Einfamilienhaus ein bis zwei Tage. Vorproduziert im Abbundwerk mit Kranmontage geht es heute sehr schnell. Mit Dämmung und Eindeckung planen wir rund vier bis sechs Wochen Gesamtbauzeit.'
+  },
+  {
+    question: 'Welche Dachstuhlformen bauen Sie in Köln?',
+    answer: 'Satteldach, Walmdach, Krüppelwalmdach, Mansardendach, Pultdach und Flachdach. Bei denkmalgeschützten Häusern in Ehrenfeld oder Marienburg bleiben wir bei der historischen Geometrie, bei Neubauten und Aufstockungen setzen wir auf klare moderne Linien.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Dachstuhlbau",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachstuhlbau Köln | Zimmerei & Holzkonstruktion"
+  description="Dachstuhlbau in Köln: Satteldach, Walmdach, Pultdach oder Mansarde. Zimmermeister plant, baut und richtet Ihren Dachstuhl schlüsselfertig auf."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Dachstuhlbau</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Dachstuhlbau in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Neuer Dachstuhl für Neubau, Aufstockung oder nach einem Sturmschaden. Wir fertigen im Abbundwerk vor, liefern mit Kran an und richten in ein bis zwei Tagen auf. Holz aus heimischer Forstwirtschaft, Statik nach aktuellem Eurocode.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Dachstuhl anfragen" subtitle="Wir kalkulieren Ihren Dachstuhl nach Plan oder Vor-Ort-Aufmaß." buttonText="Angebot anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Ein neuer Dachstuhl steht für 100 Jahre</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Der Dachstuhl ist das Tragwerk Ihres Hauses. Er hält Schnee, Wind und Eigengewicht der Eindeckung und gibt dem Dachgeschoss seine Form. In Köln arbeiten wir mit heimischer Fichte und Tanne aus nachhaltiger Forstwirtschaft, weil das Holz tragfähig, formstabil und preislich fair ist.
+            </p>
+            <p>
+              Bei Neubauten in Stadtrandlagen wie Ossendorf oder Longerich bauen wir einfache Satteldächer mit Standard-Geometrie. Bei Aufstockungen in dichten Veedeln wird der Dachstuhl oft als Pfettendach oder Sparren-Pfettendach ausgeführt, weil dadurch die Lasten gut in die Außenwände abgeleitet werden. In Ehrenfeld und Marienburg halten wir uns bei denkmalgeschützten Häusern an die historische Geometrie und verwenden traditionelle Zapfen- und Kammverbindungen.
+            </p>
+            <p>
+              Vorbereitung heißt bei uns: Aufmaß vor Ort oder nach Architektenplan, Abbund im Werk, Lieferung mit LKW und Kran. Auf der Baustelle steht der Dachstuhl dann innerhalb von ein bis zwei Tagen. Danach kommen Dämmung, Eindeckung und die Gewerke des Innenausbaus.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+            <div class="bg-slate-50 rounded-lg p-5">
+              <p class="text-3xl font-bold text-teal-600">ab 120 €</p>
+              <p class="text-slate-600 text-sm">pro m² Grundfläche, inkl. Aufrichten</p>
+            </div>
+            <div class="bg-slate-50 rounded-lg p-5">
+              <p class="text-3xl font-bold text-teal-600">1-2</p>
+              <p class="text-slate-600 text-sm">Tage Richtzeit mit Kranmontage</p>
+            </div>
+            <div class="bg-slate-50 rounded-lg p-5">
+              <p class="text-3xl font-bold text-teal-600">25 J.</p>
+              <p class="text-slate-600 text-sm">Garantie auf Holz und Statik</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">So bauen wir Ihren Dachstuhl</h2>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {[
+              { s: '1', t: 'Aufmaß', d: 'Vor-Ort-Termin oder Planstudium. Wir prüfen Lasten, Geometrie, Anschlüsse.' },
+              { s: '2', t: 'Statik & Abbund', d: 'Statiker berechnet, Zimmermann schneidet im Werk millimetergenau zu.' },
+              { s: '3', t: 'Lieferung & Aufrichten', d: 'LKW bringt vorgefertigte Hölzer, Kran richtet in 1-2 Tagen auf.' },
+              { s: '4', t: 'Folgegewerke', d: 'Dachdecker, Zimmerer, Klempner übernehmen Dämmung, Eindeckung, Entwässerung.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-6 shadow-sm relative">
+                <div class="w-10 h-10 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold mb-3">{i.s}</div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zum Dachstuhlbau</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">Verwandte Leistungen</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <a href="/leistungen/dachstuhlsanierung" class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-1">Dachstuhlsanierung</h3>
+              <p class="text-slate-600 text-sm">Alten Dachstuhl erhalten und ertüchtigen.</p>
+            </a>
+            <a href="/leistungen/dachstuhlverstärkung" class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-1">Dachstuhlverstärkung</h3>
+              <p class="text-slate-600 text-sm">Tragfähigkeit für DG-Ausbau erhöhen.</p>
+            </a>
+            <a href="/leistungen/holzrahmenbau" class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-1">Holzrahmenbau</h3>
+              <p class="text-slate-600 text-sm">Vorgefertigte Wand- und Dachelemente.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">In Köln aktiv</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <a href="/stadtteile/porz" class="bg-slate-50 rounded-xl p-5 hover:bg-teal-50 transition-colors">
+              <h3 class="text-lg font-bold text-slate-800 mb-1">Porz</h3>
+              <p class="text-slate-600 text-sm">Vom Reihenhaus bis zur Mietskaserne.</p>
+            </a>
+            <a href="/stadtteile/ehrenfeld" class="bg-slate-50 rounded-xl p-5 hover:bg-teal-50 transition-colors">
+              <h3 class="text-lg font-bold text-slate-800 mb-1">Ehrenfeld</h3>
+              <p class="text-slate-600 text-sm">Altbau, denkmalgeschützt.</p>
+            </a>
+            <a href="/stadtteile/chorweiler" class="bg-slate-50 rounded-xl p-5 hover:bg-teal-50 transition-colors">
+              <h3 class="text-lg font-bold text-slate-800 mb-1">Chorweiler</h3>
+              <p class="text-slate-600 text-sm">Flachdach-Aufstockung.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachstuhl anfragen" subtitle="Wir melden uns innerhalb von 24 Stunden." buttonText="Kostenlose Beratung" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

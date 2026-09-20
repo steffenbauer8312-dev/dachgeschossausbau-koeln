@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet eine Dachterrasse?',
+    answer: 'Eine Dachterrasse mit Statik, Aufbau und Geländer kostet zwischen 800 und 1.800 Euro pro Quadratmeter. Für eine typische Dachterrasse von 15 bis 25 Quadratmetern rechnen wir mit Gesamtkosten von 12.000 bis 45.000 Euro. Holzbelag ist günstiger als Betonwerkstein oder Keramik.'
+  },
+  {
+    question: 'Brauche ich für eine Dachterrasse eine Baugenehmigung?',
+    answer: 'Ja, eine Dachterrasse ist in Köln genehmigungspflichtig. Wir kümmern uns um den Bauantrag, die Statik und die Abstimmung mit dem Bauaufsichtsamt. Bei denkmalgeschützten Häusern ist die Sache komplizierter, da stimmen wir das mit dem Denkmalamt ab.'
+  },
+  {
+    question: 'Welche Beläge eignen sich für Dachterrassen?',
+    answer: 'Holzbelag (Bangkirai, Douglasie, Lärche), WPC, Betonwerksteinplatten auf Stelzlager, Keramikfliesen im Dünnbett. Wichtig: wasserdichter Aufbau, Gefälle zur Entwässerung, frostsichere Materialien. Wir bauen alle gängigen Systeme ein.'
+  },
+  {
+    question: 'Wie wird die Dachterrasse entwässert?',
+    answer: 'Über die Dachhaut mit Gefälle zu Einlaufgullys oder über ein Dichtsystem mit Kapillarsperre. Wir setzen auf mehrlagige Bitumen- oder Kunststoffdichtungsbahnen mit vlieskaschierter Oberfläche. Die Entwässerung wird an die Fallleitung des Hauses angeschlossen.'
+  },
+  {
+    question: 'Welche Geländer brauche ich auf einer Dachterrasse?',
+    answer: 'Bei einer Absturzhöhe über einem Meter ist ein Geländer mit mindestens 90 cm Höhe Pflicht. Bei mehr als 12 Metern Absturzhöhe sogar 110 cm. Wir bauen Geländer aus Stahl, Aluminium, Edelstahl, Glas oder eine Kombination. Die Befestigung muss statisch nachgewiesen sein.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Dachterrassenbau",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachterrassenbau Köln | Terrasse auf dem Dach"
+  description="Dachterrassenbau in Köln: mehr Wohnqualität durch eine eigene Dachterrasse. Mit Statik, Dichtung, Belag und Geländer."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Dachterrasse</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Dachterrassenbau in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Wer oben wohnt, soll auch oben raus können. Wir bauen Dachterrassen in Köln mit allem, was dazugehört: Statik, Dichtung, Belag, Geländer, Entwässerung. Schlüsselfertig und mit Genehmigung.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Dachterrasse anfragen" subtitle="Welche Größe passt?" buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Wohnen über den Dächern</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Eine Dachterrasse verändert eine Wohnung grundlegend. Aus einem Apartment unter dem Dach wird ein Rückzugsort mit Freiraum, mit Sonne, mit Blick über Köln. Wir bauen Dachterrassen in Köln meistens auf Flachdächern oder auf flach geneigten Dächern, weil dort die Konstruktion am einfachsten ist.
+            </p>
+            <p>
+              Der Aufbau folgt einem klaren Schema: Bestandsdach prüfen, gegebenenfalls ertüchtigen, Dampfsperre, Wärmedämmung, mehrlagige Dichtungsbahn, Schutzvlies, Belag auf Stelzlager oder im Mörtelbett. Geländer und Entwässerung kommen nach der Dichtungsprüfung dazu. Wir bauen alles aus einer Hand, mit eigenem Gerüst und Kran.
+            </p>
+            <p>
+              In Köln sehen wir immer mehr Bestandsbauten, deren Flachdach brachliegt. Eine Dachterrasse schließt diese Lücke und steigert den Wert der Immobilie erheblich. Für MFH-Investoren und Eigentümergemeinschaften rechnen sich solche Projekte oft in 10 bis 15 Jahren. Wir zeigen Ihnen die Zahlen gern in einem Vor-Ort-Termin.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Beläge und Aufbauten</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Holzbelag', d: 'Bangkirai, Douglasie oder Lärche auf Unterkonstruktion. Warm, natürlich, pflegeleicht.' },
+              { t: 'WPC', d: 'Wood-Plastic-Composite. Holzoptik ohne Pflege, langlebig, recyclebar.' },
+              { t: 'Betonwerkstein', d: 'Pflegeleicht, dauerhaft, viele Farben. Auf Stelzlager oder im Splitt.' },
+              { t: 'Keramikfliesen', d: 'Im Dünnbett auf Drainmörtel. Premium-Look, frostsicher.' },
+              { t: 'Begrünung', d: 'Extensive Dachbegrünung mit Gräsern und Sedum. Verbessert Klima und Isolierung.' },
+              { t: 'Kombination', d: 'Holzdeck am Sitzbereich, Pflaster am Rest. Auch gemischte Systeme sind möglich.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur Dachterrasse</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachterrasse anfragen" subtitle="Welche Größe passt?" buttonText="Beratung anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

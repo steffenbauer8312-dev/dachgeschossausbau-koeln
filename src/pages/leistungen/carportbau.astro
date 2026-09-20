@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein Carport in Köln?',
+    answer: 'Ein Einzelcarport liegt zwischen 2.500 und 5.000 Euro schlüsselfertig. Ein Doppelcarport zwischen 4.500 und 9.000 Euro. Mit Dachbegrünung, Photovoltaik oder Premium-Holzarten liegen wir eher im oberen Bereich. Fundament und Anfahrt sind im Preis enthalten.'
+  },
+  {
+    question: 'Brauche ich für einen Carport eine Baugenehmigung?',
+    answer: 'In Köln ja, ein Carport ist genehmigungspflichtig. Wir kümmern uns um den Bauantrag und die Abstimmung mit dem Bauaufsichtsamt. Bei kleinen Carports bis 30 qm gibt es vereinfachte Verfahren, die wir kennen.'
+  },
+  {
+    question: 'Welches Holz eignet sich für den Carport?',
+    answer: 'Lärche und Douglasie halten 30 Jahre ohne Imprägnierung. Fichte und Tanne gehen auch, brauchen aber Holzschutz und Pflege. Wir empfehlen heimische Hölzer aus nachhaltiger Forstwirtschaft.'
+  },
+  {
+    question: 'Wie lange dauert der Bau eines Carports?',
+    answer: 'Mit Fundament und Lieferzeit zwei bis drei Wochen reine Bauzeit. Komplett mit Bauantrag und Wartezeit rechnen wir mit zwei bis drei Monaten. Wir koordinieren alle Schritte aus einer Hand.'
+  },
+  {
+    question: 'Kann ich auf dem Carport-Dach eine Photovoltaikanlage montieren?',
+    answer: 'Ja, das ist in Köln sehr gefragt. Wir bauen das Carport mit ausreichend dimensionierter Tragfähigkeit und integrieren die PV-Halterungen. Auch eine Dachbegrünung ist möglich, wenn das Dach statisch und wasserdicht ausgelegt ist.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Carportbau",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Carportbau Köln | Holzcarport schlüsselfertig"
+  description="Carportbau in Köln: Einzelcarport, Doppelcarport, mit oder ohne PV-Anlage. Aus heimischer Lärche oder Douglasie."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Carport</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Carportbau in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Ein Carport schützt Auto, Motorrad oder Fahrrad vor Regen und Schnee. Wir bauen Holz-Carports in Köln, schlüsselfertig mit Fundament, Dach und Entwässerung. Von einfach bis Premium mit PV oder Begrünung.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Carport anfragen" subtitle="Welche Größe passt?" buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Holz-Carport statt Garage</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Ein Carport aus Holz ist in Köln beliebt, weil er kostengünstig ist und schneller steht als eine gemauerte Garage. Wir setzen heimische Lärche oder Douglasie ein, weil sie ohne chemischen Holzschutz 30 Jahre halten. Die Konstruktion ist klar: Punktfundamente, Pfosten, Querbalken, Dachsparren, Unterspannbahn, Eindeckung. In einer Woche steht das Carport.
+            </p>
+            <p>
+              Für die Dacheindeckung gibt es mehrere Optionen: Trapezblech aus Stahl, Bitumenwellplatten, EPDM-Folie als Flachdach oder klassische Ziegel. Wir wählen je nach Optik, Preis und Haltbarkeit. Photovoltaik oder Dachbegrünung integrieren wir auf Wunsch, das macht das Carport zum Mehrwert für Haus und Grundstück.'
+            </p>
+            <p>
+              Wenn Sie in einem Neubaugebiet in Ossendorf oder Longerich wohnen, schließen wir den Carport an die Bestandsarchitektur an. Wenn Sie einen Bestandsbau in Ehrenfeld oder Mülheim haben, integrieren wir das Carport in die bestehende Hofsituation. Jede Lösung ist anders, deshalb kommen wir vor Ort.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Bauarten und Extras</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Einzelcarport', d: '3 x 6 m, ein Auto. Standard, günstig, schnell aufgebaut.' },
+              { t: 'Doppelcarport', d: '6 x 6 m, zwei Autos nebeneinander. Mit gemeinsamer Trägerkonstruktion.' },
+              { t: 'Reihencarport', d: 'Mehrere Plätze hintereinander, oft entlang der Grundstücksgrenze.' },
+              { t: 'Anlehncarport', d: 'An die Hauswand gebaut. Spart Ständer, nutzt Bestandswand als Regenschutz.' },
+              { t: 'Carport mit Photovoltaik', d: 'Strom vom Dach. Wir integrieren die Module und den Anschluss.' },
+              { t: 'Carport mit Gründach', d: 'Extensive Begrünung. Sieht gut aus und ist klima- und insektenschonend.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zum Carport</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Carport anfragen" subtitle="Welche Größe passt?" buttonText="Beratung anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

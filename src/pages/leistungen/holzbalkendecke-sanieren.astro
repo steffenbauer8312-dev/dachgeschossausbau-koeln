@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet die Sanierung einer Holzbalkendecke?',
+    answer: 'Eine typische Sanierung mit neuer Dämmung und Trockenbau liegt zwischen 90 und 160 Euro pro Quadratmeter. Wenn zusätzlich Verstärkung oder Schwingungsdämpfung nötig ist, kommen 30 bis 80 Euro pro Quadratmeter dazu. Wir kalkulieren auf Basis der Vor-Ort-Aufnahme.'
+  },
+  {
+    question: 'Wann ist eine Sanierung der Holzbalkendecke nötig?',
+    answer: 'Wenn der Boden federt, knarrt oder sich durchbiegt. Wenn Feuchtigkeit von oben oder unten ins Holz gekommen ist. Wenn Schallschutz mangelhaft ist. Wenn Brandschutz nötig wird. Auch bei einem DG-Ausbau prüfen wir die Decke immer mit.'
+  },
+  {
+    question: 'Welche Sanierungsarbeiten sind am häufigsten?',
+    answer: 'Auffüllen der Hohlräume mit Mineralwolle oder Einblasdämmung. Neue Dampfbremse auf der warmen Seite. Trockenbau-Unterdecke mit Schallschutz-Profilen. Bei Bedarf Verstärkung der Balken durch Aufdopplung oder Wechsel.'
+  },
+  {
+    question: 'Muss ich bei der Sanierung ausziehen?',
+    answer: 'In den meisten Fällen nicht. Wir arbeiten abschnittsweise und können pro Raum die Decke in ein bis zwei Tagen fertigstellen. Bei Komplettsanierungen mit Aufnehmen des Bodens ist ein Auszug sinnvoll, weil Wohnraum vorübergehend eingeschränkt ist.'
+  },
+  {
+    question: 'Welche Dämmung passt in eine Holzbalkendecke?',
+    answer: 'Mineralwolle in den Gefachen, Zellulose oder Mineralwolle eingeblasen, Hanf oder Holzfaser. Wir wählen je nach Schallschutz-Anforderung, Brandschutz und Diffusionsverhalten. Bei Dampfsperre achten wir auf dichte Anschlüsse an Wände und Durchdringungen.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Holzbalkendecke sanieren",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Holzbalkendecke sanieren Köln | Schallschutz & Dämmung"
+  description="Holzbalkendecke sanieren in Köln: Holzbalken ertüchtigen, Schallschutz verbessern, Dämmung einbringen. Mit Statik und Erfahrung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Holzbalkendecke</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Holzbalkendecke sanieren in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Holzbalkendecken sind in Köln Standard, vor allem in Altbauten aus der Gründerzeit und der Nachkriegszeit. Wenn sie federn, knarren oder den Schall nicht mehr stoppen, wird es Zeit für eine Sanierung.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Decke prüfen lassen" subtitle="Vor-Ort-Termin in Köln." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Ruhe und Tragfähigkeit unter den Füßen</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Eine Holzbalkendecke ist mehr als nur ein Boden. Sie trägt die Lasten, trennt die Geschosse akustisch und muss brandschutztechnisch funktionieren. Wenn eine dieser Aufgaben versagt, ist Sanierung angesagt. In Köln sehen wir bei Altbauten oft drei Probleme: durchhängende Balken, mangelnder Schallschutz und fehlende Brandschutz-Verkleidung.
+            </p>
+            <p>
+              Wir gehen vor Ort zuerst auf Diagnose: Aufmaß der Balken, Feuchtemessung, Klopfen zur Hohlraumprüfung, Sichtprüfung der Auflager. Daraus ergibt sich ein Sanierungsplan. Manchmal reicht eine neue Dämmung mit Trockenbau-Unterdecke. Manchmal müssen Balken ertüchtigt oder ersetzt werden.
+            </p>
+            <p>
+              Typische Arbeiten sind: Mineralwolle in die Gefache einbringen, neue Dampfbremse an der warmen Seite, Federschiene mit Gipskarton als Unterdecke. Bei statischen Problemen kommen Wechsel und Balkenverstärkungen dazu. Bei MFH mit Schallschutz-Anforderungen bauen wir Trittschalldämmung und schwimmende Estriche ein.'
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Häufige Maßnahmen</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Dämmung einbringen', d: 'Mineralwolle in die Gefache bis Oberkante Balken. Verbessert Schall- und Wärmeschutz.' },
+              { t: 'Dampfbremse erneuern', d: 'An der warmen Seite luftdicht verlegt. Verhindert Tauwasser in der Decke.' },
+              { t: 'Trockenbau-Unterdecke', d: 'Mit Federschiene abgehängt. Bringt Schallschutz und ebene Decke.' },
+              { t: 'Balkenverstärkung', d: 'Aufdopplung mit KVH oder BSH. Bei Überlast oder Verformung.' },
+              { t: 'Wechsel einbauen', d: 'Zur Lastenumlagerung. Wenn z.B. ein Installationsschacht durch eine Wand geführt werden soll.' },
+              { t: 'Schwingungsdämpfung', d: 'Bei Trittschall-Problemen. Schwingungsdämpfer an Federschiene oder Balken.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur Holzbalkendecke</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Decke prüfen lassen" subtitle="Vor-Ort-Termin in Köln." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

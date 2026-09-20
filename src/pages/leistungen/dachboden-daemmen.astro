@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Wann reicht es, nur den Dachboden zu dämmen?',
+    answer: 'Wenn der Dachboden nicht ausgebaut wird und nur als Abstellfläche dient. Eine durchgehende Dämmung der obersten Geschossdecke spart dann enorme Heizkosten, weil die Wärme nicht mehr in den kalten Dachraum entweicht. Das ist GEG-Pflicht, wenn keine andere Dämmung vorhanden ist.'
+  },
+  {
+    question: 'Wie viel kostet es, den Dachboden zu dämmen?',
+    answer: 'Begehbare Dämmung mit Mineralwolle und Spanplatte liegt bei 60 bis 100 Euro pro Quadratmeter. Nicht begehbar mit Mineralwolle pur bei 25 bis 50 Euro. Einblasdämmung der obersten Geschossdecke bei 30 bis 70 Euro pro Quadratmeter.'
+  },
+  {
+    question: 'Welche Stärke brauche ich?',
+    answer: 'Für GEG-Pflicht (U-Wert 0,24) reichen 100 bis 140 mm Mineralwolle. Für KfW-Standard sind 200 bis 280 mm sinnvoll. Bei Hohlböden oder unterschiedlichen Sparrenhöhen arbeiten wir mit zwei Lagen oder mit Einblasdämmung.'
+  },
+  {
+    question: 'Kann ich die obere Geschossdecke selbst dämmen?',
+    answer: 'Einfache Mineralwolle-Auslegung kann ein geübter Heimwerker machen. Bei Dampfsperre, Anschlüssen und Einblasdämmung empfehlen wir den Fachbetrieb. Falsche Anschlüsse führen zu Feuchtigkeitsschäden und Schimmel.'
+  },
+  {
+    question: 'Wer trägt die Kosten, wenn der Dachboden vermietet ist?',
+    answer: 'Bei Vermietung gilt: Dämmung der obersten Geschossdecke ist Teil der energetischen Sanierung und kann auf die Miete umgelegt werden, in begrenztem Umfang nach BGB. Wir beraten Sie zu den rechtlichen Rahmenbedingungen.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Dachboden dämmen",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachboden dämmen Köln | Obere Geschossdecke"
+  description="Dachboden dämmen in Köln: Dämmung der obersten Geschossdecke. Schnell, günstig, oft GEG-Pflicht. Mit Mineralwolle oder Einblasdämmung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Dachboden dämmen</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Dachboden dämmen in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Wenn der Dachboden nicht ausgebaut wird, bringt die Dämmung der obersten Geschossdecke den größten Effekt für wenig Geld. Wir erledigen das in Köln an einem Tag, mit Mineralwolle oder Einblasdämmung.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Dachboden dämmen" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Die günstigste Energiesparmaßnahme</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Wer oben unterm Dach nur Abstellfläche hat, gibt über die ungedämmte Geschossdecke jeden Tag Wärme in den kalten Speicher ab. Das ist reines Geld auf dem Dach. Eine Dämmung der obersten Geschossdecke bringt enorm viel: 20 bis 30 Prozent weniger Heizkosten, je nach Zustand des Hauses.
+            </p>
+            <p>
+              Bei Reihenhäusern in Ehrenfeld oder Nippes haben wir oft Holzbalkendecken, die ohne Dampfsperre gar nicht gedämmt werden dürfen. Wir bauen eine neue Dampfsperre und dämmen auf oder zwischen die Balken. Bei MFH mit Betondecken geht es noch einfacher: Mineralwolle direkt auf die Decke, begehbar mit Spanplatte oder OSB.'
+            </p>
+            <p>
+              Wichtig: Wenn der Dachboden später doch ausgebaut werden soll, lässt sich die Geschossdecken-Dämmung nicht halten. Die ist nur sinnvoll, wenn der Dachboden auf absehbare Zeit nicht ausgebaut wird. Wir beraten im Vorfeld ehrlich, was wirtschaftlich richtig ist.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Aufbau-Varianten</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Begehbar mit Spanplatte', d: 'Mineralwolle 100 bis 280 mm, Dampfsperre, Spanplatte 22 mm. Dachboden bleibt nutzbar.' },
+              { t: 'Nicht begehbar', d: 'Mineralwolle pur, mit Winddichtung oben. Günstigste Variante, Dachboden nicht mehr betretbar.' },
+              { t: 'Hohlraum-Einblasdämmung', d: 'Wenn die Decke Hohlräume hat, füllen wir die mit Zellulose. Schnell, fugenlos.' },
+              { t: 'Vollsparrendämmung der Kehlbalkenlage', d: 'Wenn die Decke als Holzkonstruktion vorliegt: Mineralwolle zwischen den Balken.' },
+              { t: 'PUR/PIR Hartschaum', d: 'Wo wenig Aufbauhöhe zur Verfügung steht. Höhere Kosten, sehr effizient.' },
+              { t: 'Mineralwolle + Gehwegplatten', d: 'Begehbar nur im Mittelgang, Rest offen. Günstige Mischung.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur Dachboden-Dämmung</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachboden dämmen" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

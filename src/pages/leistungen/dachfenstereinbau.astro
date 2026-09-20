@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein Dachfenster-Einbau in Köln?',
+    answer: 'Ein Velux oder Roto Dachfenster in Standardgröße kostet mit Einbau zwischen 800 und 1.500 Euro. Größere Elemente oder elektrische Steuerung liegen bei 2.000 bis 4.000 Euro. Je nach Dämmung und Anschluss kommen pro Fenster 200 bis 400 Euro Materialkosten oben drauf.'
+  },
+  {
+    question: 'Brauche ich für den Dachfenstereinbau eine Baugenehmigung?',
+    answer: 'Bei Standardfenstern (bis etwa 2 Quadratmeter) meist nicht. Bei mehreren Fenstern, größeren Elementen oder wenn der Einbau in einer denkmalgeschützten Hülle erfolgt, brauchen wir eine Baugenehmigung. Wir prüfen das vorab.'
+  },
+  {
+    question: 'Welche Dachfenster-Marke empfehlen Sie?',
+    answer: 'Wir setzen auf Velux und Roto. Beide Marken sind am Markt gut eingeführt, Ersatzteile sind in 20 Jahren noch zu bekommen. Velux hat den größeren Programm-Umfang, Roto oft das bessere Preis-Leistungs-Verhältnis. Wir stimmen die Wahl auf den Anwendungsfall ab.'
+  },
+  {
+    question: 'Welche Größe sollte ein Dachfenster haben?',
+    answer: 'Faustregel: 10 Prozent der Bodenfläche als Glasfläche. Bei einem 15-Quadratmeter-Raum sollten also etwa 1,5 Quadratmeter Glas rein, das entspricht einem Standardfenster oder zwei kleineren. Mit mehreren Fenstern bekommen Sie eine gleichmäßigere Belichtung.'
+  },
+  {
+    question: 'Wie lange dauert der Einbau eines Dachfensters?',
+    answer: 'Mit Vorarbeiten, Ausschnitt, Eindeckrahmen und Innenverkleidung ein bis zwei Tage pro Fenster. Bei größeren Maßnahmen oder mehreren Fenstern entsprechend länger. Wir schaffen das je nach Größe in einem bis drei Tagen.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Dachfenstereinbau",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachfenstereinbau Köln | Velux, Roto & mehr"
+  description="Dachfenstereinbau in Köln: Velux, Roto, elektrische Bedienung, Sonnenschutz. Mehr Tageslicht im Dachgeschoss."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Dachfenstereinbau</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Dachfenstereinbau in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Mehr Licht, mehr Luft, mehr Wohnqualität. Wir bauen Dachfenster in Köln fachgerecht ein, mit passender Eindichtung, Sonnenschutz und Innenverkleidung. Vom Standardfenster bis zur komfortablen Elektro-Variante.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Dachfenster einbauen" subtitle="Welche Größe passt?" buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Licht und Luft ins Dachgeschoss</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Ein Dachfenster verändert einen Raum komplett. Wo vorher nur Dachschräge und Halbdunkel war, kommt plötzlich Tageslicht und Frischluft rein. Für ein vollwertiges Wohnzimmer, Kinderzimmer oder Arbeitszimmer im Dachgeschoss brauchen wir immer Fenster. Auch ohne Gauben lässt sich so ein angenehmer Raum schaffen.
+            </p>
+            <p>
+              Wir setzen in Köln vor allem Velux und Roto ein. Beide Marken haben ein breites Programm von Standard- bis Komfortfenster mit elektrischer Bedienung, Regensensor und Funkfernbedienung. Auch bei Sonderformen (Panorama- oder Cabrio-Balkon) sind die Hersteller gut aufgestellt. Wir liefern, montieren, dichten ein und verkleiden innen.'
+            </p>
+            <p>
+              Beim Einbau achten wir auf korrekte Dämmung des Rahmens, wasserdichten Anschluss an die Unterspannbahn und die passende Innenverkleidung. Sonnenschutz (Rollladen oder Markise) und Hitzeschutz (außenliegend) kommen auf Wunsch dazu. Wir beraten vor Ort, welche Lösung zu Ihrem Dach passt.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Möglichkeiten</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Standardfenster manuell', d: 'Bewährt, einfach, preiswert. Dreh-Kipp-Mechanik mit einer Hand.' },
+              { t: 'Komfortfenster elektrisch', d: 'Mit Funkfernbedienung oder App, Regensensor, automatische Schließung.' },
+              { t: 'Sonnenschutz außen', d: 'Rollladen oder Hitzeschutz-Markise. Bis 90 Prozent Hitzereduktion im Sommer.' },
+              { t: 'Sichtschutz innen', d: 'Plissees, Rollos oder Jalousien für Privatsphäre und Abdunkelung.' },
+              { t: 'Panorama-Balkon', d: 'Cabrio oder Balkon-Fenster: aus dem Fenster wird im Handumdrehen ein Balkon.' },
+              { t: 'Lichtlösungen', d: 'Lichtschacht oder Tageslicht-Spot für fensterlose Räume im Dachgeschoss.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zum Dachfenstereinbau</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachfenster einbauen" subtitle="Welche Größe passt?" buttonText="Beratung anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

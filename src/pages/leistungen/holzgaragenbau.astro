@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet eine Holzgarage in Köln?',
+    answer: 'Eine Einzelgarage in Holzständerbau liegt zwischen 8.000 und 18.000 Euro schlüsselfertig. Mit mehreren Stellplätzen, Sektionaltor oder zwei Pkw-Stellplätzen kommen wir auf 18.000 bis 32.000 Euro. Fundament und Anfahrt sind im Preis enthalten.'
+  },
+  {
+    question: 'Wie lange hält eine Holzgarage?',
+    answer: 'Mit Lärche oder Douglasie und fachgerechtem Holzschutz hält eine Holzgarage 40 bis 60 Jahre. Wer die Pflege (Lasur alle 7 Jahre) nicht scheut, bekommt eine sehr langlebige Konstruktion.'
+  },
+  {
+    question: 'Brauche ich für eine Holzgarage eine Baugenehmigung?',
+    answer: 'In Köln ja, auch für Holzgaragen brauchen wir eine Baugenehmigung. Wir kümmern uns um den Antrag. Bei kleinen Garagen unter 30 qm gibt es ein vereinfachtes Verfahren mit kürzerer Bearbeitungszeit.'
+  },
+  {
+    question: 'Welche Dacheindeckung passt?',
+    answer: 'Satteldach mit Ziegeln, Flachdach mit Bitumenbahn oder Gründach, Pultdach in eine Richtung geneigt. Wir stimmen die Eindeckung auf die Umgebung und den Bebauungsplan ab. In Denkmalgebieten gibt es oft Vorgaben.'
+  },
+  {
+    question: 'Welche Holzarten setzen Sie ein?',
+    answer: 'Für die Konstruktion Konstruktionsvollholz oder Brettschichtholz aus Fichte oder Tanne. Für die sichtbare Außenverkleidung häufig Lärche oder Douglasie. Innen kommt OSB oder Massivholzplatte zum Einsatz.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Holzgaragenbau",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Holzgaragenbau Köln | Langlebige Holzgarage"
+  description="Holzgaragenbau in Köln: Einzelgarage, Doppelgarage oder Reihengarage aus Holz. Schlüsselfertig, mit Genehmigung, mit Sektionaltor."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Holzgarage</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Holzgaragenbau in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Eine Holzgarage wärmt das Grundstück und schützt das Auto. Wer auf ökologische Bauweise Wert legt, ist mit Holz gut beraten. Wir bauen in Köln Holzgaragen schlüsselfertig, mit Sektionaltor und auf Wunsch mit Ladestation fürs E-Auto.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Holzgarage anfragen" subtitle="Welche Größe passt?" buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Eine Garage, die ins Bild passt</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Eine Holzgarage passt zum Grundstück, wenn die Architektur im Einklang ist. In Köln sehen wir sie vor allem in Vierteln mit Gartenstadt-Charakter, in Longerich, in Ossendorf, in Teilen von Lindenthal. Eine schöne Holzgarage wertet das Grundstück auf und ist deutlich günstiger als eine gemauerte Lösung.
+            </p>
+            <p>
+              Wir bauen das Holzgaragen-Skelett aus Konstruktionsvollholz (KVH) oder Brettschichtholz (BSH) und verkleiden die Außenwände mit Nut-und-Feder-Profilholz, Stülpschalung oder mit einer Kombination aus Holz und Putz. Wer Sichtbeton oder eine moderne Optik will, kann auch Putzträgerplatten auf den Holzständer schrauben und verputzen.'
+            </p>
+            <p>
+              Was die Garage an Mehrwert bringt: vorbereitete Anschlüsse für eine Wallbox, ein integrierter Abstellraum, ein Sektionaltor mit Funkfernbedienung oder ein Pflaster vor dem Tor für saubere Räder und Schuhe. Wir besprechen die Details vor Ort.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Optionen</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Sektionaltor', d: 'Platzsparend, gedämmt, mit Funkfernbedienung. Standard-Lösung in Köln.' },
+              { t: 'Schwingtor', d: 'Klassisch, einfach, preiswert. Wenn der Platz vor dem Tor nicht knapp ist.' },
+              { t: 'Holztor', d: 'Aus dem gleichen Holz wie die Fassade. Passt sich der Architektur an.' },
+              { t: 'Wallbox-Vorbereitung', d: 'Leerrohr und Stromanschluss für eine E-Auto-Ladestation.' },
+              { t: 'Dachbegrünung', d: 'Garage als Gründach. Sieht gut aus, ist ökologisch.' },
+              { t: 'PV-Anlage', d: 'Strom vom Garagendach. Mit Eigenverbrauch oder Einspeisung.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur Holzgarage</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Holzgarage anfragen" subtitle="Welche Größe passt?" buttonText="Beratung anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

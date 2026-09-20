@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was ist Zwischensparrendämmung?',
+    answer: 'Bei der Zwischensparrendämmung wird das Dämmmaterial zwischen die Dachsparren geklemmt. Das ist die häufigste und preisgünstigste Form der Dachdämmung. In Köln setzen wir sie bei Bestandsbauten mit intakter Eindeckung ein, weil sie ohne Dachöffnung funktioniert.'
+  },
+  {
+    question: 'Welche Dämmstärke brauche ich für die Sparren?',
+    answer: 'Die typische Sparrenhöhe in Altbauten liegt bei 14 bis 18 cm. Bei 200 mm Mineralwolle zwischen den Sparren plus 50 mm Untersparren-Dämmung erreichen wir KfW-Standard. Bei höheren Sparren geht mehr, bei niedrigeren muss man mit Untersparren-Dämmung oder Aufdopplung arbeiten.'
+  },
+  {
+    question: 'Was kostet Zwischensparrendämmung in Köln?',
+    answer: 'Reine Dämmung mit Dampfsperre und Innenverkleidung liegt zwischen 60 und 100 Euro pro Quadratmeter Dachfläche. Plus Trockenbau, Elektro, Gipskarton, Spachtelarbeiten. Komplett ausgebaut mit allem drum und dran kommen wir auf 110 bis 150 Euro pro Quadratmeter.'
+  },
+  {
+    question: 'Was ist der Unterschied zwischen Zwischensparren- und Aufsparrendämmung?',
+    answer: 'Zwischensparrendämmung sitzt zwischen den Sparren, Aufsparrendämmung liegt darüber. Aufsparren ist technisch besser (keine Wärmebrücken), braucht aber eine neue Eindeckung. Zwischensparren reicht oft, günstiger und schneller.'
+  },
+  {
+    question: 'Welches Material eignet sich am besten?',
+    answer: 'Mineralwolle ist der Klassiker: preiswert, bewährt, guter Schallschutz. Holzfaser ist diffusionsoffen und besser fürs Raumklima. Zellulose wird eingeblasen und füllt jeden Hohlraum. Wir wählen je nach Haus, Statik und Budget.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Zwischensparrendämmung",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Zwischensparrendämmung Köln | Dämmung im Bestand"
+  description="Zwischensparrendämmung in Köln: preiswerte Dämmung für Bestandsbauten. Mineralwolle, Holzfaser oder Einblasdämmung. Mit BAFA-Förderung."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Zwischensparrendämmung</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Zwischensparrendämmung in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Zwischen die Sparren gehört Dämmung rein. Schnell, günstig und wirksam. Wir dämmen Ihr Dach in Köln von innen, ohne die Eindeckung anzurühren. Mit BAFA-Förderung und KfW-Standard.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Zwischensparrendämmung" subtitle="Was passt zu Ihrem Dach?" buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Die Standardlösung fürs Bestandsdach</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Die meisten Kölner Dächer haben Sparrenhöhen zwischen 14 und 18 cm. Genug Platz für 200 bis 240 mm Mineralwolle. Mit einer zusätzlichen Untersparren-Dämmung von 40 bis 60 mm erreichen wir KfW-Standard, ohne dass die Raumhöhe im Dachgeschoss dramatisch sinkt.'
+            </p>
+            <p>
+              Beim Ablauf arbeiten wir von unten nach oben. Zuerst alte Verkleidung runter, dann Dämmung in die Sparren einbringen, Dampfbremse aufbringen, Lattenrost für die Innenverkleidung, Gipskartonplatten, Verspachteln und Streichen. Bei Bestandsbauten, deren Dachboden bereits wohnwirtschaftlich genutzt wird, geht das am Wochenende ohne Auszug.'
+            </p>
+            <p>
+              Wer lieber Einblasdämmung möchte, bekommt die auch. Zellulose oder Mineralwolle wird in die Hohlräume eingeblasen, das Verfahren ist schnell und gut für schwer zugängliche Bereiche. Welche Lösung passt, sehen wir uns vor Ort an. Wir empfehlen das, was technisch und wirtschaftlich sinnvoll ist.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Materialien für die Zwischensparrendämmung</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Mineralwolle', d: 'Klassiker mit guter Dämmung, günstig, vielseitig. Wird in Bahnen oder Platten eingebaut.' },
+              { t: 'Holzfaserdämmung', d: 'Diffusionsoffen, gutes Raumklima. Etwas teurer, dafür ökologisch.' },
+              { t: 'Zellulose-Einblasdämmung', d: 'Aus Altpapier, fugenlos eingeblasen. Sehr gute Hohlraumfüllung.' },
+              { t: 'Mineralwolle-Einblasdämmung', d: 'Auch Mineralwolle wird eingeblasen. Verdichtet, setzungssicher.' },
+              { t: 'Hanf oder Flachs', d: 'Nachhaltige Naturdämmstoffe. Selten, etwas teurer.' },
+              { t: 'PUR/PIR zwischen den Sparren', d: 'Hartschaum, sehr effizient. Nur als Aufdoppelung sinnvoll.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur Zwischensparrendämmung</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Zwischensparrendämmung" subtitle="Was passt zu Ihrem Dach?" buttonText="Beratung anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

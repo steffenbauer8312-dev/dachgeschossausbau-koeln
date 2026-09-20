@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was ist Aufsparrendämmung?',
+    answer: 'Bei der Aufsparrendämmung wird die Dämmung oberhalb der Sparren verlegt, also direkt unter der Eindeckung. Im Gegensatz zur Zwischensparrendämmung gibt es keine Wärmebrücken durch die Sparren. Die Dachfläche wird komplett geschlossen gedämmt.'
+  },
+  {
+    question: 'Wann ist Aufsparrendämmung sinnvoll?',
+    answer: 'Wenn das Dach ohnehin neu eingedeckt wird. Wenn die Sparren zu wenig Höhe haben für eine gute Zwischensparrendämmung. Wenn eine durchgehende Dämmebene ohne Wärmebrücken gefragt ist. Wenn KfW-Standard erreicht werden soll.'
+  },
+  {
+    question: 'Welche Dämmstärke brauche ich?',
+    answer: 'Für KfW-Standard 160 bis 200 mm Aufsparrendämmung. Bei Kombination mit Zwischensparrendämmung kann die Gesamtdicke reduziert werden. Wir wählen die Stärke nach Statik, vorhandener Sparrenhöhe und Förderziel.'
+  },
+  {
+    question: 'Was kostet Aufsparrendämmung in Köln?',
+    answer: 'Komplett mit Eindeckung, Lattung, Bahn und Dämmung sind 180 bis 280 Euro pro Quadratmeter Dachfläche realistisch. Mit Aufsparren-Dämmung allein, ohne neue Eindeckung, geht es nicht, weil die Dämmung immer unter die Eindeckung kommt.'
+  },
+  {
+    question: 'Welches Material eignet sich für Aufsparrendämmung?',
+    answer: 'PUR/PIR-Hartschaum ist effizient und nimmt wenig Platz weg. Mineralwolle-Aufsparrendämmung ist diffusionsoffen und nachhaltig. Holzfaser bringt Hitzeschutz und gutes Raumklima. Wir wählen je nach Anforderung und Budget.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Aufsparrendämmung",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Aufsparrendämmung Köln | Dämmung über den Sparren"
+  description="Aufsparrendämmung in Köln: durchgehende Dämmebene ohne Wärmebrücken. Für KfW-Standard und optimalen Wärmeschutz."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Aufsparrendämmung</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Aufsparrendämmung in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Die beste Dämmung fürs Dach kommt über die Sparren. Sie bildet eine geschlossene Hülle ohne Wärmebrücken, eignet sich für KfW-Standard und passt zu jeder Neueindeckung. Wir setzen sie regelmäßig in Köln ein.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Aufsparrendämmung anfragen" subtitle="Welche Stärke brauchen Sie?" buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Was bringt die Aufsparrendämmung?</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Die Aufsparrendämmung ist technisch die sauberste Lösung fürs Dach. Sie liegt auf den Sparren, nicht dazwischen oder darunter. Damit gibt es keine Schwachstelle, über die Wärme nach außen wandern kann. Wer die höchste Energieeffizienz für sein Dach will, kommt um Aufsparren nicht herum.
+            </p>
+            <p>
+              In Köln setzen wir Aufsparrendämmung vor allem dann ein, wenn das Dach ohnehin neu eingedeckt werden muss. Die Dämmung wird in dem Zuge mit eingebaut, was den Aufwand kaum erhöht. Mit 160 mm PIR erreichen wir U-Wert 0,14, also KfW-Standard, und das zu moderaten Mehrkosten gegenüber reiner Zwischensparrendämmung.'
+            </p>
+            <p>
+              Bei Holzfaser-Aufsparrendämmung kommen noch zwei Extras dazu: Hitzeschutz im Sommer und guter Schallschutz. Wer in Köln in einem lauten Innenstadt-Viertel wohnt, profitiert vom reduzierten Außenlärm. Holzfaser ist zudem diffusionsoffen und sorgt für angenehmes Raumklima.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Materialien für die Aufsparrendämmung</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'PUR/PIR-Hartschaum', d: 'Effizient, schlank, druckfest. 120 bis 160 mm reichen für KfW-Standard.' },
+              { t: 'Mineralwolle', d: 'Diffusionsoffen, guter Schallschutz. Dicker als PIR für gleiches Ergebnis.' },
+              { t: 'Holzfaser', d: 'Hitzeschutz, Schallschutz, diffusionsoffen. Premium-Material für höchste Ansprüche.' },
+              { t: 'Resol-Hartschaum', d: 'Noch bessere Dämmwerte als PIR bei gleicher Dicke. Selten und teuer.' },
+              { t: 'Mineralische Schäume', d: 'Aerogel oder Calciumsilikat. Extrem schlank, in Sonderfällen.' },
+              { t: 'Kombination', d: 'PIR mit Holzfaser oder Mineralwolle. Druckfest außen, diffusionsoffen innen.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur Aufsparrendämmung</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Aufsparrendämmung anfragen" subtitle="Welche Stärke brauchen Sie?" buttonText="Beratung anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

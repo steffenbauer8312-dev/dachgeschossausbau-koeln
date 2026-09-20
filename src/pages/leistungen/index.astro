@@ -2,158 +2,168 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
 import LeadForm from '../../components/LeadForm.astro';
 
-const services = [
+const kategorien = [
   {
-    title: 'Dachaufstockung',
-    slug: 'dachaufstockung',
-    description: 'Mehr Wohnraum durch ein zusätzliches Geschoss. Wir planen, genehmigen und bauen die Aufstockung Ihres Hauses in Köln – schlüsselfertig zum Festpreis.',
-    details: [
-      'Holzständer, Massivbau oder Modulbauweise',
-      'Komplette Planung und Bauantrag',
-      'Förderung bis zu 30 % sichern',
-      'Inklusive Dämmung und Innenausbau'
+    name: 'Dachstuhl & Tragwerk',
+    slug: 'dachstuhl-tragwerk',
+    description: 'Dachstuhl von Grund auf: Neubau, Sanierung, Verstärkung und punktuelle Reparatur.',
+    icon: '🏛️',
+    services: [
+      { name: 'Dachstuhlbau', slug: 'dachstuhlbau', desc: 'Neubau für Neubau, Aufstockung oder Sturmschaden.' },
+      { name: 'Dachstuhlsanierung', slug: 'dachstuhlsanierung', desc: 'Alte Substanz retten, Tragfähigkeit ertüchtigen.' },
+      { name: 'Dachstuhlverstärkung', slug: 'dachstuhlverstärkung', desc: 'Mehr Tragfähigkeit für DG-Ausbau.' },
+      { name: 'Dachstuhlreparatur', slug: 'dachstuhlreparatur', desc: 'Sparren, Pfosten, Auflager punktuell reparieren.' },
+      { name: 'Sparren tauschen oder verstärken', slug: 'sparren-austauschen-verstärken', desc: 'Einzelne Sparren reparieren.' },
+      { name: 'Pfetten erneuern oder verstärken', slug: 'pfetten-erneuern-verstärken', desc: 'Horizontale Träger ertüchtigen.' },
+      { name: 'Holzschäden am Dach reparieren', slug: 'holzschaden-dach-reparieren', desc: 'Schwamm, Käfer, Fäulnis punktuell.' },
     ]
   },
   {
-    title: 'Bestandsaufnahme & Statik',
-    slug: 'statik',
-    description: 'Bevor wir mit dem Ausbau beginnen, prüfen wir die Bausubstanz. Unsere Statiker berechnen, ob das Dach die Last trägt.',
-    details: [
-      'Tragfähigkeitsberechnung der Dachkonstruktion',
-      'Prüfung der Anschlüsse und Verbände',
-      'Gutachten für die Baugenehmigung',
-      'Koordination mit dem Amt für Denkmalschutz'
+    name: 'Dachausbau & Wohnraum',
+    slug: 'dachausbau',
+    description: 'Aus ungenutzten Dachflächen wird hochwertiger Wohnraum. Mit oder ohne Aufstockung.',
+    icon: '🏠',
+    services: [
+      { name: 'Dachbodenausbau', slug: 'dachbodenausbau', desc: 'Vom Boden zum vollwertigen Wohnraum.' },
+      { name: 'Dachaufstockung', slug: 'dachaufstockung', desc: 'Komplette neue Etage auf das Bestandsdach.' },
+      { name: 'Dachanhebung', slug: 'dachanhebung', desc: 'Wände hochziehen und Dach neu aufsetzen.' },
+      { name: 'Kniestockerhöhung', slug: 'kniestockerhoehung', desc: 'Mehr Stehhöhe durch höhere Außenwand.' },
+      { name: 'Gaubenbau', slug: 'gaubenbau', desc: 'Trapez, Sattel, Flachdach, Schlepp, Zwerchgiebel.' },
+      { name: 'Dachfenstereinbau', slug: 'dachfenstereinbau', desc: 'Velux, Roto, elektrisch. Licht und Luft.' },
+      { name: 'Dachbalkonbau', slug: 'dachbalkonbau', desc: 'Balkon ans oder aufs Dach.' },
+      { name: 'Dachterrassenbau', slug: 'dachterrassenbau', desc: 'Terrasse auf dem Dach.' },
+      { name: 'Wohnraumerweiterung in Holzbauweise', slug: 'wohnraumerweiterung-holzbauweise', desc: 'Schnell und ökologisch mehr Platz.' },
     ]
   },
   {
-    title: 'Dachgauben',
-    slug: 'gauben',
-    description: 'Gauben schaffen Stehhöhe und Licht. Wir planen und bauen Gauben, die zu Ihrem Haus passen.',
-    details: [
-      'Trapezgauben, Sattelgauben, Rundgauben',
-      'Planung und Genehmigungsantrag',
-      'Konstruktion nach Kölner Bebauungsplan',
-      'Komplette Dämmung und Abdichtung'
+    name: 'Dämmung & Sanierung',
+    slug: 'daemmung-sanierung',
+    description: 'GEG-konforme Dämmung, energetische Sanierung und Dämmung der obersten Geschossdecke.',
+    icon: '🌡️',
+    services: [
+      { name: 'Dachdämmung', slug: 'dachdaemmung', desc: 'Standard-Dämmung fürs Dach.' },
+      { name: 'Aufsparrendämmung', slug: 'aufsparrendaemmung', desc: 'Durchgehende Dämmung ohne Wärmebrücken.' },
+      { name: 'Zwischensparrendämmung', slug: 'zwischensparrendaemmung', desc: 'Bewährt und preiswert.' },
+      { name: 'Dachboden dämmen', slug: 'dachboden-daemmen', desc: 'Dämmung der obersten Geschossdecke.' },
+      { name: 'Dachsanierung', slug: 'dachsanierung', desc: 'Komplette Neueindeckung und Dämmung.' },
+      { name: 'Energetische Dachsanierung', slug: 'energetische-dachsanierung', desc: 'GEG + KfW-Standard + Förderung.' },
+      { name: 'Holzbalkendecke sanieren', slug: 'holzbalkendecke-sanieren', desc: 'Schallschutz und Dämmung der Decke.' },
+      { name: 'Holzbalkendecke verstärken', slug: 'holzbalkendecke-verstaerken', desc: 'Mehr Tragfähigkeit für mehr Last.' },
     ]
   },
   {
-    title: 'Dachdämmung nach GEG',
-    slug: 'daemmung',
-    description: 'Das GEG schreibt Dämmwerte vor. Wir sorgen dafür, dass Ihr Dach alle Anforderungen erfüllt.',
-    details: [
-      'Zwischensparren-Dämmung',
-      'Untersparren-Dämmung mit Dampfsperre',
-      'U-Wert-Berechnung nach GEG',
-      'KfW-konforme Ausführung'
+    name: 'Holzbau & Konstruktion',
+    slug: 'holzbau',
+    description: 'Vom Carport bis zum Anbau: Holzbau in jeder Form und Größe.',
+    icon: '🪵',
+    services: [
+      { name: 'Holzrahmenbau', slug: 'holzrahmenbau', desc: 'Vorgefertigte Wand- und Dachelemente.' },
+      { name: 'Holzständerbau', slug: 'holzstaenderbau', desc: 'Innenausbau und Innendämmung.' },
+      { name: 'Ingenieurholzbau', slug: 'ingenieurholzbau', desc: 'BSH und BSP für anspruchsvolle Konstruktionen.' },
+      { name: 'Anbau in Holzbauweise', slug: 'anbau-holzbauweise', desc: 'Erweiterung in Holz.' },
+      { name: 'Dachkonstruktionen für Anbauten', slug: 'dachkonstruktionen-anbauten', desc: 'Anschluss ans Bestandsdach.' },
+      { name: 'Fachwerksanierung', slug: 'fachwerksanierung', desc: 'Historische Substanz retten.' },
+      { name: 'Individuelle Zimmererarbeiten', slug: 'individuelle-zimmererarbeiten', desc: 'Sonderlösungen und Anpassungen.' },
     ]
   },
   {
-    title: 'Trockenbau',
-    slug: 'trockenbau',
-    description: 'Gipskartonplatten, Zwischenwände, Abhangdecken – wir schaffen die Struktur für Ihren neuen Wohnraum.',
-    details: [
-      'Wandsysteme für Dachschrägen',
-      'Abgehängte Decken',
-      'Brandschutzlösungen',
-      'Schallschutz'
+    name: 'Fassaden & Holzoberflächen',
+    slug: 'fassade-holz',
+    description: 'Holz an der Fassade und am Detail: Neubau, Sanierung und Pflege.',
+    icon: '🏘️',
+    services: [
+      { name: 'Holzfassadenbau', slug: 'holzfassadenbau', desc: 'Vorgehängte Holzfassade, Lärche, Douglasie.' },
+      { name: 'Holzfassadensanierung', slug: 'holzfassadensanierung', desc: 'Bestand erhalten, Lasur erneuern.' },
+      { name: 'Dachüberstand erneuern', slug: 'dachueberstand-erneuern', desc: 'Traufe, Ortgang, Untersicht.' },
+      { name: 'Vordachbau', slug: 'vordachbau', desc: 'Hauseingang überdachen.' },
+      { name: 'Balkonbau aus Holz', slug: 'balkonbau-aus-holz', desc: 'Anlehn, auskragend, Holzterrasse.' },
     ]
   },
   {
-    title: 'Bad & Sanitär',
-    slug: 'bad',
-    description: 'Oft braucht das Dachgeschoss ein eigenes Bad. Wir kümmern uns um die komplette Sanitärinstallation.',
-    details: [
-      'Abwasseranschlüsse',
-      'Trinkwasserleitungen',
-      'WC und Dusche',
-      'Heizungsanschluss'
+    name: 'Außenanlagen',
+    slug: 'aussenanlagen',
+    description: 'Carport, Garage und alles, was draußen vor dem Haus steht.',
+    icon: '🚗',
+    services: [
+      { name: 'Carportbau', slug: 'carportbau', desc: 'Einzel, Doppel, mit PV oder Gründach.' },
+      { name: 'Holzgaragenbau', slug: 'holzgaragenbau', desc: 'Langlebige Garage in Holzbauweise.' },
+      { name: 'Terrassenüberdachung', slug: 'terrassenueberdachung', desc: 'Glas, Polycarbonat oder Trapezblech.' },
     ]
   }
 ];
 
-const serviceSchema = {
+const faqs = [
+  {
+    question: 'Welche Leistungen bieten Sie im Dachgeschossausbau an?',
+    answer: 'Wir machen alles aus einer Hand: Statik, Dämmung, Trockenbau, Elektro, Sanitär, Heizung. Dazu kommen Spezialleistungen wie Gaubenbau, Dachstuhlsanierung, Fassadenbau, Carport und Holzgaragen. Insgesamt über 40 Leistungen rund ums Dach in Köln.'
+  },
+  {
+    question: 'Was kostet ein Dachgeschossausbau in Köln?',
+    answer: 'Einfache Ausbauten beginnen bei 1.400 Euro pro Quadratmeter, vollständige Wohnungen liegen bei 1.800 bis 2.400 Euro. Dachaufstockungen kosten 2.500 bis 3.500 Euro pro Quadratmeter. Mit BAFA- und KfW-Förderung reduzieren sich die effektiven Kosten um 20 bis 35 Prozent.'
+  },
+  {
+    question: 'Wie lange dauert ein Dachausbau?',
+    answer: 'Ein einfacher Ausbau dauert 8 bis 12 Wochen reine Bauzeit. Komplexere Aufstockungen oder Aufstockung plus Dachgeschossausbau 4 bis 6 Monate. Mit Genehmigungsphase rechnen wir insgesamt 4 bis 9 Monate.'
+  },
+  {
+    question: 'Bekomme ich Förderung für den Dachausbau?',
+    answer: 'Ja, mehrere Programme: BAFA BEG EM (15 bis 20 Prozent Zuschuss), KfW 261 (günstiger Kredit mit Tilgungszuschuss), Steuerbonus Paragraph 35c EStG (20 Prozent der Handwerkerkosten). Welche Kombination für Sie passt, prüfen wir im Förderrechner.'
+  },
+  {
+    question: 'Welche Stadtteile in Köln betreuen Sie?',
+    answer: 'Wir betreuen alle 9 Stadtbezirke und 86 Stadtteile in Köln. Schwerpunkte sind Ehrenfeld, Nippes, Lindenthal, Marienburg, Rodenkirchen, Deutz, Mülheim, Kalk, Porz und alle Innenstadt-Bereiche.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
   "@type": "Service",
   "serviceType": "Dachgeschossausbau Köln",
-  "provider": {
-    "@type": "HomeAndConstructionBusiness",
-    "name": "Dachgeschossausbau Köln"
-  },
-  "areaServed": "Köln"
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
 };
 ---
 
 <BaseLayout
-  title="Leistungen Dachgeschossausbau Köln | Alle Gewerke aus einer Hand"
-  description="Wir bieten alle Leistungen rund um den Dachgeschossausbau in Köln: Statik, Gauben, Dämmung, Trockenbau, Elektro und Sanitär. Alles aus einer Hand."
+  title="Leistungen Dachgeschossausbau Köln | Über 40 Angebote aus einer Hand"
+  description="Alle Leistungen rund um Dach und Holzbau in Köln: Dachstuhl, Dachausbau, Dämmung, Holzbau, Fassaden, Außenanlagen. Über 40 Leistungen."
 >
   <Header />
 
   <main>
-    <!-- Hero mit Inline-Formular -->
     <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
       <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 class="text-3xl md:text-4xl font-bold mb-4">
-              Leistungen beim Dachgeschossausbau in Köln
-            </h1>
-            <p class="text-xl text-slate-300 max-w-2xl">
-              Von der Bestandsaufnahme bis zur Übergabe: Wir machen alles. Ein Ansprechpartner, ein Team, ein Preis.
-            </p>
-          </div>
-          <!-- Kompaktes Leadformular -->
-          <LeadForm
-            variant="inline"
-            title="Welche Leistung brauchen Sie?"
-            subtitle="Wir beraten Sie zu allen Gewerken."
-            buttonText="Beratung anfragen"
-          />
-        </div>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">
+          Unsere Leistungen in Köln
+        </h1>
+        <p class="text-xl text-slate-300 max-w-3xl">
+          Über 40 Leistungen aus einer Hand. Von der Statik bis zur Fassadensanierung, vom Carport bis zum Fachwerk. Was Sie auf dieser Seite nicht finden, fragen Sie uns direkt, wir machen viel mehr als die aufgelisteten Standardleistungen.
+        </p>
       </div>
     </section>
 
-    <!-- Services -->
-    <section class="py-16 md:py-24 bg-slate-50">
+    <section class="py-16 md:py-24 bg-white">
       <div class="container mx-auto px-4">
-        <div class="space-y-12">
-          {services.map((service, index) => (
-            <div class={`bg-white rounded-xl shadow-md overflow-hidden ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-              <div class="grid grid-cols-1 md:grid-cols-2">
-                <div class={`p-8 ${index % 2 === 1 ? 'md:order-2' : ''}`}>
-                  <h2 class="text-2xl font-bold text-slate-800 mb-4">
-                    {service.title}
-                  </h2>
-                  <p class="text-slate-600 mb-6 leading-relaxed">
-                    {service.description}
-                  </p>
-                  <ul class="space-y-2">
-                    {service.details.map(detail => (
-                      <li class="flex items-start gap-2 text-slate-700">
-                        <svg class="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                        </svg>
-                        {detail}
-                      </li>
-                    ))}
-                  </ul>
-                  <div class="mt-6">
-                    <a href={`/leistungen/${service.slug}`} class="inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 transition-colors duration-200">
-                      Mehr erfahren
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                  </div>
+        <div class="max-w-5xl mx-auto space-y-16">
+          {kategorien.map(kat => (
+            <div id={kat.slug}>
+              <div class="flex items-center gap-4 mb-6">
+                <span class="text-4xl">{kat.icon}</span>
+                <div>
+                  <h2 class="text-2xl md:text-3xl font-bold text-slate-800">{kat.name}</h2>
+                  <p class="text-slate-600 mt-1">{kat.description}</p>
                 </div>
-                <div class="bg-slate-100 flex items-center justify-center p-12">
-                  <div class="w-32 h-32 bg-teal-100 rounded-full flex items-center justify-center">
-                    <svg class="w-16 h-16 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                    </svg>
-                  </div>
-                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {kat.services.map(s => (
+                  <a href={`/leistungen/${s.slug}`} class="block bg-slate-50 rounded-xl p-5 hover:bg-teal-50 hover:shadow-md transition-all">
+                    <h3 class="text-lg font-bold text-slate-800 mb-1">{s.name}</h3>
+                    <p class="text-slate-600 text-sm">{s.desc}</p>
+                    <span class="text-teal-600 text-sm font-medium mt-2 inline-block">Mehr erfahren →</span>
+                  </a>
+                ))}
               </div>
             </div>
           ))}
@@ -161,30 +171,26 @@ const serviceSchema = {
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
-          Sie haben Fragen zu unseren Leistungen?
-        </h2>
-        <p class="text-slate-600 max-w-2xl mx-auto mb-8">
-          Wir beraten Sie gerne unverbindlich zu Ihrem Projekt in Köln. Kontaktieren Sie uns!
-        </p>
-        <a href="/kontakt" class="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200">
-          Kontakt aufnehmen
-        </a>
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">
+            Häufige Fragen zu unseren Leistungen
+          </h2>
+          <FAQ faqs={faqs} />
+        </div>
       </div>
     </section>
 
     <LeadForm
       variant="full"
-      title="Ihren Dachgeschossausbau unverbindlich anfragen"
-      subtitle="Wir melden uns innerhalb von 24 Stunden bei Ihnen."
-      buttonText="Kostenlose Erstberatung anfragen"
+      title="Welche Leistung brauchen Sie?"
+      subtitle="Wir beraten Sie zu allen Gewerken."
+      buttonText="Kostenlose Beratung"
     />
   </main>
 
   <Footer />
 </BaseLayout>
 
-<script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

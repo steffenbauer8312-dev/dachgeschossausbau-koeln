@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Wann ist eine Kniestockerhöhung sinnvoll?',
+    answer: 'Wenn der vorhandene Kniestock unter einem Meter liegt und kein vernünftiges Stehen unter den Schrägen möglich ist. Mit einer Erhöhung auf 1,20 bis 1,50 Meter gewinnen Sie nutzbare Fläche und Komfort. Reicht das nicht, kommt die Gaube als zusätzliche Lösung.'
+  },
+  {
+    question: 'Was kostet eine Kniestockerhöhung in Köln?',
+    answer: 'Je nach Bauweise und Länge der Traufe zwischen 800 und 2.000 Euro pro laufendem Meter. Für ein durchschnittliches Reihenhaus mit 8 Metern Traufe sind das 6.000 bis 16.000 Euro. Mit Anpassung der Dämmung und Innenverkleidung eher 8.000 bis 18.000 Euro.'
+  },
+  {
+    question: 'Brauche ich eine Baugenehmigung für die Erhöhung?',
+    answer: 'Ja, eine Kniestockerhöhung verändert die Gebäudegeometrie. Sie läuft in Köln zusammen mit dem DG-Ausbau durch die Baugenehmigung. In manchen Fällen können bauvorlagenfreie Erleichterungen greifen, das prüfen wir vorab.'
+  },
+  {
+    question: 'Welcher Kniestock ist in Köln Standard?',
+    answer: '1,20 bis 1,50 Meter. Bei dieser Höhe können Sie auf zwei Dritteln der Grundfläche normal stehen. Niedriger ist unbequem, höher bringt kaum Mehrwert und verändert das Stadtbild stärker.'
+  },
+  {
+    question: 'Kann ich den Kniestock bei einem denkmalgeschützten Haus erhöhen?',
+    answer: 'In denkmalgeschützten Bereichen wie der Kölner Innenstadt oder Marienburg ist die Erhöhung nur mit Zustimmung der Denkmalbehörde möglich. Wir erstellen den Antrag und stimmen die Lösung mit dem Amt ab. Bei sensiblen Objekten gibt es oft kreative Sonderlösungen.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Kniestockerhöhung",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Kniestockerhöhung Köln | Mehr Stehhöhe im Dachgeschoss"
+  description="Kniestockerhöhung in Köln: Außenwand im Dachgeschoss höher setzen für mehr nutzbare Fläche. Mit Statik und Bauantrag."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Kniestockerhöhung</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Kniestockerhöhung in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Viele Kölner Altbauten haben einen Kniestock, mit dem sich das Dachgeschoss kaum sinnvoll nutzen lässt. Wir erhöhen die Außenwand im Dach auf das gewünschte Maß. Statisch geprüft, sauber ausgeführt, mit Genehmigung.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Kniestock prüfen" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Warum der Kniestock so wichtig ist</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Der Kniestock entscheidet, ob das Dachgeschoss ein vollwertiger Wohnraum wird oder nur eine Abstellkammer. Bei Gründerzeitbauten in Ehrenfeld und Nippes stehen wir oft vor Kniestöcken von 60 bis 100 Zentimetern. Das reicht zum Hängen von Kleidung, aber nicht zum Leben. Mit einer Erhöhung auf 1,20 bis 1,50 Meter verwandelt sich der Raum komplett.
+            </p>
+            <p>
+              Wir erhöhen den Kniestock, indem wir die Außenwand im Dachbereich aufmauern oder mit einer Holzkonstruktion aufstocken. Bei der Holzlösung arbeiten wir mit Rahmenwerk und Holzfaserdämmung, das hält die Wärmebrücke klein und ist diffusionsoffen. Bei der massiven Variante mit Kalksandstein oder Porenbeton bekommen wir eine bessere Schall- und Speichermasse.
+            </p>
+            <p>
+              Welche Lösung passt, hängt vom Haus ab. Bei denkmalgeschützten Objekten oder denkmalpflegerischen Auflagen bleibt oft nur die Holz-Variante. Bei reinen Wirtschaftlichkeitsüberlegungen ist der Massivbau häufig günstiger. Wir beraten vor Ort und zeigen beide Varianten mit Preis und Konsequenzen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Methoden im Vergleich</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Holzrahmen', d: 'Schnell, trocken, diffusionsoffen. Ideal bei Bestandsdächern und wenn die Dämmebene unterbrochen werden soll.' },
+              { t: 'Massiv (KS oder Porenbeton)', d: 'Höhere Masse, besserer Schallschutz. Bei untergeordneten Räumen oder wenn keine Brandschutzanforderung dagegen spricht.' },
+              { t: 'Stahl-Leichtbau', d: 'Sehr schlanke Aufbauhöhe, wenn nur wenig Platz zur Verfügung steht. Kombiniert mit Gipskarton-Innenverkleidung.' },
+              { t: 'Hybrid Holz-Massiv', d: 'Innen Massiv, außen Holz. Gute Mischung aus Speichermasse und Wärmebrückenfreiheit.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur Kniestockerhöhung</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Kniestock prüfen" subtitle="Kostenlose Vor-Ort-Inspektion." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

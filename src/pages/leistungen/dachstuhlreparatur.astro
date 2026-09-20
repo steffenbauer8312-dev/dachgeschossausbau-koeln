@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Wann ist eine Dachstuhlreparatur nötig?',
+    answer: 'Wenn einzelne Bauteile geschädigt sind, der Dachstuhl insgesamt aber gesund ist. Beispiele: ein morscher Sparrenkopf am Auflager, ein verwitterter Ortgang, ein vom Sturm gebrochener Sparren. Wir tauschen die Teile gezielt aus und reparieren die Anschlüsse.'
+  },
+  {
+    question: 'Was kostet eine punktuelle Dachstuhlreparatur?',
+    answer: 'Kleinere Reparaturen beginnen bei 800 Euro. Typische Aufträge mit zwei bis drei Sparren, Wechsel und Auflager-Sanierung liegen bei 3.000 bis 8.000 Euro. Wir dokumentieren alles und geben Ihnen den Festpreis vorab.'
+  },
+  {
+    question: 'Wie erkenne ich, dass mein Dachstuhl repariert werden muss?',
+    answer: 'Achten Sie auf Risse im Putz der obersten Decke, Verformungen an der Dachlinie, Flecken an der Innenseite der Sparren, morsches Holz an Auflagern, heraustropfendes Wasser nach Starkregen. Bei Unsicherheit kommen wir und prüfen kostenlos vor Ort.'
+  },
+  {
+    question: 'Brauche ich für die Reparatur eine Genehmigung?',
+    answer: 'Reine Reparatur ohne Veränderung der Geometrie ist in der Regel genehmigungsfrei. Sobald wir Tragwerksteile tauschen oder verstärken, läuft das über die Baugenehmigung beim DG-Ausbau mit. Wir prüfen das vorab und kümmern uns um die Formalitäten.'
+  },
+  {
+    question: 'Können Reparaturen ohne Gerüst durchgeführt werden?',
+    answer: 'Für Innenarbeiten am ausgebauten Dach brauchen wir kein Außengerüst. Bei Arbeiten am Auflager oder an der Dacheindeckung schon. Wir nutzen gern Hubarbeitsbühnen, weil sie günstiger und schneller aufgebaut sind als klassische Gerüste, vor allem in engen Straßen in Nippes oder der Südstadt.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Dachstuhlreparatur",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachstuhlreparatur Köln | Sparren, Pfetten, Auflager"
+  description="Dachstuhlreparatur in Köln: punktuelle Instandsetzung statt Komplettsanierung. Sparrenköpfe, Auflager, Verbindungen reparieren."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Dachstuhlreparatur</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Dachstuhlreparatur in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Nicht jeder Schaden erfordert eine Komplettsanierung. Wir reparieren punktuell, tauschen einzelne Sparren, erneuern Auflager und beheben die Ursache. Schnell, sauber, zum Festpreis.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Reparatur anfragen" subtitle="Kostenlose Schadensbegutachtung." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Reparatur vor Sanierung</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Ein gesunder Dachstuhl braucht keine Sanierung. Auch wenn an einzelnen Stellen etwas kaputt ist, lohnt sich die Reparatur fast immer. In Köln sehen wir die typischen Schadensbilder immer wieder: morscher Sparrenkopf am Auflager, weil die Dachziegel undicht waren. Verwitterte Windrispenbänder. Ein einzelner Bruch nach dem letzten Sturm.
+            </p>
+            <p>
+              Wir reparieren, was repariert werden kann. Das spart Geld, schont die Substanz und passt zu Bestandsbauten, wo der Charakter erhalten bleiben soll. Erst wenn ein Großteil der Hölzer betroffen ist oder die Statik insgesamt nicht mehr passt, kommt die Sanierung oder der Neubau in Frage.
+            </p>
+            <p>
+              Vor der Reparatur steht die Diagnose. Wir kommen vorbei, sehen uns das Holz an, messen die Feuchte und prüfen mit dem Widerstandsmessgerät, wie tief ein möglicher Schaden reicht. Daraus ergibt sich ein klarer Plan, dann legen wir los. In Köln kommen wir innerhalb einer Woche, weil unsere Werkstatt im eigenen Haus ist.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Was wir am häufigsten reparieren</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Morsche Sparrenköpfe', d: 'Auflagerbereich ist der klassische Schwachpunkt. Wir schneiden das morsche Stück raus, setzen ein neues Stück an.' },
+              { t: 'Verformte Sparren', d: 'Durchhängende oder geknickte Sparren. Mit Aufschieblingen oder Wechseln wieder ins Lot bringen.' },
+              { t: 'Schadhafte Holzverbindungen', d: 'Nagelungen, die gezogen haben. Wir ersetzen durch moderne Schraub- oder Dübelverbindungen.' },
+              { t: 'Sturmschäden', d: 'Abgedeckte Dachflächen, gebrochene Sparren. Schnelle Sicherung und Reparatur, damit kein Wasser reinkommt.' },
+              { t: 'Verfaulte Ortgangbretter', d: 'Der seitliche Abschluss ist Wind und Wetter ausgesetzt. Wir tauschen die Bretter und dichten die Anschlüsse.' },
+              { t: 'Schwamm- oder Insektenbefall', d: 'Lokal begrenzt, mit Holzschutzmittel und Austausch der befallenen Teile zuverlässig zu beheben.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur Reparatur</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">Verwandte Leistungen</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <a href="/leistungen/holzschaden-dach-reparieren" class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-1">Holzschäden reparieren</h3>
+              <p class="text-slate-600 text-sm">Schwamm, Käfer, Fäulnis gezielt behandeln.</p>
+            </a>
+            <a href="/leistungen/sparren-austauschen-verstärken" class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-1">Sparren tauschen</h3>
+              <p class="text-slate-600 text-sm">Einzelne Sparren ersetzen oder verstärken.</p>
+            </a>
+            <a href="/leistungen/dachstuhlsanierung" class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="text-lg font-bold text-slate-800 mb-1">Sanierung</h3>
+              <p class="text-slate-600 text-sm">Wenn mehr nötig ist als eine Reparatur.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Reparatur anfragen" subtitle="Kostenlose Schadensbegutachtung." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

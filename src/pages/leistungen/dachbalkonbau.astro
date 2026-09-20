@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was kostet ein Dachbalkon?',
+    answer: 'Ein nachträglich eingebauter Dachbalkon mit Statik, Geländer und Anschluss ans Dach kostet zwischen 6.000 und 14.000 Euro. Je nach Größe, Zugang (Tür statt Fenster) und Ausstattung sind auch 18.000 Euro möglich. Wir kalkulieren nach Vor-Ort-Aufnahme.'
+  },
+  {
+    question: 'Brauche ich für den Dachbalkon eine Baugenehmigung?',
+    answer: 'Ja, ein Balkon am Dach ist genehmigungspflichtig. Bei Reihen- und Doppelhäusern brauchen wir auch die Zustimmung der Nachbarn auf der Tiefseite. Wir kümmern uns um den Bauantrag und die Abstimmung mit dem Bauaufsichtsamt.'
+  },
+  {
+    question: 'Welche Dachbalkon-Arten gibt es?',
+    answer: 'Wir bauen drei Typen: den abgesenkten Austritt mit Geländer (typisch für Satteldächer), den auskragenden Balkon als Stahlkonstruktion oder Holz, und das Cabrio-Fenster-Element (Velux), das im Handumdrehen zum Balkon wird. Welche Lösung passt, hängt vom Dach und der Nachbarbebauung ab.'
+  },
+  {
+    question: 'Wie groß kann ein Dachbalkon in Köln sein?',
+    answer: 'Innen maximal 2 Meter tief und 5 Meter breit ohne besondere Auflagen. Größer geht, erfordert aber zusätzliche Brandschutzmaßnahmen und oft Sondergenehmigungen. Bei denkmalgeschützten Häusern ist die Größe eher eingeschränkt.'
+  },
+  {
+    question: 'Aus welchem Material bauen Sie den Balkon?',
+    answer: 'Wir setzen auf Stahl mit Holzbelag oder vollständig auf Holz. Beides ist langlebig und wartungsarm. Bei Premium-Lösungen arbeiten wir mit WPC, Aluminium-Verbund oder Edelstahl-Geländern. Die Wahl treffen wir nach Geschmack, Statik und Pflegeaufwand.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Dachbalkonbau",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachbalkonbau Köln | Balkon auf dem Dach"
+  description="Dachbalkonbau in Köln: zusätzlicher Wohnkomfort durch einen Balkon am Dachgeschoss. Stahl, Holz oder Cabrio-Balkon."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Dachbalkon</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Dachbalkonbau in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Stell dir vor: morgens Kaffee mit Blick über die Dächer von Ehrenfeld oder Lindenthal. Wir bauen Dachbalkone in Köln, mit Statik, Genehmigung und passender Ausstattung. Vom einfachen Austritt bis zum Premium-Balkon.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Dachbalkon anfragen" subtitle="Welche Lösung passt zu Ihrem Dach?" buttonText="Beratung anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Wohnen unter freiem Himmel</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Ein Dachbalkon macht aus einem Dachgeschoss-Apartment eine besondere Wohnung. Wer unter dem Dach wohnt, hat den höchsten Blick im Haus und sollte ihn auch nutzen können. Ein zwei Meter tiefer Austritt mit Geländer reicht für zwei Stühle und einen kleinen Tisch, mehr braucht es nicht.
+            </p>
+            <p>
+              Wir bauen zwei Typen in Köln. Den abgesenkten Austritt durch eine Gaube oder eine spezielle Aussparung im Dach: günstig, kompakt, oft die richtige Lösung. Oder den auskragenden Balkon als Stahl-Holz-Konstruktion: größer, aufwendiger, aber architektonisch spannender. Welche Lösung passt, sehen wir uns an Ort und Stelle an.'
+            </p>
+            <p>
+              Bei denkmalgeschützten Häusern ist die Gestaltung eingeschränkt. Wir stimmen die Lösung mit dem Amt ab und suchen eine Form, die zum Charakter des Hauses passt. In Marienburg oder der Innenstadt kommen oft klassische schmiedeeiserne Geländer zum Einsatz. In Ehrenfeld wird es eher eine moderne Variante.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Balkontypen</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Abgesenkter Austritt', d: 'Dach wird im Bereich der Tür ausgespart, Geländer und Boden eingebaut. Kompakte Lösung, günstig.' },
+              { t: 'Auskragender Balkon', d: 'Stahlträger oder Holzbalken ragen aus der Außenwand. Mehr Platz, mehr Gestaltung.' },
+              { t: 'Cabrio-Balkon', d: 'Velux Cabrio: aus dem Fenster wird per Knopfdruck ein Balkon. Modern und pfiffig.' },
+              { t: 'Loggia', d: 'Eingezogener Balkon mit seitlichen Wangen. Bietet Wind- und Sichtschutz.' },
+              { t: 'Französischer Balkon', d: 'Tür mit Geländer vor der Fassade. Kein wirklicher Balkon, aber mehr Raumgefühl.' },
+              { t: 'Attika-Balkon', d: 'Balkon auf der Attika eines Flachdachs. Lösungen für Chorweiler und Pesch.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zum Dachbalkon</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachbalkon anfragen" subtitle="Welche Lösung passt zu Ihrem Dach?" buttonText="Beratung anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

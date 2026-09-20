@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was ist eine Wohnraumerweiterung in Holzbauweise?',
+    answer: 'Eine Wohnraumerweiterung ist jede Maßnahme, die zusätzlichen Wohnraum schafft: Anbau, Aufstockung, Dachgeschossausbau, Gauben. In Holzbauweise sind das alles besonders schnelle und gut gedämmte Lösungen. In Köln bieten wir alle vier Varianten aus einer Hand.'
+  },
+  {
+    question: 'Welche Variante passt zu meinem Haus?',
+    answer: 'Das hängt vom Bestand ab. Bei knappen Grundstücken ist Aufstockung oder DG-Ausbau die einzige Lösung. Bei Platz im Garten lohnt sich ein Anbau. Bei marodem Dach empfiehlt sich eine komplette Dachsanierung mit integriertem Ausbau. Wir bewerten das vor Ort.'
+  },
+  {
+    question: 'Wie viel kostet eine Wohnraumerweiterung?',
+    answer: 'Je nach Variante zwischen 1.400 und 3.500 Euro pro Quadratmeter. DG-Ausbau ist am günstigsten, Dachanhebung am teuersten. Mit Förderung (BAFA, KfW 261, Steuerbonus) reduzieren sich die effektiven Kosten um 20 bis 35 Prozent.'
+  },
+  {
+    question: 'Wann ist Holzbauweise sinnvoll?',
+    answer: 'Bei knappen Bestandswänden mit niedriger Tragfähigkeit, wenn das Gewicht der Erweiterung niedrig sein muss. Bei Aufstockungen auf alten Häusern in Ehrenfeld, Nippes oder Mülheim ist Holz oft die einzige realistische Lösung. Bei guter Statik ist auch Massivbau möglich.'
+  },
+  {
+    question: 'Wie ist die Wohnraumerweiterung gefördert?',
+    answer: 'BAFA BEG EM fördert energetische Sanierungen mit 15 Prozent, KfW 261 finanziert komplette Sanierungen. Der Steuerbonus nach Paragraph 35c EStG bringt 20 Prozent der Handwerkerkosten, bis 1.200 Euro pro Jahr. Welche Kombination für Sie passt, prüfen wir im Förderrechner.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Wohnraumerweiterung in Holzbauweise",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Wohnraumerweiterung Holzbauweise Köln | Mehr Platz, schnell"
+  description="Wohnraumerweiterung in Holzbauweise in Köln: Anbau, Aufstockung, Dachgeschossausbau. Schnell, gut gedämmt, schlüsselfertig."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Wohnraumerweiterung Holzbauweise</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Wohnraumerweiterung in Holzbauweise in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Mehr Platz im Haus, ohne umzuziehen. Mit Holz schaffen wir neuen Wohnraum in Wochen statt Monaten. Wir beraten zu Anbau, Aufstockung, DG-Ausbau und Dachanhebung und finden die Lösung, die zu Ihrem Haus passt.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Erweiterung planen" subtitle="Kostenlose Erstberatung." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Welche Lösung für welches Haus?</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              Wir sehen in Köln die verschiedensten Häuser und Grundstücke. Reihenhaus in Nippes: Aufstockung oder DG-Ausbau. Einfamilienhaus mit großem Garten in Lindenthal: Anbau oder Aufstockung. Reihenhaussiedlung in Chorweiler: nur Flachdach-Aufstockung. Jedes Haus hat seine eigenen Stärken und Grenzen, und wir respektieren das.
+            </p>
+            <p>
+              In Holzbauweise geht besonders viel: leichte Elemente, die auch auf Bestandsdecken mit knapper Tragfähigkeit liegen können. Vorgefertigte Wände, die in zwei bis drei Tagen stehen. Bauweise, die bei Förderprogrammen gerne gesehen wird, weil sie die energetische Effizienz steigert. Wer mit Holz baut, bekommt mehr fürs Geld.'
+            </p>
+            <p>
+              Unsere Beratung vor Ort ist ehrlich und unverbindlich. Wir sehen uns Haus, Dach, Statik und Umfeld an, kalkulieren die Kosten und zeigen, was möglich ist. Sie bekommen danach eine schriftliche Empfehlung mit Festpreis-Angebot, falls Sie uns beauftragen wollen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Vier Varianten im Vergleich</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Dachgeschossausbau', d: 'Kostengünstigste Variante. 1.400 bis 2.400 €/m². Schnell, wenig Eingriff in die Statik.' },
+              { t: 'Aufstockung', d: 'Komplettes neues Geschoss auf das Bestandsdach. 2.500 bis 3.500 €/m². Maximale Wohnfläche.' },
+              { t: 'Anbau in Holzbauweise', d: 'Erweiterung in den Garten. 2.500 bis 3.500 €/m². Schnell aufgebaut, gut gedämmt.' },
+              { t: 'Dachanhebung', d: 'Bei marodem Bestandsdach. 2.800 bis 3.800 €/m². Radikale Lösung für kompletten Neustart.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur Erweiterung</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Wohnraumerweiterung anfragen" subtitle="Kostenlose Erstberatung." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

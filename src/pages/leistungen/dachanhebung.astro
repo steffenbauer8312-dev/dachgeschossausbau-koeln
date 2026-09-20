@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: 'Was ist eine Dachanhebung?',
+    answer: 'Bei einer Dachanhebung wird das vorhandene Dach abgetragen, die Außenwände werden um ein Stockwerk erhöht und ein neues Dachgeschoss wird aufgesetzt. Im Vergleich zur Aufstockung wird das Bestandsdach komplett ersetzt, das Mauerwerk bleibt stehen.'
+  },
+  {
+    question: 'Wann ist eine Dachanhebung sinnvoll?',
+    answer: 'Wenn das Bestandsdach zu flach ist (Neigungen unter 30 Grad), der Kniestock zu niedrig oder die Tragfähigkeit für ein ausgebautes Dachgeschoss fehlt. Auch bei maroder Eindeckung und altem Dachstuhl kann die Anhebung günstiger sein als mehrfache Sanierung.'
+  },
+  {
+    question: 'Was kostet eine Dachanhebung?',
+    answer: 'Eine Dachanhebung liegt preislich zwischen Aufstockung und Kompletterneuerung. Rechnen Sie mit 2.800 bis 3.800 Euro pro Quadratmeter neuer Wohnfläche. Bei einem 80 Quadratmeter großen Dachgeschoss kommen wir auf 220.000 bis 300.000 Euro.'
+  },
+  {
+    question: 'Brauche ich für eine Dachanhebung eine Baugenehmigung?',
+    answer: 'Ja, immer. Die Anhebung verändert die Gebäudehöhe, die Proportionen und oft auch den Bebauungsplan-Bezug. Wir kümmern uns um den Bauantrag, die Statik und die Nachweisberechnungen (Schallschutz, Brandschutz, GEG).'
+  },
+  {
+    question: 'Können wir während der Anhebung im Haus wohnen bleiben?',
+    answer: 'Nur in Ausnahmefällen. Die Anhebung greift in die tragende Struktur ein und das Dach wird vollständig abgetragen. Wir empfehlen einen Auszug für vier bis acht Wochen, je nach Umfang. Bei Baustellen in Mietobjekten loggen wir uns mit den Mietern ab.'
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Dachanhebung",
+  "provider": { "@type": "HomeAndConstructionBusiness", "name": "Dachgeschossausbau Köln" }
+};
+---
+
+<BaseLayout
+  title="Dachanhebung Köln | Aufstockung mit Wand-Erhöhung"
+  description="Dachanhebung in Köln: Dach wird abgetragen, Wände erhöht, neuer Dachstuhl aufgesetzt. Für optimale Voraussetzungen im Dachgeschoss."
+>
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-slate-800 to-slate-900 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <nav class="text-sm text-slate-300 mb-4">
+              <a href="/" class="hover:text-teal-400">Startseite</a> /
+              <a href="/leistungen" class="hover:text-teal-400">Leistungen</a> /
+              <span class="text-white">Dachanhebung</span>
+            </nav>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Dachanhebung in Köln</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">
+              Wenn das Bestandsdach nicht zu retten ist, heben wir es an. Wir tragen das alte Dach ab, erhöhen die Außenwände und setzen einen neuen Dachstuhl inklusive Dämmung und Eindeckung auf. Aus einer flachen Hütte wird ein vollwertiges Dachgeschoss.
+            </p>
+          </div>
+          <LeadForm variant="inline" title="Dachanhebung prüfen" subtitle="Vor-Ort-Termin in Köln." buttonText="Termin anfragen" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Dachanhebung als radikale Lösung</h2>
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              In Köln gibt es Häuser, bei denen jeder andere Eingriff am Dach nur Flickschusterei wäre. Flaches Dach, morscher Dachstuhl, zu niedriger Kniestock und undichte Eindeckung gleichzeitig. Wenn diese Faktoren zusammenkommen, ist die Dachanhebung oft die wirtschaftlichste Variante: Einmal richtig, dann Ruhe für die nächsten Jahrzehnte.
+            </p>
+            <p>
+              Wir nehmen das alte Dach vollständig ab. Bei Bedarf verwerten wir die Ziegel, wenn sie noch brauchbar sind. Dann erhöhen wir die Außenwände, je nach Statik und gewünschter Geschosshöhe um eine halbe bis eineinhalb Steinreihen pro Meter. Auf den neuen Wandkopf setzen wir einen frischen Dachstuhl, dämmen zwischen und auf den Sparren und decken das Dach neu ein.
+            </p>
+            <p>
+              Was vorher ein flaches, schlecht nutzbares Dach war, wird zum vollwertigen Geschoss mit normaler Stehhöhe. In Kombination mit Gauben und vernünftiger Dämmung entsteht so eine komplette Wohnung, die den Immobilienwert in Köln deutlich steigert. Wir haben solche Projekte in Kalk und in Mülheim realisiert, mit Erfolg.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Wann kommt die Anhebung in Frage?</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: 'Dachneigung unter 25 Grad', d: 'Zu flach für sinnvollen DG-Ausbau. Anhebung mit steilerem Dach bringt mehr Raum.' },
+              { t: 'Morscher Dachstuhl', d: 'Wenn eine Sanierung teurer käme als der Neubau, heben wir lieber gleich an.' },
+              { t: 'Kniestock unter 80 cm', d: 'Bei sehr niedrigen Kniestöcken ist Anhebung oft günstiger als komplizierte Ertüchtigungen.' },
+              { t: 'Undichte Eindeckung', d: 'Wenn sowieso neu eingedeckt werden muss, ist die Anhebung ein logischer Folgeschritt.' },
+              { t: 'Aufstockung gefragt', d: 'Wer mehr als nur das Bestandsvolumen will, hebt das Dach an und schafft neuen Raum.' },
+              { t: 'Denkmalschutz beachten', d: 'In Schutzgebieten ist die Anhebung oft eingeschränkt. Wir prüfen das vorab.' }
+            ].map(i => (
+              <div class="bg-white rounded-xl p-5 shadow-sm">
+                <h3 class="font-bold text-slate-800 mb-2">{i.t}</h3>
+                <p class="text-slate-600 text-sm">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center">Fragen zur Dachanhebung</h2>
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <LeadForm variant="full" title="Dachanhebung prüfen" subtitle="Vor-Ort-Termin in Köln." buttonText="Termin anfragen" />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
