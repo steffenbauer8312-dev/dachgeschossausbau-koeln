@@ -6,7 +6,10 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description, canonicalURL = Astro.url.href, ogImage = '/og-image.jpg' } = Astro.props;
+const CANONICAL_BASE = 'https://www.dachgeschossausbaukoeln.de';
+const { title, description, ogImage = '/og-image.jpg' } = Astro.props;
+const pathOnly = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.pathname + '/';
+const canonicalURL = Astro.props.canonicalURL ?? `${CANONICAL_BASE}${pathOnly === '//' ? '/' : pathOnly}`;
 
 const localBusinessSchema = {
   "@type": "HomeAndConstructionBusiness",
