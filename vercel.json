@@ -1,0 +1,29 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.dachgeschossausbau-koeln.de"
+        }
+      ],
+      "destination": "https://www.dachgeschossausbaukoeln.de/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "dachgeschossausbau-koeln.de"
+        }
+      ],
+      "destination": "https://www.dachgeschossausbaukoeln.de/$1",
+      "permanent": true
+    }
+  ]
+}
