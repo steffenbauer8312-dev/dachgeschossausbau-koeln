@@ -1,256 +1,66 @@
 ---
 interface Props {
   variant?: 'inline' | 'full';
+  formId?: string;
   title?: string;
   subtitle?: string;
   buttonText?: string;
+  service?: string;
 }
 
-const {
-  variant = 'full',
-  title = 'Ihren Dachgeschossausbau unverbindlich anfragen',
-  subtitle = 'Wir melden uns innerhalb von 24 Stunden.',
-  buttonText = 'Kostenlose Erstberatung anfragen'
-} = Astro.props;
-
-// Eindeutige ID pro Instanz, damit mehrere LeadForms pro Seite möglich sind
-const uid = Math.random().toString(36).slice(2, 9);
-
-const stadtteile = [
-  'Altstadt-Nord', 'Altstadt-Süd', 'Neustadt-Nord', 'Neustadt-Süd',
-  'Deutz', 'Mülheim', 'Kalk', 'Vingst', 'Humboldt/Gremberg',
-  'Chorweiler', 'Ehrenfeld', 'Neuehrenfeld', 'Bickendorf', 'Vogelsang',
-  'Klettenberg', 'Sülz', 'Lindenthal', 'Braunsfeld', 'Müngersdorf',
-  'Junkersdorf', 'Weiden', 'Lövenich', 'Widdersdorf', 'Rodenkirchen',
-  'Weiß', 'Sürth', 'Godorf', 'Hahnwald', 'Marienburg', 'Bayenthal',
-  'Raderberg', 'Raderthal', 'Zollstock', 'Rondorf', 'Meschenich',
-  'Nippes', 'Mauenheim', 'Riehl', 'Niehl', 'Weidenpesch', 'Longerich',
-  'Fühlingen', 'Seeberg', 'Volkhoven/Weiler', 'Chorweiler-Nord',
-  'Porz', 'Eil', 'Ensen', 'Gremberghoven', 'Finkenberg', 'Urbach',
-  'Wahnheide', 'Wahn', 'Lind', 'Libur', 'Zündorf', 'Langel', 'Poll',
-  'Andere', 'Umgebung Kölns'
-];
-
-const projekttypen = [
-  { value: '', label: 'Bitte wählen…' },
-  { value: 'einfacher-ausbau', label: 'Einfacher Ausbau (Dämmung, Boden, Ausbau)' },
-  { value: 'wohnung', label: 'Wohnung im Dachgeschoss (inkl. Bad, Elektrik)' },
-  { value: 'aufstockung', label: 'Dachaufstockung (komplette neue Etage)' },
+const { variant = 'full', formId, title, subtitle, buttonText = 'Anfrage senden', service = 'Dachgeschossausbau' } = Astro.props;
+const uid = formId ?? `lead-${variant}`;
+const projects = [
+  { value: 'dachgeschossausbau', label: 'Dachgeschossausbau' },
+  { value: 'dachaufstockung', label: 'Dachaufstockung' },
   { value: 'gaube', label: 'Dachgaube oder Dachaufbau' },
-  { value: 'daemmung', label: 'Dachdämmung (GEG-konform)' },
-  { value: 'komplett', label: 'Kompletter Dachgeschossausbau' },
-  { value: 'investor-mfh', label: 'Investor: Mehrfamilienhaus-Dachgeschoss' },
-  { value: 'denkmal', label: 'Denkmalgeschütztes Gebäude' },
+  { value: 'daemmung', label: 'Dachdämmung' },
+  { value: 'dachfenster', label: 'Dachfenster' },
+  { value: 'dachterrasse', label: 'Dachterrasse' },
+  { value: 'innenausbau', label: 'Innenausbau im Dachgeschoss' },
   { value: 'sonstiges', label: 'Sonstiges' }
 ];
 ---
 
-{variant === 'full' && (
-  <section class="bg-gradient-to-br from-teal-600 to-teal-700 text-white py-16">
-    <div class="container mx-auto px-4">
-      <div class="max-w-2xl mx-auto">
-        <h2 class="text-2xl md:text-3xl font-bold mb-2 text-center">
-          {title}
-        </h2>
-        <p class="text-teal-100 text-center mb-8">
-          {subtitle}
-        </p>
+{variant === 'inline' && <div class="rounded-2xl bg-white p-5 text-slate-800 shadow-2xl md:p-6">
+  <h2 class="text-xl font-bold">{title ?? 'Vorhaben kurz einordnen'}</h2>
+  <p class="mt-1 text-sm text-slate-600">{subtitle ?? 'Ein paar Eckdaten reichen für den ersten Kontakt.'}</p>
+  <form id={uid} class="mt-5 space-y-3" action="/api/lead" method="POST">
+    <input type="hidden" name="service" value={service} /><input type="hidden" name="city" value="Köln" /><input type="hidden" name="source" value="Website Formular Hero" /><input type="hidden" name="redirect" value="/danke/" />
+    <input type="text" name="url" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
+    <label class="sr-only" for={`${uid}-name`}>Name</label><input id={`${uid}-name`} name="name" required autocomplete="name" placeholder="Name *" class="form-control" />
+    <label class="sr-only" for={`${uid}-email`}>E-Mail</label><input id={`${uid}-email`} name="email" required type="email" autocomplete="email" placeholder="E-Mail *" class="form-control" />
+    <label class="sr-only" for={`${uid}-phone`}>Telefon</label><input id={`${uid}-phone`} name="phone" required type="tel" autocomplete="tel" placeholder="Telefon *" class="form-control" />
+    <label class="sr-only" for={`${uid}-project`}>Projekttyp</label><select id={`${uid}-project`} name="projekttyp" required class="form-control"><option value="">Projekttyp wählen *</option>{projects.map(project => <option value={project.value}>{project.label}</option>)}</select>
+    <label class="flex items-start gap-2 text-xs text-slate-600"><input class="mt-0.5" type="checkbox" name="privacy" value="accepted" required /> <span>Ich akzeptiere die <a class="text-teal-700 underline" href="/datenschutz/">Datenschutzerklärung</a>.</span></label>
+    <button class="form-submit" type="submit">{buttonText}</button>
+  </form>
+</div>}
 
-        <form class="bg-white rounded-xl p-6 md:p-8 shadow-2xl" id={`leadform-full-${uid}`} action="/api/lead" method="POST">
-          <input type="hidden" name="service" value="Dachgeschossausbau">
-          <input type="hidden" name="city" value="Köln">
-          <input type="hidden" name="source" value="Website Formular">
-          <input type="hidden" name="redirect" value="/danke/">
-          <input type="text" name="url" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-          <div class="space-y-5">
-            <div>
-              <label for={`lf-name-${uid}`} class="block text-slate-700 font-medium mb-1.5 text-sm">Name *</label>
-              <input
-                type="text"
-                id={`lf-name-${uid}`}
-                name="name"
-                required
-                placeholder="Max Mustermann"
-                class="lf-input"
-              />
-            </div>
-
-            <div>
-              <label for={`lf-email-${uid}`} class="block text-slate-700 font-medium mb-1.5 text-sm">E-Mail *</label>
-              <input
-                type="email"
-                id={`lf-email-${uid}`}
-                name="email"
-                required
-                placeholder="ihre@email.de"
-                class="lf-input"
-              />
-            </div>
-
-            <div>
-              <label for={`lf-phone-${uid}`} class="block text-slate-700 font-medium mb-1.5 text-sm">Telefon *</label>
-              <input
-                type="tel"
-                id={`lf-phone-${uid}`}
-                name="phone"
-                required
-                placeholder="+49 1521 6117439"
-                class="lf-input"
-              />
-            </div>
-
-            <div>
-              <label for={`lf-projekt-${uid}`} class="block text-slate-700 font-medium mb-1.5 text-sm">Projekttyp *</label>
-              <select id={`lf-projekt-${uid}`} name="projekttyp" required class="lf-input">
-                {projekttypen.map(t => (
-                  <option value={t.value}>{t.label}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label for={`lf-stadtteil-${uid}`} class="block text-slate-700 font-medium mb-1.5 text-sm">Kölner Stadtteil / Region</label>
-              <select id={`lf-stadtteil-${uid}`} name="stadtteil" class="lf-input">
-                <option value="">Bitte wählen…</option>
-                {stadtteile.map(s => (
-                  <option value={s}>{s}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label for={`lf-message-${uid}`} class="block text-slate-700 font-medium mb-1.5 text-sm">Ihre Nachricht</label>
-              <textarea
-                id={`lf-message-${uid}`}
-                name="message"
-                rows={4}
-                placeholder="Beschreiben Sie kurz Ihr Vorhaben..."
-                class="lf-input resize-none"
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              class="lf-submit"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-              </svg>
-              <span class="lf-submit-text">{buttonText}</span>
-            </button>
-
-            <p class="text-xs text-slate-500 text-center">
-              Mit dem Absenden stimmen Sie unserer <a href="/datenschutz" class="text-teal-600 hover:underline">Datenschutzerklärung</a> zu.
-            </p>
-          </div>
-        </form>
+{variant === 'full' && <section class="bg-teal-700 py-14 text-white md:py-20">
+  <div class="container mx-auto max-w-3xl px-4">
+    <h2 class="text-center text-2xl font-bold md:text-3xl">{title ?? 'Projekt in Köln besprechen'}</h2>
+    <p class="mx-auto mt-2 max-w-2xl text-center text-teal-100">{subtitle ?? 'Senden Sie die Eckdaten Ihres Vorhabens. Unvollständige Unterlagen sind in Ordnung.'}</p>
+    <form id={uid} class="mt-8 rounded-2xl bg-white p-6 text-slate-800 shadow-2xl md:p-8" action="/api/lead" method="POST">
+      <input type="hidden" name="service" value={service} /><input type="hidden" name="city" value="Köln" /><input type="hidden" name="source" value="Website Formular Seitenende" /><input type="hidden" name="redirect" value="/danke/" />
+      <input type="text" name="url" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
+      <div class="grid gap-5 md:grid-cols-2">
+        <div><label class="form-label" for={`${uid}-name`}>Name *</label><input id={`${uid}-name`} name="name" required autocomplete="name" class="form-control" /></div>
+        <div><label class="form-label" for={`${uid}-email`}>E-Mail *</label><input id={`${uid}-email`} name="email" required type="email" autocomplete="email" class="form-control" /></div>
+        <div><label class="form-label" for={`${uid}-phone`}>Telefon *</label><input id={`${uid}-phone`} name="phone" required type="tel" autocomplete="tel" class="form-control" /></div>
+        <div><label class="form-label" for={`${uid}-project`}>Projekttyp *</label><select id={`${uid}-project`} name="projekttyp" required class="form-control"><option value="">Bitte wählen</option>{projects.map(project => <option value={project.value}>{project.label}</option>)}</select></div>
+        <div class="md:col-span-2"><label class="form-label" for={`${uid}-message`}>Nachricht</label><textarea id={`${uid}-message`} name="message" rows="5" class="form-control" placeholder="Was möchten Sie im Dachgeschoss verändern?"></textarea></div>
+        <label class="flex items-start gap-2 text-xs text-slate-600 md:col-span-2"><input class="mt-0.5" type="checkbox" name="privacy" value="accepted" required /> <span>Ich akzeptiere die <a class="text-teal-700 underline" href="/datenschutz/">Datenschutzerklärung</a>.</span></label>
+        <div class="md:col-span-2"><button class="form-submit" type="submit">{buttonText}</button></div>
       </div>
-    </div>
-  </section>
-)}
-
-{variant === 'inline' && (
-  <div class="bg-white rounded-xl shadow-2xl p-5">
-    <h2 class="text-lg font-bold text-slate-800 mb-1">
-      {title}
-    </h2>
-    <p class="text-slate-600 text-xs mb-4">
-      {subtitle}
-    </p>
-    <form class="space-y-3" id={`leadform-inline-${uid}`} action="/api/lead" method="POST">
-      <input type="hidden" name="service" value="Dachgeschossausbau">
-      <input type="hidden" name="city" value="Köln">
-      <input type="hidden" name="source" value="Website Formular Hero">
-      <input type="hidden" name="redirect" value="/danke/">
-      <input type="text" name="url" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-      <input
-        type="text"
-        name="name"
-        required
-        placeholder="Name *"
-        class="lf-input-inline"
-      />
-      <input
-        type="email"
-        name="email"
-        required
-        placeholder="E-Mail *"
-        class="lf-input-inline"
-      />
-      <input
-        type="tel"
-        name="phone"
-        required
-        placeholder="Telefon *"
-        class="lf-input-inline"
-      />
-      <select name="projekttyp" required class="lf-input-inline">
-        {projekttypen.map(t => (
-          <option value={t.value}>{t.label}</option>
-        ))}
-      </select>
-      <button
-        type="submit"
-        class="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition-all duration-200"
-      >
-        <span class="lf-submit-text">{buttonText}</span>
-      </button>
     </form>
   </div>
-)}
+</section>}
 
 <style>
-  .lf-input {
-    width: 100%;
-    padding: 0.625rem 1rem;
-    border: 1px solid rgb(203 213 225);
-    border-radius: 0.5rem;
-    color: rgb(30 41 59);
-    transition: all 0.2s;
-    background: white;
-  }
-  .lf-input:focus {
-    outline: none;
-    border-color: rgb(13 148 136);
-    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
-  }
-  .lf-input-inline {
-    width: 100%;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid rgb(203 213 225);
-    border-radius: 0.5rem;
-    color: rgb(30 41 59);
-    font-size: 0.875rem;
-    transition: all 0.2s;
-    background: white;
-  }
-  .lf-input-inline:focus {
-    outline: none;
-    border-color: rgb(13 148 136);
-    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
-  }
-  .lf-submit {
-    width: 100%;
-    background: rgb(13 148 136);
-    color: white;
-    font-weight: 600;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    border: none;
-    cursor: pointer;
-  }
-  .lf-submit:hover {
-    background: rgb(15 118 110);
-  }
-  .lf-submit:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-  }
+  .form-control { width: 100%; border: 1px solid rgb(203 213 225); border-radius: .65rem; background: white; padding: .72rem .85rem; color: rgb(30 41 59); }
+  .form-control:focus { outline: 3px solid rgba(45, 212, 191, .35); outline-offset: 1px; border-color: rgb(13 148 136); }
+  .form-label { display: block; margin-bottom: .4rem; font-size: .875rem; font-weight: 600; color: rgb(51 65 85); }
+  .form-submit { width: 100%; border: 0; border-radius: .65rem; background: rgb(13 148 136); color: white; cursor: pointer; padding: .8rem 1rem; font-weight: 700; transition: background .2s ease; }
+  .form-submit:hover { background: rgb(15 118 110); }
 </style>

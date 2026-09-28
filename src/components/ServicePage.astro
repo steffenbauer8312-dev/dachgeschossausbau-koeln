@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import LeadForm from './LeadForm.astro';
+import FAQ from './FAQ.astro';
+import type { Service } from '../data/site';
+import { services } from '../data/site';
+
+interface Props { service: Service }
+const { service } = Astro.props;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: service.title,
+  description: service.description,
+  areaServed: { '@type': 'City', name: 'Köln' },
+  provider: { '@type': 'Organization', name: 'Dachgeschossausbau Köln', url: 'https://www.dachgeschossausbaukoeln.de/' }
+};
+---
+
+<BaseLayout title={service.metaTitle} description={service.description}>
+  <Header />
+  <main>
+    <section class="bg-slate-900 text-white">
+      <div class="container mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-12 md:py-16 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
+        <div>
+          <p class="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-teal-300">{service.eyebrow}</p>
+          <h1 class="max-w-3xl text-3xl font-bold leading-tight md:text-5xl">{service.title}</h1>
+          <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">{service.intro}</p>
+          <p class="mt-5 max-w-2xl text-sm leading-relaxed text-slate-400">{service.audience}</p>
+        </div>
+        <LeadForm variant="inline" formId={`lead-${service.slug}-top`} title="Vorhaben kurz einordnen" subtitle="Fotos und erste Eckdaten helfen bei der Einschätzung." buttonText="Anfrage senden" service={service.title} />
+      </div>
+    </section>
+
+    <nav aria-label="Brotkrümelnavigation" class="border-b border-slate-200 bg-white">
+      <div class="container mx-auto max-w-7xl px-4 py-3 text-sm text-slate-500"><a class="hover:text-teal-700" href="/">Startseite</a><span class="px-2">/</span><a class="hover:text-teal-700" href="/leistungen/">Leistungen</a><span class="px-2">/</span><span class="text-slate-800">{service.title}</span></div>
+    </nav>
+
+    <section class="bg-white py-14 md:py-20">
+      <div class="container mx-auto grid max-w-7xl gap-12 px-4 lg:grid-cols-[minmax(0,1fr)_18rem]">
+        <div class="content-area max-w-3xl">
+          {service.sections.map(section => (
+            <section>
+              <h2>{section.heading}</h2>
+              {section.paragraphs.map(paragraph => <p>{paragraph}</p>)}
+              {section.bullets && <ul>{section.bullets.map(bullet => <li>{bullet}</li>)}</ul>}
+            </section>
+          ))}
+
+          <section class="mt-12 rounded-2xl border border-teal-100 bg-teal-50 p-6 md:p-8">
+            <h2 class="!mt-0">Was Sie für die Anfrage bereithalten können</h2>
+            <p class="!mb-0">Grundrisse, Fotos von innen und außen, Baujahr, bekannte Schäden und Ihr gewünschtes Raumprogramm machen die erste Einschätzung konkreter. Unvollständige Unterlagen sind trotzdem in Ordnung.</p>
+          </section>
+
+          <section class="mt-12">
+            <h2>Häufige Fragen</h2>
+            <FAQ faqs={service.faqs} />
+          </section>
+
+          <section class="mt-12">
+            <h2>Weiterführende Leistungen</h2>
+            <div class="grid gap-4 sm:grid-cols-2">
+              {service.related.map(slug => {
+                const related = services.find(item => item.slug === slug);
+                return related && <a class="rounded-xl border border-slate-200 p-4 transition hover:border-teal-400 hover:bg-teal-50" href={`/leistungen/${related.slug}/`}><span class="font-semibold text-slate-800">{related.title}</span><span class="mt-1 block text-sm text-slate-600">Mehr zum Thema</span></a>;
+              })}
+            </div>
+          </section>
+        </div>
+        <aside class="h-fit rounded-2xl bg-slate-50 p-6 lg:sticky lg:top-24">
+          <h2 class="!mt-0 text-lg">Quellen und Orientierung</h2>
+          <p class="text-sm leading-relaxed text-slate-600">Rechtliche und energetische Aussagen sollten am konkreten Gebäude geprüft werden.</p>
+          <ul class="mt-4 space-y-3 text-sm">{service.sources.map(source => <li><a class="text-teal-700 underline decoration-teal-300 underline-offset-2 hover:text-teal-900" href={source.href} target="_blank" rel="noopener noreferrer">{source.label}</a></li>)}</ul>
+        </aside>
+      </div>
+    </section>
+
+    <LeadForm variant="full" formId={`lead-${service.slug}-bottom`} title="Projekt in Köln besprechen" subtitle="Senden Sie die Eckdaten. Die nächsten sinnvollen Schritte lassen sich dann gezielt einordnen." buttonText="Unverbindlich anfragen" service={service.title} />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

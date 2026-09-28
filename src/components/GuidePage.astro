@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import LeadForm from './LeadForm.astro';
+import FAQ from './FAQ.astro';
+
+interface Props {
+  title: string;
+  metaTitle: string;
+  description: string;
+  intro: string;
+  sections: Array<{ heading: string; paragraphs: string[]; bullets?: string[] }>;
+  faqs?: Array<{ question: string; answer: string }>;
+  sources: Array<{ label: string; href: string }>;
+}
+const { title, metaTitle, description, intro, sections, faqs = [], sources } = Astro.props;
+---
+
+<BaseLayout title={metaTitle} description={description}>
+  <Header />
+  <main>
+    <section class="bg-slate-900 text-white"><div class="container mx-auto grid max-w-7xl gap-10 px-4 py-12 md:py-16 lg:grid-cols-[1fr_26rem] lg:items-center"><div><p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-300">Ratgeber · Köln</p><h1 class="mt-4 max-w-3xl text-4xl font-bold leading-tight md:text-5xl">{title}</h1><p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">{intro}</p></div><LeadForm variant="inline" formId={`guide-${Astro.url.pathname}-top`} title="Frage zum Thema" subtitle="Eckdaten genügen für den ersten Kontakt." buttonText="Anfrage senden" /></div></section>
+    <nav aria-label="Brotkrümelnavigation" class="border-b border-slate-200 bg-white"><div class="container mx-auto max-w-7xl px-4 py-3 text-sm text-slate-500"><a class="hover:text-teal-700" href="/">Startseite</a><span class="px-2">/</span><a class="hover:text-teal-700" href="/ratgeber/">Ratgeber</a><span class="px-2">/</span><span class="text-slate-800">{title}</span></div></nav>
+    <section class="bg-white py-14 md:py-20"><div class="container mx-auto grid max-w-7xl gap-12 px-4 lg:grid-cols-[minmax(0,1fr)_18rem]"><article class="content-area max-w-3xl">{sections.map(section => <section><h2>{section.heading}</h2>{section.paragraphs.map(p => <p>{p}</p>)}{section.bullets && <ul>{section.bullets.map(bullet => <li>{bullet}</li>)}</ul>}</section>)}{faqs.length > 0 && <section><h2>Häufige Fragen</h2><FAQ faqs={faqs} /></section>}</article><aside class="h-fit rounded-2xl bg-slate-50 p-6 lg:sticky lg:top-24"><h2 class="!mt-0 text-lg">Offizielle Quellen</h2><p class="text-sm leading-relaxed text-slate-600">Regelungen und Förderbedingungen können sich ändern. Die Quellen sind der Ausgangspunkt für die Prüfung.</p><ul class="mt-4 space-y-3 text-sm">{sources.map(source => <li><a class="text-teal-700 underline decoration-teal-300 underline-offset-2" href={source.href} target="_blank" rel="noopener noreferrer">{source.label}</a></li>)}</ul></aside></div></section>
+    <LeadForm variant="full" formId={`guide-${Astro.url.pathname}-bottom`} title="Frage zum Dachgeschossprojekt senden" subtitle="Beschreiben Sie kurz Bestand und Ziel." buttonText="Unverbindlich anfragen" />
+  </main>
+  <Footer />
+</BaseLayout>

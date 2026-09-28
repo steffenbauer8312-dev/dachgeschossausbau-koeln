@@ -3,27 +3,55 @@
   "cleanUrls": true,
   "trailingSlash": true,
   "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.dachgeschossausbau-koeln.de"
-        }
-      ],
-      "destination": "https://www.dachgeschossausbaukoeln.de/$1",
-      "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "dachgeschossausbau-koeln.de"
-        }
-      ],
-      "destination": "https://www.dachgeschossausbaukoeln.de/$1",
-      "permanent": true
-    }
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "www.dachgeschossausbau-koeln.de" }], "destination": "https://www.dachgeschossausbaukoeln.de/$1", "permanent": true },
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "dachgeschossausbau-koeln.de" }], "destination": "https://www.dachgeschossausbaukoeln.de/$1", "permanent": true },
+    { "source": "/stadtteile/:slug*", "destination": "/stadtteile/", "permanent": true },
+    { "source": "/kosten", "destination": "/ratgeber/kosten-dachgeschossausbau-pro-qm/", "permanent": true },
+    { "source": "/foerderrechner", "destination": "/ratgeber/geg-daemmung-pflicht-2026/", "permanent": true },
+    { "source": "/leistungen/dachterrassenbau", "destination": "/leistungen/dachterrasse/", "permanent": true },
+    { "source": "/ratgeber/foerderung-dachgeschossausbau-2026", "destination": "/ratgeber/geg-daemmung-pflicht-2026/", "permanent": true },
+    { "source": "/ratgeber/denkmalschutz-dachgeschossausbau", "destination": "/ratgeber/baugenehmigung-dachgeschoss-koeln/", "permanent": true },
+    { "source": "/ratgeber/kniestock-erhoehen-sinnvoll", "destination": "/ratgeber/dachaufstockung-oder-ausbau/", "permanent": true },
+    { "source": "/ueber-uns", "destination": "/", "permanent": true },
+    { "source": "/leistungen/dachbodenausbau", "destination": "/leistungen/dachgeschossausbau/", "permanent": true },
+    { "source": "/leistungen/dachanhebung", "destination": "/leistungen/dachaufstockung/", "permanent": true },
+    { "source": "/leistungen/dachfenstereinbau", "destination": "/leistungen/dachfenster/", "permanent": true },
+    { "source": "/leistungen/dachterrassenbau", "destination": "/leistungen/dachterrasse/", "permanent": true },
+    { "source": "/leistungen/statik", "destination": "/leistungen/dachstatik/", "permanent": true },
+    { "source": "/leistungen/trockenbau", "destination": "/leistungen/innenausbau-dachgeschoss/", "permanent": true },
+    { "source": "/leistungen/gaubenbau", "destination": "/leistungen/gauben/", "permanent": true },
+    { "source": "/leistungen/dachstuhlbau", "destination": "/leistungen/dachstatik/", "permanent": true },
+    { "source": "/leistungen/dachstuhlsanierung", "destination": "/leistungen/dachstatik/", "permanent": true },
+    { "source": "/leistungen/dachstuhlverstärkung", "destination": "/leistungen/dachstatik/", "permanent": true },
+    { "source": "/leistungen/dachstuhlreparatur", "destination": "/leistungen/dachstatik/", "permanent": true },
+    { "source": "/leistungen/sparren-austauschen-verstärken", "destination": "/leistungen/dachstatik/", "permanent": true },
+    { "source": "/leistungen/pfetten-erneuern-verstärken", "destination": "/leistungen/dachstatik/", "permanent": true },
+    { "source": "/leistungen/dachsanierung", "destination": "/leistungen/daemmung/", "permanent": true },
+    { "source": "/leistungen/energetische-dachsanierung", "destination": "/leistungen/daemmung/", "permanent": true },
+    { "source": "/leistungen/aufsparrendaemmung", "destination": "/leistungen/daemmung/", "permanent": true },
+    { "source": "/leistungen/zwischensparrendaemmung", "destination": "/leistungen/daemmung/", "permanent": true },
+    { "source": "/leistungen/dachboden-daemmen", "destination": "/leistungen/daemmung/", "permanent": true },
+    { "source": "/leistungen/holzbalkendecke-sanieren", "destination": "/leistungen/innenausbau-dachgeschoss/", "permanent": true },
+    { "source": "/leistungen/holzbalkendecke-verstaerken", "destination": "/leistungen/dachstatik/", "permanent": true },
+    { "source": "/leistungen/fachwerksanierung", "destination": "/leistungen/dachgeschossausbau/", "permanent": true },
+    { "source": "/leistungen/holzfassadenbau", "destination": "/leistungen/dachgeschossausbau/", "permanent": true },
+    { "source": "/leistungen/holzfassadensanierung", "destination": "/leistungen/dachgeschossausbau/", "permanent": true },
+    { "source": "/leistungen/carportbau", "destination": "/leistungen/", "permanent": true },
+    { "source": "/leistungen/holzgaragenbau", "destination": "/leistungen/", "permanent": true },
+    { "source": "/leistungen/terrassenueberdachung", "destination": "/leistungen/dachterrasse/", "permanent": true },
+    { "source": "/leistungen/vordachbau", "destination": "/leistungen/", "permanent": true },
+    { "source": "/leistungen/balkonbau-aus-holz", "destination": "/leistungen/dachterrasse/", "permanent": true },
+    { "source": "/leistungen/dachueberstand-erneuern", "destination": "/leistungen/daemmung/", "permanent": true },
+    { "source": "/leistungen/holzschaden-dach-reparieren", "destination": "/leistungen/dachstatik/", "permanent": true },
+    { "source": "/leistungen/dachkonstruktionen-anbauten", "destination": "/leistungen/dachstatik/", "permanent": true },
+    { "source": "/leistungen/individuelle-zimmererarbeiten", "destination": "/leistungen/", "permanent": true },
+    { "source": "/leistungen/ingenieurholzbau", "destination": "/leistungen/dachaufstockung/", "permanent": true },
+    { "source": "/leistungen/holzrahmenbau", "destination": "/leistungen/dachaufstockung/", "permanent": true },
+    { "source": "/leistungen/holzstaenderbau", "destination": "/leistungen/dachaufstockung/", "permanent": true },
+    { "source": "/leistungen/wohnraumerweiterung-holzbauweise", "destination": "/leistungen/dachaufstockung/", "permanent": true },
+    { "source": "/leistungen/anbau-holzbauweise", "destination": "/leistungen/", "permanent": true },
+    { "source": "/leistungen/dachbalkonbau", "destination": "/leistungen/dachterrasse/", "permanent": true },
+    { "source": "/leistungen/bad", "destination": "/leistungen/innenausbau-dachgeschoss/", "permanent": true },
+    { "source": "/leistungen/kniestockerhoehung", "destination": "/ratgeber/dachaufstockung-oder-ausbau/", "permanent": true }
   ]
 }

@@ -2,56 +2,23 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-
-const stadtteile = ['porz', 'ehrenfeld', 'nippes', 'lindenthal', 'sulz', 'marienburg', 'rodenkirchen', 'deutz', 'muelheim', 'kalk', 'chorweiler', 'innenstadt', 'neuehrenfeld', 'bickendorf', 'ossendorf', 'longerich', 'pesch', 'lindweiler'];
-const ratgeber = ['kosten-dachgeschossausbau-pro-qm', 'dachaufstockung-oder-ausbau', 'baugenehmigung-dachgeschoss-koeln', 'denkmalschutz-dachgeschossausbau', 'geg-daemmung-pflicht-2026', 'kniestock-erhoehen-sinnvoll', 'dachgauben-arten-vergleich', 'foerderung-dachgeschossausbau-2026'];
-const leistungen = ['bad', 'statik', 'trockenbau', 'dachaufstockung', 'daemmung', 'gauben', 'dachbodenausbau', 'dachanhebung', 'kniestockerhoehung', 'gaubenbau', 'dachfenstereinbau', 'dachbalkonbau', 'wohnraumerweiterung-holzbauweise', 'holzrahmenbau', 'holzstaenderbau', 'ingenieurholzbau', 'anbau-holzbauweise', 'dachterrassenbau', 'dachsanierung', 'energetische-dachsanierung', 'aufsparrendaemmung', 'zwischensparrendaemmung', 'dachboden-daemmen', 'holzbalkendecke-sanieren', 'holzbalkendecke-verstaerken', 'fachwerksanierung', 'holzfassadenbau', 'holzfassadensanierung', 'carportbau', 'holzgaragenbau', 'terrassenueberdachung', 'vordachbau', 'balkonbau-aus-holz', 'dachueberstand-erneuern', 'holzschaden-dach-reparieren', 'dachstuhlbau', 'dachstuhlsanierung', 'dachstuhlverstärkung', 'dachstuhlreparatur', 'sparren-austauschen-verstärken', 'pfetten-erneuern-verstärken', 'dachkonstruktionen-anbauten', 'individuelle-zimmererarbeiten'];
-
-const BASE = 'https://www.dachgeschossausbau-koeln.de';
+import { services, guides } from '../data/site';
 
 const pages = [
-  { url: `${BASE}/`, changefreq: 'weekly', priority: '1.0' },
-  { url: `${BASE}/leistungen`, changefreq: 'weekly', priority: '0.9' },
-  ...leistungen.map(s => ({ url: `${BASE}/leistungen/${s}`, changefreq: 'monthly', priority: (s === 'dachaufstockung') ? '0.9' : '0.8' })),
-  { url: `${BASE}/kosten`, changefreq: 'monthly', priority: '0.9' },
-  { url: `${BASE}/foerderrechner`, changefreq: 'monthly', priority: '0.8' },
-  { url: `${BASE}/stadtteile`, changefreq: 'monthly', priority: '0.8' },
-  ...stadtteile.map(s => ({ url: `${BASE}/stadtteile/${s}`, changefreq: 'monthly', priority: '0.8' })),
-  { url: `${BASE}/ratgeber`, changefreq: 'weekly', priority: '0.8' },
-  ...ratgeber.map(r => ({ url: `${BASE}/ratgeber/${r}`, changefreq: 'monthly', priority: (r.includes('kosten') || r.includes('foerderung')) ? '0.9' : '0.8' })),
-  { url: `${BASE}/ueber-uns`, changefreq: 'monthly', priority: '0.7' },
-  { url: `${BASE}/kontakt`, changefreq: 'monthly', priority: '0.9' },
+  { label: 'Startseite', href: '/' },
+  { label: 'Leistungen', href: '/leistungen/' },
+  ...services.map(service => ({ label: service.title, href: `/leistungen/${service.slug}/` })),
+  { label: 'Ratgeber', href: '/ratgeber/' },
+  ...guides.map(guide => ({ label: guide.title, href: `/ratgeber/${guide.slug}/` })),
+  { label: 'Köln und Stadtbezirke', href: '/stadtteile/' },
+  { label: 'Kontakt', href: '/kontakt/' },
+  { label: 'Impressum', href: '/impressum/' },
+  { label: 'Datenschutz', href: '/datenschutz/' }
 ];
-
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages.map(page => `  <url>
-    <loc>${page.url}</loc>
-    <changefreq>${page.changefreq}</changefreq>
-    <priority>${page.priority}</priority>
-  </url>`).join('\n')}
-</urlset>`;
 ---
 
-<BaseLayout
-  title="Sitemap | Dachgeschossausbau Köln"
-  description="Sitemap der Website Dachgeschossausbau Köln"
->
+<BaseLayout title="Sitemap | Dachgeschossausbau Köln" description="Sitemap der Website Dachgeschossausbau Köln">
   <Header />
-  <main class="py-16 bg-slate-50">
-    <div class="container mx-auto px-4">
-      <h1 class="text-3xl font-bold text-slate-800 mb-4">Sitemap</h1>
-      <p class="text-slate-600 mb-8">Alle Seiten unserer Website im Überblick.</p>
-      <ul class="space-y-2 columns-1 md:columns-2 lg:columns-3">
-        {pages.map(page => (
-          <li class="break-inside-avoid mb-2">
-            <a href={page.url.replace(BASE, '')} class="text-teal-600 hover:text-teal-700">
-              {page.url.replace(BASE, '') || '/'}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </main>
+  <main class="bg-slate-50 py-16"><div class="container mx-auto max-w-5xl px-4"><h1 class="text-3xl font-bold text-slate-900">Sitemap</h1><p class="mt-3 text-slate-600">Alle indexierbaren Seiten im Überblick.</p><ul class="mt-8 grid gap-3 md:grid-cols-2">{pages.map(page => <li><a class="text-teal-700 underline underline-offset-2" href={page.href}>{page.label}</a></li>)}</ul></div></main>
   <Footer />
 </BaseLayout>
